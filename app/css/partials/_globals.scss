@@ -1,0 +1,46 @@
+html{
+	height: 100%;
+
+	p{
+		margin: 0;
+		color: $color-black;
+		font-family: $font-exo2;
+	}
+
+	ul{
+		padding: 0;
+
+		li{
+			list-style: none;
+		}
+	}
+
+	p, a, h1, h2, h3, h4, h5, span{
+		font-family: $font-exo2;
+	}
+
+	input:focus{
+		outline: none;
+	}
+}
+body{
+	background-image: url("../images/moon.png");
+	background-repeat: no-repeat;
+	background-size: cover;
+	min-width: 1200px;
+
+	img{
+
+		&:hover{
+			outline: none !important;
+		}
+	}
+}
+
+.main-controls{
+	margin-top: 25px;
+}
+
+.no-margin{
+	margin: 0 !important;
+}

@@ -1,0 +1,78 @@
+<!doctype html>
+<html ng-app="hourlyadmin">
+  <head>
+    <meta charset="utf-8">
+    <title>Houry Admin</title>
+    <meta name="robots" content="noindex">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width">
+    <link href='https://fonts.googleapis.com/css?family=Exo+2:400,100,200,300,800,700' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Chango' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Dosis:400,800,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+    <link rel="shortcut icon" type="image/png" href="../images/favicon.ico"/>
+    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+
+    <!-- build:css({.tmp/serve,app}) styles/vendor.css -->
+    <!-- bower:css -->
+    <!-- run `gulp inject` to automatically populate bower styles dependencies -->
+    <!-- endbower -->
+    <!-- endbuild -->
+
+    <!-- build:css({.tmp/serve,app}) styles/app.css -->
+    <!-- inject:css -->
+    <!-- css files will be automatically insert here -->
+    <!-- endinject -->
+    <!-- endbuild -->
+  </head>
+  <body>
+    <!--[if lt IE 10]>
+      <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+
+    <div ng-view></div>
+
+    <!-- build:js(src) scripts/vendor.js -->
+    <!-- bower:js -->
+    <!-- run `gulp inject` to automatically populate bower script dependencies -->
+    <!-- endbower -->
+    <!-- endbuild -->
+
+    <!-- commenting out jQuery until its needed, hopefully never will be needed -->
+    <!-- <script src="http://code.jquery.com/jquery-1.12.0.min.js"></script> -->
+
+    <!-- Socket -->
+    <!-- <script src="https://cdn.socket.io/socket.io-1.4.5.js"></script> -->
+
+    <!-- Helpers -->
+    <!-- <script src="js/utilities/socket-io.js"></script> -->
+    <script src="js/utilities/helpers.js"></script>
+    <script src="js/directives/vendor/angular-jwt.js"></script>
+
+    <!-- App -->
+    <script src="js/app.js"></script>
+
+    <!-- Services -->
+
+    <!-- Directives -->
+    <!-- Vendor -->
+    <script src="js/directives/vendor/stop-propogation.js"></script>
+    <script src="js/directives/vendor/angular-youtube.js"></script>
+    <script src="js/directives/vendor/on-enter.js"></script>
+    <script src="js/directives/vendor/init.js"></script>
+    <script src="js/directives/vendor/focus-me.js"></script>
+
+    <!-- Factories -->
+
+    <!-- BoomBoom -->
+
+    <!-- Bottom Vendors -->
+    <script src="https://apis.google.com/js/client.js?onload=onClientLoad" type="text/javascript"></script>
+
+    <!-- inject:partials -->
+    <!-- angular templates will be automatically converted in js and inserted here -->
+    <!-- endinject -->
+    <!-- endbuild -->
+
+  </body>
+</html>
