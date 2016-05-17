@@ -1,0 +1,46 @@
+.header{
+	border-top: 7px solid $color-yellow;
+	background-color: $color-black;
+	@include make-row();
+
+	.logo-area{
+		@include make-sm-column(6);
+
+		h1{
+			padding: 14px 0px;
+			margin: 0;
+			color: $color-white;
+		}
+	}
+
+	.main-nav{
+		@include make-sm-column(6);
+
+		ul{
+			margin: 0;
+			float: right;
+			height: 100%;
+			margin-right: 20px;
+
+			li{
+				display: inline-block;
+
+				a{
+					display: block;
+					padding-top: 20px;
+					padding-bottom: 21px;
+					padding-left: 20px;
+					padding-right: 20px;
+					color: white;
+					font-weight: bold;
+					font-size: 18px;
+					text-decoration: none;
+
+					&:hover{
+						background-color: $color-yellow;
+					}
+				}
+			}
+		}
+	}
+}
