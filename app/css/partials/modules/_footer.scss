@@ -1,0 +1,11 @@
+.footer{
+	@include make-sm-column(12);
+	background-color: $color-black;
+
+	h2{
+		padding: 14px 0px;
+		margin: 0;
+		margin-left: 20px;
+		color: $color-white;
+	}
+}

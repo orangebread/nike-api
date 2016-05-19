@@ -1,0 +1,33 @@
+.callouts{
+	@include make-sm-column-offset(1);
+	@include make-sm-column(10);
+
+	.callout{
+		@include make-sm-column(4);
+		text-align: center;
+
+		img{
+			width: 80%;
+
+		}
+
+		p{
+
+		}
+	}
+}
+
+.section-header{
+	@include make-sm-column-offset(1);
+	@include make-sm-column(10);
+	text-align: center;
+	margin-top: 40px;
+	margin-bottom: 50px;
+
+	h2{
+		@include make-sm-column(12);
+		padding-bottom: 40px;
+		border-bottom: 1px solid $color-light-gray;
+
+	}
+}
