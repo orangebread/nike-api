@@ -1,0 +1,14 @@
+<div class="search-list">
+	<div class="search-form">
+		<input type="text"></input>
+	</div>
+	<ul class="dynamic-grid" angular-grid="pics" grid-width="400" gutter-size="10" angular-grid-id="gallery" refresh-on-img-load="false" >
+	    <li data-ng-repeat="pic in pics" class="grid" data-ng-clock>
+	        <div class="text-content">
+	        	<h3>test title</h3>
+	        	<h4>username</h4>
+	        	<p>this is some test text</p>
+	        </div>
+	    </li>
+	</ul>
+</div>

@@ -1,0 +1,21 @@
+.search-list{
+	margin-top: 20px;
+	margin-bottom: 20px;
+	@include make-sm-column-offset(1);
+	@include make-sm-column(10);
+
+	.search-form{
+		margin-top: 10px;
+		width: 100%;
+		text-align: center;
+		margin-bottom: 10px;
+
+		input{
+			border-radius: 10px;
+			border: 2px solid $color-black;
+			height: 40px;
+			width: 80%;
+			padding-left: 15px;
+		}
+	}
+}
