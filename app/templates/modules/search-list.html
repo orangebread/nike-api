@@ -1,13 +1,15 @@
 <div class="search-list">
 	<div class="search-form">
-		<input type="text"></input>
+	<h1>Search</h1>
+	<p>Type in what you are looking for to see what is available.</p>
+		<input type="text" placeholder="Payroll, finance, billing...." ng-enter="search()"></input>
 	</div>
-	<ul class="dynamic-grid" angular-grid="pics" grid-width="400" gutter-size="10" angular-grid-id="gallery" refresh-on-img-load="false" >
-	    <li data-ng-repeat="pic in pics" class="grid" data-ng-clock>
+	<ul class="search-results dynamic-grid" angular-grid="results" grid-width="400" gutter-size="10" angular-grid-id="gallery" refresh-on-img-load="false" >
+	    <li data-ng-repeat="result in results" class="grid search-result" data-ng-clock>
 	        <div class="text-content">
-	        	<h3>test title</h3>
-	        	<h4>username</h4>
-	        	<p>this is some test text</p>
+	        	<h3>{{result.title}}</h3>
+	        	<h4>{{result.subtitle}}</h4>
+	        	<p>{{result.body}}</p>
 	        </div>
 	    </li>
 	</ul>

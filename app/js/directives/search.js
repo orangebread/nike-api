@@ -1,17 +1,26 @@
-module.service('imageService',['$q','$http',function($q,$http){
-    this.loadImages = function(){
-        return $http.jsonp("https://api.flickr.com/services/feeds/photos_public.gne?format=json&jsoncallback=JSON_CALLBACK");
-    };
-}])
-
 module.directive('search', function() {
 	return {
 	templateUrl: '../../templates/modules/search-list.html',
-	controller: ['$scope', '$http', 'imageService', function($scope, $http, imageService) {
-			imageService.loadImages().then(function(data){
-	           $scope.pics = data.data.items;
-	           
-	        });;
+	controller: ['$scope', '$http', function($scope, $http) {
+			$scope.results = [
+			
+			]
+
+	        $scope.search = function(){
+	        	function success(response){
+	        		$scope.results = response.data.results;
+				}
+
+				function error(response){
+					console.log("error")
+					console.log(response)
+				}
+
+				$http({
+					method: 'GET',
+					url: "/json/dummy-search",
+				}).then(success, error);
+	        }
 		}]
 	};
 });

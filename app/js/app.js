@@ -33,6 +33,9 @@ module.config(['jwtInterceptorProvider', '$routeProvider', '$httpProvider', 'Fac
 			when('/search', {
 				templateUrl: 'templates/search.html'
 			}).
+			when('/job', {
+				templateUrl: 'templates/job-description.html'
+			}).
 			when('/login', {
 				templateUrl: 'templates/login.html'
 			}).
