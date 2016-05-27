@@ -43,3 +43,14 @@ body{
 .container-fluid{
 	max-width: 100%;
 }
+
+.column-30-70{
+
+	div:first-child{
+		@include make-sm-column(3);
+	}
+
+	div:last-child{
+		@include make-sm-column(9);	
+	}
+}
