@@ -1,4 +1,5 @@
 bower_components/
 node_modules/
 .tmp/
-dist/
+Web/dist/
+API/node_modules/
