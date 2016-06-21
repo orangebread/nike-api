@@ -1,5 +1,5 @@
 .footer{
-	@include make-sm-column(12);
+	@include make-xs-column(12);
 	background-color: $color-black;
 	position: fixed !important;
 	bottom: 0px;

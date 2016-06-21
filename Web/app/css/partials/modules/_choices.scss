@@ -18,6 +18,19 @@
 		@include make-sm-column(6);
 		height: 300px;
 		cursor: pointer;
+		text-decoration: none;
+		@include breakpoint($mobileOnly) {
+			display: block;
+			border: none !important;
+			height: 150px;
+
+			h2{
+				float: none !important;
+				margin: 0px !important;
+				text-align: center;
+				padding-top: 50px !important;
+			}
+		}
 
 		&:hover{
 			background-color: $color-yellow;

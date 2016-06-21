@@ -4,17 +4,20 @@
 	@include make-sm-column(12);
 
 	.logo-area{
-		@include make-sm-column(6);
+		@include make-xs-column(6);
 
 		h1{
 			padding: 14px 0px;
 			margin: 0;
 			color: $color-white;
+			@include breakpoint($mobileOnly) {
+				font-size: 30px;
+			}
 		}
 	}
 
 	.main-nav{
-		@include make-sm-column(6);
+		@include make-xs-column(6);
 
 		ul{
 			margin: 0;

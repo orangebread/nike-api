@@ -1,7 +1,7 @@
 'use strict';
 
 var RUN_LOCAL = false;
-var module = angular.module('hourlyadmin', ['ngRoute', 'angularGrid', 'facebook', 'ngScrollbar', 'angular-jwt', 'clickOut', 'angular-taggle', 'youtube-embed', 'ui.router', 'ngStorage', 'angular-web-notification']);
+var module = angular.module('hourlyadmin', ['ngRoute', 'ui.bootstrap', 'angularGrid', 'facebook', 'ngScrollbar', 'angular-jwt', 'clickOut', 'angular-taggle', 'youtube-embed', 'ui.router', 'ngStorage', 'angular-web-notification']);
 var GROUP_USER_ID = 0;
 var USER_ID = 1;
 var BASE_URL = "http://ec2-52-201-230-9.compute-1.amazonaws.com:3000";
