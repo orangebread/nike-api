@@ -1,4 +1,4 @@
-module.controller('LoginModalController', function ($scope, $uibModalInstance, items) {
+module.controller('LoginModalController', function ($scope, $uibModalInstance, items, $localStorage, $rootScope) {
 
   $scope.forms = {
     login: true,
@@ -9,8 +9,10 @@ module.controller('LoginModalController', function ($scope, $uibModalInstance, i
     }
   }
 
-  $scope.ok = function () {
-    //$uibModalInstance.close($scope.selected.item);
+  $scope.login = function () {
+    $localStorage.userId = 1;
+    $rootScope.$broadcast('loggedIn');
+    $uibModalInstance.dismiss('cancel');
   };
 
   $scope.cancel = function () {

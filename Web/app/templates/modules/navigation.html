@@ -1,13 +1,19 @@
 <div class="main-nav">
 	<ul>
-		<li>
-			<a ng-click="promptLogin()" href="#">Login</a>
+		<li ng-show="!user.logged_in">
+			<a ng-click="openLoginModal()">Login</a>
 		</li>
 		<li>
 			<a href="#/">Home</a>
 		</li>
 		<li>
 			<a href="#/search">Search</a>
+		</li>
+		<li>
+			<a ng-click="openTaskModal()">Post a Task</a>
+		</li>
+		<li>
+			<a href="#/profile">Account</a>
 		</li>
 	</ul>
 </div>

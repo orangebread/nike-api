@@ -1,0 +1,26 @@
+<div class="hourly-modal">
+    <div class="modal-header">
+        <h3 class="modal-title">Post a Task</h3>
+    </div>
+    <div class="modal-body">
+        <h2>Fill in the fields to post your task on the marketplace.</h2>
+        <div class="login-form">
+            <div class="form-group">
+                <label for="title">Title:</label>
+                <input type="title" class="form-control" id="email" placeholder="Title" ng-model="forms.inputs.title">
+            </div>
+            <div class="form-group">
+                <label for="description">Description:</label>
+                <textarea class="form-control" ng-model="forms.inputs.description"></textarea>
+            </div>
+            <div class="form-group">
+                <label for="pass">Estimated days of work:</label>
+                <input type="number" class="form-control" id="days" ng-model="forms.inputs.days">
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button class="btn submit-btn" type="button" ng-click="post()">Post</button>
+        <button class="btn cancel-btn" type="button" ng-click="cancel()">Cancel</button>
+    </div>
+</div>

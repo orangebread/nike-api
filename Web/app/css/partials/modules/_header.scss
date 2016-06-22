@@ -4,7 +4,7 @@
 	@include make-sm-column(12);
 
 	.logo-area{
-		@include make-xs-column(6);
+		@include make-xs-column(5);
 
 		h1{
 			padding: 14px 0px;
@@ -17,7 +17,7 @@
 	}
 
 	.main-nav{
-		@include make-xs-column(6);
+		@include make-xs-column(7);
 
 		ul{
 			margin: 0;
@@ -38,6 +38,7 @@
 					font-weight: bold;
 					font-size: 18px;
 					text-decoration: none;
+					cursor: pointer;
 
 					&:hover{
 						background-color: $color-yellow;

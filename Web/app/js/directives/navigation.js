@@ -1,11 +1,14 @@
 module.directive('navigation', function() {
 	return {
 	templateUrl: '../../templates/modules/navigation.html',
-	controller: ['$scope', '$http', '$uibModal', function($scope, $http, $uibModal) {
+	controller: ['$scope', '$http', '$uibModal', '$localStorage', function($scope, $http, $uibModal, $localStorage) {
 
-			$scope.items = ['item1', 'item2', 'item3'];
+			$scope.items = [];
+			$scope.user = {
+				logged_in: (typeof $localStorage.userId !== "undefined")
+			}
 
-			$scope.promptLogin = function(){
+			$scope.openLoginModal = function(){
 				var modalInstance = $uibModal.open({
 			      animation: true,
 			      templateUrl: 'templates/modules/login-modal.html',
@@ -16,13 +19,24 @@ module.directive('navigation', function() {
 			        }
 			      }
 			    });
+			}
 
-			    modalInstance.result.then(function (selectedItem) {
-			      $scope.selected = selectedItem;
-			    }, function () {
-			      
+			$scope.openTaskModal = function(){
+				var modalInstance = $uibModal.open({
+			      animation: true,
+			      templateUrl: 'templates/modules/post-task-modal.html',
+			      controller: 'PostTaskController',
+			      resolve: {
+			        items: function () {
+			          return $scope.items;
+			        }
+			      }
 			    });
 			}
+
+			$scope.$on('loggedIn', function ($event) {
+				$scope.user.logged_in = true;
+			})
 		}]
 	};
 });

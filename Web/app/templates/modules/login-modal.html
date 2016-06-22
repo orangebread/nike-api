@@ -1,4 +1,4 @@
-<div class="login-modal">
+<div class="hourly-modal">
     <div class="modal-header">
         <h3 class="modal-title">Login/Sign up</h3>
     </div>
@@ -10,11 +10,11 @@
                 <input type="email" class="form-control" id="email" placeholder="Email" ng-model="forms.inputs.email">
             </div>
             <div class="form-group">
-                <label for="pass">Password</label>
+                <label for="pass">Password:</label>
                 <input type="password" class="form-control" id="pass" placeholder="Password" ng-model="forms.inputs.password">
             </div>
             <div class="form-group" ng-show="!forms.login">
-                <label for="pass">Password Confirmation</label>
+                <label for="pass">Password Confirmation:</label>
                 <input type="password" class="form-control" id="password_conf" placeholder="Password" ng-model="forms.inputs.password_conf">
             </div>
             <a href="#" ng-click="forms.login = false" ng-show="forms.login">I don't have an account</a>
