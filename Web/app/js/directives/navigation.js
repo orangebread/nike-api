@@ -1,20 +1,3 @@
-module.controller('ModalInstanceCtrl', function ($scope, $uibModalInstance, items) {
-
-  $scope.items = items;
-  $scope.selected = {
-    item: $scope.items[0]
-  };
-
-  $scope.ok = function () {
-    $uibModalInstance.close($scope.selected.item);
-  };
-
-  $scope.cancel = function () {
-    $uibModalInstance.dismiss('cancel');
-  };
-});
-
-
 module.directive('navigation', function() {
 	return {
 	templateUrl: '../../templates/modules/navigation.html',
@@ -25,8 +8,8 @@ module.directive('navigation', function() {
 			$scope.promptLogin = function(){
 				var modalInstance = $uibModal.open({
 			      animation: true,
-			      templateUrl: 'myModalContent.html',
-			      controller: 'ModalInstanceCtrl',
+			      templateUrl: 'templates/modules/login-modal.html',
+			      controller: 'LoginModalController',
 			      resolve: {
 			        items: function () {
 			          return $scope.items;
