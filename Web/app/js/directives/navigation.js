@@ -5,7 +5,7 @@ module.directive('navigation', function() {
 
 			$scope.items = [];
 			$scope.user = {
-				logged_in: (typeof $localStorage.userId !== "undefined")
+				logged_in: (typeof $localStorage.userID !== "undefined")
 			}
 
 			$scope.openLoginModal = function(){

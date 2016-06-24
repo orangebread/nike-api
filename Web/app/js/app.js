@@ -7,7 +7,7 @@ if(RUN_LOCAL)
 	BASE_URL = "http://localhost:3000";
 
 var API_BASE_URL = BASE_URL+"/api/";
-var FACEBOOK_APP_ID = "194400397596459";
+var FACEBOOK_APP_ID = "1560501770921087";
 
 module.config(['jwtInterceptorProvider', '$routeProvider', '$httpProvider', 'FacebookProvider',
 	function(jwtInterceptorProvider, $routeProvider, $httpProvider, FacebookProvider) {
