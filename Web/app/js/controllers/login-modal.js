@@ -11,6 +11,8 @@ module.controller('LoginModalController', function ($scope, $uibModalInstance, i
 
   $scope.login = function () {
     $localStorage.userID = 1;
+    $rootScope.$broadcast('loggedIn');
+    $uibModalInstance.dismiss('cancel');
   };
 
   $scope.fbLogin = function(){

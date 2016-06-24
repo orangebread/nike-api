@@ -1,3 +1,32 @@
 .profile-view{
 	
+	.job-listing{
+
+		h3{
+			font-size: 20px;
+		}
+		
+		.jobs{
+			@include make-row();
+			border: 1px solid $color-black;
+
+			.job{
+				@include make-xs-column(12);
+				border-top: 1px solid $color-black;
+
+				&:first-child{
+					border: none;
+				}
+
+				p{
+					display: inline;
+					margin-left: 10px;
+					&:first-child{
+						margin-left: 0px;
+					}
+				}
+
+			}
+		}
+	}
 }
