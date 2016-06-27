@@ -9,6 +9,10 @@ module.exports = {
       user: 'mogaadmin',
       password: 'ThisIsSparta7229',
       database: 'hourlyadmin'
+    },
+    pool: {
+      min: 2,
+      max: 10
     }
   },
   production: {
