@@ -1,1 +1,18 @@
 # HourlyAdmin
+
+API Dev Server:
+
+DEV SERVER = ec2-107-23-28-238.compute-1.amazonaws.com:3000
+
+---
+
+## Login Endpoints
+
+### Register
+
+_http://<dev server>/api/login/register_
+params:
+* email: asdf@asdf.com
+* password: pass123
+* displayName: AsdfUser (optional)
+
