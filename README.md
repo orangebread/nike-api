@@ -2,8 +2,8 @@
 
 API Dev Server:
 
-**DEV API SERVER**: ec2-107-23-28-238.compute-1.amazonaws.com:3000
-**DEV DB SERVER**: hadev01.c5um0qomkwp2.us-east-1.rds.amazonaws.com:5432
+DEV API SERVER: ec2-107-23-28-238.compute-1.amazonaws.com:3000
+DEV DB SERVER: hadev01.c5um0qomkwp2.us-east-1.rds.amazonaws.com:5432
 ---
 
 ## Login Endpoints
