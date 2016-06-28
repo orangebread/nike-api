@@ -1,4 +1,4 @@
-module.controller('LoginModalController', function ($scope, $uibModalInstance, items, $localStorage, $rootScope, Facebook, $http, $log) {
+module.controller('LoginModalController', function ($scope, $uibModalInstance, items, $localStorage, $rootScope, Facebook, $http, $log, jwtHelper) {
 
   $scope.forms = {
     login: true,
@@ -33,6 +33,7 @@ module.controller('LoginModalController', function ($scope, $uibModalInstance, i
       $scope.forms.flags.password_error = ($scope.forms.inputs.password != $scope.forms.inputs.password_conf);
     }
 
+    // check all flags
     form_not_valid = ($scope.forms.flags.email_error || $scope.forms.flags.no_password || $scope.forms.flags.password_error);
 
     if(!form_not_valid)
@@ -50,10 +51,10 @@ module.controller('LoginModalController', function ($scope, $uibModalInstance, i
       if(response.data.success)
       {
         $localStorage.jwtToken = response.data.token;
+        console.log(response);
         $localStorage.userID = jwtHelper.decodeToken(response.data.token).id;
         $rootScope.$broadcast('loggedIn');
         $uibModalInstance.dismiss('cancel');
-        $window.location.href = "/";
       }
       else
       {
@@ -84,14 +85,14 @@ module.controller('LoginModalController', function ($scope, $uibModalInstance, i
     delete $localStorage.userID;
 
     function success(response){
-      // if logged in successfully
+      // if registered in successfully
       if(response.data.success)
       {
+        console.log(response);
         $localStorage.jwtToken = response.data.token;
         $localStorage.userID = jwtHelper.decodeToken(response.data.token).id;
         $rootScope.$broadcast('loggedIn');
         $uibModalInstance.dismiss('cancel');
-        $window.location.href = "/";
       }
       else
       {
