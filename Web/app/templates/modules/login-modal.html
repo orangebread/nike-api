@@ -13,23 +13,39 @@
         <div class="login-form">
             <div class="form-group">
                 <label for="email">Email:</label>
-                <input type="email" class="form-control" id="email" placeholder="Email" ng-model="forms.inputs.email">
+                <input type="email" class="form-control {{ forms.flags.email_error ? 'validation-error' : '' }}" id="email" placeholder="Email" ng-model="forms.inputs.email">
+                <p class="form-error-text" ng-show="forms.flags.email_error">
+                    Please enter a valid email.
+                </p>
             </div>
             <div class="form-group">
                 <label for="pass">Password:</label>
-                <input type="password" class="form-control" id="pass" placeholder="Password" ng-model="forms.inputs.password">
+                <input type="password" class="form-control {{ (forms.flags.password_error || forms.flags.no_password) ? 'validation-error' : '' }}" id="pass" placeholder="Password" ng-model="forms.inputs.password">
             </div>
+            <p class="form-error-text" ng-show="forms.flags.no_password">
+                Please enter a password.
+            </p>
             <div class="form-group" ng-show="!forms.login">
                 <label for="pass">Password Confirmation:</label>
-                <input type="password" class="form-control" id="password_conf" placeholder="Password" ng-model="forms.inputs.password_conf">
+                <input type="password" class="form-control {{ forms.flags.password_error ? 'validation-error' : '' }}" id="password_conf" placeholder="Password" ng-model="forms.inputs.password_conf">
             </div>
+            <p class="form-error-text" ng-show="forms.flags.password_error">
+                Passwords do not match.
+            </p>
+            <div class="form-group" ng-show="!forms.login">
+                <label for="pass">Display Name (optional):</label>
+                <input type="text" class="form-control" id="password_conf" placeholder="WillWorkForCash" ng-model="forms.inputs.display_name">
+            </div>
+            <p class="form-error-text" ng-show="forms.flags.bad_creds">
+                Incorrect email or password.
+            </p>
             <a href="#" ng-click="forms.login = false" ng-show="forms.login">I don't have an account</a>
             <a href="#" ng-click="forms.login = true" ng-show="!forms.login">I have an account</a>
         </div>
     </div>
     <div class="modal-footer">
-        <button class="btn submit-btn" type="button" ng-click="login()" ng-show="forms.login">Login</button>
-        <button class="btn submit-btn" type="button" ng-click="sign_up()" ng-show="!forms.login">Sign Up</button>
+        <button class="btn submit-btn" type="button" ng-click="loginOrRegister()" ng-show="forms.login">Login</button>
+        <button class="btn submit-btn" type="button" ng-click="loginOrRegister()" ng-show="!forms.login">Sign Up</button>
         <button class="btn cancel-btn" type="button" ng-click="cancel()">Cancel</button>
     </div>
 </div>

@@ -2,7 +2,7 @@
 
 var RUN_LOCAL = false;
 var module = angular.module('hourlyadmin', ['ngRoute', 'ui.bootstrap', 'angularGrid', 'facebook', 'angular-jwt', 'clickOut', 'ui.router', 'ngStorage']);
-var BASE_URL = "http://ec2-52-201-230-9.compute-1.amazonaws.com:3000";
+var BASE_URL = "ec2-107-23-28-238.compute-1.amazonaws.com:3000";
 if(RUN_LOCAL)
 	BASE_URL = "http://localhost:3000";
 

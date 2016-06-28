@@ -109,3 +109,12 @@
     }
   }
 }
+
+.validation-error{
+  border: 1px solid $color-red;
+}
+
+p.form-error-text{
+  color: $color-red;
+  margin-top: 5px;
+}
