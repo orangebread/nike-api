@@ -7,13 +7,8 @@ var jwtUtils = require('../utils/jwtUtils');
 module.exports = db.Model.extend({
     tableName: 'user',
 
-    hidden: ['id', 'password', 'fb_token', 'fb_id', 'created_at', 'updated_at'],
+    hidden: ['id', 'password', 'fb_token', 'fb_id', 'created_at', 'updated_at']
 
-    // relationships
-    playlists: function() {
-        var Playlist = require('./Playlist');
-        return this.hasMany(Playlist);
-    }
 }, {
 
     comparePassword: function(password, hash) {
@@ -32,7 +27,7 @@ module.exports = db.Model.extend({
             var newName = emailName + digits;
             return newName;
         } else {
-            var length = 5
+            var length = 5;
             var trimmedString = emailName.substring(0, length);
             var newName = trimmedString + digits;
             return newName;

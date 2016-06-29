@@ -19,3 +19,22 @@ params:
 * password: pass123
 * displayName: AsdfUser (optional)
 
+### Login
+
+_http://**DEV API SERVER**/api/login_
+
+params:
+* email: asdf@asdf.com
+* password: pass123
+
+## Job Posting Endpoints
+
+### New Job Post
+
+_http://**DEV API SERVER**/api/job_
+
+params:
+* title: New Job
+* description: It's a Job
+* budget: 1000
+
