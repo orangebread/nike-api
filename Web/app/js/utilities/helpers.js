@@ -14,45 +14,6 @@ Array.prototype.where = Array.prototype.where || function(predicate) {
 	return results;
 };
 
-// used to parse weird YouTube duration strings
-function convert_youtube_time(duration) {
-	var a = duration.match(/\d+/g);
-
-	if (duration.indexOf('M') >= 0 && duration.indexOf('H') == -1 && duration.indexOf('S') == -1) {
-			a = [0, a[0], 0];
-	}
-
-	if (duration.indexOf('H') >= 0 && duration.indexOf('M') == -1) {
-			a = [a[0], 0, a[1]];
-	}
-	if (duration.indexOf('H') >= 0 && duration.indexOf('M') == -1 && duration.indexOf('S') == -1) {
-			a = [a[0], 0, 0];
-	}
-
-	duration = 0;
-
-	if (a.length == 3) {
-			duration = duration + parseInt(a[0]) * 3600;
-			duration = duration + parseInt(a[1]) * 60;
-			duration = duration + parseInt(a[2]);
-	}
-
-	if (a.length == 2) {
-			duration = duration + parseInt(a[0]) * 60;
-			duration = duration + parseInt(a[1]);
-	}
-
-	if (a.length == 1) {
-			duration = duration + parseInt(a[0]);
-	}
-	return duration
-}
-
-// used to change duration counts into readable times
-function getSongDisplayTime(duration){
-	return Math.floor(duration/60)+":"+(duration%60);
-}
-
 // used to generate guids
 function generateID(){
 	var S4 = function() {
