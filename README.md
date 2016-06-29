@@ -12,6 +12,8 @@ DEV DB SERVER: hadev01.c5um0qomkwp2.us-east-1.rds.amazonaws.com:5432
 
 ### Register
 
+POST
+
 _http://**DEV API SERVER**/api/login/register_
 
 params:
@@ -20,6 +22,8 @@ params:
 * displayName: AsdfUser (optional)
 
 ### Login
+
+POST
 
 _http://**DEV API SERVER**/api/login_
 
@@ -31,6 +35,8 @@ params:
 
 ### New Job Post
 
+POST
+
 _http://**DEV API SERVER**/api/job_
 
 params:
@@ -38,3 +44,20 @@ params:
 * description: It's a Job
 * budget: 1000
 
+###  Get Job Collection
+
+GET
+
+_http://**DEV API SERVER**/api/job_
+
+params:
+* No params
+
+### Get Job by ID
+
+GET
+
+_http://**DEV API SERVER**/api/job_
+
+params:
+* id: <integer id>
