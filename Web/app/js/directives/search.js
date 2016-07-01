@@ -8,18 +8,20 @@ module.directive('search', function() {
 
 	        $scope.search = function(){
 	        	function success(response){
-	        		$scope.results = response.data.results;
+	        		console.log(response);
+	        		$scope.results = response.data.result;
 				}
 
 				function error(response){
-					console.log("error")
-					console.log(response)
+					console.log("error");
+					console.log(response);
+					alert("Something went wrong.")
 				}
 
 				$http({
-					method: 'GET',
-					url: "/json/dummy-search",
-				}).then(success, error);
+			      method: 'GET',
+			      url: API_BASE_URL+"job",
+			    }).then(success, error);
 	        }
 		}]
 	};

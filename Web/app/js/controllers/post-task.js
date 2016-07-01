@@ -1,16 +1,44 @@
-module.controller('PostTaskController', function ($scope, $uibModalInstance, items) {
+module.controller('PostTaskController', function ($scope, $uibModalInstance, items, $http) {
 
   $scope.forms = {
     login: true,
     inputs: {
       title: "",
       description: "",
-      days: 0
+      budget: 0
     }
   }
 
-  $scope.ok = function () {
-    //$uibModalInstance.close($scope.selected.item);
+  $scope.postTask = function () {
+
+    function success(response){
+      console.log(response);
+      // if logged in successfully
+      if(response.data.success)
+      {
+        
+      }
+      else
+      {
+        alert("Please fill out all inputs");
+      }
+    }
+
+    function error(response){
+      alert("Something went wrong.")
+    }
+
+    dataParams = {
+      title: $scope.forms.inputs.title,
+      description: $scope.forms.inputs.description,
+      budget: $scope.forms.inputs.budget
+    }
+
+    $http({
+      method: 'POST',
+      url: API_BASE_URL+"job",
+      data: dataParams
+    }).then(success, error);
   };
 
   $scope.cancel = function () {
