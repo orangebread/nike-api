@@ -16,7 +16,7 @@ module.controller('PostTaskController', function ($scope, $uibModalInstance, ite
       // if logged in successfully
       if(response.data.success)
       {
-        
+        $uibModalInstance.dismiss('cancel');
       }
       else
       {
