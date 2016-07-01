@@ -20,7 +20,7 @@
             </div>
             <div class="form-group">
                 <label for="pass">Password:</label>
-                <input type="password" class="form-control {{ (forms.flags.password_error || forms.flags.no_password) ? 'validation-error' : '' }}" id="pass" placeholder="Password" ng-model="forms.inputs.password">
+                <input type="password" class="form-control {{ (forms.flags.password_error || forms.flags.no_password) ? 'validation-error' : '' }}" id="pass" placeholder="Password" ng-model="forms.inputs.password" ng-enter="loginOrRegister()">
             </div>
             <p class="form-error-text" ng-show="forms.flags.no_password">
                 Please enter a password.
