@@ -12,14 +12,24 @@ router.post('/', function(req, res){
             var budget = req.body.budget;
             var userId = token.id;
             var status = 1;
+            var expires_at = req.body.expires_at;
+            var now = new Date();
+            var dateExpire = new Date(expires_at);
 
+            if (expires_at === null) {
+                dateExpire = now.setDate(now.getDate()+14);
+            }
+            
+            console.log('Expiration ' + dateExpire);
             var payload = {
                 title: title,
                 description: description,
                 budget: budget,
                 user_id: userId,
-                status_id: status
+                status_id: status,
+                expires_at: dateExpire
             };
+
             Job.forge(payload)
                 .save()
                 .then(function(result) {

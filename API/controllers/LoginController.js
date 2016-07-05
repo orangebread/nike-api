@@ -49,7 +49,7 @@ router.post('/', function(req, res){
 router.post('/register', function(req, res){
     var email = req.body.email;
     var password = req.body.password;
-    var displayName = req.body.displayName;
+    var displayName = req.body.display_name;
 
     jwtUtils.hashPassword(password)
         .then(function(hash) {

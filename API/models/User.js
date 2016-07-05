@@ -38,11 +38,14 @@ module.exports = db.Model.extend({
         if(!email || !password) {
             return ({ success: false, message: 'Please enter email and password.' });
         } else {
+            var saveDisplayName = null;
             if(!displayName) {
-                var autoDisplayName = this.generateDisplayName(email);
+                saveDisplayName = this.generateDisplayName(email);
+            } else {
+                saveDisplayName = displayName;
             }
             // Attempt to save the user
-            return new this({email: email.toLowerCase().trim(), password: password, display_name: autoDisplayName})
+            return new this({email: email.toLowerCase().trim(), password: password, display_name: saveDisplayName})
                 .save()
                 .then(function(res) {
                     return ({ success: true, response: res.omit(['password'])});

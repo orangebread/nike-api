@@ -43,6 +43,9 @@ params:
 * title: New Job
 * description: It's a Job
 * budget: 1000
+* expires_at: 2017-01-01 14:15:16
+  - if no values passed, a default of 2 weeks will be added
+  - add logic to prevent adding dates older than current time
 
 ###  Get Job Collection
 
