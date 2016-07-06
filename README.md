@@ -49,7 +49,7 @@ params:
 
 ###  Get Job Collection
 
-GET
+GET (a job, you bum)
 
 _http://**DEV API SERVER**/api/job_
 
