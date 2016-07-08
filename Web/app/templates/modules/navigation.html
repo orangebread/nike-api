@@ -9,7 +9,10 @@
 		<li>
 			<a ng-click="openTaskModal()">Post a Task</a>
 		</li>
-		<li>
+		<li ng-show="user.logged_in">
+			<a href="#/messages">Messages</a>
+		</li>
+		<li ng-show="user.logged_in">
 			<a href="#/profile">Account</a>
 		</li>
 	</ul>

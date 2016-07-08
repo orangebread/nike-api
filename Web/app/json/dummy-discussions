@@ -1,0 +1,110 @@
+{
+	"discussions": [
+		{
+			"id": 12312,
+			"job_title": "Test 1",
+			"amount_unread": 2,
+			"job_employer_id": 23423,
+			"job_contractor_id": 32423,
+			"date_started": 32432,
+			"last_message_date": 234234,
+			"selected": true,
+			"messages" : [
+				{
+					"user_id": 23324,
+					"user_name": "John Doe",
+					"body": "asdfasdf asd fasdf asdfas ",
+					"date": 43524,
+					"user_avatar": "http://bootdey.com/img/Content/user_1.jpg"
+				},
+				{
+					"user_id": 23324,
+					"user_name": "John Doe",
+					"body": "asdfasdf asd fasdf asdfas ",
+					"date": 43524,
+					"user_avatar": "http://bootdey.com/img/Content/user_3.jpg"
+				},
+				{
+					"user_id": 23324,
+					"user_name": "John Doe",
+					"body": "asdfasdf asd fasdf asdfas ",
+					"date": 43524,
+					"user_avatar": "http://bootdey.com/img/Content/user_1.jpg"
+				},
+				{
+					"user_id": 23324,
+					"user_name": "John Doe",
+					"body": "asdfasdf asd fasdf asdfas ",
+					"date": 43524,
+					"user_avatar": "http://bootdey.com/img/Content/user_3.jpg"
+				}
+			]
+		},
+		{
+			"id": 12312,
+			"job_title": "Test 1",
+			"amount_unread": 2,
+			"job_employer_id": 23423,
+			"job_contractor_id": 32423,
+			"date_started": 32432,
+			"last_message_date": 234234,
+			"selected": false,
+			"messages" : [
+				{
+					"user_id": 23324,
+					"user_name": "John Doe",
+					"body": "asdfasdf asd fasdf asdfas ",
+					"date": 43524,
+					"user_avatar": "http://bootdey.com/img/Content/user_1.jpg"
+				},
+				{
+					"user_id": 23324,
+					"user_name": "John Doe",
+					"body": "asdfasdf asd fasdf asdfas ",
+					"date": 43524,
+					"user_avatar": "http://bootdey.com/img/Content/user_3.jpg"
+				},
+				{
+					"user_id": 23324,
+					"user_name": "John Doe",
+					"body": "asdfasdf asd fasdf asdfas ",
+					"date": 43524,
+					"user_avatar": "http://bootdey.com/img/Content/user_3.jpg"
+				}
+			]
+		},
+		{
+			"id": 12312,
+			"job_title": "Test 1",
+			"amount_unread": 2,
+			"job_employer_id": 23423,
+			"job_contractor_id": 32423,
+			"date_started": 32432,
+			"last_message_date": 234234,
+			"selected": false,
+			"messages" : [
+				{
+					"user_id": 23324,
+					"user_name": "John Doe",
+					"body": "asdfasdf asd fasdf asdfas ",
+					"date": 43524,
+					"user_avatar": "http://bootdey.com/img/Content/user_1.jpg"
+				},
+				{
+					"user_id": 23324,
+					"user_name": "John Doe",
+					"body": "asdfasdf asd fasdf asdfas ",
+					"date": 43524,
+					"user_avatar": "http://bootdey.com/img/Content/user_3.jpg"
+				},
+				{
+					"user_id": 23324,
+					"user_name": "John Doe",
+					"body": "asdfasdf asd fasdf asdfas ",
+					"date": 43524,
+					"user_avatar": "http://bootdey.com/img/Content/user_1.jpg"
+				}
+			]
+		}
+	]
+}

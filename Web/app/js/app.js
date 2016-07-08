@@ -36,6 +36,9 @@ module.config(['jwtInterceptorProvider', '$routeProvider', '$httpProvider', 'Fac
 			when('/profile', {
 				templateUrl: 'templates/profile.html'
 			}).
+			when('/messages', {
+				templateUrl: 'templates/messages.html'
+			}).
 			when('/login', {
 				templateUrl: 'templates/login.html'
 			}).
