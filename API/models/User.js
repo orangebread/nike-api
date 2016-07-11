@@ -7,6 +7,12 @@ var jwtUtils = require('../utils/jwtUtils');
 module.exports = db.Model.extend({
     tableName: 'user',
 
+    //relationships
+    message: function() {
+        var Message = require('./Message');
+        return this.hasMany(Message);
+    },
+
     hidden: ['id', 'password', 'fb_token', 'fb_id', 'created_at', 'updated_at']
 
 }, {

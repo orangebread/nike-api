@@ -12,15 +12,13 @@ router.post('/', function(req, res){
             var budget = req.body.budget;
             var userId = token.id;
             var status = 1;
-            var expires_at = req.body.expires_at;
             var now = new Date();
-            var dateExpire = new Date(expires_at);
+            var dateExpire = new Date(req.body.expires_at);
 
             if (expires_at === null) {
                 dateExpire = now.setDate(now.getDate()+14);
             }
-            
-            console.log('Expiration ' + dateExpire);
+
             var payload = {
                 title: title,
                 description: description,
@@ -54,11 +52,11 @@ router.get('/', function(req, res){
                 .fetchAll()
                 .then(function(result) {
                     console.log('Job get successful: ' + result);
-                    res.status(200).json({ success: true, message: 'Job posting successful.', result: result});
+                    res.status(200).json({ success: true, message: 'Job retrieve successful.', result: result});
                 })
                 .catch(function(err){
                     console.log('Job get failed: ' + err);
-                    res.status(401).json({ success: false, message: 'Job posting failed.' });
+                    res.status(401).json({ success: false, message: 'Job retrieve failed.' });
                 });
         })
         .catch(function(err) {

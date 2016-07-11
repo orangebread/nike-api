@@ -12,9 +12,7 @@ DEV DB SERVER: hadev01.c5um0qomkwp2.us-east-1.rds.amazonaws.com:5432
 
 ### Register
 
-POST
-
-_http://**DEV API SERVER**/api/login/register_
+POST _http://**DEV API SERVER**/api/login/register_
 
 params:
 * email: asdf@asdf.com
@@ -23,9 +21,7 @@ params:
 
 ### Login
 
-POST
-
-_http://**DEV API SERVER**/api/login_
+POST _http://**DEV API SERVER**/api/login_
 
 params:
 * email: asdf@asdf.com
@@ -35,9 +31,7 @@ params:
 
 ### New Job Post
 
-POST
-
-_http://**DEV API SERVER**/api/job_
+POST _http://**DEV API SERVER**/api/job_
 
 params:
 * title: New Job
@@ -49,18 +43,31 @@ params:
 
 ###  Get Job Collection
 
-GET
-
-_http://**DEV API SERVER**/api/job_
+GET _http://**DEV API SERVER**/api/job_
 
 params:
 * No params
 
 ### Get Job by ID
 
-GET
-
-_http://**DEV API SERVER**/api/job_
+GET _http://**DEV API SERVER**/api/job_
 
 params:
 * id: <integer id>
+
+## Messaging Endpoints
+
+### Send Message
+
+POST _http://**DEV API SERVER**/api/message_
+
+params:
+ * message: blahblahblah
+ * received_by: <user id>
+
+### Retrieve User Messages
+
+GET _http://**DEV API SERVER**/api/message_
+
+params:
+ * No params

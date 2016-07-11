@@ -9,6 +9,7 @@ module.exports = function(app) {
         var token = req.headers.authorization || req.headers.token || req.query.token;
 
         console.log(JSON.stringify(req.headers));
+        
         // decode token
         if (token) {
             // verifies secret and checks exp
