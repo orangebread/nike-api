@@ -78,9 +78,9 @@
     	</div>
         <div class="chat-box bg-white">
             <div class="input-group">
-                <input class="form-control border no-shadow no-rounded" placeholder="Type your message here">
+                <input ng-model="inputs.newMessage" class="form-control border no-shadow no-rounded" placeholder="Type your message here">
                 <span class="input-group-btn send-button">
-                    <button class="btn btn-success no-rounded" type="button">Send</button>
+                    <button ng-click="submitMessage()" class="btn btn-success no-rounded" type="button">Send</button>
                 </span>
             </div><!-- /input-group --> 
         </div>         

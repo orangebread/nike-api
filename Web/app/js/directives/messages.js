@@ -2,6 +2,9 @@ module.directive('messages', function() {
 	return {
 	templateUrl: '../../templates/modules/messages-module.html',
 	controller: ['$scope', '$http', function($scope, $http) {
+			$scope.inputs = {
+				newMessage: ""
+			}
 			$scope.discussions = [];
 			$scope.viewDetails = {
 				currentDiscussion: []
@@ -42,8 +45,29 @@ module.directive('messages', function() {
     			});
 			}
 
-			$scope.getMessages();
+			$scope.submitMessage = function(){
+				var discussion = $scope.discussions.where(function(e){ return e.id == $scope.viewDetails.currentDiscussion.id; })[0];
+				var discussion_index = $scope.discussions.indexOf(discussion);
 
+				if($scope.inputs.newMessage != '')
+				{
+					$scope.discussions[discussion_index].messages.push({
+						"user_id": 1,
+						"user_name": "John Doe",
+						"body": $scope.inputs.newMessage,
+						"date": 43524,
+						"user_avatar": "http://bootdey.com/img/Content/user_1.jpg"
+					})
+
+					$scope.currentDiscussion = $scope.discussions[discussion_index];
+				}
+				else
+				{
+					alert("Please type in a message.")
+				}
+			}
+
+			$scope.getMessages();
 		}]
 	};
 });
