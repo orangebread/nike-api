@@ -71,3 +71,10 @@ GET _http://**DEV API SERVER**/api/message_
 
 params:
  * No params
+
+## User Endpoints
+
+### Get User Info
+
+GET _http://**DEV API SERVER**/api/user/:id_
+
