@@ -14,10 +14,55 @@ module.directive('messages', function() {
 
 				function success(response){
 	        		console.log(response);
-	        		$scope.discussions = response.data.discussions;
+	        		$scope.discussions = response.data.result;
 	        		if($scope.discussions.length > 0)
 	        		{
 	        			$scope.viewDetails.currentDiscussion = $scope.discussions[0];
+	        		}
+	        		else
+	        		{
+	        			$scope.discussions.push({
+							"id": 12312,
+							"job_title": "Test 1",
+							"amount_unread": 2,
+							"job_employer_id": 23423,
+							"job_contractor_id": 32423,
+							"date_started": 32432,
+							"last_message_date": 234234,
+							"selected": true,
+							"messages" : [
+								{
+									"user_id": 23324,
+									"user_name": "John Doe",
+									"body": "asdfasdf asd fasdf asdfas ",
+									"date": 43524,
+									"user_avatar": "http://bootdey.com/img/Content/user_1.jpg"
+								},
+								{
+									"user_id": 23324,
+									"user_name": "John Doe",
+									"body": "asdfasdf asd fasdf asdfas ",
+									"date": 43524,
+									"user_avatar": "http://bootdey.com/img/Content/user_3.jpg"
+								},
+								{
+									"user_id": 23324,
+									"user_name": "John Doe",
+									"body": "asdfasdf asd fasdf asdfas ",
+									"date": 43524,
+									"user_avatar": "http://bootdey.com/img/Content/user_1.jpg"
+								},
+								{
+									"user_id": 23324,
+									"user_name": "John Doe",
+									"body": "asdfasdf asd fasdf asdfas ",
+									"date": 43524,
+									"user_avatar": "http://bootdey.com/img/Content/user_3.jpg"
+								}
+							]
+						})
+
+						$scope.viewDetails.currentDiscussion = $scope.discussions[0];
 	        		}
 				}
 
@@ -29,7 +74,7 @@ module.directive('messages', function() {
 
 				$http({
 			      method: 'GET',
-			      url: "/json/dummy-discussions",
+			      url: API_BASE_URL+"message",
 			    }).then(success, error);
 			}
 
@@ -51,15 +96,34 @@ module.directive('messages', function() {
 
 				if($scope.inputs.newMessage != '')
 				{
-					$scope.discussions[discussion_index].messages.push({
-						"user_id": 1,
-						"user_name": "John Doe",
-						"body": $scope.inputs.newMessage,
-						"date": 43524,
-						"user_avatar": "http://bootdey.com/img/Content/user_1.jpg"
-					})
+					function success(response){
+		        		$scope.discussions[discussion_index].messages.push({
+							"user_id": 1,
+							"user_name": "John Doe",
+							"body": $scope.inputs.newMessage,
+							"date": 43524,
+							"user_avatar": "http://bootdey.com/img/Content/user_1.jpg"
+						})
 
-					$scope.currentDiscussion = $scope.discussions[discussion_index];
+						$scope.currentDiscussion = $scope.discussions[discussion_index];
+					}
+
+					function error(response){
+						console.log("error");
+						console.log(response);
+						alert("Something went wrong.")
+					}
+
+					dataParams = {
+						message: $scope.inputs.newMessage,
+						received_by: 4
+					}
+
+					$http({
+				      method: 'POST',
+				      data: dataParams,
+				      url: API_BASE_URL+"message",
+				    }).then(success, error);
 				}
 				else
 				{
