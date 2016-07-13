@@ -47,6 +47,7 @@ router.post('/', function(req, res){
 });
 
 router.post('/register', function(req, res){
+    console.log('Initializing registration...');
     var email = req.body.email;
     var password = req.body.password;
     var displayName = req.body.display_name;
