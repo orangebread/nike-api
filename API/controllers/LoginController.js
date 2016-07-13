@@ -62,7 +62,7 @@ router.post('/register', function(req, res){
                     }
                     //create a new token
                     var token = jwt.sign(payload, CONSTANTS.SECRET, { expiresIn: CONSTANTS.TOKEN_EXPIRE });
-                    res.json({ success: true, displayName: user.response.display_name, token: token, message: 'Successfully registered user.' });
+                    res.json({ success: true, message: 'Successfully registered user.', displayName: user.response.display_name, token: token });
                 })
                 .catch(function(err) {
                     console.log(err);

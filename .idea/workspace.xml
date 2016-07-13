@@ -3,7 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="af4255a4-449f-4c14-8112-464024826330" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/API/config/routes.js" afterPath="$PROJECT_DIR$/API/config/routes.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/API/controllers/LoginController.js" afterPath="$PROJECT_DIR$/API/controllers/LoginController.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/API/models/User.js" afterPath="$PROJECT_DIR$/API/models/User.js" />
     </list>
     <ignored path="HourlyAdmin.iws" />
@@ -28,8 +28,8 @@
       <file leaf-file-name="User.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/API/models/User.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="240">
-              <caret line="43" column="40" selection-start-line="43" selection-start-column="40" selection-end-line="43" selection-end-column="40" />
+            <state relative-caret-position="525">
+              <caret line="63" column="74" selection-start-line="63" selection-start-column="74" selection-end-line="63" selection-end-column="74" />
               <folding />
             </state>
           </provider>
@@ -48,8 +48,8 @@
       <file leaf-file-name="LoginController.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/API/controllers/LoginController.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-195">
-              <caret line="26" column="48" selection-start-line="26" selection-start-column="48" selection-end-line="26" selection-end-column="48" />
+            <state relative-caret-position="375">
+              <caret line="64" column="45" selection-start-line="64" selection-start-column="45" selection-end-line="64" selection-end-column="45" />
               <folding />
             </state>
           </provider>
@@ -146,7 +146,6 @@
         <option value="$PROJECT_DIR$/API/models/Job.js" />
         <option value="$PROJECT_DIR$/API/migrations/20160622102454_Fuck.js" />
         <option value="$PROJECT_DIR$/API/migrations/20160704121134_JobUpdate.js" />
-        <option value="$PROJECT_DIR$/API/controllers/LoginController.js" />
         <option value="$PROJECT_DIR$/API/migrations/20160705155344_jobfix.js" />
         <option value="$PROJECT_DIR$/API/migrations/20160711154200_messagefix.js" />
         <option value="$PROJECT_DIR$/API/migrations/20160711090832_messages.js" />
@@ -158,6 +157,7 @@
         <option value="$PROJECT_DIR$/README.md" />
         <option value="$PROJECT_DIR$/API/controllers/JobController.js" />
         <option value="$PROJECT_DIR$/API/config/routes.js" />
+        <option value="$PROJECT_DIR$/API/controllers/LoginController.js" />
         <option value="$PROJECT_DIR$/API/models/User.js" />
       </list>
     </option>
@@ -410,12 +410,12 @@
       <option name="presentableId" value="Default" />
       <updated>1465064453528</updated>
       <workItem from="1465064454723" duration="1794000" />
-      <workItem from="1466784586706" duration="27504000" />
+      <workItem from="1466784586706" duration="27787000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="29298000" />
+    <option name="totallyTimeSpent" value="29581000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="339" y="92" width="1572" height="1104" extended-state="0" />
@@ -735,16 +735,16 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/API/controllers/LoginController.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-195">
-          <caret line="26" column="48" selection-start-line="26" selection-start-column="48" selection-end-line="26" selection-end-column="48" />
+        <state relative-caret-position="375">
+          <caret line="64" column="45" selection-start-line="64" selection-start-column="45" selection-end-line="64" selection-end-column="45" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/API/models/User.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="43" column="40" selection-start-line="43" selection-start-column="40" selection-end-line="43" selection-end-column="40" />
+        <state relative-caret-position="525">
+          <caret line="63" column="74" selection-start-line="63" selection-start-column="74" selection-end-line="63" selection-end-column="74" />
           <folding />
         </state>
       </provider>
