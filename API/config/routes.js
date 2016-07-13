@@ -2,6 +2,7 @@ var login = require('../controllers/LoginController');
 var job = require('../controllers/JobController');
 var message = require('../controllers/MessageController');
 var user = require('../controllers/UserController');
+
 module.exports = function(app) {
 
     // no auth token required

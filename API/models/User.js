@@ -41,6 +41,7 @@ module.exports = db.Model.extend({
     },
 
     register: Promise.method(function(email, password, displayName) {
+        console.log('Registering user');
         if(!email || !password) {
             return ({ success: false, message: 'Please enter email and password.' });
         } else {
