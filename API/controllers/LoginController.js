@@ -31,7 +31,7 @@ router.post('/', function(req, res){
 
                         })
                         .catch(function(err) {
-
+                            console.log('Registration failed in creation.')
                         });
                 })
                 .catch(function(err) {
@@ -40,6 +40,7 @@ router.post('/', function(req, res){
                 });
         })
         .catch(function(err){
+            console.log('Registration failed.');
             res.status(401).json({ success: false, message: 'Login failed. User not found.' });
         });
 
