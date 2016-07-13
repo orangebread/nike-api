@@ -55,6 +55,7 @@ router.post('/register', function(req, res){
 
     jwtUtils.hashPassword(password)
         .then(function(hash) {
+            console.log('Registration: password hashed.');
             User.register(email, hash, displayName)
                 .then(function(user) {
                     console.log(user);
