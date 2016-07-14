@@ -57,6 +57,7 @@ var bcrypt = require('bcrypt');
 // };
 
 module.exports.hashPassword = function(password) {
+    console.log('Hashing password...');
     return new Promise(function (resolve, reject) {
         bcrypt.hash(password, 10, function(err, hash) {
             if (err) reject(err);
