@@ -21,6 +21,7 @@ module.directive('messages', function() {
 	        		}
 	        		else
 	        		{
+	        			// this is here for now until we add more stuff
 	        			$scope.discussions.push({
 							"id": 12312,
 							"job_title": "Test 1",

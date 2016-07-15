@@ -1,7 +1,7 @@
 module.directive('search', function() {
 	return {
 	templateUrl: '../../templates/modules/search-list.html',
-	controller: ['$scope', '$http', function($scope, $http) {
+	controller: ['$scope', '$http', '$localStorage', '$location', function($scope, $http, $localStorage, $location) {
 			$scope.results = [
 			
 			]
@@ -22,6 +22,11 @@ module.directive('search', function() {
 			      method: 'GET',
 			      url: API_BASE_URL+"job",
 			    }).then(success, error);
+	        }
+
+	        $scope.goToJob = function(id){
+	        	$localStorage.currentJobId = id;
+	        	$location.path("job");
 	        }
 		}]
 	};

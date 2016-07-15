@@ -12,39 +12,39 @@ var FACEBOOK_APP_ID = "1560501770921087";
 module.config(['jwtInterceptorProvider', '$routeProvider', '$httpProvider', 'FacebookProvider',
 	function(jwtInterceptorProvider, $routeProvider, $httpProvider, FacebookProvider) {
 
-		jwtInterceptorProvider.tokenGetter = [function() {
-			if(localStorage.getItem('ngStorage-jwtToken') != null)
-		    	return localStorage.getItem('ngStorage-jwtToken').replace('"', '').replace('"', '');
-		    else
-		    	return null;
-		}];
+	jwtInterceptorProvider.tokenGetter = [function() {
+		if(localStorage.getItem('ngStorage-jwtToken') != null)
+	    	return localStorage.getItem('ngStorage-jwtToken').replace('"', '').replace('"', '');
+	    else
+	    	return null;
+	}];
 
-		$httpProvider.interceptors.push('jwtInterceptor');
+	$httpProvider.interceptors.push('jwtInterceptor');
 
-		FacebookProvider.init(FACEBOOK_APP_ID);
+	FacebookProvider.init(FACEBOOK_APP_ID);
 
-		$routeProvider.
-			when('/home', {
-				templateUrl: 'templates/home.html'
-			}).
-			when('/search', {
-				templateUrl: 'templates/search.html'
-			}).
-			when('/job', {
-				templateUrl: 'templates/job-description.html'
-			}).
-			when('/profile', {
-				templateUrl: 'templates/profile.html'
-			}).
-			when('/messages', {
-				templateUrl: 'templates/messages.html'
-			}).
-			when('/login', {
-				templateUrl: 'templates/login.html'
-			}).
-			otherwise({
-				redirectTo: '/home'
-			});
-	}]);
+	$routeProvider.
+		when('/home', {
+			templateUrl: 'templates/home.html'
+		}).
+		when('/search', {
+			templateUrl: 'templates/search.html'
+		}).
+		when('/job', {
+			templateUrl: 'templates/job-description.html'
+		}).
+		when('/profile', {
+			templateUrl: 'templates/profile.html'
+		}).
+		when('/messages', {
+			templateUrl: 'templates/messages.html'
+		}).
+		when('/login', {
+			templateUrl: 'templates/login.html'
+		}).
+		otherwise({
+			redirectTo: '/home'
+		});
+}]);
 
 
