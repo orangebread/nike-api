@@ -63,10 +63,6 @@ module.directive('jobDetails', function() {
 			      $log.log(response)
 			    }
 
-			    dataParams = {
-			      id: $localStorage.currentJobId
-			    }
-
 			    $http({
 			      method: 'GET',
 			      url: API_BASE_URL+"job/"+$localStorage.currentJobId
