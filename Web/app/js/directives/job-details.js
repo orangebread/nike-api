@@ -1,7 +1,7 @@
 module.directive('jobDetails', function() {
 	return {
 	templateUrl: '../../templates/modules/job-details.html',
-	controller: ['$scope', '$http', '$uibModal', '$localStorage', function($scope, $http, $uibModal, $localStorage) {
+	controller: ['$scope', '$http', '$uibModal', '$localStorage', '$log', function($scope, $http, $uibModal, $localStorage, $log) {
 
 			$scope.forms = {
 			    login: true,
@@ -69,8 +69,7 @@ module.directive('jobDetails', function() {
 
 			    $http({
 			      method: 'GET',
-			      url: API_BASE_URL+"job",
-			      params: dataParams
+			      url: API_BASE_URL+"job/"+$localStorage.currentJobId
 			    }).then(success, error);
 			}
 
