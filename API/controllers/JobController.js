@@ -7,16 +7,18 @@ var jwtUtils = require('../utils/jwtUtils');
 router.post('/', function(req, res){
     jwtUtils.decryptToken(req, res)
         .then(function(token){
+            console.log('Posting job...');
             var title = req.body.title;
             var description = req.body.description;
             var budget = req.body.budget;
             var userId = token.id;
             var status = 1;
             var now = new Date();
-            var dateExpire = new Date(req.body.expires_at);
+            var expires_at = req.body.expires_at;
 
             if (expires_at === null) {
-                dateExpire = now.setDate(now.getDate()+14);
+                console.log('Generating expiration...');
+                expires_at = now.setDate(now.getDate()+14);
             }
 
             var payload = {
@@ -25,7 +27,7 @@ router.post('/', function(req, res){
                 budget: budget,
                 user_id: userId,
                 status_id: status,
-                expires_at: dateExpire
+                expires_at: expires_at
             };
 
             Job.forge(payload)
@@ -40,7 +42,7 @@ router.post('/', function(req, res){
                 });
         })
         .catch(function(err) {
-            console.log('User not verified.');
+            console.log('Error, something happened: ' + err);
         });
 });
 
