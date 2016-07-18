@@ -1,6 +1,6 @@
 var jwt = require('jsonwebtoken');
 var CONSTANTS = require('../config/constants');
-var bcrypt = require('bcrypt');
+var bcrypt = require('bcrypt-nodejs');
 
 //
 // function verifyUser(username, password, done) {
@@ -59,7 +59,7 @@ var bcrypt = require('bcrypt');
 module.exports.hashPassword = function(password) {
     console.log('Hashing password...');
     return new Promise(function (resolve, reject) {
-        bcrypt.hash(password, 10, function(err, hash) {
+        bcrypt.hash(password, null, null, function(err, hash) {
             if (err) reject(err);
             resolve(hash);
         });
