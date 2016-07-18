@@ -64,7 +64,7 @@ module.exports.hashPassword = function(password) {
             if (err) reject(err);
             resolve(hash);
         });
-    })
+    });
 };
 
 
