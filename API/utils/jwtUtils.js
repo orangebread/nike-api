@@ -60,6 +60,7 @@ module.exports.hashPassword = function(password) {
     console.log('Hashing password...');
     return new Promise(function (resolve, reject) {
         bcrypt.hash(password, null, null, function(err, hash) {
+            console.log('In the hash...');
             if (err) reject(err);
             resolve(hash);
         });
