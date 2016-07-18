@@ -14,7 +14,7 @@ router.post('/', function(req, res){
             var userId = token.id;
             var status = 1;
             var now = new Date();
-            var expires_at = req.body.expires_at;
+            var expires_at = req.body.expires_at ? req.body.expires_at : new Date(+new Date + 12096e5);
 
             if (expires_at === null) {
                 console.log('Generating expiration...');

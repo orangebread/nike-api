@@ -1,4 +1,6 @@
 var Message = require('../models/Message');
+var User = require('../models/User');
+var uuid = require('node-uuid');
 var express = require('express');
 var router  = express.Router();
 var jwtUtils = require('../utils/jwtUtils');
@@ -8,26 +10,54 @@ router.post('/', function(req, res){
     jwtUtils.decryptToken(req, res)
         .then(function(token){
             console.log('User verified');
-
             var message = req.body.message;
-            var sent_by = token.id;
-            var received_by = req.body.received_by;
+            var userId = token.id;
+            var receivedBy = req.body.received_by;
 
-            var payload = {
-                message: message,
-                user_id: sent_by,
-                received_by: received_by
-            };
-
-            Message.forge(payload)
-                .save()
-                .then(function(result) {
-                    console.log('Message saved success: ' + result);
-                    res.status(200).json({ success: true, message: 'Message sent successfully.'});
+            // check if thread exists
+            Message.forge({
+                user_id: userId,
+                received_by: receivedBy
                 })
-                .catch(function(err){
-                    console.log('Message sent failed: ' + err);
-                    res.status(401).json({ success: false, message: 'Message sent failed.' });
+                .fetch()
+                .then(function(result) {
+
+                    // Not new message
+                    if (result !== null) {
+                        console.log('Not new message');
+                        Message.forge({
+                            thread_id: result.get('thread_id'),
+                            user_id: userId,
+                            received_by: receivedBy,
+                            message: message
+                        })
+                            .save()
+                            .then(function(success) {
+                                res.json({ success: true, message: 'Message saved successfully', result: success });
+                            })
+                            .catch(function(err) {
+                                res.json({ success: false, message: 'Message saved failed' });
+                            });
+                    } else { // New message
+                        console.log('New message');
+                        Message.forge({
+                            thread_id: uuid.v4(),
+                            user_id: userId,
+                            received_by: receivedBy,
+                            message: message
+                        })
+                            .save()
+                            .then(function(success) {
+                                res.json({ success: true, message: 'Message saved successfully', result: success });
+                            })
+                            .catch(function(err) {
+                                res.json({ success: false, message: 'Message saved failed' });
+                            });
+
+                    }
+                })
+                .catch(function(err) {
+                    console.log('Shit happened while message: ' + err);
                 });
         })
         .catch(function(err) {
@@ -43,6 +73,7 @@ router.get('/', function(req, res){
 
             Message.forge()
                 .query({ where: { user_id: user_id }, orWhere: { received_by: user_id } })
+                .orderBy('thread_id')
                 .fetchAll()
                 .then(function(result) {
                     console.log('Message retrieve successful');
