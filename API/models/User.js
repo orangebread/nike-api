@@ -1,6 +1,6 @@
 var db = require('../config/db');
 var Promise = require('bluebird');
-var bcrypt = require('bcrypt');
+var bcrypt = require('bcrypt-nodejs');
 var uuid = require('node-uuid');
 var jwtUtils = require('../utils/jwtUtils');
 
