@@ -1,6 +1,7 @@
 var jwt = require('jsonwebtoken');
 var CONSTANTS = require('../config/constants');
 var bcrypt = require('bcrypt-nodejs');
+var Promise = require('bluebird');
 
 //
 // function verifyUser(username, password, done) {
