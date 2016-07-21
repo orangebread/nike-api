@@ -53,29 +53,47 @@ router.post('/register', function(req, res){
     var password = req.body.password;
     var displayName = req.body.display_name;
 
-    jwtUtils.hashPassword(password)
-        .then(function(hash) {
-            console.log('Registration: password hashed.');
-            User.register(email, hash, displayName)
-                .then(function(user) {
-                    console.log('Registering other stupid bullshit: ' + user);
-                    //create a new token
-                    var payload = {
-                        id: user.response.id
-                    }
-                    //create a new token
-                    var token = jwt.sign(payload, CONSTANTS.SECRET, { expiresIn: CONSTANTS.TOKEN_EXPIRE });
-                    res.json({ success: true, message: 'Successfully registered user.', displayName: user.response.display_name, token: token });
-                })
-                .catch(function(err) {
-                    console.log(err);
-                    res.status(500).json({ success: false, message: 'Error registering user'});
-                });
+
+    User.register(email, password, displayName)
+        .then(function(user) {
+            console.log('Registering other stupid bullshit: ' + user);
+            //create a new token
+            var payload = {
+                id: user.response.id
+            }
+            //create a new token
+            var token = jwt.sign(payload, CONSTANTS.SECRET, { expiresIn: CONSTANTS.TOKEN_EXPIRE });
+            res.json({ success: true, message: 'Successfully registered user.', displayName: user.response.display_name, token: token });
         })
         .catch(function(err) {
             console.log(err);
-            res.json({ success: false, message: 'Error hashing pw'});
+            res.status(500).json({ success: false, message: 'Error registering user'});
         });
+
+    // ** TO BE FIXED **
+    // jwtUtils.hashPassword(password)
+    //     .then(function(hash) {
+    //         console.log('Registration: password hashed.');
+    //         User.register(email, hash, displayName)
+    //             .then(function(user) {
+    //                 console.log('Registering other stupid bullshit: ' + user);
+    //                 //create a new token
+    //                 var payload = {
+    //                     id: user.response.id
+    //                 }
+    //                 //create a new token
+    //                 var token = jwt.sign(payload, CONSTANTS.SECRET, { expiresIn: CONSTANTS.TOKEN_EXPIRE });
+    //                 res.json({ success: true, message: 'Successfully registered user.', displayName: user.response.display_name, token: token });
+    //             })
+    //             .catch(function(err) {
+    //                 console.log(err);
+    //                 res.status(500).json({ success: false, message: 'Error registering user'});
+    //             });
+    //     })
+    //     .catch(function(err) {
+    //         console.log(err);
+    //         res.json({ success: false, message: 'Error hashing pw'});
+    //     });
 
 });
 

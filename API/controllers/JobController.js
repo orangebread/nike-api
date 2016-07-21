@@ -1,4 +1,5 @@
 var Job = require('../models/Job');
+var Application = require('../models/Application');
 var express = require('express');
 var router  = express.Router();
 var jwtUtils = require('../utils/jwtUtils');
@@ -88,19 +89,53 @@ router.get('/:id', function(req, res){
 });
 
 // Apply to job
-router.post('/apply', function(req, res) {
+router.post('/apply', function(req, res){
     jwtUtils.decryptToken(req, res)
         .then(function(token){
-            var id = req.params.id;
-            Job.forge({ id: id })
+            var jobId = req.body.job_id;
+            var payload = {
+                job_id: jobId,
+                user_id: token.id
+            };
+            Application.forge(payload)
                 .fetch()
                 .then(function(result) {
-                    console.log('Job get successful: ' + result);
-                    res.status(200).json({ success: true, message: 'Job posting successful.', result: result});
+                    console.log('Application result: ' + JSON.stringify(result));
+                    if (result === null) {
+                        Application.forge(payload)
+                            .save()
+                            .then(function(result) {
+                                res.status(200).json({ success: true, message: 'Application saved.'});
+                            })
+                            .catch(function(err) {
+                                console.log('Error while saving application: ' + err);
+                                res.status(200).json({ success: false, message: 'Application could not be saved.'});
+                            })
+                    }
                 })
-                .catch(function(err){
-                    console.log('Job get failed: ' + err);
-                    res.status(401).json({ success: false, message: 'Job posting failed.' });
+                .catch(function(err) {
+                    console.log('Error occurred while applying: ' + err);
+                    res.status(200).json({ success: false, message: 'Error while applying.'});
+                });
+        })
+        .catch(function(err) {
+            console.log('User not verified.');
+        });
+});
+
+// Get applications for user
+router.get('/application', function(req, res){
+    jwtUtils.decryptToken(req, res)
+        .then(function(token){
+            Application.forge({ user_id: token.id })
+                .fetchAll()
+                .then(function(result) {
+                    console.log('Application retrieve result: ' + JSON.stringify(result));
+                    res.status(200).json({ success: true, message: 'Applications retrieved.', result: result});
+                })
+                .catch(function(err) {
+                    console.log('Error occurred while retrieving applications: ' + err);
+                    res.status(200).json({ success: false, message: 'Error while retrieving applications.'});
                 });
         })
         .catch(function(err) {
