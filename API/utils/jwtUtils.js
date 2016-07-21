@@ -71,6 +71,7 @@ module.exports.hashPassword = function(password) {
 module.exports.decryptToken = function(req, res) {
     console.log('decryptToken');
     return new Promise(function(resolve, reject) {
+        console.log('in the decrypting...');
         var token = req.headers.token || req.headers.authorization || req.body.token || req.query.token;
         console.log('TOKEN FOUND: ' + token);
         jwt.verify(token, CONSTANTS.SECRET, function(err, decoded) {
