@@ -4,6 +4,26 @@ var express = require('express');
 var router  = express.Router();
 var jwtUtils = require('../utils/jwtUtils');
 
+// Get applications for user
+router.get('/application', function(req, res){
+    jwtUtils.decryptToken(req, res)
+        .then(function(token){
+            Application.forge({ user_id: token.id })
+                .fetchAll()
+                .then(function(result) {
+                    console.log('Application retrieve result: ' + JSON.stringify(result));
+                    res.status(200).json({ success: true, message: 'Applications retrieved.', result: result});
+                })
+                .catch(function(err) {
+                    console.log('Error occurred while retrieving applications: ' + err);
+                    res.status(200).json({ success: false, message: 'Error while retrieving applications.'});
+                });
+        })
+        .catch(function(err) {
+            console.log('User not verified.');
+        });
+});
+
 // Post new Job
 router.post('/', function(req, res){
     jwtUtils.decryptToken(req, res)
@@ -89,7 +109,7 @@ router.get('/:id', function(req, res){
 });
 
 // Apply to job
-router.post('/apply', function(req, res){
+router.post('/application', function(req, res){
     jwtUtils.decryptToken(req, res)
         .then(function(token){
             var jobId = req.body.job_id;
@@ -97,12 +117,19 @@ router.post('/apply', function(req, res){
                 job_id: jobId,
                 user_id: token.id
             };
-            Application.forge(payload)
+            Application.forge({
+                job_id: jobId,
+                user_id: token.id
+            })
                 .fetch()
                 .then(function(result) {
                     console.log('Application result: ' + JSON.stringify(result));
                     if (result === null) {
-                        Application.forge(payload)
+                        Application.forge({
+                            job_id: jobId,
+                            user_id: token.id,
+                            appstatus_id: 1
+                        })
                             .save()
                             .then(function(result) {
                                 res.status(200).json({ success: true, message: 'Application saved.'});
@@ -111,6 +138,8 @@ router.post('/apply', function(req, res){
                                 console.log('Error while saving application: ' + err);
                                 res.status(200).json({ success: false, message: 'Application could not be saved.'});
                             })
+                    } else {
+                        res.status(200).json({ success: false, message: 'Application already exists.'});
                     }
                 })
                 .catch(function(err) {
@@ -123,24 +152,5 @@ router.post('/apply', function(req, res){
         });
 });
 
-// Get applications for user
-router.get('/application', function(req, res){
-    jwtUtils.decryptToken(req, res)
-        .then(function(token){
-            Application.forge({ user_id: token.id })
-                .fetchAll()
-                .then(function(result) {
-                    console.log('Application retrieve result: ' + JSON.stringify(result));
-                    res.status(200).json({ success: true, message: 'Applications retrieved.', result: result});
-                })
-                .catch(function(err) {
-                    console.log('Error occurred while retrieving applications: ' + err);
-                    res.status(200).json({ success: false, message: 'Error while retrieving applications.'});
-                });
-        })
-        .catch(function(err) {
-            console.log('User not verified.');
-        });
-});
 
 module.exports = router;
