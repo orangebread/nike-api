@@ -1,5 +1,7 @@
 var Job = require('../models/Job');
 var Application = require('../models/Application');
+var Thread = require('../models/Thread');
+var Message = require('../models/Message');
 var express = require('express');
 var router  = express.Router();
 var jwtUtils = require('../utils/jwtUtils');
@@ -113,10 +115,13 @@ router.post('/application', function(req, res){
     jwtUtils.decryptToken(req, res)
         .then(function(token){
             var jobId = req.body.job_id;
-            var payload = {
-                job_id: jobId,
-                user_id: token.id
-            };
+            var message = req.body.message;
+            var employerId = req.body.employer_id;
+
+            if (message === null || typeof message === 'undefined') {
+                message = 'Application sent!';
+            }
+
             Application.forge({
                 job_id: jobId,
                 user_id: token.id
@@ -132,7 +137,28 @@ router.post('/application', function(req, res){
                         })
                             .save()
                             .then(function(result) {
-                                res.status(200).json({ success: true, message: 'Application saved.'});
+                                // create thread for users
+                                Thread.forge({ job_id: jobId })
+                                    .save()
+                                    .then(function(result) {
+                                        console.log('Thread saved: ' + JSON.stringify(result));
+
+                                        // create employee message
+                                        initMessage(token.id, result.id, message);
+
+                                        // create employee message
+                                        initMessage(employerId, result.id, 'Thanks!');
+
+                                        res.status(200).json({ success: true, message: 'Application saved!'});
+                                    })
+                                    .catch(function(err) {
+                                        res.status(200).json({ success: false, message: 'Application failed to save. Thread was not created'});
+                                    });
+                                if (message === null) {
+                                    message = 'Application sent. Thanks!';
+                                }
+
+
                             })
                             .catch(function(err) {
                                 console.log('Error while saving application: ' + err);
@@ -152,5 +178,20 @@ router.post('/application', function(req, res){
         });
 });
 
+// Initialize messages
+function initMessage(userId, threadId, message) {
+    Message.forge({
+        user_id: userId,
+        thread_id: threadId,
+        message: message
+    })
+        .save()
+        .then(function(result) {
+            return result;
+        })
+        .catch(function(err) {
+            return err;
+        });
+}
 
 module.exports = router;

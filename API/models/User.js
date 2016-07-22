@@ -19,9 +19,13 @@ module.exports = db.Model.extend({
 
     comparePassword: function(password, hash) {
         return new Promise(function (resolve, reject) {
-            bcrypt.compare(password, hash, function (err, res) {
-                if (err) reject(err);
-                resolve(res);
+            bcrypt.compare(password, hash, function(err, res) {
+                console.log('Comparing password result: ' + err);
+                if (err) {
+                    reject(err)
+                } else {
+                    resolve(res);
+                }
             });
         })
     },
