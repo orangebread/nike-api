@@ -2,7 +2,7 @@
 
 API Dev Server:
 
-DEV API SERVER: ec2-107-23-28-238.compute-1.amazonaws.com:3000
+DEV API SERVER: ec2-107-20-13-172.compute-1.amazonaws.com:3000
 
 DEV DB SERVER: hadev01.c5um0qomkwp2.us-east-1.rds.amazonaws.com:5432
 
@@ -54,6 +54,24 @@ GET _http://**DEV API SERVER**/api/job_
 
 params:
 * id: <integer id>
+
+## Application Endpoints
+
+### Apply to Job
+
+POST _http://**DEV API SERVER**/api/job/application_
+
+params:
+* job_id: 1,
+* employer_id: 1
+* message: <insert message here> (optional)
+
+### Get Applications for user
+
+GET _http://**DEV API SERVER**/api/job/application_
+
+params:
+* No params
 
 ## Messaging Endpoints
 
