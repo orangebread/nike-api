@@ -148,7 +148,7 @@ router.post('/application', function(req, res){
                                     .then(function(final) {
                                         console.log('Application saved with: ' + JSON.stringify(final));
                                         // create message for users
-                                        initMessage(token.id, message, jobId, employerId)
+                                        initMessage(token.id, message, final.id, employerId)
                                             .then(function(msg) {
                                                 res.status(200).json({ success: true, message: 'Application saved!', result: msg});
                                             })
@@ -182,8 +182,8 @@ router.post('/application', function(req, res){
 });
 
 // Initialize messages
-function initMessage(userId, message, jobId, recipientId) {
-    console.log('Init values: ' + userId + ' ' + message + ' ' + jobId + ' ' + recipientId );
+function initMessage(userId, message, appId, recipientId) {
+    console.log('Init values: ' + userId + ' ' + message + ' ' + appId + ' ' + recipientId );
     return new Promise(function(resolve, reject) {
         Message.forge({
             user_id: userId,
@@ -195,7 +195,7 @@ function initMessage(userId, message, jobId, recipientId) {
                 Recipient.forge({
                     message_id: result.id,
                     user_id: recipientId,
-                    job_id: jobId
+                    application_id: appId
                 })
                     .save()
                     .then(function(final) {

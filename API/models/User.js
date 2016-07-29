@@ -10,7 +10,8 @@ module.exports = db.Model.extend({
     //relationships
     message: function() {
         var Message = require('./Message');
-        return this.hasMany(Message);
+        var Recipient = require('./Recipient');
+        return this.hasMany(Message).through(Recipient);
     },
     job: function() {
         var Job = require('./Job');

@@ -1,5 +1,6 @@
 var Message = require('../models/Message');
 var User = require('../models/User');
+var Application = require('../models/Application');
 var uuid = require('node-uuid');
 var express = require('express');
 var router  = express.Router();
@@ -68,12 +69,9 @@ router.get('/', function(req, res){
     jwtUtils.decryptToken(req, res)
         .then(function(token){
             var userId = token.id;
-
-            Message.forge()
-                .query({where: { user_id: userId }})
-                // .fetch({ withRelated: ['thread'], require: true })
-                .orderBy('thread_id')
-                .fetchAll()
+            Application.forge()
+                .query({where: {user_id: token.id}})
+                .fetch({ withRelated: ['message'], require: true })
                 .then(function(result) {
                     console.log('Message retrieve successful');
                     res.status(200).json({ success: true, message: 'Message retrieve successful.', result: result});

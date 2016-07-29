@@ -10,7 +10,7 @@ module.exports = db.Model.extend({
     },
     recipient: function() {
         var Recipient = require('./Recipient');
-        return this.belongsToMany(Recipient);
+        return this.hasMany(Recipient);
     }
 
 });
