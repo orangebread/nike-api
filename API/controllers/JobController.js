@@ -1,6 +1,6 @@
 var Job = require('../models/Job');
 var Application = require('../models/Application');
-var Thread = require('../models/Thread');
+var Recipient = require('../models/Recipient');
 var Message = require('../models/Message');
 var express = require('express');
 var router  = express.Router();
@@ -116,7 +116,7 @@ router.post('/application', function(req, res){
         .then(function(token){
             var jobId = req.body.job_id;
             var message = req.body.message;
-            var employerId = req.body.employer_id;
+            var employerId = null;
 
             if (message === null || typeof message === 'undefined') {
                 message = 'Application sent!';
@@ -130,40 +130,43 @@ router.post('/application', function(req, res){
                 .then(function(result) {
                     console.log('Application result: ' + JSON.stringify(result));
                     if (result === null) {
-                        Application.forge({
-                            job_id: jobId,
-                            user_id: token.id,
-                            appstatus_id: 1
+                        Job.forge({
+                            id: jobId
                         })
-                            .save()
-                            .then(function(result) {
-                                // create thread for users
-                                Thread.forge({ job_id: jobId })
+                            .fetch()
+                            .then(function(response) {
+                                employerId = response.attributes.user_id;
+
+                                console.log('No applications, applying: ' + JSON.stringify(response));
+
+                                Application.forge({
+                                    job_id: jobId,
+                                    user_id: token.id,
+                                    appstatus_id: 1
+                                })
                                     .save()
-                                    .then(function(result) {
-                                        console.log('Thread saved: ' + JSON.stringify(result));
+                                    .then(function(final) {
+                                        console.log('Application saved with: ' + JSON.stringify(final));
+                                        // create message for users
+                                        initMessage(token.id, message, jobId, employerId)
+                                            .then(function(msg) {
+                                                res.status(200).json({ success: true, message: 'Application saved!', result: msg});
+                                            })
+                                            .catch(function(err) {
+                                                console.log('Error while saving application: ' + err);
+                                                res.status(200).json({ success: false, message: 'Application could not be saved.'});
+                                            });
 
-                                        // create employee message
-                                        initMessage(token.id, result.id, message);
-
-                                        // create employee message
-                                        initMessage(employerId, result.id, 'Thanks!');
-
-                                        res.status(200).json({ success: true, message: 'Application saved!'});
                                     })
                                     .catch(function(err) {
-                                        res.status(200).json({ success: false, message: 'Application failed to save. Thread was not created'});
-                                    });
-                                if (message === null) {
-                                    message = 'Application sent. Thanks!';
-                                }
-
-
+                                        console.log('Error while saving application: ' + err);
+                                        res.status(200).json({ success: false, message: 'Application could not be saved.'});
+                                    })
                             })
                             .catch(function(err) {
-                                console.log('Error while saving application: ' + err);
-                                res.status(200).json({ success: false, message: 'Application could not be saved.'});
-                            })
+
+                            });
+
                     } else {
                         res.status(200).json({ success: false, message: 'Application already exists.'});
                     }
@@ -179,19 +182,34 @@ router.post('/application', function(req, res){
 });
 
 // Initialize messages
-function initMessage(userId, threadId, message) {
-    Message.forge({
-        user_id: userId,
-        thread_id: threadId,
-        message: message
-    })
-        .save()
-        .then(function(result) {
-            return result;
+function initMessage(userId, message, jobId, recipientId) {
+    console.log('Init values: ' + userId + ' ' + message + ' ' + jobId + ' ' + recipientId );
+    return new Promise(function(resolve, reject) {
+        Message.forge({
+            user_id: userId,
+            message: message
         })
-        .catch(function(err) {
-            return err;
-        });
+            .save()
+            .then(function(result) {
+                console.log('Message saved in init: ' + JSON.stringify(result));
+                Recipient.forge({
+                    message_id: result.id,
+                    user_id: recipientId,
+                    job_id: jobId
+                })
+                    .save()
+                    .then(function(final) {
+                        console.log('Final init: ' + JSON.stringify(final));
+                        resolve(final);
+                    })
+                    .catch(function(err) {
+                        reject(err);
+                    });
+            })
+            .catch(function(err) {
+                reject(err);
+            });
+    });
 }
 
 module.exports = router;

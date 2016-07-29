@@ -12,6 +12,15 @@ module.exports = db.Model.extend({
         var Message = require('./Message');
         return this.hasMany(Message);
     },
+    job: function() {
+        var Job = require('./Job');
+        return this.hasMany(Job);
+    },
+    recipient: function() {
+        var Recipient = require('./Recipient');
+        return this.hasMany(Recipient);
+    },
+
 
     hidden: ['id', 'password', 'fb_token', 'fb_id', 'created_at', 'updated_at']
 

@@ -12,12 +12,12 @@ router.post('/', function(req, res){
             console.log('User verified');
             var message = req.body.message;
             var userId = token.id;
-            var receivedBy = req.body.received_by;
+            var threadId = req.body.thread_id;
 
             // check if thread exists
             Message.forge({
                 user_id: userId,
-                received_by: receivedBy
+                thread_id: threadId
                 })
                 .fetch()
                 .then(function(result) {
@@ -26,9 +26,8 @@ router.post('/', function(req, res){
                     if (result !== null) {
                         console.log('Not new message');
                         Message.forge({
-                            thread_id: result.get('thread_id'),
+                            thread_id: threadId,
                             user_id: userId,
-                            received_by: receivedBy,
                             message: message
                         })
                             .save()
@@ -41,7 +40,6 @@ router.post('/', function(req, res){
                     } else { // New message
                         console.log('New message');
                         Message.forge({
-                            thread_id: uuid.v4(),
                             user_id: userId,
                             received_by: receivedBy,
                             message: message
@@ -51,10 +49,10 @@ router.post('/', function(req, res){
                                 res.json({ success: true, message: 'Message saved successfully', result: success });
                             })
                             .catch(function(err) {
-                                res.json({ success: false, message: 'Message saved failed' });
+                                res.json({ success: false, message: 'New message saved failed' });
                             });
 
-                    }
+                    }   
                 })
                 .catch(function(err) {
                     console.log('Shit happened while message: ' + err);
@@ -69,10 +67,11 @@ router.post('/', function(req, res){
 router.get('/', function(req, res){
     jwtUtils.decryptToken(req, res)
         .then(function(token){
-            var user_id = token.id;
+            var userId = token.id;
 
             Message.forge()
-                .query({ where: { user_id: user_id }, orWhere: { received_by: user_id } })
+                .query({where: { user_id: userId }})
+                // .fetch({ withRelated: ['thread'], require: true })
                 .orderBy('thread_id')
                 .fetchAll()
                 .then(function(result) {

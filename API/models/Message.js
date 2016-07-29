@@ -7,5 +7,10 @@ module.exports = db.Model.extend({
     user: function() {
         var User = require('./User');
         return this.belongsToMany(User);
+    },
+    recipient: function() {
+        var Recipient = require('./Recipient');
+        return this.belongsToMany(Recipient);
     }
+
 });

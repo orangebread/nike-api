@@ -9,8 +9,8 @@ module.exports = db.Model.extend({
         return this.belongsToMany(User);
     },
 
-    thread: function() {
-        var Thread = require('./Thread');
-        return this.belongsToMany(Thread);
+    recipient: function() {
+        var Recipient = require('./Recipient');
+        return this.belongsToMany(Recipient);
     }
 });
