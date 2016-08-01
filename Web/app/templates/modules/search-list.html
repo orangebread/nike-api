@@ -2,10 +2,10 @@
 	<div class="search-form">
 	<h1>Search</h1>
 	<p>Type in what you are looking for to see what is available.</p>
-		<input type="text" placeholder="Payroll, finance, billing...." ng-enter="search()"></input>
+		<input type="text" placeholder="Payroll, finance, billing...." ng-enter="search()" ng-model="searchTerm"/>
 	</div>
 	<ul class="search-results dynamic-grid" angular-grid="results" grid-width="400" gutter-size="10" angular-grid-id="gallery" refresh-on-img-load="false" >
-	    <li data-ng-repeat="result in results" class="grid search-result" data-ng-clock ng-click="goToJob(result.id)">
+	    <li data-ng-repeat="result in results" class="grid search-result" ng-click="goToJob(result.id, result.user_id)">
 	        <div class="text-content">
 	        	<h3>{{result.title}}</h3>
 	        	<h4>{{result.subtitle}}</h4>

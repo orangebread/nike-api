@@ -9,7 +9,9 @@ module.directive('search', function() {
 	        $scope.search = function(){
 	        	function success(response){
 	        		console.log(response);
-	        		$scope.results = response.data.result;
+	        		$scope.results = response.data.result.filter(function(el){
+	        			return el.title.indexOf($scope.searchTerm) !== -1
+	        		});
 				}
 
 				function error(response){
@@ -24,8 +26,9 @@ module.directive('search', function() {
 			    }).then(success, error);
 	        }
 
-	        $scope.goToJob = function(id){
+	        $scope.goToJob = function(id, userId){
 	        	$localStorage.currentJobId = id;
+	        	$localStorage.currentEmployerId = userId;
 	        	$location.path("job");
 	        }
 		}]
