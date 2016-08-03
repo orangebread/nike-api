@@ -105,6 +105,13 @@ GET _http://**DEV API SERVER**/api/message/thread/:id_
 params:
  * id: <thread id>
 
+### Retrieve User Thread Collection ONLY - no messages
+
+GET _http://**DEV API SERVER**/api/message/thread_
+
+params:
+ * No params
+
 ## User Endpoints
 
 ### Get User Info

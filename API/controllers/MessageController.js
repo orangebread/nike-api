@@ -104,6 +104,28 @@ router.get('/', function(req, res){
         });
 });
 
+// Get thread collection only - no messages
+router.get('/thread', function(req, res){
+    jwtUtils.decryptToken(req, res)
+        .then(function(token){
+            var userId = token.id;
+            User.forge()
+                .query({where: {id: userId}})
+                .fetchAll({ withRelated: ['thread'], require: true})
+                .then(function(result) {
+                    console.log('Thread retrieve successful');
+                    res.status(200).json({ success: true, message: 'Thread retrieve successful.', result: result});
+                })
+                .catch(function(err){
+                    console.log('Thread retrieve failed: ' + err);
+                    res.status(401).json({ success: false, message: 'Thread retrieve failed.' });
+                });
+        })
+        .catch(function(err) {
+            console.log('User not verified.');
+        });
+});
+
 // Get messages by thread id
 router.get('/thread/:id', function(req, res){
     jwtUtils.decryptToken(req, res)
