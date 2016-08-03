@@ -1,7 +1,7 @@
 var Job = require('../models/Job');
 var Application = require('../models/Application');
-var Recipient = require('../models/Recipient');
 var Message = require('../models/Message');
+var Thread = require('../models/Thread');
 var express = require('express');
 var router  = express.Router();
 var jwtUtils = require('../utils/jwtUtils');
@@ -147,16 +147,7 @@ router.post('/application', function(req, res){
                                     .save()
                                     .then(function(final) {
                                         console.log('Application saved with: ' + JSON.stringify(final));
-                                        // create message for users
-                                        initMessage(token.id, message, final.id, employerId)
-                                            .then(function(msg) {
-                                                res.status(200).json({ success: true, message: 'Application saved!', result: msg});
-                                            })
-                                            .catch(function(err) {
-                                                console.log('Error while saving application: ' + err);
-                                                res.status(200).json({ success: false, message: 'Application could not be saved.'});
-                                            });
-
+                                        res.status(200).json({ success: true, message: 'Application saved!', result: final});
                                     })
                                     .catch(function(err) {
                                         console.log('Error while saving application: ' + err);
@@ -164,7 +155,7 @@ router.post('/application', function(req, res){
                                     })
                             })
                             .catch(function(err) {
-
+                                res.status(200).json({ success: false, message: 'Application could not be saved.'});
                             });
 
                     } else {
@@ -185,30 +176,52 @@ router.post('/application', function(req, res){
 function initMessage(userId, message, appId, recipientId) {
     console.log('Init values: ' + userId + ' ' + message + ' ' + appId + ' ' + recipientId );
     return new Promise(function(resolve, reject) {
-        Message.forge({
-            user_id: userId,
-            message: message
+        Thread.forge({
+            id: appId,
+            user_id: userId
         })
             .save()
             .then(function(result) {
-                console.log('Message saved in init: ' + JSON.stringify(result));
-                Recipient.forge({
-                    message_id: result.id,
-                    user_id: recipientId,
-                    application_id: appId
+                Thread.forge({
+                    id: appId,
+                    user_id: recipientId
                 })
                     .save()
-                    .then(function(final) {
-                        console.log('Final init: ' + JSON.stringify(final));
-                        resolve(final);
+                    .then(function(a) {
+                        Message.forge({
+                            user_id: userId,
+                            message: message
+                        })
+                            .save()
+                            .then(function(result) {
+                                console.log('Message saved in init: ' + JSON.stringify(result));
+                                Recipient.forge({
+                                    message_id: result.id,
+                                    user_id: recipientId,
+                                    thread_id: appId
+                                })
+                                    .save()
+                                    .then(function(final) {
+                                        console.log('Final init: ' + JSON.stringify(final));
+                                        resolve(final);
+                                    })
+                                    .catch(function(err) {
+                                        reject(err);
+                                    });
+                            })
+                            .catch(function(err) {
+                                reject(err);
+                            });
                     })
                     .catch(function(err) {
                         reject(err);
-                    });
+                    })
             })
             .catch(function(err) {
                 reject(err);
             });
+
+
     });
 }
 

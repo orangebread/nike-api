@@ -75,15 +75,23 @@ params:
 
 ## Messaging Endpoints
 
-### Send Message
+### Send NEW Message
+
+POST _http://**DEV API SERVER**/api/message/new_
+
+params:
+ * message: blahblahblah
+ * employer_id: <user id>
+
+### Send reply Message
 
 POST _http://**DEV API SERVER**/api/message_
 
 params:
  * message: blahblahblah
- * received_by: <user id>
+ * thread_id: <thread id>
 
-### Retrieve User Messages
+### Retrieve User Messages Collection
 
 GET _http://**DEV API SERVER**/api/message_
 

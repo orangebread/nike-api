@@ -1,7 +1,7 @@
 var db = require('../config/db');
 
 module.exports = db.Model.extend({
-    tableName: 'message',
+    tableName: 'thread_user',
 
     // relationships
     user: function() {
@@ -12,5 +12,4 @@ module.exports = db.Model.extend({
         var Thread = require('./Thread');
         return this.belongsToMany(Thread);
     }
-
 });

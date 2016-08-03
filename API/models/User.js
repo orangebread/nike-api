@@ -10,16 +10,16 @@ module.exports = db.Model.extend({
     //relationships
     message: function() {
         var Message = require('./Message');
-        var Recipient = require('./Recipient');
-        return this.hasMany(Message).through(Recipient);
+        var UserThread = require('./UserThread');
+        return this.hasMany(Message).through(UserThread);
     },
     job: function() {
         var Job = require('./Job');
         return this.hasMany(Job);
     },
-    recipient: function() {
-        var Recipient = require('./Recipient');
-        return this.hasMany(Recipient);
+    thread: function() {
+        var Thread = require('./Thread');
+        return this.belongsToMany(Thread);
     },
 
 
