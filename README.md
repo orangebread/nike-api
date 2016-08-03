@@ -98,6 +98,13 @@ GET _http://**DEV API SERVER**/api/message_
 params:
  * No params
 
+### Retrieve User Messages Collection
+
+GET _http://**DEV API SERVER**/api/message/thread/:id_
+
+params:
+ * id: <thread id>
+
 ## User Endpoints
 
 ### Get User Info

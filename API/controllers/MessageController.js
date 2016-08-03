@@ -108,9 +108,9 @@ router.get('/', function(req, res){
 router.get('/thread/:id', function(req, res){
     jwtUtils.decryptToken(req, res)
         .then(function(token){
-            var userId = token.id;
+            var threadId = req.params.id;
             Thread.forge()
-                .query({where: {user_id: userId}})
+                .query({where: {id: threadId}})
                 .fetchAll({ withRelated: ['message'], require: true})
                 .then(function(result) {
                     console.log('Message retrieve successful');
