@@ -80,6 +80,15 @@ GET _http://**DEV API SERVER**/api/application_
 params:
 * No params
 
+### Accept/Reject Applications
+
+PUT _http://**DEV API SERVER**/api/application_
+
+params:
+* job_id: 1,
+* application_id: 1
+* app_status: 2 or 3 (2 - Accepted, 3 - Passed)
+
 ### Get Applications by job
 
 POST _http://**DEV API SERVER**/api/job/:id/application_

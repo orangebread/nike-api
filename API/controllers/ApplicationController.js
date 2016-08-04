@@ -89,4 +89,45 @@ router.post('/', function(req, res){
         });
 });
 
+// Accept/reject applications
+router.put('/', function(req, res){
+    jwtUtils.decryptToken(req, res)
+        .then(function(token){
+            var jobId = req.body.job_id;
+            var appId = req.body.application_id;
+            var appstatus = req.body.app_status;
+            var employerId = token.id;
+
+            // verify job owner
+            Job.forge()
+                .query({ where: { id:  jobId }})
+                .fetch()
+                .then(function(job) {
+                    if (job.attributes.user_id === employerId) {
+                        Application.forge({ id: appId })
+                            .save({ appstatus_id: appstatus })
+                            .then(function(app) {
+                                console.log('Application update successful.');
+                                res.status(200).json({ success: true, message: 'Application update successful.', result: app });
+                            })
+                            .catch(function(err) {
+                                console.log('Application update failed: ' + err);
+                                res.status(200).json({ success: true, message: 'Application update failed.'});
+                            });
+                    } else {
+                        console.log('Application update failed: Not job owner.');
+                        res.status(200).json({ success: true, message: 'Application update failed. Not job owner.'});
+                    }
+                })
+                .catch(function(err){
+                    console.log('Job get failed: ' + err);
+                    res.status(401).json({ success: false, message: 'Job posting failed.' });
+                });
+        })
+        .catch(function(err) {
+            console.log('User not verified.');
+        });
+
+});
+
 module.exports = router;
