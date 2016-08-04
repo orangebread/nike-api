@@ -27,13 +27,7 @@
 			        Date
 			      </div>
 			      <div class="custom-cell">
-			        User
-			      </div>
-			      <div class="custom-cell">
 			        Budget
-			      </div>
-			      <div class="custom-cell">
-			        Status
 			      </div>
 			    </div>
 			    
@@ -45,15 +39,7 @@
 			        {{job.expires_at | date}}
 			      </div>
 			      <div class="custom-cell">
-			        {{job.user_id}}
-			      </div>
-			      <div class="custom-cell">
-			        {{job.budget}}
-			      </div>
-			      <div class="custom-cell">
-			        <span ng-if="job.status_id == 1">Pending</span>
-			        <span ng-if="job.status_id == 2">Active</span>
-			        <span ng-if="job.status_id == 3">Rejected</span>
+			        {{job.budget | currency}}
 			      </div>
 			    </div>
 			    
@@ -71,10 +57,13 @@
 			        Date
 			      </div>
 			      <div class="custom-cell">
-			        User
+			        Employer ID
 			      </div>
 			      <div class="custom-cell">
 			        Budget
+			      </div>
+			      <div class="custom-cell">
+			        Status
 			      </div>
 			    </div>
 			    
@@ -89,7 +78,12 @@
 			        {{application.user_id}}
 			      </div>
 			      <div class="custom-cell">
-			        {{application.budget}}
+			        {{application.budget | currency}}
+			      </div>
+			      <div class="custom-cell">
+			        <span ng-if="application.status_id == 1">Pending</span>
+			        <span ng-if="application.status_id == 2">Active</span>
+			        <span ng-if="application.status_id == 3">Rejected</span>
 			      </div>
 			    </div>
 			    
