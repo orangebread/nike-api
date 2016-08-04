@@ -90,6 +90,28 @@ router.get('/', function(req, res){
         });
 });
 
+// Get job by user
+router.get('/me', function(req, res){
+    jwtUtils.decryptToken(req, res)
+        .then(function(token){
+            Job.forge()
+                .query({where: {user_id: token.id}})
+                .fetchAll()
+                .then(function(result) {
+                    console.log('Job get successful: ' + result);
+                    res.status(200).json({ success: true, message: 'Job posting successful.', result: result});
+                })
+                .catch(function(err){
+                    console.log('Job get failed: ' + err);
+                    res.status(401).json({ success: false, message: 'Job posting failed.' });
+                });
+        })
+        .catch(function(err) {
+            console.log('User not verified.');
+        });
+});
+
+
 // Get job by id
 router.get('/:id', function(req, res){
     jwtUtils.decryptToken(req, res)

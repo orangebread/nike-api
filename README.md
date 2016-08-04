@@ -55,6 +55,13 @@ GET _http://**DEV API SERVER**/api/job_
 params:
 * id: <integer id>
 
+### Get Job by User
+
+GET _http://**DEV API SERVER**/api/job/me_
+
+params:
+* No params
+
 ## Application Endpoints
 
 ### Apply to Job
