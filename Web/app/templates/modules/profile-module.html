@@ -17,20 +17,12 @@
 			<div class="job-listing">
 				<h2>Posted Jobs</h2>
 				<div class="jobs">
-					<div class="job">
-						<a href="#/job"><h3>This is a job title</h3></a>
+					<div class="job" ng-repeat="job in jobsPosted">
+						<a ng-click="goToJob(job.id, job.user_id)"><h3>{{job.title}}</h3></a>
 						<div class="stats">
-							<p class="date">11/12/16</p>
-							<p class="worker-name"><a href="">user12343</a></p>
-							<p class="cost">$300</p>
-						</div>
-					</div>
-					<div class="job">
-						<a href="#/job"><h3>This is a job title</h3></a>
-						<div class="stats">
-							<p class="date">11/12/16</p>
-							<p class="worker-name"><a href="">user12343</a></p>
-							<p class="cost">$300</p>
+							<p class="date">{{application.expires_at | date}}</p>
+							<p class="worker-name"><a href="">{{application.user_id}}</a></p>
+							<p class="cost">{{application.budget}}</p>
 						</div>
 					</div>
 				</div>
@@ -38,16 +30,17 @@
 			<div class="job-listing">
 				<h2>Jobs Progress</h2>
 				<div class="jobs">
-					<div class="job" ng-repeat="job in jobs">
-						<a href="#/job"><h3>{{job.title}}</h3></a>
+					<div class="job" ng-repeat="application in applications">
+						<a ng-click="goToJob(application.id, application.user_id)"><h3>{{application.title}}</h3></a>
 						<div class="stats">
-							<p class="date">{{job.expires_at | date}}</p>
-							<p class="worker-name"><a href="">{{job.user_id}}</a></p>
-							<p class="cost">{{job.budget}}</p>
+							<p class="date">{{application.expires_at | date}}</p>
+							<p class="worker-name"><a href="">{{application.user_id}}</a></p>
+							<p class="cost">{{application.budget}}</p>
 						</div>
 					</div>
 				</div>
 			</div>
+			<a href="#" ng-click="logout()">Logout</a>
 		</div>
 	</div>
 </div>

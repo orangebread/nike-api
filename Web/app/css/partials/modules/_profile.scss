@@ -1,4 +1,6 @@
 .profile-view{
+	@include make-row();
+	margin-bottom: 70px;
 	
 	.job-listing{
 
@@ -7,7 +9,7 @@
 		}
 		
 		.jobs{
-			@include make-row();
+			@include make-xs-column(12);
 			border: 1px solid $color-black;
 
 			.job{

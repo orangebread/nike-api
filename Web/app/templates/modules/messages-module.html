@@ -42,20 +42,21 @@
         
         <!--=========================================================-->
         <!-- selected chat -->
-    	<div class="col-md-8 bg-white messages-list">
+    	<div class="col-md-8 bg-white messages-list" scroll-bottom="viewDetails.currentDiscussion.message">
             <div class="chat-message">
                 <ul class="chat">
-                    <li class="left clearfix" ng-repeat="message in viewDetails.currentDiscussion.messages">
+                    <li class="left clearfix" ng-repeat="message in viewDetails.currentDiscussion.message">
                     	<span class="chat-img pull-left">
-                    		<img src="{{message.user_avatar}}" alt="User Avatar">
+                    		<img ng-if="viewDetails.userId != message.user_id" src="http://bootdey.com/img/Content/user_1.jpg" alt="User Avatar">
+                            <img ng-if="viewDetails.userId == message.user_id" src="http://bootdey.com/img/Content/user_3.jpg" alt="User Avatar">
                     	</span>
                     	<div class="chat-body clearfix">
                     		<div class="header">
                     			<strong class="primary-font">{{message.user_name}}</strong>
-                    			<small class="pull-right text-muted"><i class="fa fa-clock-o"></i>{{message.date}}</small>
+                    			<small class="pull-right text-muted">{{message.timestamp | date}}</small>
                     		</div>
                     		<p>
-                    			{{message.body}}
+                    			{{message.message}}
                     		</p>
                     	</div>
                     </li>
@@ -78,7 +79,7 @@
     	</div>
         <div class="chat-box bg-white">
             <div class="input-group">
-                <input ng-model="inputs.newMessage" class="form-control border no-shadow no-rounded" placeholder="Type your message here">
+                <input ng-model="inputs.newMessage" class="form-control border no-shadow no-rounded" placeholder="Type your message here" ng-enter="submitMessage()">
                 <span class="input-group-btn send-button">
                     <button ng-click="submitMessage()" class="btn btn-success no-rounded" type="button">Send</button>
                 </span>

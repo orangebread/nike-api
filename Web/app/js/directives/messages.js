@@ -1,69 +1,25 @@
 module.directive('messages', function() {
 	return {
 	templateUrl: '../../templates/modules/messages-module.html',
-	controller: ['$scope', '$http', function($scope, $http) {
+	controller: ['$scope', '$http', '$localStorage', function($scope, $http, $localStorage) {
 			$scope.inputs = {
 				newMessage: ""
 			}
 			$scope.discussions = [];
 			$scope.viewDetails = {
-				currentDiscussion: []
+				currentDiscussion: [],
+				userId: $localStorage.userID
 			};
 
 			$scope.getMessages = function(){
 
 				function success(response){
 	        		console.log(response);
-	        		$scope.discussions = response.data.result;
+	        		$scope.discussions = response.data.result[0].thread;
 	        		if($scope.discussions.length > 0)
 	        		{
 	        			$scope.viewDetails.currentDiscussion = $scope.discussions[0];
-	        		}
-	        		else
-	        		{
-	        			// this is here for now until we add more stuff
-	        			$scope.discussions.push({
-							"id": 12312,
-							"job_title": "Test 1",
-							"amount_unread": 2,
-							"job_employer_id": 23423,
-							"job_contractor_id": 32423,
-							"date_started": 32432,
-							"last_message_date": 234234,
-							"selected": true,
-							"messages" : [
-								{
-									"user_id": 23324,
-									"user_name": "John Doe",
-									"body": "asdfasdf asd fasdf asdfas ",
-									"date": 43524,
-									"user_avatar": "http://bootdey.com/img/Content/user_1.jpg"
-								},
-								{
-									"user_id": 23324,
-									"user_name": "John Doe",
-									"body": "asdfasdf asd fasdf asdfas ",
-									"date": 43524,
-									"user_avatar": "http://bootdey.com/img/Content/user_3.jpg"
-								},
-								{
-									"user_id": 23324,
-									"user_name": "John Doe",
-									"body": "asdfasdf asd fasdf asdfas ",
-									"date": 43524,
-									"user_avatar": "http://bootdey.com/img/Content/user_1.jpg"
-								},
-								{
-									"user_id": 23324,
-									"user_name": "John Doe",
-									"body": "asdfasdf asd fasdf asdfas ",
-									"date": 43524,
-									"user_avatar": "http://bootdey.com/img/Content/user_3.jpg"
-								}
-							]
-						})
-
-						$scope.viewDetails.currentDiscussion = $scope.discussions[0];
+	        			$scope.discussions[0].selected = true;
 	        		}
 				}
 
@@ -98,15 +54,15 @@ module.directive('messages', function() {
 				if($scope.inputs.newMessage != '')
 				{
 					function success(response){
-		        		$scope.discussions[discussion_index].messages.push({
-							"user_id": 1,
-							"user_name": "John Doe",
-							"body": $scope.inputs.newMessage,
-							"date": 43524,
-							"user_avatar": "http://bootdey.com/img/Content/user_1.jpg"
+		        		$scope.discussions[discussion_index].message.push({
+							"user_id": $scope.viewDetails.userId,
+							"message": $scope.inputs.newMessage,
+							"timestamp": moment(new Date()).format("MMM D, YYYY")
 						})
 
 						$scope.currentDiscussion = $scope.discussions[discussion_index];
+
+						$scope.inputs.newMessage = "";
 					}
 
 					function error(response){
@@ -117,7 +73,7 @@ module.directive('messages', function() {
 
 					dataParams = {
 						message: $scope.inputs.newMessage,
-						received_by: 4
+						thread_id: $scope.viewDetails.currentDiscussion.id
 					}
 
 					$http({

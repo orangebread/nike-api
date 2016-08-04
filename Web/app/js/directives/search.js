@@ -10,7 +10,7 @@ module.directive('search', function() {
 	        	function success(response){
 	        		console.log(response);
 	        		$scope.results = response.data.result.filter(function(el){
-	        			return el.title.indexOf($scope.searchTerm) !== -1
+	        			return ((el.title.indexOf($scope.searchTerm) !== -1) || typeof $scope.searchTerm === "undefined")
 	        		});
 				}
 
@@ -22,7 +22,7 @@ module.directive('search', function() {
 
 				$http({
 			      method: 'GET',
-			      url: API_BASE_URL+"job",
+			      url: API_BASE_URL+"search/job",
 			    }).then(success, error);
 	        }
 
