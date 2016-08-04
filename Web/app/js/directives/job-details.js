@@ -9,7 +9,8 @@ module.directive('jobDetails', function() {
 			    	amount: 0,
 			    	days: 0,
 			    	notes: ""
-			    }
+			    },
+			    employerUsername: ""
 			}
 
 			$scope.job = {};
@@ -69,7 +70,27 @@ module.directive('jobDetails', function() {
 			    }).then(success, error);
 			}
 
+			$scope.getUserDetails = function(){
+
+				function success(response){
+	        		console.log(response);
+	        		$scope.forms.employerUsername = response.data.result.display_name;
+				}
+
+				function error(response){
+					console.log("error");
+					console.log(response);
+					alert("Something went wrong.")
+				}
+
+				$http({
+			      method: 'GET',
+			      url: API_BASE_URL+"user/"+$localStorage.currentEmployerId,
+			    }).then(success, error);
+			}
+
 			$scope.getJobDetails();
+			$scope.getUserDetails();
 		}]
 	};
 });
