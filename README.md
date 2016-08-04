@@ -43,17 +43,24 @@ params:
 
 ###  Get Job Collection
 
-GET _http://**DEV API SERVER**/api/job_
+GET _http://**DEV API SERVER**/api/search/job_
 
 params:
 * No params
 
 ### Get Job by ID
 
-GET _http://**DEV API SERVER**/api/job_
+GET _http://**DEV API SERVER**/api/search/job/:id_
 
 params:
 * id: <integer id>
+
+### Get Job by User
+
+GET _http://**DEV API SERVER**/api/job/me_
+
+params:
+* No params
 
 ## Application Endpoints
 

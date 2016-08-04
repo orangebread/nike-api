@@ -10,7 +10,8 @@ var jwtUtils = require('../utils/jwtUtils');
 router.get('/application', function(req, res){
     jwtUtils.decryptToken(req, res)
         .then(function(token){
-            Application.forge({ user_id: token.id })
+            Application.forge()
+                .query({where: {user_id: token.id}})
                 .fetchAll()
                 .then(function(result) {
                     console.log('Application retrieve result: ' + JSON.stringify(result));
@@ -69,33 +70,13 @@ router.post('/', function(req, res){
         });
 });
 
-// Get job collection
-router.get('/', function(req, res){
+// Get job by user
+router.get('/me', function(req, res){
     jwtUtils.decryptToken(req, res)
         .then(function(token){
             Job.forge()
+                .query({where: {user_id: token.id}})
                 .fetchAll()
-                .then(function(result) {
-                    console.log('Job get successful: ' + result);
-                    res.status(200).json({ success: true, message: 'Job retrieve successful.', result: result});
-                })
-                .catch(function(err){
-                    console.log('Job get failed: ' + err);
-                    res.status(401).json({ success: false, message: 'Job retrieve failed.' });
-                });
-        })
-        .catch(function(err) {
-            console.log('User not verified.');
-        });
-});
-
-// Get job by id
-router.get('/:id', function(req, res){
-    jwtUtils.decryptToken(req, res)
-        .then(function(token){
-            var id = req.params.id;
-            Job.forge({ id: id })
-                .fetch()
                 .then(function(result) {
                     console.log('Job get successful: ' + result);
                     res.status(200).json({ success: true, message: 'Job posting successful.', result: result});
@@ -171,58 +152,5 @@ router.post('/application', function(req, res){
             console.log('User not verified.');
         });
 });
-
-// Initialize messages
-function initMessage(userId, message, appId, recipientId) {
-    console.log('Init values: ' + userId + ' ' + message + ' ' + appId + ' ' + recipientId );
-    return new Promise(function(resolve, reject) {
-        Thread.forge({
-            id: appId,
-            user_id: userId
-        })
-            .save()
-            .then(function(result) {
-                Thread.forge({
-                    id: appId,
-                    user_id: recipientId
-                })
-                    .save()
-                    .then(function(a) {
-                        Message.forge({
-                            user_id: userId,
-                            message: message
-                        })
-                            .save()
-                            .then(function(result) {
-                                console.log('Message saved in init: ' + JSON.stringify(result));
-                                Recipient.forge({
-                                    message_id: result.id,
-                                    user_id: recipientId,
-                                    thread_id: appId
-                                })
-                                    .save()
-                                    .then(function(final) {
-                                        console.log('Final init: ' + JSON.stringify(final));
-                                        resolve(final);
-                                    })
-                                    .catch(function(err) {
-                                        reject(err);
-                                    });
-                            })
-                            .catch(function(err) {
-                                reject(err);
-                            });
-                    })
-                    .catch(function(err) {
-                        reject(err);
-                    })
-            })
-            .catch(function(err) {
-                reject(err);
-            });
-
-
-    });
-}
 
 module.exports = router;
