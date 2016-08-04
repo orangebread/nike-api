@@ -6,6 +6,9 @@ module.controller('ApplyModalController', function ($scope, $uibModalInstance, i
       title: "",
       description: "",
       days: 0
+    },
+    errors: {
+      description: false
     }
   }
 
@@ -35,11 +38,20 @@ module.controller('ApplyModalController', function ($scope, $uibModalInstance, i
       message: $scope.forms.inputs.description
     }
 
-    $http({
-      method: 'POST',
-      url: API_BASE_URL+"job/application",
-      data: dataParams
-    }).then(success, error);
+    if($scope.forms.inputs.description != "")
+    {
+      $scope.forms.errors.description = false;
+      
+      $http({
+        method: 'POST',
+        url: API_BASE_URL+"job/application",
+        data: dataParams
+      }).then(success, error);
+    }
+    else
+    {
+      $scope.forms.errors.description = true;
+    }
   };
 
   $scope.openNewThread = function(){

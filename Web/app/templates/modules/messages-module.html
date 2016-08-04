@@ -52,7 +52,8 @@
                     	</span>
                     	<div class="chat-body clearfix">
                     		<div class="header">
-                    			<strong class="primary-font">{{message.user_name}}</strong>
+                    			<strong class="primary-font" ng-if="message.user_id == viewDetails.userId">You</strong>
+                                <strong class="primary-font" ng-if="message.user_id == viewDetails.otherUserId">{{viewDetails.otherUsername}}</strong>
                     			<small class="pull-right text-muted">{{message.timestamp | date}}</small>
                     		</div>
                     		<p>

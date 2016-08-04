@@ -8,7 +8,9 @@ module.directive('messages', function() {
 			$scope.discussions = [];
 			$scope.viewDetails = {
 				currentDiscussion: [],
-				userId: $localStorage.userID
+				userId: $localStorage.userID,
+				otherUserId: 0,
+				otherUsername: ""
 			};
 
 			$scope.getMessages = function(){
@@ -20,6 +22,7 @@ module.directive('messages', function() {
 	        		{
 	        			$scope.viewDetails.currentDiscussion = $scope.discussions[0];
 	        			$scope.discussions[0].selected = true;
+	        			$scope.viewDetails.otherUserId = $scope.viewDetails.currentDiscussion.message[0].user_id;
 	        		}
 				}
 
@@ -86,6 +89,25 @@ module.directive('messages', function() {
 				{
 					alert("Please type in a message.")
 				}
+			}
+
+			$scope.getOtherUserInfo = function(){
+
+				function success(response){
+	        		console.log(response);
+	        		$scope.viewDetails.otherUsername = response.data.result.display_name;
+				}
+
+				function error(response){
+					console.log("error");
+					console.log(response);
+					alert("Something went wrong.")
+				}
+
+				$http({
+			      method: 'GET',
+			      url: API_BASE_URL+"user/"+$scope.viewDetails.otherUserId,
+			    }).then(success, error);
 			}
 
 			$scope.getMessages();

@@ -16,6 +16,9 @@
             <div class="form-group">
                 <label for="description">Notes:</label>
                 <textarea class="form-control" ng-model="forms.inputs.description"></textarea>
+                <p class="form-error-text" ng-show="forms.errors.description">
+                    Please provide a brief message to send to the employer.
+                </p>
             </div>
         </div>
     </div>
