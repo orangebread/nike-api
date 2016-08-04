@@ -16,6 +16,7 @@ module.controller('ApplyModalController', function ($scope, $uibModalInstance, i
       // if logged in successfully
       if(response.data.success)
       {
+        $scope.openNewThread();
         $uibModalInstance.dismiss('cancel');
       }
       else
@@ -40,6 +41,28 @@ module.controller('ApplyModalController', function ($scope, $uibModalInstance, i
       data: dataParams
     }).then(success, error);
   };
+
+  $scope.openNewThread = function(){
+
+    function success(response){
+      console.log(response);
+    }
+
+    function error(response){
+      //alert("Something went wrong.")
+    }
+
+    dataParams = {
+      message: $scope.forms.inputs.description,
+      employer_id: $localStorage.currentEmployerId,
+    }
+
+    $http({
+      method: 'POST',
+      url: API_BASE_URL+"message/new",
+      data: dataParams
+    }).then(success, error);
+  }
 
   $scope.cancel = function () {
     $uibModalInstance.dismiss('cancel');

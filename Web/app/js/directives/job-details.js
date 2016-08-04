@@ -65,7 +65,7 @@ module.directive('jobDetails', function() {
 
 			    $http({
 			      method: 'GET',
-			      url: API_BASE_URL+"job/"+$localStorage.currentJobId
+			      url: API_BASE_URL+"search/job/"+$localStorage.currentJobId
 			    }).then(success, error);
 			}
 
