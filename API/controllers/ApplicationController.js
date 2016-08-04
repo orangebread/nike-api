@@ -7,7 +7,7 @@ var router  = express.Router();
 var jwtUtils = require('../utils/jwtUtils');
 
 // Get applications for user
-router.get('/application', function(req, res){
+router.get('/', function(req, res){
     jwtUtils.decryptToken(req, res)
         .then(function(token){
             Application.forge()
