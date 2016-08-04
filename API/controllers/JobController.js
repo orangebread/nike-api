@@ -10,7 +10,8 @@ var jwtUtils = require('../utils/jwtUtils');
 router.get('/application', function(req, res){
     jwtUtils.decryptToken(req, res)
         .then(function(token){
-            Application.forge({ user_id: token.id })
+            Application.forge()
+                .query({where: {user_id: token.id}})
                 .fetchAll()
                 .then(function(result) {
                     console.log('Application retrieve result: ' + JSON.stringify(result));
