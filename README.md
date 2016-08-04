@@ -66,7 +66,7 @@ params:
 
 ### Apply to Job
 
-POST _http://**DEV API SERVER**/api/job/application_
+POST _http://**DEV API SERVER**/api/application_
 
 params:
 * job_id: 1,
@@ -75,10 +75,17 @@ params:
 
 ### Get Applications for user
 
-GET _http://**DEV API SERVER**/api/job/application_
+GET _http://**DEV API SERVER**/api/application_
 
 params:
 * No params
+
+### Get Applications by job
+
+POST _http://**DEV API SERVER**/api/job/:id/application_
+
+params:
+* id: 1
 
 ## Messaging Endpoints
 

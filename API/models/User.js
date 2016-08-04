@@ -21,6 +21,10 @@ module.exports = db.Model.extend({
         var Thread = require('./Thread');
         return this.belongsToMany(Thread);
     },
+    application: function() {
+        var Application = require('./Application');
+        return this.belongsToMany(Application);
+    },
 
 
     hidden: ['id', 'password', 'fb_token', 'fb_id', 'created_at', 'updated_at']

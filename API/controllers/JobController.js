@@ -2,28 +2,48 @@ var Job = require('../models/Job');
 var Application = require('../models/Application');
 var Message = require('../models/Message');
 var Thread = require('../models/Thread');
+var db = require('../config/db');
 var express = require('express');
 var router  = express.Router();
 var jwtUtils = require('../utils/jwtUtils');
 
-// Get applications for user
-router.get('/application', function(req, res){
+// Get applications for job
+router.get('/:id/application', function(req, res){
     jwtUtils.decryptToken(req, res)
         .then(function(token){
-            Application.forge()
-                .query({where: {user_id: token.id}})
-                .fetchAll()
-                .then(function(result) {
-                    console.log('Application retrieve result: ' + JSON.stringify(result));
-                    res.status(200).json({ success: true, message: 'Applications retrieved.', result: result});
+            var jobId = req.params.id;
+            Job.forge({ id: jobId })
+                .fetch({ require: true })
+                .then(function(job) {
+                    if (job.attributes.user_id === token.id) {
+                        var sql = 'SELECT a.id as application_id, a.job_id, a.user_id, "user".email, "user".display_name, a.status_name as application_status \
+                                    FROM (SELECT application.id, application.job_id, application.user_id, appstatus.status_name FROM application \
+                                    JOIN appstatus \
+                                    on application.appstatus_id = appstatus.id) a \
+                                    JOIN "user" \
+                                    ON a.user_id = "user".id \
+                                    WHERE a.job_id = ?';
+                        db.knex.raw(sql, [jobId])
+                            .then(function(result) {
+                                console.log('Applications retrieved.');
+                                res.status(200).json({ success: true, message: 'Applications retrieved.', result: result.rows});
+                            })
+                            .catch(function(err) {
+                                console.log('Applications retrieve failed: ' + err);
+                                res.status(200).json({ success: false, message: 'Applications retrieve failed.'});
+                            });
+                    } else {
+                        console.log('Not the right user to retrieve');
+                        res.status(200).json({ success: false, message: 'Request not made by job owner.'});
+                    }
                 })
                 .catch(function(err) {
-                    console.log('Error occurred while retrieving applications: ' + err);
-                    res.status(200).json({ success: false, message: 'Error while retrieving applications.'});
+                    console.log('Job not found: ' + err );
+                    res.status(200).json({ success: false, message: 'Job applications retrieve failed.'});
                 });
         })
         .catch(function(err) {
-            console.log('User not verified.');
+            console.log('User not verified: ' + err);
         });
 });
 
@@ -89,68 +109,7 @@ router.get('/me', function(req, res){
         .catch(function(err) {
             console.log('User not verified.');
         });
-});
 
-// Apply to job
-router.post('/application', function(req, res){
-    jwtUtils.decryptToken(req, res)
-        .then(function(token){
-            var jobId = req.body.job_id;
-            var message = req.body.message;
-            var employerId = null;
-
-            if (message === null || typeof message === 'undefined') {
-                message = 'Application sent!';
-            }
-
-            Application.forge({
-                job_id: jobId,
-                user_id: token.id
-            })
-                .fetch()
-                .then(function(result) {
-                    console.log('Application result: ' + JSON.stringify(result));
-                    if (result === null) {
-                        Job.forge({
-                            id: jobId
-                        })
-                            .fetch()
-                            .then(function(response) {
-                                employerId = response.attributes.user_id;
-
-                                console.log('No applications, applying: ' + JSON.stringify(response));
-
-                                Application.forge({
-                                    job_id: jobId,
-                                    user_id: token.id,
-                                    appstatus_id: 1
-                                })
-                                    .save()
-                                    .then(function(final) {
-                                        console.log('Application saved with: ' + JSON.stringify(final));
-                                        res.status(200).json({ success: true, message: 'Application saved!', result: final});
-                                    })
-                                    .catch(function(err) {
-                                        console.log('Error while saving application: ' + err);
-                                        res.status(200).json({ success: false, message: 'Application could not be saved.'});
-                                    })
-                            })
-                            .catch(function(err) {
-                                res.status(200).json({ success: false, message: 'Application could not be saved.'});
-                            });
-
-                    } else {
-                        res.status(200).json({ success: false, message: 'Application already exists.'});
-                    }
-                })
-                .catch(function(err) {
-                    console.log('Error occurred while applying: ' + err);
-                    res.status(200).json({ success: false, message: 'Error while applying.'});
-                });
-        })
-        .catch(function(err) {
-            console.log('User not verified.');
-        });
 });
 
 module.exports = router;

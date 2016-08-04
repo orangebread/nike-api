@@ -3,6 +3,7 @@ var job = require('../controllers/JobController');
 var message = require('../controllers/MessageController');
 var user = require('../controllers/UserController');
 var search = require('../controllers/SearchController');
+var application = require('../controllers/ApplicationController');
 
 module.exports = function(app) {
 
@@ -13,6 +14,7 @@ module.exports = function(app) {
     // YOU SHALL NOT PASS (without a token)
     require('./tokenAuth')(app);
     app.use('/api/job', job);
+    app.use('/api/application', application);
     app.use('/api/message', message);
     app.use('/api/user', user);
 

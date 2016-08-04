@@ -8,10 +8,13 @@ module.exports = db.Model.extend({
         var User = require('./User');
         return this.belongsToMany(User);
     },
-
+    application: function() {
+        var Application = require('./Application');
+        return this.belongsToMany(Application);
+    },
     recipient: function() {
         var Recipient = require('./Recipient');
         return this.belongsToMany(Recipient);
-    },
+    }
     
 });
