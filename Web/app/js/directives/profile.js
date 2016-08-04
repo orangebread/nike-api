@@ -5,6 +5,7 @@ module.directive('profile', function() {
 
 			$scope.applications = [];
 			$scope.jobsPosted = [];
+			$scope.userInfo = {};
 
 			$scope.getApplications = function(){
 
@@ -36,7 +37,7 @@ module.directive('profile', function() {
 
 				$http({
 			      method: 'GET',
-			      url: API_BASE_URL+"job/application",
+			      url: API_BASE_URL+"application",
 			    }).then(success, error);
 			}
 
@@ -59,6 +60,26 @@ module.directive('profile', function() {
 			    }).then(success, error);
 			}
 
+			$scope.getUserDetails = function(){
+
+				function success(response){
+	        		console.log(response);
+	        		$scope.userInfo.email = response.data.result.email;
+	        		$scope.userInfo.display_name = response.data.result.display_name;
+				}
+
+				function error(response){
+					console.log("error");
+					console.log(response);
+					alert("Something went wrong.")
+				}
+
+				$http({
+			      method: 'GET',
+			      url: API_BASE_URL+"user/"+$localStorage.userID,
+			    }).then(success, error);
+			}
+
 			$scope.logout = function(){
 				delete $localStorage.jwtToken;
     			delete $localStorage.userID;
@@ -77,6 +98,7 @@ module.directive('profile', function() {
 
 			$scope.getApplications();
 			$scope.getPostedJobs();
+			$scope.getUserDetails();
 		}]
 	};
 });
