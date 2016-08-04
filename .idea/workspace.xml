@@ -2,7 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="af4255a4-449f-4c14-8112-464024826330" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/API/controllers/SearchController.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/API/config/routes.js" afterPath="$PROJECT_DIR$/API/config/routes.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/API/controllers/JobController.js" afterPath="$PROJECT_DIR$/API/controllers/JobController.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/README.md" afterPath="$PROJECT_DIR$/README.md" />
     </list>
@@ -38,8 +40,28 @@
       <file leaf-file-name="README.md" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/README.md">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="248">
-              <caret line="59" column="41" selection-start-line="59" selection-start-column="41" selection-end-line="59" selection-end-column="41" />
+            <state relative-caret-position="263">
+              <caret line="52" column="49" selection-start-line="52" selection-start-column="49" selection-end-line="52" selection-end-column="49" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="routes.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/API/config/routes.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="150">
+              <caret line="10" column="35" selection-start-line="10" selection-start-column="35" selection-end-line="10" selection-end-column="35" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="SearchController.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/API/controllers/SearchController.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="360">
+              <caret line="24" column="20" selection-start-line="24" selection-start-column="20" selection-end-line="24" selection-end-column="20" />
               <folding />
             </state>
           </provider>
@@ -68,8 +90,8 @@
       <file leaf-file-name="JobController.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/API/controllers/JobController.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="375">
-              <caret line="98" column="27" selection-start-line="98" selection-start-column="27" selection-end-line="98" selection-end-column="27" />
+            <state relative-caret-position="2288">
+              <caret line="153" column="3" selection-start-line="153" selection-start-column="3" selection-end-line="153" selection-end-column="3" />
               <folding />
             </state>
           </provider>
@@ -105,26 +127,6 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="20160803074255_threadfix.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/API/migrations/20160803074255_threadfix.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="300">
-              <caret line="20" column="2" selection-start-line="20" selection-start-column="2" selection-end-line="20" selection-end-column="2" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="20160803081117_threadfixagain.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/API/migrations/20160803081117_threadfixagain.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="375">
-              <caret line="25" column="0" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
     </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
@@ -151,7 +153,6 @@
         <option value="$PROJECT_DIR$/API/config/tokenAuth.js" />
         <option value="$PROJECT_DIR$/API/migrations/20160711173908_messageupdate.js" />
         <option value="$PROJECT_DIR$/API/controllers/UserController.js" />
-        <option value="$PROJECT_DIR$/API/config/routes.js" />
         <option value="$PROJECT_DIR$/API/migrations/20160715115206_messageupdate.js" />
         <option value="$PROJECT_DIR$/API/config/s3.js" />
         <option value="$PROJECT_DIR$/API/package.json" />
@@ -182,6 +183,8 @@
         <option value="$PROJECT_DIR$/API/models/Thread.js" />
         <option value="$PROJECT_DIR$/API/controllers/MessageController.js" />
         <option value="$PROJECT_DIR$/API/controllers/JobController.js" />
+        <option value="$PROJECT_DIR$/API/controllers/SearchController.js" />
+        <option value="$PROJECT_DIR$/API/config/routes.js" />
         <option value="$PROJECT_DIR$/README.md" />
       </list>
     </option>
@@ -422,12 +425,12 @@
       <workItem from="1465064454723" duration="1794000" />
       <workItem from="1466784586706" duration="75624000" />
       <workItem from="1469715426528" duration="7553000" />
-      <workItem from="1469829067509" duration="28572000" />
+      <workItem from="1469829067509" duration="29100000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="113543000" />
+    <option name="totallyTimeSpent" value="114071000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="246" y="96" width="1572" height="1104" extended-state="0" />
@@ -472,7 +475,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/API/config/strategy.js" />
     <entry file="file://$PROJECT_DIR$/API/knexfile.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="360">
@@ -615,13 +617,6 @@
         <state relative-caret-position="510">
           <caret line="90" column="7" selection-start-line="73" selection-start-column="4" selection-end-line="90" selection-end-column="7" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/API/config/routes.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" column="58" selection-start-line="2" selection-start-column="58" selection-end-line="2" selection-end-column="58" />
         </state>
       </provider>
     </entry>
@@ -818,16 +813,32 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/API/controllers/JobController.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="375">
-          <caret line="98" column="27" selection-start-line="98" selection-start-column="27" selection-end-line="98" selection-end-column="27" />
+        <state relative-caret-position="2288">
+          <caret line="153" column="3" selection-start-line="153" selection-start-column="3" selection-end-line="153" selection-end-column="3" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/API/config/routes.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="10" column="35" selection-start-line="10" selection-start-column="35" selection-end-line="10" selection-end-column="35" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/API/controllers/SearchController.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="360">
+          <caret line="24" column="20" selection-start-line="24" selection-start-column="20" selection-end-line="24" selection-end-column="20" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/README.md">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="248">
-          <caret line="59" column="41" selection-start-line="59" selection-start-column="41" selection-end-line="59" selection-end-column="41" />
+        <state relative-caret-position="263">
+          <caret line="52" column="49" selection-start-line="52" selection-start-column="49" selection-end-line="52" selection-end-column="49" />
           <folding />
         </state>
       </provider>

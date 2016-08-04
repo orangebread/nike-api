@@ -2,11 +2,13 @@ var login = require('../controllers/LoginController');
 var job = require('../controllers/JobController');
 var message = require('../controllers/MessageController');
 var user = require('../controllers/UserController');
+var search = require('../controllers/SearchController');
 
 module.exports = function(app) {
 
     // no auth token required
     app.use('/api/login', login);
+    app.use('/api/search', search);
 
     // YOU SHALL NOT PASS (without a token)
     require('./tokenAuth')(app);
