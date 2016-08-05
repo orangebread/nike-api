@@ -29,9 +29,12 @@
 			      <div class="custom-cell">
 			        Budget
 			      </div>
+			      <div class="custom-cell">
+			        
+			      </div>
 			    </div>
 			    
-			    <div class="custom-row" ng-repeat="job in jobsPosted">
+			    <div class="custom-row" ng-repeat="job in jobsPosted | orderBy: job.title">
 			      <div class="custom-cell link">
 			        <a ng-click="goToJob(job.id, job.user_id)">{{job.title}}</a>
 			      </div>
@@ -41,9 +44,76 @@
 			      <div class="custom-cell">
 			        {{job.budget | currency}}
 			      </div>
+			      <div class="custom-cell link">
+			      	{{job.applicationCount}}
+			      	<a ng-click="getApplicationsForJob(job.id, job.title)">View</a>
+			      </div>
 			    </div>
 			    
 			  </div>
+
+				
+			  <div class="applications-for-selected-job" ng-if="view.showApplications">
+			  	<div class="title">
+			  		<h3>Job: {{view.jobTitle}}</h3>
+			  	</div>
+			  	<div class="applications">
+			    	<div class="application-item" ng-repeat="application in view.fetchedApplications | orderBy: application.display_name">
+			    		<div class="username">
+			    			<p>{{application.display_name}}</p>
+			    		</div>
+			    		<div class="bid">
+			    			<p><span>Bid</span>: $100</p>
+			    		</div>
+			    		<div class="status">
+			    			<p><span>Status:</span> {{application.application_status}}</p>
+			    		</div>
+			    		<div class="description">
+							<p> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi molestias reprehenderit, optio quam eveniet amet! </p>
+			    		</div>
+			    		<div class="buttons">
+			    			<button>Accept</button>
+			    			<button>Reject</button>
+			    		</div>
+			    	</div>
+<!-- 			    	<div class="application-item">
+			    		<div class="username">
+			    			<p>TestUser</p>
+			    		</div>
+			    		<div class="bid">
+			    			<p><span>Bid</span>: $100</p>
+			    		</div>
+			    		<div class="status accepted">
+			    			<p><span>Status:</span> Pending</p>
+			    		</div>
+			    		<div class="description">
+							<p> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi molestias reprehenderit, optio quam eveniet amet! </p>
+			    		</div>
+			    		<div class="buttons">
+			    			<button>Accept</button>
+			    			<button>Reject</button>
+			    		</div>
+			    	</div>
+			    	<div class="application-item">
+			    		<div class="username">
+			    			<p>TestUser</p>
+			    		</div>
+			    		<div class="bid">
+			    			<p><span>Bid</span>: $100</p>
+			    		</div>
+			    		<div class="status">
+			    			<p><span>Status:</span> Pending</p>
+			    		</div>
+			    		<div class="description">
+							<p> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi molestias reprehenderit, optio quam eveniet amet! </p>
+			    		</div>
+			    		<div class="buttons">
+			    			<button>Accept</button>
+			    			<button>Reject</button>
+			    		</div>
+			    	</div> -->
+		    	</div>
+		    </div>
 
 			  <h2>Jobs Progress</h2>
 			  

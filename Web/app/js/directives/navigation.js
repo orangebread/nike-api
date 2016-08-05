@@ -53,7 +53,7 @@ module.directive('navigation', function() {
 
 			    function error(response){
 			      alert("Something bad happened");
-			      $log.log(response)
+			      console.log(response)
 			    }
 
 			    $http({

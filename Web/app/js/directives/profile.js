@@ -7,6 +7,12 @@ module.directive('profile', function() {
 			$scope.jobsPosted = [];
 			$scope.userInfo = {};
 
+			$scope.view = {
+				showApplications: false,
+				fetchedApplications: [],
+				jobTitle: ""
+			}
+
 			$scope.getApplications = function(){
 
 				function success(response){
@@ -45,7 +51,24 @@ module.directive('profile', function() {
 
 				function success(response){
 	        		console.log(response);
-	        		$scope.jobsPosted = response.data.result;
+	        		response.data.result.forEach(function(job){
+	        			function success(response){
+			        		console.log(response);
+			        		job.applicationCount = response.data.result.length;
+			        		$scope.jobsPosted.push(job);
+						}
+
+						function error(response){
+							console.log("error");
+							console.log(response);
+							alert("Something went wrong.")
+						}
+
+						$http({
+					      method: 'GET',
+					      url: API_BASE_URL+"job/"+job.id+"/application",
+					    }).then(success, error);
+	        		})
 				}
 
 				function error(response){
@@ -88,6 +111,35 @@ module.directive('profile', function() {
 
     			alert("You have been logged out.")
     			$location.path("home");
+			}
+
+			$scope.getApplicationsForJob = function(id, title)
+			{
+				function success(response){
+	        		console.log(response);
+	        		if(response.data.result.length > 0)
+	        		{
+	        			$scope.view.fetchedApplications = response.data.result;
+	        			$scope.view.showApplications = true;
+	        			$scope.view.jobTitle = title;
+	        		}
+	        		else
+	        		{
+	        			$scope.view.showApplications = false;
+	        			alert("No applications for this job yet.")	
+	        		}
+				}
+
+				function error(response){
+					console.log("error");
+					console.log(response);
+					alert("Something went wrong.")
+				}
+
+				$http({
+			      method: 'GET',
+			      url: API_BASE_URL+"job/"+id+"/application",
+			    }).then(success, error);
 			}
 
 			$scope.goToJob = function(id, userId){

@@ -44,7 +44,7 @@ module.controller('ApplyModalController', function ($scope, $uibModalInstance, i
       
       $http({
         method: 'POST',
-        url: API_BASE_URL+"job/application",
+        url: API_BASE_URL+"application",
         data: dataParams
       }).then(success, error);
     }

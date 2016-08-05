@@ -120,10 +120,32 @@ module.controller('LoginModalController', function ($scope, $uibModalInstance, i
   }
 
   $scope.fbLogin = function(){
-    //delete $localStorage.jwtToken;
+    delete $localStorage.jwtToken;
     delete $localStorage.userID;
-    //delete $localStorage.username;
-    // From now on you can use the Facebook service just as Facebook api says
+    delete $localStorage.username;
+
+    function success(response){
+      // if logged in successfully
+      if(response.data.success)
+      {
+        $localStorage.jwtToken = response.data.token;
+        $localStorage.userID = jwtHelper.decodeToken(response.data.token).id;
+        $localStorage.username = response.data.displayName;
+        $rootScope.$broadcast('loggedIn');
+        $uibModalInstance.dismiss('cancel');
+      }
+      else
+      {
+        alert("Wrong username or password");
+      }
+    }
+
+    function error(response){
+      alert("Something bad happened");
+      console.log(response)
+      delete $localStorage.jwtToken;
+    }
+
     Facebook.login(function(firstResponse) {
       if(firstResponse.status == "connected")
       {
@@ -136,39 +158,15 @@ module.controller('LoginModalController', function ($scope, $uibModalInstance, i
               email: secondResponse.email
             }
         
-            // $http({
-            //     method: 'POST',
-            //     url: API_BASE_URL+"login/facebook",
-            //     data: dataParams
-            //   }).then(success, error);
-            // });
+            $http({
+              method: 'POST',
+              url: API_BASE_URL+"login/facebook",
+              data: dataParams
+            }).then(success, error);
 
-            $rootScope.$broadcast('loggedIn');
-            $uibModalInstance.dismiss('cancel');
-        }, { scope: 'email' });
-
-        function success(response){
-          // if logged in successfully
-          if(response.data.success)
-          {
-            $localStorage.jwtToken = response.data.token;
-            $localStorage.userID = jwtHelper.decodeToken(response.data.token).id;
-            $localStorage.username = response.data.displayName;
-            $window.location.href = "/";
-          }
-          else
-          {
-            alert("Wrong username or password");
-          }
-        }
-
-        function error(response){
-          alert("Something bad happened");
-          $log.log(response)
-          delete $localStorage.jwtToken;
-        }
+        });
       }
-    });
+    }, { scope: 'email' });
   }
 
   $scope.cancel = function () {

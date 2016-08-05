@@ -2,17 +2,109 @@
 	@include make-row();
 	margin-bottom: 70px;
 
+	h2{
+		margin-top: 30px;
+		float: left;
+	}
+
 	.wrapper{
 		margin: 0 auto;
 	}
 
 	.custom-table{
-		margin: 0 0 40px 0;
+		margin: 0 0 0 0;
 		width: 100%;
 		box-shadow: 0 1px 3px rgba(0,0,0,0.2);
 		display: table;
 		@media screen and (max-width: 580px){
 			display: block;
+		}
+	}
+
+	.applications-for-selected-job{
+		@include make-sm-column(12);
+		padding: 0 !important;
+		border: 1px solid $color-yellow;
+		border-top: none;
+
+		.title{
+			border-bottom: 1px solid $color-black;
+			padding-left: 15px;
+		}
+
+		.application-item{
+			padding: 15px;
+			padding-top: 0;
+			border-right: 1px solid $color-black;
+			@include make-sm-column(4);
+
+			&:nth-child(3n+3){
+				border-right: none;
+			}
+
+			@include breakpoint($mobileOnly) {
+				border-right: none;
+			}
+
+			.username{
+				padding-top: 5px;
+				padding-bottom: 5px;
+				border-bottom: 1px solid $color-black;
+				
+				p{
+					font-weight: bold;
+					color: $color-black;
+				}
+			}
+
+			.bid{
+				padding-top: 5px;
+				padding-bottom: 5px;
+				border-bottom: 1px solid $color-black;
+
+				p{
+					font-weight: bold;
+					color: $color-green;
+
+					span{
+						color: $color-black;
+						font-weight: normal;
+					}
+				}
+			}
+
+			.status{
+				padding-top: 5px;
+				padding-bottom: 5px;
+				border-bottom: 1px solid $color-black;
+
+				p{
+					span{
+						color: $color-black;
+					}
+				}
+
+				&.accepted{
+					p{
+						color: $color-green;
+					}
+				}
+
+				&.rejected{
+
+					p{
+						color: $color-red;
+					}
+				}
+			}
+
+			.description{
+				padding-bottom: 5px;
+
+				p{
+
+				}
+			}
 		}
 	}
 
