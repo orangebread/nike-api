@@ -15,9 +15,10 @@ router.get('/:id/application', function(req, res){
             Job.forge({ id: jobId })
                 .fetch({ require: true })
                 .then(function(job) {
+                    //
                     if (job.attributes.user_id === token.id) {
-                        var sql = 'SELECT a.id as application_id, a.job_id, a.user_id, "user".email, "user".display_name, a.status_name as application_status \
-                                    FROM (SELECT application.id, application.job_id, application.user_id, appstatus.status_name FROM application \
+                        var sql = 'SELECT a.id as application_id, a.job_id, a.user_id, "user".email, "user".display_name, a.bid_amount, a.status_name as application_status \
+                                    FROM (SELECT application.id, application.job_id, application.user_id, application.bid_amount, appstatus.status_name FROM application \
                                     JOIN appstatus \
                                     on application.appstatus_id = appstatus.id) a \
                                     JOIN "user" \

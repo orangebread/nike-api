@@ -70,8 +70,7 @@ POST _http://**DEV API SERVER**/api/application_
 
 params:
 * job_id: 1,
-* employer_id: 1
-* message: <insert message here> (optional)
+* bid_amount: 1000
 
 ### Get Applications for user
 

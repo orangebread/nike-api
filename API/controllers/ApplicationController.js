@@ -32,12 +32,7 @@ router.post('/', function(req, res){
     jwtUtils.decryptToken(req, res)
         .then(function(token){
             var jobId = req.body.job_id;
-            var message = req.body.message;
-            var employerId = null;
-
-            if (message === null || typeof message === 'undefined') {
-                message = 'Application sent!';
-            }
+            var bidAmount = req.body.bid_amount;
 
             Application.forge({
                 job_id: jobId,
@@ -45,35 +40,25 @@ router.post('/', function(req, res){
             })
                 .fetch()
                 .then(function(result) {
-                    console.log('Application result: ' + JSON.stringify(result));
                     if (result === null) {
-                        Job.forge({
-                            id: jobId
+                        console.log('No applications, applying');
+
+                        Application.forge({
+                            job_id: jobId,
+                            user_id: token.id,
+                            bid_amount: bidAmount,
+                            appstatus_id: 1
                         })
-                            .fetch()
-                            .then(function(response) {
-                                employerId = response.attributes.user_id;
-
-                                console.log('No applications, applying: ' + JSON.stringify(response));
-
-                                Application.forge({
-                                    job_id: jobId,
-                                    user_id: token.id,
-                                    appstatus_id: 1
-                                })
-                                    .save()
-                                    .then(function(final) {
-                                        console.log('Application saved with: ' + JSON.stringify(final));
-                                        res.status(200).json({ success: true, message: 'Application saved!', result: final});
-                                    })
-                                    .catch(function(err) {
-                                        console.log('Error while saving application: ' + err);
-                                        res.status(200).json({ success: false, message: 'Application could not be saved.'});
-                                    })
+                            .save()
+                            .then(function(final) {
+                                console.log('Application saved with: ' + JSON.stringify(final));
+                                res.status(200).json({ success: true, message: 'Application saved!', result: final});
                             })
                             .catch(function(err) {
+                                console.log('Error while saving application: ' + err);
                                 res.status(200).json({ success: false, message: 'Application could not be saved.'});
                             });
+
 
                     } else {
                         res.status(200).json({ success: false, message: 'Application already exists.'});
@@ -119,7 +104,7 @@ router.put('/', function(req, res){
                         res.status(200).json({ success: true, message: 'Application update failed. Not job owner.'});
                     }
                 })
-                .catch(function(err){
+                .catch(function(err) {
                     console.log('Job get failed: ' + err);
                     res.status(401).json({ success: false, message: 'Job posting failed.' });
                 });
