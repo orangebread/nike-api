@@ -32,6 +32,7 @@ router.post('/', function(req, res){
     jwtUtils.decryptToken(req, res)
         .then(function(token){
             var jobId = req.body.job_id;
+            var employerId = req.body.employer_id;
             var bidAmount = req.body.bid_amount;
 
             Application.forge({
@@ -51,6 +52,7 @@ router.post('/', function(req, res){
                         })
                             .save()
                             .then(function(final) {
+                                
                                 console.log('Application saved with: ' + JSON.stringify(final));
                                 res.status(200).json({ success: true, message: 'Application saved!', result: final});
                             })

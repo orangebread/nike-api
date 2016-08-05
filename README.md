@@ -31,6 +31,11 @@ params:
 
 POST _http://**DEV API SERVER**/api/login/facebook_
 
+params:
+* fb_id: firstResponse.authResponse.userID,
+* fb_token: firstResponse.authResponse.accessToken,
+* email: secondResponse.email
+
 ## Job Posting Endpoints
 
 ### New Job Post
