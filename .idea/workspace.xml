@@ -3,8 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="af4255a4-449f-4c14-8112-464024826330" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/API/controllers/ApplicationController.js" afterPath="$PROJECT_DIR$/API/controllers/ApplicationController.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/API/controllers/JobController.js" afterPath="$PROJECT_DIR$/API/controllers/JobController.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/README.md" afterPath="$PROJECT_DIR$/README.md" />
     </list>
     <ignored path="HourlyAdmin.iws" />
@@ -58,17 +56,17 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="README.md" pinned="false" current-in-tab="false">
+      <file leaf-file-name="README.md" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/README.md">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="218">
-              <caret line="72" column="18" selection-start-line="72" selection-start-column="18" selection-end-line="72" selection-end-column="18" />
+            <state relative-caret-position="383">
+              <caret line="31" column="51" selection-start-line="31" selection-start-column="51" selection-end-line="31" selection-end-column="51" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="LoginController.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="LoginController.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/API/controllers/LoginController.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="450">
@@ -157,7 +155,6 @@
         <option value="$PROJECT_DIR$/API/migrations/20160715115206_messageupdate.js" />
         <option value="$PROJECT_DIR$/API/config/s3.js" />
         <option value="$PROJECT_DIR$/API/package.json" />
-        <option value="$PROJECT_DIR$/API/controllers/LoginController.js" />
         <option value="$PROJECT_DIR$/API/utils/jwtUtils.js" />
         <option value="$PROJECT_DIR$/API/migrations/20160719101355_threads.js" />
         <option value="$PROJECT_DIR$/API/migrations/20160725144704_messages.js" />
@@ -185,9 +182,10 @@
         <option value="$PROJECT_DIR$/API/models/User.js" />
         <option value="$PROJECT_DIR$/API/models/Job.js" />
         <option value="$PROJECT_DIR$/API/migrations/20160805085519_appupdate.js" />
-        <option value="$PROJECT_DIR$/README.md" />
         <option value="$PROJECT_DIR$/API/controllers/ApplicationController.js" />
         <option value="$PROJECT_DIR$/API/controllers/JobController.js" />
+        <option value="$PROJECT_DIR$/API/controllers/LoginController.js" />
+        <option value="$PROJECT_DIR$/README.md" />
       </list>
     </option>
   </component>
@@ -427,12 +425,12 @@
       <workItem from="1465064454723" duration="1794000" />
       <workItem from="1466784586706" duration="75624000" />
       <workItem from="1469715426528" duration="7553000" />
-      <workItem from="1469829067509" duration="38972000" />
+      <workItem from="1469829067509" duration="39141000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="123943000" />
+    <option name="totallyTimeSpent" value="124112000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="160" y="87" width="1572" height="1104" extended-state="0" />
@@ -827,14 +825,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/README.md">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="218">
-          <caret line="72" column="18" selection-start-line="72" selection-start-column="18" selection-end-line="72" selection-end-column="18" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/API/controllers/JobController.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="285">
@@ -855,6 +845,14 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="450">
           <caret line="188" column="23" selection-start-line="188" selection-start-column="23" selection-end-line="188" selection-end-column="23" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="383">
+          <caret line="31" column="51" selection-start-line="31" selection-start-column="51" selection-end-line="31" selection-end-column="51" />
           <folding />
         </state>
       </provider>

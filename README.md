@@ -27,6 +27,10 @@ params:
 * email: asdf@asdf.com
 * password: pass123
 
+### Facebook Login
+
+POST _http://**DEV API SERVER**/api/login/facebook_
+
 ## Job Posting Endpoints
 
 ### New Job Post
