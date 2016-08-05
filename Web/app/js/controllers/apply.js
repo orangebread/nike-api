@@ -3,9 +3,8 @@ module.controller('ApplyModalController', function ($scope, $uibModalInstance, i
   $scope.forms = {
     login: true,
     inputs: {
-      title: "",
-      description: "",
-      days: 0
+      bid: "",
+      description: ""
     },
     errors: {
       description: false
@@ -34,8 +33,7 @@ module.controller('ApplyModalController', function ($scope, $uibModalInstance, i
 
     dataParams = {
       job_id: $localStorage.currentJobId,
-      employer_id: $localStorage.currentEmployerId,
-      message: $scope.forms.inputs.description
+      bid_amount:$scope.forms.inputs.bid
     }
 
     if($scope.forms.inputs.description != "")
