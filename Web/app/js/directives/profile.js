@@ -103,6 +103,33 @@ module.directive('profile', function() {
 			    }).then(success, error);
 			}
 
+			$scope.decide = function(decision, app_id, job_id){
+
+				function success(response){
+	        		console.log(response);
+	        		$scope.userInfo.email = response.data.result.email;
+	        		$scope.userInfo.display_name = response.data.result.display_name;
+				}
+
+				function error(response){
+					console.log("error");
+					console.log(response);
+					alert("Something went wrong.")
+				}
+
+				dataParams = {
+					job_id: job_id, 
+					application_id: app_id,
+					app_status: decision ? 2 : 3
+				}
+
+				$http({
+			      method: 'PUT',
+			      data: dataParams,
+			      url: API_BASE_URL+"application/",
+			    }).then(success, error);
+			}
+
 			$scope.logout = function(){
 				delete $localStorage.jwtToken;
     			delete $localStorage.userID;
