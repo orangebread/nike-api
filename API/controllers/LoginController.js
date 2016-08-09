@@ -76,7 +76,7 @@ router.post('/register', function(req, res){
             console.log('Registration: password hashed.');
             User.register(email, hash, displayName)
                 .then(function(user) {
-                    console.log('Registering other stupid bullshit: ' + user);
+                    console.log('Registering other stupid bullshit: ' + JSON.stringify(user));
                     //create a new token
                     var payload = {
                         id: user.response.id

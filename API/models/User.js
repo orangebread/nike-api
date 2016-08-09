@@ -65,12 +65,14 @@ module.exports = db.Model.extend({
             return ({ success: false, message: 'Please enter email and password.' });
         } else {
             console.log('Registration executing...');
+            console.log('Display name is: ' + displayName);
             var saveDisplayName = null;
-            if(!displayName) {
+            if(displayName === null || displayName === undefined) {
                 saveDisplayName = this.generateDisplayName(email);
             } else {
                 saveDisplayName = displayName;
             }
+            console.log('Save display name is: ' + saveDisplayName);
             // Attempt to save the user
             return new this({email: email.toLowerCase().trim(), password: password, display_name: saveDisplayName})
                 .save()
