@@ -17,8 +17,8 @@ router.get('/:id/application', function(req, res){
                 .then(function(job) {
                     //
                     if (job.attributes.user_id === token.id) {
-                        var sql = 'SELECT a.id as application_id, a.job_id, a.user_id, "user".email, "user".display_name, a.bid_amount, a.status_name as application_status \
-                                    FROM (SELECT application.id, application.job_id, application.user_id, application.bid_amount, appstatus.status_name FROM application \
+                        var sql = 'SELECT a.id as application_id, a.job_id, a.user_id, "user".email, "user".display_name, a.bid_amount, a.description, a.status_name as application_status \
+                                    FROM (SELECT application.id, application.job_id, application.user_id, application.bid_amount, application.description, appstatus.status_name FROM application \
                                     JOIN appstatus \
                                     on application.appstatus_id = appstatus.id) a \
                                     JOIN "user" \
@@ -113,6 +113,27 @@ router.get('/me', function(req, res){
 
 });
 
+// Workflow
+router.get('/workflow', function(req, res){
+    jwtUtils.decryptToken(req, res)
+        .then(function(token){
+            Job.forge()
+                .query({where: {user_id: token.id}})
+                .fetchAll()
+                .then(function(result) {
+                    console.log('Job get successful: ' + result);
+                    res.status(200).json({ success: true, message: 'Job posting successful.', result: result});
+                })
+                .catch(function(err){
+                    console.log('Job get failed: ' + err);
+                    res.status(401).json({ success: false, message: 'Job posting failed.' });
+                });
+        })
+        .catch(function(err) {
+            console.log('User not verified.');
+        });
+
+});
 
 
 module.exports = router;

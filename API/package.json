@@ -21,6 +21,7 @@
     "node-uuid": "^1.4.7",
     "password-generator": "^2.0.2",
     "pg": "^4.5.1",
+    "request": "^2.74.0",
     "serve-favicon": "~2.3.0"
   }
 }

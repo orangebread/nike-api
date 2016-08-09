@@ -80,6 +80,7 @@ POST _http://**DEV API SERVER**/api/application_
 params:
 * job_id: 1,
 * bid_amount: 1000
+* description: blah blah blah
 
 ### Get Applications for user
 

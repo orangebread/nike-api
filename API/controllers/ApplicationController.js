@@ -4,6 +4,7 @@ var Message = require('../models/Message');
 var Thread = require('../models/Thread');
 var express = require('express');
 var router  = express.Router();
+var request = require('request');
 var jwtUtils = require('../utils/jwtUtils');
 
 // Get applications for user
@@ -34,6 +35,7 @@ router.post('/', function(req, res){
             var jobId = req.body.job_id;
             var employerId = req.body.employer_id;
             var bidAmount = req.body.bid_amount;
+            var description = req.body.description;
 
             Application.forge({
                 job_id: jobId,
@@ -48,13 +50,13 @@ router.post('/', function(req, res){
                             job_id: jobId,
                             user_id: token.id,
                             bid_amount: bidAmount,
-                            appstatus_id: 1
+                            appstatus_id: 1,
+                            description: description
                         })
                             .save()
                             .then(function(final) {
-                                
                                 console.log('Application saved with: ' + JSON.stringify(final));
-                                res.status(200).json({ success: true, message: 'Application saved!', result: final});
+                                res.json({ success: true, message: 'Application saved!', result: final});
                             })
                             .catch(function(err) {
                                 console.log('Error while saving application: ' + err);
