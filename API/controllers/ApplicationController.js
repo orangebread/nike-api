@@ -2,6 +2,7 @@ var Job = require('../models/Job');
 var Application = require('../models/Application');
 var Message = require('../models/Message');
 var Thread = require('../models/Thread');
+var db = require('../config/db');
 var express = require('express');
 var router  = express.Router();
 var request = require('request');
@@ -78,13 +79,12 @@ router.post('/', function(req, res){
         });
 });
 
-// Accept/reject applications
-router.put('/', function(req, res){
+// Accept applications
+router.put('/accept', function(req, res){
     jwtUtils.decryptToken(req, res)
         .then(function(token){
             var jobId = req.body.job_id;
             var appId = req.body.application_id;
-            var appstatus = req.body.app_status;
             var employerId = token.id;
 
             // verify job owner
@@ -94,14 +94,33 @@ router.put('/', function(req, res){
                 .then(function(job) {
                     if (job.attributes.user_id === employerId) {
                         Application.forge({ id: appId })
-                            .save({ appstatus_id: appstatus })
+                            .save({ appstatus_id: 2 })
                             .then(function(app) {
-                                console.log('Application update successful.');
-                                res.status(200).json({ success: true, message: 'Application update successful.', result: app });
+                                console.log('Application accept successful.');
+                                Application.forge()
+                                    .query({where: {
+                                        job_id: jobId,
+                                        appstatus_id: 1
+                                    }})
+                                    .fetchAll()
+                                    .then(function(rejects) {
+                                        var sql = 'update application \
+                                                    set appstatus_id = 3 \
+                                                    where application.appstatus_id = 1 and application.job_id = ?';
+                                        db.knex.raw(sql, [jobId])
+                                            .then(function(result) {
+                                                console.log('Applications retrieved.');
+                                                res.status(200).json({ success: true, message: 'Application accept successful.', result: app });
+                                            })
+                                            .catch(function(err) {
+                                                console.log('Applications retrieve failed: ' + err);
+                                                res.status(200).json({ success: false, message: 'Applications retrieve failed.'});
+                                            });
+                                    });
                             })
                             .catch(function(err) {
                                 console.log('Application update failed: ' + err);
-                                res.status(200).json({ success: true, message: 'Application update failed.'});
+                                res.status(200).json({ success: false, message: 'Application update failed.'});
                             });
                     } else {
                         console.log('Application update failed: Not job owner.');
@@ -110,7 +129,47 @@ router.put('/', function(req, res){
                 })
                 .catch(function(err) {
                     console.log('Job get failed: ' + err);
-                    res.status(401).json({ success: false, message: 'Job posting failed.' });
+                    res.status(401).json({ success: false, message: 'Job get failed.' });
+                });
+        })
+        .catch(function(err) {
+            console.log('User not verified.');
+        });
+
+});
+
+// Reject application
+router.put('/reject', function(req, res){
+    jwtUtils.decryptToken(req, res)
+        .then(function(token){
+            var jobId = req.body.job_id;
+            var appId = req.body.application_id;
+            var employerId = token.id;
+
+            // verify job owner
+            Job.forge()
+                .query({ where: { id:  jobId }})
+                .fetch()
+                .then(function(job) {
+                    if (job.attributes.user_id === employerId) {
+                        Application.forge({ id: appId })
+                            .save({ appstatus_id: 3 })
+                            .then(function(app) {
+                                console.log('Application reject successful.');
+                                res.status(200).json({ success: true, message: 'Application reject successful.', result: app });
+                            })
+                            .catch(function(err) {
+                                console.log('Application reject failed: ' + err);
+                                res.status(200).json({ success: true, message: 'Application reject failed.'});
+                            });
+                    } else {
+                        console.log('Application reject failed: Not job owner.');
+                        res.status(200).json({ success: true, message: 'Application update failed. Not job owner.'});
+                    }
+                })
+                .catch(function(err) {
+                    console.log('Job get failed: ' + err);
+                    res.status(401).json({ success: false, message: 'Job get failed.' });
                 });
         })
         .catch(function(err) {

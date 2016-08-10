@@ -91,12 +91,17 @@ params:
 
 ### Accept/Reject Applications
 
-PUT _http://**DEV API SERVER**/api/application_
+PUT _http://**DEV API SERVER**/api/application/accept_
 
 params:
 * job_id: 1,
 * application_id: 1
-* app_status: 2 or 3 (2 - Accepted, 3 - Passed)
+
+PUT _http://**DEV API SERVER**/api/application/reject_
+
+params:
+* job_id: 1,
+* application_id: 1
 
 ### Get Applications by job
 
