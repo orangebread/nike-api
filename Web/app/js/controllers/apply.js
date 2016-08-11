@@ -23,7 +23,7 @@ module.controller('ApplyModalController', function ($scope, $uibModalInstance, i
       }
       else
       {
-        alert("Please fill out all inputs");
+        alert("You may have already applied to this job, you can only apply once.");
       }
     }
 
@@ -33,7 +33,8 @@ module.controller('ApplyModalController', function ($scope, $uibModalInstance, i
 
     dataParams = {
       job_id: $localStorage.currentJobId,
-      bid_amount:$scope.forms.inputs.bid
+      bid_amount:$scope.forms.inputs.bid,
+      description: $scope.forms.inputs.description
     }
 
     if($scope.forms.inputs.description != "")
@@ -59,7 +60,8 @@ module.controller('ApplyModalController', function ($scope, $uibModalInstance, i
     }
 
     function error(response){
-      //alert("Something went wrong.")
+      console.log(response);
+      alert("Something went wrong.")
     }
 
     dataParams = {

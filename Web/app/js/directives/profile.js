@@ -1,7 +1,7 @@
 module.directive('profile', function() {
 	return {
 		templateUrl: '../../templates/modules/profile-module.html',
-		controller: ['$scope', '$http', '$localStorage', '$location', function($scope, $http, $localStorage, $location) {
+		controller: ['$scope', '$http', '$localStorage', '$location', '$timeout', function($scope, $http, $localStorage, $location, $timeout) {
 
 			$scope.applications = [];
 			$scope.jobsPosted = [];
@@ -149,6 +149,17 @@ module.directive('profile', function() {
 	        			$scope.view.fetchedApplications = response.data.result;
 	        			$scope.view.showApplications = true;
 	        			$scope.view.jobTitle = title;
+
+	        			$timeout(function(){
+	        				var height = 0;
+		        			$(".applications .application-item").each(function(){
+		        				$this = $(this);
+		        				if($this.height() > height)
+		        					height = $this.height();
+		        			})
+
+		        			$(".applications .application-item").height(height);
+	        			}, 10)
 	        		}
 	        		else
 	        		{

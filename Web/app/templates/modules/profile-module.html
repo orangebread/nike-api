@@ -63,13 +63,13 @@
 			    			<p>{{application.display_name}}</p>
 			    		</div>
 			    		<div class="bid">
-			    			<p><span>Bid</span>: $100</p>
+			    			<p><span>Bid</span>: {{application.bid_amount | currency}}</p>
 			    		</div>
 			    		<div class="status">
 			    			<p><span>Status:</span> {{application.application_status}}</p>
 			    		</div>
 			    		<div class="description">
-							<p> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi molestias reprehenderit, optio quam eveniet amet! </p>
+							<p> {{application.description}}</p>
 			    		</div>
 			    		<div class="buttons">
 			    			<button ng-click="decide(true, application.application_id, application.job_id)">Accept</button>
