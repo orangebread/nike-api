@@ -63,6 +63,8 @@ module.directive('messages', function() {
 				$scope.unselectAllDiscussions()
 				$scope.discussions[$index].selected = true;
 				$scope.viewDetails.currentDiscussion = $scope.discussions[$index]
+				$scope.viewDetails.otherUserId = $scope.viewDetails.currentDiscussion.message[0].user_id;
+				$scope.viewDetails.otherUsername = $scope.viewDetails.currentDiscussion.threadTitle;
 			}
 
 			$scope.unselectAllDiscussions = function(){
