@@ -15,18 +15,39 @@ module.directive('messages', function() {
 
 			$scope.getMessages = function(){
 
-				function success(response){
+				function messageSuccess(response){
 	        		console.log(response);
-	        		$scope.discussions = response.data.result[0].thread;
-	        		if($scope.discussions.length > 0)
-	        		{
-	        			$scope.viewDetails.currentDiscussion = $scope.discussions[0];
-	        			$scope.discussions[0].selected = true;
-	        			$scope.viewDetails.otherUserId = $scope.viewDetails.currentDiscussion.message[0].user_id;
-	        		}
+	        		response.data.result[0].thread.forEach(function(e){
+
+	        			function success(response){
+			        		console.log(response);
+			        		e.threadTitle = response.data.result.display_name;
+			        		$scope.discussions.push(e);
+
+			        		if($scope.discussions.length > 0)
+			        		{
+			        			$scope.viewDetails.currentDiscussion = $scope.discussions[0];
+			        			$scope.viewDetails.otherUsername = $scope.discussions[0].threadTitle;
+			        			$scope.discussions[0].selected = true;
+			        			$scope.viewDetails.otherUserId = $scope.viewDetails.currentDiscussion.message[0].user_id;
+			        		}
+						}
+
+						function error(response){
+							console.log("error");
+							console.log(response);
+							alert("Something went wrong.")
+						}
+
+						$http({
+					      method: 'GET',
+					      url: API_BASE_URL+"user/"+e.message[0].user_id,
+					    }).then(success, error);
+
+	        		})	        		
 				}
 
-				function error(response){
+				function messageError(response){
 					console.log("error");
 					console.log(response);
 					alert("Something went wrong.")
@@ -35,7 +56,7 @@ module.directive('messages', function() {
 				$http({
 			      method: 'GET',
 			      url: API_BASE_URL+"message",
-			    }).then(success, error);
+			    }).then(messageSuccess, messageError);
 			}
 
 			$scope.changeDiscussion = function($index){
@@ -89,25 +110,6 @@ module.directive('messages', function() {
 				{
 					alert("Please type in a message.")
 				}
-			}
-
-			$scope.getOtherUserInfo = function(){
-
-				function success(response){
-	        		console.log(response);
-	        		$scope.viewDetails.otherUsername = response.data.result.display_name;
-				}
-
-				function error(response){
-					console.log("error");
-					console.log(response);
-					alert("Something went wrong.")
-				}
-
-				$http({
-			      method: 'GET',
-			      url: API_BASE_URL+"user/"+$scope.viewDetails.otherUserId,
-			    }).then(success, error);
 			}
 
 			$scope.getMessages();

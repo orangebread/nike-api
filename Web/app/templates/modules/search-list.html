@@ -5,7 +5,7 @@
 		<input type="text" placeholder="Payroll, finance, billing...." ng-enter="search()" ng-model="searchTerm"/>
 	</div>
 	<ul class="search-results dynamic-grid" angular-grid="results" grid-width="400" gutter-size="10" angular-grid-id="gallery" refresh-on-img-load="false" >
-	    <li data-ng-repeat="result in results" class="grid search-result" ng-click="goToJob(result.id, result.user_id)">
+	    <li data-ng-repeat="result in results" class="grid search-result" ng-click="goToJob(result.id, result.user_id, result.title)">
 	        <div class="text-content">
 	        	<h3>{{result.title}}</h3>
 	        	<p>{{result.description}}</p>

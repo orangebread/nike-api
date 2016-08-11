@@ -8,9 +8,9 @@
                 	<a class="clearfix" ng-click="changeDiscussion($index)">
                 		<img src="http://bootdey.com/img/Content/user_1.jpg" alt="" class="img-circle">
                 		<div class="friend-name">	
-                			<strong>{{discussion.job_title}}</strong>
+                			<strong>{{discussion.threadTitle}}</strong>
                 		</div>
-                		<div class="last-message text-muted">Hello, Are you there?</div>
+                		<div class="last-message text-muted">{{discussion.message[discussion.message.length-1].message}}</div>
                 		<small class="time text-muted">{{discussion.last_message_date}}</small>
                 		<small class="chat-alert label label-danger">{{discussion.amount_unread}}</small>
                 	</a>

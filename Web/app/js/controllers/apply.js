@@ -63,7 +63,7 @@ module.controller('ApplyModalController', function ($scope, $uibModalInstance, i
     }
 
     dataParams = {
-      message: $scope.forms.inputs.description,
+      message: "[Job Title: "+$localStorage.currentJobTitle+"]" + $scope.forms.inputs.description,
       employer_id: $localStorage.currentEmployerId,
     }
 

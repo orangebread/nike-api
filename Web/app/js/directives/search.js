@@ -26,9 +26,10 @@ module.directive('search', function() {
 			    }).then(success, error);
 	        }
 
-	        $scope.goToJob = function(id, userId){
+	        $scope.goToJob = function(id, userId, title){
 	        	$localStorage.currentJobId = id;
 	        	$localStorage.currentEmployerId = userId;
+	        	$localStorage.currentJobTitle = title;
 	        	$location.path("job");
 	        }
 		}]
