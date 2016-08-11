@@ -71,6 +71,21 @@ GET _http://**DEV API SERVER**/api/job/me_
 params:
 * No params
 
+### Job Workflow
+
+POST _http://**DEV API SERVER**/api/job/workflow_
+
+params:
+* job_id: 1
+* workflow_id: 1
+
+1	Open
+2	In Progress
+3	Ready for Review
+4	In Review
+5	Payment Released
+6	Completed
+
 ## Application Endpoints
 
 ### Apply to Job

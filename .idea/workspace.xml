@@ -3,7 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="af4255a4-449f-4c14-8112-464024826330" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/API/controllers/ApplicationController.js" afterPath="$PROJECT_DIR$/API/controllers/ApplicationController.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/API/controllers/JobController.js" afterPath="$PROJECT_DIR$/API/controllers/JobController.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/README.md" afterPath="$PROJECT_DIR$/README.md" />
     </list>
     <ignored path="HourlyAdmin.iws" />
@@ -38,8 +38,8 @@
       <file leaf-file-name="JobController.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/API/controllers/JobController.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="60">
-              <caret line="4" column="0" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="33" />
+            <state relative-caret-position="521">
+              <caret line="145" column="35" selection-start-line="145" selection-start-column="35" selection-end-line="145" selection-end-column="35" />
               <folding />
             </state>
           </provider>
@@ -58,8 +58,8 @@
       <file leaf-file-name="ApplicationController.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/API/controllers/ApplicationController.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="105">
-              <caret line="88" column="0" selection-start-line="88" selection-start-column="0" selection-end-line="88" selection-end-column="0" />
+            <state relative-caret-position="435">
+              <caret line="100" column="52" selection-start-line="100" selection-start-column="52" selection-end-line="100" selection-end-column="52" />
               <folding />
             </state>
           </provider>
@@ -78,8 +78,8 @@
       <file leaf-file-name="README.md" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/README.md">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="533">
-              <caret line="104" column="0" selection-start-line="104" selection-start-column="0" selection-end-line="104" selection-end-column="0" />
+            <state relative-caret-position="549">
+              <caret line="80" column="0" selection-start-line="80" selection-start-column="0" selection-end-line="80" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -180,10 +180,10 @@
         <option value="$PROJECT_DIR$/API/models/Job.js" />
         <option value="$PROJECT_DIR$/API/migrations/20160805085519_appupdate.js" />
         <option value="$PROJECT_DIR$/API/package.json" />
-        <option value="$PROJECT_DIR$/API/controllers/JobController.js" />
         <option value="$PROJECT_DIR$/API/controllers/LoginController.js" />
         <option value="$PROJECT_DIR$/API/models/User.js" />
         <option value="$PROJECT_DIR$/API/controllers/ApplicationController.js" />
+        <option value="$PROJECT_DIR$/API/controllers/JobController.js" />
         <option value="$PROJECT_DIR$/README.md" />
       </list>
     </option>
@@ -424,12 +424,12 @@
       <workItem from="1465064454723" duration="1794000" />
       <workItem from="1466784586706" duration="75624000" />
       <workItem from="1469715426528" duration="7553000" />
-      <workItem from="1469829067509" duration="50889000" />
+      <workItem from="1469829067509" duration="54256000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="135860000" />
+    <option name="totallyTimeSpent" value="139227000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="10" y="31" width="1572" height="1104" extended-state="0" />
@@ -835,26 +835,26 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/API/controllers/JobController.js">
+    <entry file="file://$PROJECT_DIR$/API/controllers/ApplicationController.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="4" column="0" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="33" />
+        <state relative-caret-position="435">
+          <caret line="100" column="52" selection-start-line="100" selection-start-column="52" selection-end-line="100" selection-end-column="52" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/API/controllers/ApplicationController.js">
+    <entry file="file://$PROJECT_DIR$/API/controllers/JobController.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="88" column="0" selection-start-line="88" selection-start-column="0" selection-end-line="88" selection-end-column="0" />
+        <state relative-caret-position="521">
+          <caret line="145" column="35" selection-start-line="145" selection-start-column="35" selection-end-line="145" selection-end-column="35" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/README.md">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="533">
-          <caret line="104" column="0" selection-start-line="104" selection-start-column="0" selection-end-line="104" selection-end-column="0" />
+        <state relative-caret-position="549">
+          <caret line="80" column="0" selection-start-line="80" selection-start-column="0" selection-end-line="80" selection-end-column="0" />
           <folding />
         </state>
       </provider>
