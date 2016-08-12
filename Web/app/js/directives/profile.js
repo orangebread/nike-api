@@ -107,8 +107,6 @@ module.directive('profile', function() {
 
 				function success(response){
 	        		console.log(response);
-	        		$scope.userInfo.email = response.data.result.email;
-	        		$scope.userInfo.display_name = response.data.result.display_name;
 				}
 
 				function error(response){
