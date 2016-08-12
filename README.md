@@ -164,9 +164,7 @@ GET _http://**DEV API SERVER**/api/message/thread_
 params:
  * No params
 
-## User Endpoints
+## EMAIL NOTIFICATIONS
 
-### Get User Info
-
-GET _http://**DEV API SERVER**/api/user/:id_
-
+* Registration
+* Job posting
