@@ -2,10 +2,12 @@ var Job = require('../models/Job');
 var Application = require('../models/Application');
 var Message = require('../models/Message');
 var Thread = require('../models/Thread');
+var User = require('../models/User');
 var db = require('../config/db');
 var express = require('express');
 var router  = express.Router();
 var jwtUtils = require('../utils/jwtUtils');
+var emailService = require('../utils/emailService');
 
 // Get applications for job
 router.get('/:id/application', function(req, res){
@@ -79,7 +81,19 @@ router.post('/', function(req, res){
                 .save()
                 .then(function(result) {
                     console.log('Job post success: ' + result);
-                    res.status(200).json({ success: true, message: 'Job posting successful.'});
+
+                    User.forge({ id: token.id })
+                        .fetch()
+                        .then(function(user) {
+                            // send email notification
+                            emailService.sendEmail(user.attributes.email,'Job Posted', 'Your job is now posted.')
+                                .then(function(success) {
+                                    console.log('Email sent: ' + JSON.stringify(success));
+
+                                    res.status(200).json({ success: true, message: 'Job posting successful.'});
+                                });
+                        });
+
                 })
                 .catch(function(err){
                     console.log('Job post failed: ' + err);

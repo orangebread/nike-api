@@ -3,9 +3,10 @@ var express = require('express');
 var router  = express.Router();
 var jwt = require('jsonwebtoken');
 var jwtUtils = require('../utils/jwtUtils');
+var emailService = require('../utils/emailService');
 var CONSTANTS = require('../config/constants');
 
-
+// Login
 router.post('/', function(req, res){
     var email = req.body.email;
     var password = req.body.password;
@@ -47,29 +48,12 @@ router.post('/', function(req, res){
 
 });
 
+// Register user
 router.post('/register', function(req, res){
     console.log('Initializing registration...');
     var email = req.body.email;
     var password = req.body.password;
     var displayName = req.body.display_name;
-
-    // i am a bad programmer
-    // User.register(email, password, displayName)
-    //     .then(function(user) {
-    //         console.log('Registering other stupid bullshit: ' + user);
-    //         //create a new token
-    //         var payload = {
-    //             id: user.response.id
-    //         }
-    //         //create a new token
-    //         var token = jwt.sign(payload, CONSTANTS.SECRET, { expiresIn: CONSTANTS.TOKEN_EXPIRE });
-    //         res.json({ success: true, message: 'Successfully registered user.', displayName: user.response.display_name, token: token });
-    //     })
-    //     .catch(function(err) {
-    //         console.log(err);
-    //         res.status(500).json({ success: false, message: 'Error registering user'});
-    //     });
-
 
     jwtUtils.hashPassword(password)
         .then(function(hash) {
@@ -81,9 +65,16 @@ router.post('/register', function(req, res){
                     var payload = {
                         id: user.response.id
                     }
-                    //create a new token
-                    var token = jwt.sign(payload, CONSTANTS.SECRET, { expiresIn: CONSTANTS.TOKEN_EXPIRE });
-                    res.json({ success: true, message: 'Successfully registered user.', displayName: user.response.display_name, token: token });
+
+                    // send email notification
+                    emailService.sendEmail(email,'Registration Complete', 'Thank you for registering at Hourly Admin.')
+                        .then(function(success) {
+                            console.log('Email sent: ' + JSOn.stringify(success));
+
+                            //create a new token
+                            var token = jwt.sign(payload, CONSTANTS.SECRET, { expiresIn: CONSTANTS.TOKEN_EXPIRE });
+                            res.json({ success: true, message: 'Successfully registered user.', displayName: user.response.display_name, token: token });
+                        });
                 })
                 .catch(function(err) {
                     console.log(err);
