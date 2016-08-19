@@ -69,7 +69,7 @@ router.post('/register', function(req, res){
                     // send email notification
                     emailService.sendEmail(email,'Registration Complete', 'Thank you for registering at Hourly Admin.')
                         .then(function(success) {
-                            console.log('Email sent: ' + JSOn.stringify(success));
+                            console.log('Email sent: ' + JSON.stringify(success));
 
                             //create a new token
                             var token = jwt.sign(payload, CONSTANTS.SECRET, { expiresIn: CONSTANTS.TOKEN_EXPIRE });

@@ -144,5 +144,4 @@ router.post('/submerchant', function(req, res){
 });
 
 
-
 module.exports = router;
