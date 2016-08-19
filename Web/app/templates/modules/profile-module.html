@@ -161,6 +161,12 @@
 			  	  
 			</div>
 			<a href="#" ng-click="logout()">Logout</a>
+			<button ng-click="setUpMerchant()">Set Up</button>
+			<button ng-click="genClientToken()">Get Client Token</button>
+			<form id="checkout" method="post" action="/checkout">
+				<div id="payment-form" class="test"></div>
+				<input type="submit" value="Pay $10">
+			</form>
 		</div>
 	</div>
 </div>

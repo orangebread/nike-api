@@ -117,15 +117,26 @@ module.directive('profile', function() {
 
 				dataParams = {
 					job_id: job_id, 
-					application_id: app_id,
-					app_status: decision ? 2 : 3
+					application_id: app_id
 				}
 
-				$http({
-			      method: 'PUT',
-			      data: dataParams,
-			      url: API_BASE_URL+"application/",
-			    }).then(success, error);
+				var confirmResult = false;
+				if(!decision)
+				{
+					confirmResult = confirm("Are you sure you want to reject this application? Once rejected it cannot be reversed.");
+					if(confirmResult)
+					{
+						$http({
+					      method: 'PUT',
+					      data: dataParams,
+					      url: API_BASE_URL+"application/reject",
+					    }).then(success, error);
+					}
+				}
+				else
+				{
+					
+				}
 			}
 
 			$scope.logout = function(){
@@ -183,6 +194,48 @@ module.directive('profile', function() {
 	        	$localStorage.currentEmployerId = userId;
 	        	$location.path("job");
 	        }
+
+	        $scope.setUpMerchant = function(){
+
+				function success(response){
+	        		console.log(response);
+				}
+
+				function error(response){
+					console.log("error");
+					console.log(response);
+					alert("Something went wrong.")
+				}
+
+				$http({
+			      method: 'POST',
+			      url: API_BASE_URL+"merchant/add",
+			    }).then(success, error);
+			}
+
+			$scope.genClientToken = function(){
+
+				function success(response){
+	        		console.log(response);
+	        		var test = braintree.setup(response.data.result, 'dropin', {
+					  container: 'payment-form',
+					  onPaymentMethodReceived: function(data){
+					  	console.log(data)
+					  }
+					});
+				}
+
+				function error(response){
+					console.log("error");
+					console.log(response);
+					alert("Something went wrong.")
+				}
+
+				$http({
+			      method: 'GET',
+			      url: API_BASE_URL+"merchant/client_token",
+			    }).then(success, error);
+			}
 
 			$scope.getApplications();
 			$scope.getPostedJobs();

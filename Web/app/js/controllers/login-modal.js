@@ -109,7 +109,7 @@ module.controller('LoginModalController', function ($scope, $uibModalInstance, i
     dataParams = {
       email: $scope.forms.inputs.email,
       password: $scope.forms.inputs.password,
-      displayName: $scope.forms.inputs.display_name
+      display_name: $scope.forms.inputs.display_name
     }
 
     $http({
