@@ -164,6 +164,29 @@ GET _http://**DEV API SERVER**/api/message/thread_
 params:
  * No params
 
+## MERCHANT/MARKETPLACE Endpoints
+
+### Onboard Submerchant
+
+POST _http://**DEV API SERVER**/api/merchant/add_
+
+params:
+ * None for now
+
+### Find Submerchant
+
+POST _http://**DEV API SERVER**/api/merchant/find_
+
+params:
+ * customer_id: <merchant id>
+
+### Generate client token
+
+GET _http://**DEV API SERVER**/api/merchant/client_token_
+
+params:
+ * None
+
 ## EMAIL NOTIFICATIONS
 
 * Registration

@@ -134,6 +134,7 @@ router.put('/accept', function(req, res){
         })
         .catch(function(err) {
             console.log('User not verified.');
+            res.json({ success: false, message: 'User not verified.'});
         });
 
 });
