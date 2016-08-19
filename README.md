@@ -17,7 +17,7 @@ POST _http://**DEV API SERVER**/api/login/register_
 params:
 * email: asdf@asdf.com
 * password: pass123
-* displayName: AsdfUser (optional)
+* display_name: AsdfUser (optional)
 
 ### Login
 
