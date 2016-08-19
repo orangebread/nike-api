@@ -8,7 +8,7 @@ module.exports = function(app) {
         // check header or url parameters or post parameters for token
         var token = req.headers.authorization || req.headers.token || req.query.token;
 
-        console.log(JSON.stringify(req.headers));
+        // console.log(JSON.stringify(req.headers));
         
         // decode token
         if (token) {
