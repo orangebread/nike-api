@@ -12,8 +12,8 @@ var gateway = braintree.connect({
 
 gateway.config.timeout = 10000;
 
-// Onboard submerchant
-router.post('/add', function(req, res){
+// Onboard submerchant TEST
+router.post('/addtest', function(req, res){
     jwtUtils.decryptToken(req, res)
         .then(function(token){
             merchantAccountParams = {
@@ -68,11 +68,99 @@ router.post('/add', function(req, res){
         });
 });
 
+
+// Onboard submerchant
+router.post('/add', function(req, res){
+    jwtUtils.decryptToken(req, res)
+        .then(function(token){
+            // Individual params
+            var firstName = req.body.first_name,
+                lastName = req.body.last_name,
+                email = req.body.email,
+                phone = req.body.phone,
+                dateOfBirth = req.body.dob, // YYYY-MM-DD
+                ssn = req.body.ssn,
+                streetAddress = req.body.street_address,
+                locality = req.body.locality,
+                region = req.body.region,
+                postalCode = req.body.postal_code,
+
+            // Business (optional)
+                legalName = req.body.legal_name,
+                dbaName = req.body.dba_name, // "Doing Business As" Name
+                taxId = req.body.tax_id,
+                bStreetAddress = req.body.b_street_address,
+                bLocality = req.body.b_locality,
+                bRegion = req.body.b_region,
+                bPostalCode = req.body.b_postal_code,
+
+            // Funding
+                descriptor = req.body.descriptor,
+                fEmail = req.body.f_email,
+                fMobilePhone= req.body.f_mobile_phone, // OPTIONAL
+                accountNumber = req.body.account_number,
+                routingNumber = req.body.routing_number,
+
+            // Other
+                tosAccepted = req.body.tos_accepted;
+
+            merchantAccountParams = {
+                individual: {
+                    firstName: firstName,
+                    lastName: lastName,
+                    email: email,
+                    phone: phone,
+                    dateOfBirth: dateOfBirth,
+                    ssn: ssn,
+                    address: {
+                        streetAddress: streetAddress,
+                        locality: locality,
+                        region: region,
+                        postalCode: postalCode
+                    }
+                },
+                business: {
+                    legalName: legalName,
+                    dbaName: dbaName,
+                    taxId: taxId,
+                    address: {
+                        streetAddress: bStreetAddress,
+                        locality: bLocality,
+                        region: bRegion,
+                        postalCode: bPostalCode
+                    }
+                },
+                funding: {
+                    descriptor: descriptor,
+                    destination: braintree.MerchantAccount.FundingDestination.Bank,
+                    email: fEmail,
+                    mobilePhone: fMobilePhone,
+                    accountNumber: accountNumber,
+                    routingNumber: routingNumber
+                },
+                tosAccepted: tosAccepted,
+                masterMerchantAccountId: "mogadigitalllc"
+            };
+
+            gateway.merchantAccount.create(merchantAccountParams, function (err, result) {
+                if (err) {
+                    console.log('Error occurred while onboarding submerchant: ' + err);
+                    res.json({ success: false, message: 'Error onboarding submerchant.'});
+                }
+                res.json({ success: true, message: 'Submerchant onboarded succesfully!', result: result});
+            });
+        })
+        .catch(function(err) {
+            console.log('User not verified: ' + err);
+            res.json({ success: false, message: 'User not verified.'});
+        });
+});
+
 // Find submerchant
 router.post('/find', function(req, res){
-    var customerId = req.body.customer_id;
+    var merchantId = req.body.merchant_id;
 
-    gateway.merchantAccount.find(customerId, function (err, merchantAccount) {
+    gateway.merchantAccount.find(merchantId, function (err, merchantAccount) {
         if (err) {
             console.log('Error found: ' + err);
             res.json({ success: false, message: 'Submerchant not found.'});
@@ -92,19 +180,55 @@ router.get("/client_token", function (req, res) {
     });
 });
 
+// TEST Checkout and confirm payment
+router.post('/processtest', function(req, res) {
+    var nonce = "fake-valid-nonce";
+    var amount = req.body.amount;
+    var service = amount * 0.1;
+    var merchant_id = req.body.merchant_id;
+
+    gateway.transaction.sale({
+        amount: amount,
+        paymentMethodNonce: nonce,
+        merchantAccountId: merchant_id,
+        serviceFeeAmount: service,
+        options: {
+            submitForSettlement: false
+        }
+    }, function (err, result) {
+        if (err) {
+            console.log('Sale error: ' + err);
+            res.json({ success: true, message: 'Sale failed.'});
+        }
+        console.log('Sale success: ' + result);
+        res.json({ success: true, message: 'Sale successful!', result: result});
+    });
+
+    // gateway.transaction.sale({
+    //     amount: total,
+    //     merchantAccountId: merchant_id,
+    //     paymentMethodNonce: nonce,
+    //     serviceFeeAmount: service
+    // }, function (err, result) {
+    //     res.json({ success: true, message: 'Sale processed.', result: result});
+    // });
+});
+
+
 // Checkout and confirm payment
 router.post('/process', function(req, res) {
     var nonce = req.body.payment_method_nonce;
     var total = req.body.total;
-    var service = req.body.service;
+    var service = total * 0.1;
     var merchant_id = req.body.merchant_id;
 
     gateway.transaction.sale({
-        amount: "10.00",
-        paymentMethodNonce: nonceFromTheClient,
-        merchantAccountId: "janesladders_instant_00ht8q89",
+        amount: total,
+        paymentMethodNonce: nonce,
+        merchantAccountId: merchant_id,
+        serviceFeeAmount: service,
         options: {
-            submitForSettlement: true
+            submitForSettlement: false
         }
     }, function (err, result) {
         if (err) {

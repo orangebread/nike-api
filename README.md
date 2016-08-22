@@ -166,19 +166,55 @@ params:
 
 ## MERCHANT/MARKETPLACE Endpoints
 
-### Onboard Submerchant
+### Onboard Submerchant TEST
 
-POST _http://**DEV API SERVER**/api/merchant/add_
+POST _http://**DEV API SERVER**/api/merchant/addtest_
 
 params:
- * None for now
+ * None - already filled out server side
+
+ ### Onboard Submerchant
+
+ POST _http://**DEV API SERVER**/api/merchant/add_
+
+ params:
+// Individual params
+var firstName = req.body.first_name,
+    lastName = req.body.last_name,
+    email = req.body.email,
+    phone = req.body.phone,
+    dateOfBirth = req.body.dob, // YYYY-MM-DD
+    ssn = req.body.ssn,
+    streetAddress = req.body.street_address,
+    locality = req.body.locality,
+    region = req.body.region,
+    postalCode = req.body.postal_code,
+
+// Business (optional)
+    legalName = req.body.legal_name,
+    dbaName = req.body.dba_name, // "Doing Business As" Name
+    taxId = req.body.tax_id,
+    bStreetAddress = req.body.b_street_address,
+    bLocality = req.body.b_locality,
+    bRegion = req.body.b_region,
+    bPostalCode = req.body.b_postal_code,
+
+// Funding
+    descriptor = req.body.descriptor,
+    fEmail = req.body.f_email,
+    fMobilePhone= req.body.f_mobile_phone, // OPTIONAL
+    accountNumber = req.body.account_number,
+    routingNumber = req.body.routing_number,
+
+// Other
+    tosAccepted = req.body.tos_accepted; (true or false)
 
 ### Find Submerchant
 
 POST _http://**DEV API SERVER**/api/merchant/find_
 
 params:
- * customer_id: <merchant id>
+ * merchant_id: <merchant id>
 
 ### Generate client token
 
@@ -186,6 +222,26 @@ GET _http://**DEV API SERVER**/api/merchant/client_token_
 
 params:
  * None
+
+### Process Sale TEST
+
+GET _http://**DEV API SERVER**/api/merchant/processtest_
+
+params:
+ * merchant_id: <merchant id>
+ * amount: <dollar amount>
+ * payment_method_nonce: IGNORE THIS FIELD, NONCE PROVIDED
+
+
+### Process Sale
+
+GET _http://**DEV API SERVER**/api/merchant/process_
+
+params:
+ * merchant_id: <merchant id>
+ * amount: <dollar amount>
+ * payment_method_nonce: <nonce token> (passed in from client)
+
 
 ## EMAIL NOTIFICATIONS
 
