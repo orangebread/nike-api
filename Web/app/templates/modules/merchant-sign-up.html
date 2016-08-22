@@ -1,0 +1,58 @@
+<div class="hourly-modal">
+    <div class="modal-header">
+        <h3 class="modal-title">Sign Up to Receive Payments</h3>
+    </div>
+    <div class="modal-body">
+        <h2>In order to apply to this job you must first set up your payment account. This is to make sure that if your application is accepted that you are able to be paid. When an employer accepts an application they will send the bid amount to an escrow account. Once your work has been reviewed and marked as complete by the employer, the money will be released to your account.</h2>
+        <div class="login-form">
+            <div class="form-group">
+                <label for="first_name">First Name:</label>
+                <input type="text" class="form-control" id="first_name" ng-model="forms.inputs.first_name">
+            </div>
+            <div class="form-group">
+                <label for="last_name">Last Name:</label>
+                <input type="text" class="form-control" id="last_name" ng-model="forms.inputs.last_name">
+            </div>
+            <div class="form-group">
+                <label for="phone_number">Phone Number:</label>
+                <input type="text" class="form-control" id="phone_number" ng-model="forms.inputs.phone">
+            </div>
+            <div class="form-group">
+                <label for="dob">Date of Birth:</label>
+                <input type="text" class="form-control" id="dob" ng-model="forms.inputs.dob">
+            </div>
+            <div class="form-group">
+                <label for="tax">Tax ID Number:</label>
+                <input type="text" class="form-control" id="tax" ng-model="forms.inputs.tax">
+            </div>
+            <div class="form-group">
+                <label for="address_1">Address Line 1:</label>
+                <input type="text" class="form-control" id="address_1" ng-model="forms.inputs.address_1">
+            </div>
+            <div class="form-group">
+                <label for="address_2">Address Line 2:</label>
+                <input type="text" class="form-control" id="address_2" ng-model="forms.inputs.address_2">
+            </div>
+            <div class="form-group">
+                <label for="city">City</label>
+                <input type="text" class="form-control" id="city" ng-model="forms.inputs.city">
+            </div>
+            <div class="form-group">
+                <label for="business">Business Name:</label>
+                <input type="text" class="form-control" id="business" ng-model="forms.inputs.business">
+            </div>
+            <div class="form-group">
+                <label for="b_account">Bank Account Number:</label>
+                <input type="text" class="form-control" id="b_account" ng-model="forms.inputs.b_account">
+            </div>
+            <div class="form-group">
+                <label for="b_routing">Bank Routing Number:</label>
+                <input type="text" class="form-control" id="b_routing" ng-model="forms.inputs.b_routing">
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button class="btn submit-btn" type="button" ng-click="apply()">Sign Up</button>
+        <button class="btn cancel-btn" type="button" ng-click="cancel()">Cancel</button>
+    </div>
+</div>

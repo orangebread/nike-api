@@ -11,7 +11,8 @@ module.directive('jobDetails', function() {
 			    	notes: ""
 			    },
 			    employerUsername: "",
-			    ableToApply: true
+			    ableToApply: true, 
+			    isMerchant: false
 			}
 
 			$scope.job = {};
@@ -20,24 +21,30 @@ module.directive('jobDetails', function() {
 				logged_in: (typeof $localStorage.userID !== "undefined")
 			}
 
+			$scope.openMerchantSignUp = function(){
+				var modalInstance = $uibModal.open({
+			      animation: true,
+			      templateUrl: 'templates/modules/merchant-sign-up.html',
+			      controller: 'MerchantSignUpController',
+			      resolve: {
+			        items: function () {
+			          return [];
+			        }
+			      }
+			    });
+			}
+
 			$scope.openApplyModal = function(){
-				if($scope.user.logged_in)
-				{
-					var modalInstance = $uibModal.open({
-				      animation: true,
-				      templateUrl: 'templates/modules/apply-modal.html',
-				      controller: 'ApplyModalController',
-				      resolve: {
-				        items: function () {
-				          return [];
-				        }
-				      }
-				    });
-				}
-				else
-				{
-					$scope.openLoginModal();
-				}
+				var modalInstance = $uibModal.open({
+			      animation: true,
+			      templateUrl: 'templates/modules/apply-modal.html',
+			      controller: 'ApplyModalController',
+			      resolve: {
+			        items: function () {
+			          return [];
+			        }
+			      }
+			    });
 			}
 
 			$scope.openLoginModal = function(){
@@ -51,6 +58,24 @@ module.directive('jobDetails', function() {
 			        }
 			      }
 			    });
+			}
+
+			$scope.apply = function(){
+				if($scope.user.logged_in)
+				{
+					if($scope.isMerchant)
+					{
+						$scope.openApplyModal();
+					}
+					else
+					{
+						$scope.openMerchantSignUp();
+					}
+				}
+				else
+				{
+					$scope.openLoginModal();
+				}
 			}
 
 			// this fails if the user is not logged in. This call should probably not require JWT
