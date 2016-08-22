@@ -1,0 +1,19 @@
+<div class="hourly-modal">
+    <div class="modal-header">
+        <h3 class="modal-title">Accept Application</h3>
+    </div>
+    <div class="modal-body">
+        <h2>In order to accept this application, you must put up the funds to pay for it first. This will <b>not</b> be sent to the applicant. The money will go into an escrow account until the job is done, reviewed you and marked as completed. This is in order for the applicant to feel comfortable in knowing the money has been put up. If a job is not completed, the funds will be returned back to you.</h2>
+        <button ng-click="selectPaymentAndAccept()" class="btn submit-btn" ng-show="!forms.showPaymentForm">Accept and pay</button>
+        <button ng-click="cancel()" ng-show="!forms.showPaymentForm" class="btn cancel-btn">Nevermind</button>
+        <form id="checkout" method="post" action="/checkout" ng-show="forms.showPaymentForm">
+            <p class="checkout-header">Please either enter your credit card information or use paypal.</p>
+            <div id="payment-form" class="test"></div>
+            <button ng-click="submitPayment()" class="btn submit-btn">Accept Application and Pay {{forms.bid_amount | currency}}</button>
+            <button ng-click="cancel()" class="btn cancel-btn">Cancel</button>
+        </form>
+    </div>
+    <div class="modal-footer">
+
+    </div>
+</div>

@@ -1,5 +1,17 @@
 .hourly-modal{
 
+	form{
+
+		input[type=submit]
+		{
+			margin-top: 10px;
+
+			+ .btn{
+				margin-top: 10px;
+			}
+		}
+	}
+
 	.cancel-btn{
 		background-color: $color-black;
 		color: $color-white;

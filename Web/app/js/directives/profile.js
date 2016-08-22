@@ -1,7 +1,7 @@
 module.directive('profile', function() {
 	return {
 		templateUrl: '../../templates/modules/profile-module.html',
-		controller: ['$scope', '$http', '$localStorage', '$location', '$timeout', function($scope, $http, $localStorage, $location, $timeout) {
+		controller: ['$scope', '$http', '$localStorage', '$location', '$timeout', '$uibModal', function($scope, $http, $localStorage, $location, $timeout, $uibModal) {
 
 			$scope.applications = [];
 			$scope.jobsPosted = [];
@@ -103,7 +103,7 @@ module.directive('profile', function() {
 			    }).then(success, error);
 			}
 
-			$scope.decide = function(decision, app_id, job_id){
+			$scope.decide = function(decision, app_id, job_id, amount){
 
 				function success(response){
 	        		console.log(response);
@@ -135,7 +135,7 @@ module.directive('profile', function() {
 				}
 				else
 				{
-					
+					$scope.openAcceptModal(app_id, job_id, amount);
 				}
 			}
 
@@ -213,28 +213,21 @@ module.directive('profile', function() {
 			    }).then(success, error);
 			}
 
-			$scope.genClientToken = function(){
+			$scope.openAcceptModal = function(application_id, job_id, amount){
+				$localStorage.amountToPay = amount;
+				$localStorage.appId = application_id;
+				$localStorage.acceptJobId = job_id;
 
-				function success(response){
-	        		console.log(response);
-	        		var test = braintree.setup(response.data.result, 'dropin', {
-					  container: 'payment-form',
-					  onPaymentMethodReceived: function(data){
-					  	console.log(data)
-					  }
-					});
-				}
-
-				function error(response){
-					console.log("error");
-					console.log(response);
-					alert("Something went wrong.")
-				}
-
-				$http({
-			      method: 'GET',
-			      url: API_BASE_URL+"merchant/client_token",
-			    }).then(success, error);
+				var modalInstance = $uibModal.open({
+			      animation: true,
+			      templateUrl: 'templates/modules/apply-accept-modal.html',
+			      controller: 'ApplyAcceptController',
+			      resolve: {
+			        items: function () {
+			          return $scope.items;
+			        }
+			      }
+			    });
 			}
 
 			$scope.getApplications();

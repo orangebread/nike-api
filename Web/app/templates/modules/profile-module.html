@@ -72,8 +72,8 @@
 							<p> {{application.description}}</p>
 			    		</div>
 			    		<div class="buttons" ng-show="application.application_status == 'Applied'">
-			    			<button ng-click="decide(true, application.application_id, application.job_id)">Accept</button>
-			    			<button ng-click="decide(false, application.application_id, application.job_id)">Reject</button>
+			    			<button ng-click="decide(true, application.application_id, application.job_id, application.bid_amount)">Accept</button>
+			    			<button ng-click="decide(false, application.application_id, application.job_id, application.bid_amount)">Reject</button>
 			    		</div>
 			    	</div>
 <!-- 			    	<div class="application-item">
@@ -161,12 +161,6 @@
 			  	  
 			</div>
 			<a href="#" ng-click="logout()">Logout</a>
-			<button ng-click="setUpMerchant()">Set Up</button>
-			<button ng-click="genClientToken()">Get Client Token</button>
-			<form id="checkout" method="post" action="/checkout">
-				<div id="payment-form" class="test"></div>
-				<input type="submit" value="Pay $10">
-			</form>
 		</div>
 	</div>
 </div>
