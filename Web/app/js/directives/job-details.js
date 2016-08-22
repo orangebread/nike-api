@@ -10,7 +10,8 @@ module.directive('jobDetails', function() {
 			    	days: 0,
 			    	notes: ""
 			    },
-			    employerUsername: ""
+			    employerUsername: "",
+			    ableToApply: true
 			}
 
 			$scope.job = {};
@@ -72,8 +73,12 @@ module.directive('jobDetails', function() {
 
 			$scope.getUserDetails = function(){
 
+				if($localStorage.currentEmployerId == $localStorage.userID)
+        		{
+        			$scope.forms.ableToApply = false;
+        		}
+
 				function success(response){
-	        		console.log(response);
 	        		$scope.forms.employerUsername = response.data.result.display_name;
 				}
 

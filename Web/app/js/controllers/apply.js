@@ -3,7 +3,7 @@ module.controller('ApplyModalController', function ($scope, $uibModalInstance, i
   $scope.forms = {
     login: true,
     inputs: {
-      bid: "",
+      bid: 0,
       description: ""
     },
     errors: {
@@ -65,7 +65,7 @@ module.controller('ApplyModalController', function ($scope, $uibModalInstance, i
     }
 
     dataParams = {
-      message: "[Job Title: "+$localStorage.currentJobTitle+"]" + $scope.forms.inputs.description,
+      message: "[Job Title: "+$localStorage.currentJobTitle+"] " + $scope.forms.inputs.description,
       employer_id: $localStorage.currentEmployerId,
     }
 

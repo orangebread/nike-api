@@ -226,3 +226,12 @@ a:hover, a:active, a:focus {
   border: 1px solid $color-yellow;
   border-right: none;
 }
+
+.no-messages{
+  text-align: center;
+
+    p{
+        font-size: 20px;
+        font-weight: bold;
+    }
+}

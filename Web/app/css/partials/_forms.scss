@@ -122,3 +122,18 @@ p.form-error-text{
 p.checkout-header{
   margin-bottom: 10px;
 }
+
+.currencyinput {
+  position: relative;
+
+     &:before{
+        content: '$';
+        position: absolute;
+        left: 8px;
+        top: 32px;
+     }
+
+     input{
+        padding-left: 17px;
+     }
+}

@@ -64,7 +64,10 @@ module.controller('ApplyAcceptController', function ($scope, $uibModalInstance, 
 
 				},
 				onError: function(data){
-					alert("Please fix the credit card field errors or use paypal.")
+					if(!$scope.forms.paymentCancelled)
+					{
+						alert("Please fix the credit card field errors or use paypal.")
+					}
 				}
 			});
 		}

@@ -2,21 +2,21 @@
 	<div class="column-30-70">
 		<div class="column">
 			<div class="profile-info">
-				<img src="http://thehourlyadmin.weebly.com/uploads/6/9/2/6/69269293/page-layouts-2193812_orig.jpeg">
 				<div class="stats">
 					<p class="name"><span>Employer:</span> {{forms.employerUsername}}</p>
 				</div>
 				<div class="apply">
-					<button ng-click="openApplyModal()">Apply</button>
+					<button ng-click="openApplyModal()" ng-show="forms.ableToApply">Apply</button>
 				</div>
 			</div>
 		</div>
 		<div class="column">
 			<div class="content">
-				<h1>{{job.title}}</h1>
+				<h1 style="margin-top: 0px;">{{job.title}}</h1>
+				<h3>Description:</h3>
 				{{job.description}}
 				<br>
-				cost: {{job.budget}}
+				<h2 class="budget">Budget: <span>{{job.budget | currency}}</span></h2>
 			</div>
 		</div>
 	</div>

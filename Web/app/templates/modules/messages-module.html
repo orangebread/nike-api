@@ -1,5 +1,5 @@
 <div class="messages-module">
-    <div class="row">
+    <div class="row" ng-if="discussions.length > 0">
     	<div class="col-md-4 bg-white friend-list-wrapper">           
             <!-- =============================================================== -->
             <!-- member list -->
@@ -86,5 +86,8 @@
                 </span>
             </div><!-- /input-group --> 
         </div>         
+    </div>
+    <div class="no-messages" ng-if="discussions.length == 0">
+        <p>You have no messages. Message threads will be created when you apply to a job or when someone applies to one of your posted jobs.</p>
     </div>
 </div>
