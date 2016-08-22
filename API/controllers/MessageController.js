@@ -30,7 +30,15 @@ router.post('/new', function(req, res){
                             })
                                 .save()
                                 .then(function(final) {
-                                    res.json({ success: true, message: 'Message created successfully', result: final });
+                                    User.forge({ id: employerId })
+                                        .fetch()
+                                        .then(function(user) {
+                                            // send email notification
+                                            emailService.sendEmail(user.attributes.email,'Registration Complete', 'Thank you for registering at Hourly Admin.')
+                                                .then(function(success) {
+                                                    res.json({ success: true, message: 'Message created successfully', result: final });
+                                                });
+                                        });
                                 })
                                 .catch(function(err) {
                                     console.log('Messages failed to create: ' + err);

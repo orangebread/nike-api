@@ -179,35 +179,35 @@ params:
 
  params:
 // Individual params
-var firstName = req.body.first_name,
-    lastName = req.body.last_name,
-    email = req.body.email,
-    phone = req.body.phone,
-    dateOfBirth = req.body.dob, // YYYY-MM-DD
-    ssn = req.body.ssn,
-    streetAddress = req.body.street_address,
-    locality = req.body.locality,
-    region = req.body.region,
-    postalCode = req.body.postal_code,
+    first_name,
+    last_name,
+    email,
+    phone,
+    dob, // YYYY-MM-DD
+    ssn,
+    street_address,
+    locality,
+    region,
+    postal_code,
 
 // Business (optional)
-    legalName = req.body.legal_name,
-    dbaName = req.body.dba_name, // "Doing Business As" Name
-    taxId = req.body.tax_id,
-    bStreetAddress = req.body.b_street_address,
-    bLocality = req.body.b_locality,
-    bRegion = req.body.b_region,
-    bPostalCode = req.body.b_postal_code,
+    legal_name,
+    dba_name, // "Doing Business As" Name
+    tax_id,
+    b_street_address,
+    b_locality,
+    b_region,
+    b_postal_code,
 
 // Funding
-    descriptor = req.body.descriptor,
-    fEmail = req.body.f_email,
-    fMobilePhone= req.body.f_mobile_phone, // OPTIONAL
-    accountNumber = req.body.account_number,
-    routingNumber = req.body.routing_number,
+    descriptor,
+    f_email,
+    f_mobile_phone, // OPTIONAL
+    account_number,
+    routing_number,
 
 // Other
-    tosAccepted = req.body.tos_accepted; (true or false)
+    tos_accepted (true or false)
 
 ### Find Submerchant
 

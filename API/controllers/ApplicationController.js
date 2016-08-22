@@ -56,8 +56,16 @@ router.post('/', function(req, res){
                         })
                             .save()
                             .then(function(final) {
-                                console.log('Application saved with: ' + JSON.stringify(final));
-                                res.json({ success: true, message: 'Application saved!', result: final});
+                                User.forge({ id: employerId })
+                                    .fetch()
+                                    .then(function(user) {
+                                        // send email notification
+                                        emailService.sendEmail(user.attributes.email,'Application received', 'Someone has applied to your job.')
+                                            .then(function(success) {
+                                                res.json({ success: true, message: 'Application saved!', result: final});
+                                            });
+                                    });
+
                             })
                             .catch(function(err) {
                                 console.log('Error while saving application: ' + err);
