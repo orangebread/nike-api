@@ -18,9 +18,9 @@ module.controller('ApplyAcceptController', function ($scope, $uibModalInstance, 
 
 		$scope.forms.showPaymentForm = true;
 
-		function success(response){
-			console.log(response);
-			braintree.setup(response.data.result, 'dropin', {
+		function success(tokenResponse){
+			console.log(tokenResponse);
+			braintree.setup(tokenResponse.data.result, 'dropin', {
 			  container: 'payment-form',
 			  onPaymentMethodReceived: function(data){
 
@@ -34,12 +34,34 @@ module.controller('ApplyAcceptController', function ($scope, $uibModalInstance, 
 							$scope.forms.showPaymentForm = false;
 					  	}
 
-					  	function success(response){
-			        		console.log(response);
-			        		alert("Application accepted and payment sent!")
+					  	function sendPaymentSucess(paymentResponse){
+					  		console.log(paymentResponse)
+
+			        		function acceptSuccess(acceptResponse){
+				        		console.log(acceptResponse);
+				        		alert("Application accepted and payment sent!")
+							}
+
+							function acceptError(acceptResponse){
+								console.log("error");
+								console.log(acceptResponse);
+								alert("Something went wrong.")
+								$scope.forms.paymentSubmitted = false;
+							}
+
+							dataParams = {
+								job_id: $scope.forms.job_id, 
+								application_id: $scope.forms.application_id
+							}
+
+						  	// $http({
+						   //    method: 'PUT',
+						   //    data: dataParams,
+						   //    url: API_BASE_URL+"application/accept",
+						   //  }).then(acceptSuccess, acceptError);
 						}
 
-						function error(response){
+						function sendPaymentError(paymentResponse){
 							console.log("error");
 							console.log(response);
 							alert("Something went wrong.")
@@ -47,15 +69,16 @@ module.controller('ApplyAcceptController', function ($scope, $uibModalInstance, 
 						}
 
 						dataParams = {
-							job_id: $scope.forms.job_id, 
-							application_id: $scope.forms.application_id
+							merchant_id: "jonathan_lane_instant_hs7sqt8h", 
+							amount: $scope.forms.bid_amount,
+							nonce: data.nonce
 						}
 
 					  	$http({
-					      method: 'PUT',
+					      method: 'POST',
 					      data: dataParams,
-					      url: API_BASE_URL+"application/accept",
-					    }).then(success, error);
+					      url: API_BASE_URL+"merchant/process",
+					    }).then(sendPaymentSucess, sendPaymentError);
 
 					    // actually send the payment also
 					}
@@ -72,9 +95,9 @@ module.controller('ApplyAcceptController', function ($scope, $uibModalInstance, 
 			});
 		}
 
-		function error(response){
+		function error(tokenResponse){
 			console.log("error");
-			console.log(response);
+			console.log(tokenResponse);
 			alert("Something went wrong.")
 		}
 
