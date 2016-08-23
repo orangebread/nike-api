@@ -218,8 +218,8 @@ router.post('/processtest', function(req, res) {
 // Checkout and confirm payment
 router.post('/process', function(req, res) {
     var nonce = req.body.payment_method_nonce;
-    var total = req.body.total;
-    var service = total * 0.1;
+    var amount = req.body.amount;
+    var service = amount * 0.1;
     var merchant_id = req.body.merchant_id;
 
     gateway.transaction.sale({
