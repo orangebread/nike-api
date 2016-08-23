@@ -38,6 +38,14 @@
                 <input type="text" class="form-control" id="city" ng-model="forms.inputs.city">
             </div>
             <div class="form-group">
+                <label for="state">State</label>
+                <input type="text" class="form-control" id="state" ng-model="forms.inputs.state">
+            </div>
+            <div class="form-group">
+                <label for="zip">Zip Code</label>
+                <input type="text" class="form-control" id="zip" ng-model="forms.inputs.zip">
+            </div>
+            <div class="form-group">
                 <label for="business">Business Name:</label>
                 <input type="text" class="form-control" id="business" ng-model="forms.inputs.business">
             </div>
@@ -52,7 +60,7 @@
         </div>
     </div>
     <div class="modal-footer">
-        <button class="btn submit-btn" type="button" ng-click="apply()">Sign Up</button>
+        <button class="btn submit-btn" type="button" ng-click="signUp()">Sign Up</button>
         <button class="btn cancel-btn" type="button" ng-click="cancel()">Cancel</button>
     </div>
 </div>

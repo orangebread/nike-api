@@ -18,8 +18,8 @@ module.directive('profile', function() {
 				function success(response){
 	        		console.log(response);
 	        		response.data.result.forEach(function(e){
-	        			function applicationSuccess(response){
-					      $scope.applications.push(response.data.result)
+	        			function applicationSuccess(appResponse){
+					      $scope.applications.push(appResponse.data.result)
 					      console.log($scope.applications);
 					    }
 
