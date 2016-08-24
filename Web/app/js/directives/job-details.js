@@ -61,22 +61,21 @@ module.directive('jobDetails', function() {
 			}
 
 			$scope.apply = function(){
-				// if($scope.user.logged_in)
-				// {
-				// 	if($scope.isMerchant)
-				// 	{
-				// 		$scope.openApplyModal();
-				// 	}
-				// 	else
-				// 	{
-				// 		$scope.openMerchantSignUp();
-				// 	}
-				// }
-				// else
-				// {
-				// 	$scope.openLoginModal();
-				// }
-				$scope.openApplyModal();
+				if($scope.user.logged_in)
+				{
+					if($scope.isMerchant)
+					{
+						$scope.openApplyModal();
+					}
+					else
+					{
+						$scope.openMerchantSignUp();
+					}
+				}
+				else
+				{
+					$scope.openLoginModal();
+				}
 			}
 
 			// this fails if the user is not logged in. This call should probably not require JWT

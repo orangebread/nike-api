@@ -33,7 +33,7 @@
 			    
 			    <div class="custom-row" ng-repeat="job in jobsPosted | orderBy: job.title">
 			      <div class="custom-cell link">
-			        <a ng-click="goToJob(job.id, job.user_id)">{{job.title}}</a>
+			        <a ng-click="goToJob(job.id, job.user_id, job.title)">{{job.title}}</a>
 			      </div>
 			      <div class="custom-cell">
 			        {{job.expires_at | date}}
@@ -149,8 +149,11 @@
 			      </div>
 			      <div class="custom-cell">
 			        <span ng-if="application.status_id == 1">Pending</span>
-			        <span ng-if="application.status_id == 2">Active</span>
-			        <span ng-if="application.status_id == 3">Rejected</span>
+			        <span ng-if="application.status_id == 2">In Progress</span>
+			        <span ng-if="application.status_id == 3">Ready For Review</span>
+			        <span ng-if="application.status_id == 4">In Review</span>
+			        <span ng-if="application.status_id == 5">Payment Released</span>
+			        <span ng-if="application.status_id == 6">Completed</span>
 			      </div>
 			    </div>
 			    

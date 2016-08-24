@@ -189,29 +189,12 @@ module.directive('profile', function() {
 			    }).then(success, error);
 			}
 
-			$scope.goToJob = function(id, userId){
+			$scope.goToJob = function(id, userId, title){
 	        	$localStorage.currentJobId = id;
 	        	$localStorage.currentEmployerId = userId;
+	        	$localStorage.currentJobTitle = title;
 	        	$location.path("job");
 	        }
-
-	        $scope.setUpMerchant = function(){
-
-				function success(response){
-	        		console.log(response);
-				}
-
-				function error(response){
-					console.log("error");
-					console.log(response);
-					alert("Something went wrong.")
-				}
-
-				$http({
-			      method: 'POST',
-			      url: API_BASE_URL+"merchant/add",
-			    }).then(success, error);
-			}
 
 			$scope.openAcceptModal = function(application_id, job_id, amount){
 				$localStorage.amountToPay = amount;

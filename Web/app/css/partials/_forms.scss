@@ -137,3 +137,11 @@ p.checkout-header{
         padding-left: 17px;
      }
 }
+
+.double-input{
+  @include make-sm-column(12);
+  
+  .form-group{
+    @include make-sm-column(6);
+  }
+}

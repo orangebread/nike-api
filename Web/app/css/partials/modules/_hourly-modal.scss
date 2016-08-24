@@ -1,5 +1,9 @@
 .hourly-modal{
 
+	.modal-body{
+		@include make-sm-column(12);
+	}
+
 	form{
 
 		input[type=submit]
@@ -63,5 +67,9 @@
 		text-align: center;
 		margin-top: 20px;
 		margin-bottom: 20px;
+	}
+
+	.login-form{
+
 	}
 }

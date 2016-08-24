@@ -40,6 +40,13 @@ module.controller('ApplyAcceptController', function ($scope, $uibModalInstance, 
 			        		function acceptSuccess(acceptResponse){
 				        		console.log(acceptResponse);
 				        		alert("Application accepted and payment sent!")
+
+				        		// update job workflow
+				        		$http({
+							      method: 'POST',
+							      data: {job_id: $scope.forms.job_id, workflow_id: 2},
+							      url: API_BASE_URL+"job/workflow",
+							    });
 							}
 
 							function acceptError(acceptResponse){
@@ -63,7 +70,7 @@ module.controller('ApplyAcceptController', function ($scope, $uibModalInstance, 
 
 						function sendPaymentError(paymentResponse){
 							console.log("error");
-							console.log(response);
+							console.log(paymentResponse);
 							alert("Something went wrong.")
 							$scope.forms.paymentSubmitted = false;
 						}
