@@ -32,7 +32,7 @@ router.get('/', function(req, res){ 
          .then(function(token){
             var sql = 'SELECT u.id, u.display_name, u.email, m.merchant_name, m.merchant_status \
                          FROM "user" u \
-                         JOIN merchant m \
+                         LEFT JOIN merchant m \
                          ON u.id = m.user_id \
                          WHERE u.id = ?';
                db.knex.raw(sql, [token.id]) 
