@@ -2,6 +2,7 @@ var braintree = require('braintree');
 var express = require('express');
 var router  = express.Router();
 var jwtUtils = require('../utils/jwtUtils');
+var globals = require('../config/globals');
 
 var gateway = braintree.connect({
     environment:  braintree.Environment.Sandbox,
@@ -59,7 +60,8 @@ router.post('/addtest', function(req, res){
                     console.log('Error occurred while onboarding submerchant: ' + err);
                     res.json({ success: false, message: 'Error onboarding submerchant.'});
                 }
-                res.json({ success: true, message: 'Submerchant onboarded succesfully!', result: result});
+                globals.user = token.id;
+                res.json({ success: true, message: 'Submerchant processed succesfully!', result: result});
             });
         })
         .catch(function(err) {
@@ -158,26 +160,42 @@ router.post('/add', function(req, res){
 
 // Find submerchant
 router.post('/find', function(req, res){
-    var merchantId = req.body.merchant_id;
+    jwtUtils.decryptToken(req, res)
+        .then(function(token){
+            var merchantId = req.body.merchant_id;
 
-    gateway.merchantAccount.find(merchantId, function (err, merchantAccount) {
-        if (err) {
-            console.log('Error found: ' + err);
-            res.json({ success: false, message: 'Submerchant not found.'});
-        }
-        res.json({ success: true, message: 'Submerchant found!', result: merchantAccount});
-    });
+            gateway.merchantAccount.find(merchantId, function (err, merchantAccount) {
+                if (err) {
+                    console.log('Error found: ' + err);
+                    res.json({ success: false, message: 'Submerchant not found.'});
+                }
+                res.json({ success: true, message: 'Submerchant found!', result: merchantAccount});
+            });
+        })
+        .catch(function(err) {
+            console.log('User not verified: ' + err);
+            res.json({ success: false, message: 'User not verified.'});
+        });
+
 });
 
 // Create client token
 router.get("/client_token", function (req, res) {
-    gateway.clientToken.generate({}, function (err, response) {
-        if (err) {
-            console.log('Error generating client token: ' + err);
-            res.json({ success: true, message: 'Client token failed.'});
-        }
-        res.json({ success: true, message: 'Client token created!', result: response.clientToken});
-    });
+    jwtUtils.decryptToken(req, res)
+        .then(function(token){
+            gateway.clientToken.generate({}, function (err, response) {
+                if (err) {
+                    console.log('Error generating client token: ' + err);
+                    res.json({ success: true, message: 'Client token failed.'});
+                }
+                res.json({ success: true, message: 'Client token created!', result: response.clientToken});
+            });
+        })
+        .catch(function(err) {
+            console.log('User not verified: ' + err);
+            res.json({ success: false, message: 'User not verified.'});
+        });
+
 });
 
 // TEST Checkout and confirm payment
@@ -186,23 +204,30 @@ router.post('/processtest', function(req, res) {
     var amount = req.body.amount;
     var service = amount * 0.1;
     var merchant_id = req.body.merchant_id;
+    jwtUtils.decryptToken(req, res)
+        .then(function(token){
+            gateway.transaction.sale({
+                amount: amount,
+                paymentMethodNonce: nonce,
+                merchantAccountId: merchant_id,
+                serviceFeeAmount: service,
+                options: {
+                    submitForSettlement: false
+                }
+            }, function (err, result) {
+                if (err) {
+                    console.log('Sale error: ' + err);
+                    res.json({ success: true, message: 'Sale failed.'});
+                }
+                console.log('Sale success: ' + result);
+                res.json({ success: true, message: 'Sale successful!', result: result});
+            });
+        })
+        .catch(function(err) {
+            console.log('User not verified: ' + err);
+            res.json({ success: false, message: 'User not verified.'});
+        });
 
-    gateway.transaction.sale({
-        amount: amount,
-        paymentMethodNonce: nonce,
-        merchantAccountId: merchant_id,
-        serviceFeeAmount: service,
-        options: {
-            submitForSettlement: false
-        }
-    }, function (err, result) {
-        if (err) {
-            console.log('Sale error: ' + err);
-            res.json({ success: true, message: 'Sale failed.'});
-        }
-        console.log('Sale success: ' + result);
-        res.json({ success: true, message: 'Sale successful!', result: result});
-    });
 
     // gateway.transaction.sale({
     //     amount: total,
@@ -221,23 +246,30 @@ router.post('/process', function(req, res) {
     var amount = req.body.amount;
     var service = amount * 0.1;
     var merchant_id = req.body.merchant_id;
+    jwtUtils.decryptToken(req, res)
+        .then(function(token){
+            gateway.transaction.sale({
+                amount: total,
+                paymentMethodNonce: nonce,
+                merchantAccountId: merchant_id,
+                serviceFeeAmount: service,
+                options: {
+                    submitForSettlement: false
+                }
+            }, function (err, result) {
+                if (err) {
+                    console.log('Sale error: ' + err);
+                    res.json({ success: true, message: 'Sale failed.'});
+                }
+                console.log('Sale success: ' + result);
+                res.json({ success: true, message: 'Sale successful!', result: result});
+            });
+        })
+        .catch(function(err) {
+            console.log('User not verified: ' + err);
+            res.json({ success: false, message: 'User not verified.'});
+        });
 
-    gateway.transaction.sale({
-        amount: total,
-        paymentMethodNonce: nonce,
-        merchantAccountId: merchant_id,
-        serviceFeeAmount: service,
-        options: {
-            submitForSettlement: false
-        }
-    }, function (err, result) {
-        if (err) {
-            console.log('Sale error: ' + err);
-            res.json({ success: true, message: 'Sale failed.'});
-        } 
-        console.log('Sale success: ' + result);
-        res.json({ success: true, message: 'Sale successful!', result: result});
-    });
 
     // gateway.transaction.sale({
     //     amount: total,
@@ -248,24 +280,5 @@ router.post('/process', function(req, res) {
     //     res.json({ success: true, message: 'Sale processed.', result: result});
     // });
 });
-
-
-// ** WEBHOOK RESPONSES
-// Webhook response for submerchant
-router.post('/submerchant', function(req, res){
-
-    gateway.webhookNotification.parse(
-        req.body.bt_signature,
-        req.body.bt_payload,
-        function (err, webhookNotification) {
-            if (err) {
-                console.log('FUCKKKKK: ' + err);
-            }
-            console.log("[Webhook Received " + webhookNotification.timestamp + "] | Kind: " + webhookNotification.kind);
-            console.log(JSON.stringify(webhookNotification));
-        }
-    );
-});
-
 
 module.exports = router;

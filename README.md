@@ -36,6 +36,22 @@ params:
 * fb_token: firstResponse.authResponse.accessToken,
 * email: secondResponse.email
 
+## User Endpoints
+
+### Get User by ID
+
+POST _http://**DEV API SERVER**/api/user/:id
+
+params:
+* id: <user id>
+
+### Get User by self ID
+
+POST _http://**DEV API SERVER**/api/user
+
+params:
+* No params, uses token
+
 ## Job Posting Endpoints
 
 ### New Job Post

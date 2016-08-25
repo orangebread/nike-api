@@ -25,6 +25,10 @@ module.exports = db.Model.extend({
         var Application = require('./Application');
         return this.belongsToMany(Application);
     },
+    merchant: function() {
+        var Merchant = require('./Merchant');
+        return this.hasOne(Merchant);
+    },
 
 
     hidden: ['id', 'password', 'fb_token', 'fb_id', 'created_at', 'updated_at']
