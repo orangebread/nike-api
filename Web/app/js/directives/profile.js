@@ -19,8 +19,11 @@ module.directive('profile', function() {
 	        		console.log(response);
 	        		response.data.result.forEach(function(e){
 	        			function applicationSuccess(appResponse){
-					      $scope.applications.push(appResponse.data.result)
-					      console.log($scope.applications);
+	        			  e.jobTitle = appResponse.data.result.title;
+	        			  e.budget = appResponse.data.result.budget;
+	        			  e.expires_at = appResponse.data.result.expires_at;
+	        			  e.employer_id = appResponse.data.result.user_id;
+					      $scope.applications.push(e)
 					    }
 
 					    function applicationError(response){

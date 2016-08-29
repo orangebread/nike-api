@@ -2,6 +2,11 @@ module.directive('search', function() {
 	return {
 	templateUrl: '../../templates/modules/search-list.html',
 	controller: ['$scope', '$http', '$localStorage', '$location', function($scope, $http, $localStorage, $location) {
+			$scope.search = {
+				hasResults: false,
+				searchTerm: ""
+			}
+
 			$scope.results = [
 			
 			]
@@ -12,6 +17,9 @@ module.directive('search', function() {
 	        		$scope.results = response.data.result.filter(function(el){
 	        			return ((el.title.toLowerCase().indexOf($scope.searchTerm.toLowerCase()) !== -1) || typeof $scope.searchTerm === "undefined")
 	        		});
+
+	        		$scope.search.hasResults = $scope.results.length > 0;
+	        		$scope.search.searchTerm = $scope.searchTerm;
 				}
 
 				function error(response){
@@ -32,6 +40,9 @@ module.directive('search', function() {
 	        	$localStorage.currentJobTitle = title;
 	        	$location.path("job");
 	        }
+
+	        $scope.searchTerm = "";
+	        $scope.search();
 		}]
 	};
 });

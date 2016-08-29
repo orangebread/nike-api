@@ -7,7 +7,7 @@ module.controller('PostTaskController', function ($scope, $uibModalInstance, ite
       description: "",
       budget: 0
     },
-    showSpinner: false;
+    showSpinner: false
   }
 
   $scope.postTask = function () {

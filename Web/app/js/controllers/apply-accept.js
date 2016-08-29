@@ -6,6 +6,7 @@ module.controller('ApplyAcceptController', function ($scope, $uibModalInstance, 
 		bid_amount: $localStorage.amountToPay,
 		job_id: $localStorage.acceptJobId,
 		applicant_user_id: 0,
+		applicant_merchant_id: "",
 		inputs: {
 		  title: "",
 		  description: "",
@@ -77,18 +78,23 @@ module.controller('ApplyAcceptController', function ($scope, $uibModalInstance, 
 						}
 
 						dataParams = {
-							merchant_id: "jonathan_lane_instant_hs7sqt8h", 
+							merchant_id: $scope.forms.applicant_merchant_id, 
 							amount: $scope.forms.bid_amount,
-							nonce: data.nonce
+							payment_method_nonce: data.nonce
 						}
 
-					  	$http({
-					      method: 'POST',
-					      data: dataParams,
-					      url: API_BASE_URL+"merchant/process",
-					    }).then(sendPaymentSucess, sendPaymentError);
-
-					    // actually send the payment also
+						if($scope.forms.applicant_merchant_id != '')
+						{
+						  	$http({
+						      method: 'POST',
+						      data: dataParams,
+						      url: API_BASE_URL+"merchant/process",
+						    }).then(sendPaymentSucess, sendPaymentError);
+						}
+						else
+						{
+							alert("Unfortunatly this applicant is no longer a valid user. Their application cannot be accepted.")
+						}
 					}
 
 					$scope.forms.paymentSubmitted = true;
@@ -151,6 +157,7 @@ module.controller('ApplyAcceptController', function ($scope, $uibModalInstance, 
 		function success(response){
 			console.log("response");
     		console.log(response);
+    		$scope.forms.applicant_merchant_id = response.data.result[0].merchant_name;
 		}
 
 		function error(response){

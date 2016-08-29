@@ -104,7 +104,7 @@ module.directive('jobDetails', function() {
         		}
 
 				function success(response){
-	        		$scope.forms.employerUsername = response.data.result.display_name;
+	        		$scope.forms.employerUsername = response.data.result[0].display_name;
 				}
 
 				function error(response){

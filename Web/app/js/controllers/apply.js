@@ -8,12 +8,14 @@ module.controller('ApplyModalController', function ($scope, $uibModalInstance, i
     },
     errors: {
       description: false
-    }
+    },
+    showSpinner: false
   }
 
   $scope.apply = function () {
 
     function success(response){
+      $scope.forms.showSpinner = false;
       console.log(response);
       // if logged in successfully
       if(response.data.success)
@@ -28,17 +30,21 @@ module.controller('ApplyModalController', function ($scope, $uibModalInstance, i
     }
 
     function error(response){
+      $scope.forms.showSpinner = false;
       alert("Something went wrong.")
     }
 
     dataParams = {
       job_id: $localStorage.currentJobId,
+      employer_id: $localStorage.currentEmployerId,
       bid_amount:$scope.forms.inputs.bid,
       description: $scope.forms.inputs.description
     }
 
     if($scope.forms.inputs.description != "")
     {
+      $(".hourly-modal .spinner").height($(".modal-dialog").height());
+      $scope.forms.showSpinner = true;
       $scope.forms.errors.description = false;
       
       $http({
@@ -66,7 +72,7 @@ module.controller('ApplyModalController', function ($scope, $uibModalInstance, i
 
     dataParams = {
       message: "[Job Title: "+$localStorage.currentJobTitle+"] " + $scope.forms.inputs.description,
-      employer_id: $localStorage.currentEmployerId,
+      employer_id: $localStorage.currentEmployerId
     }
 
     $http({

@@ -44,17 +44,20 @@ module.controller('MerchantSignUpController', function ($scope, $uibModalInstanc
 
     var has_errors = false;
 
-    has_errors, $scope.forms.error.first_name = ($scope.forms.inputs.first_name == '');
-    has_errors, $scope.forms.error.last_name = ($scope.forms.inputs.last_name == '');
-    has_errors, $scope.forms.error.phone = ($scope.forms.inputs.phone == '' || $scope.forms.inputs.phone.length != 10 || isNaN($scope.forms.inputs.phone));
-    has_errors, $scope.forms.error.dob = ($scope.forms.inputs.dob == '');
-    has_errors, $scope.forms.error.address_1 = ($scope.forms.inputs.address_1 == '');
-    has_errors, $scope.forms.error.city = ($scope.forms.inputs.city == '');
-    has_errors, $scope.forms.error.toc = !($scope.forms.inputs.toc);
-    has_errors, $scope.forms.error.state = ($scope.forms.inputs.state == '');
-    has_errors, $scope.forms.error.zip = ($scope.forms.inputs.zip == '' || isNaN($scope.forms.inputs.zip) || $scope.forms.inputs.zip.length != 5);
-    has_errors, $scope.forms.error.b_account = ($scope.forms.inputs.b_account == '' || isNaN($scope.forms.inputs.b_account));
-    has_errors, $scope.forms.error.b_routing = ($scope.forms.inputs.b_routing == '' || isNaN($scope.forms.inputs.b_routing));
+    $scope.forms.error.first_name = ($scope.forms.inputs.first_name == '');
+    $scope.forms.error.last_name = ($scope.forms.inputs.last_name == '');
+    $scope.forms.error.phone = ($scope.forms.inputs.phone == '' || $scope.forms.inputs.phone.length != 10 || isNaN($scope.forms.inputs.phone));
+    $scope.forms.error.dob = ($scope.forms.inputs.dob == '');
+    $scope.forms.error.address_1 = ($scope.forms.inputs.address_1 == '');
+    $scope.forms.error.city = ($scope.forms.inputs.city == '');
+    $scope.forms.error.toc = !($scope.forms.inputs.toc);
+    $scope.forms.error.state = ($scope.forms.inputs.state == '');
+    $scope.forms.error.zip = ($scope.forms.inputs.zip == '' || isNaN($scope.forms.inputs.zip) || $scope.forms.inputs.zip.length != 5);
+    $scope.forms.error.b_account = ($scope.forms.inputs.b_account == '' || isNaN($scope.forms.inputs.b_account));
+    $scope.forms.error.b_routing = ($scope.forms.inputs.b_routing == '' || isNaN($scope.forms.inputs.b_routing));
+
+    has_errors = ($scope.forms.error.first_name || $scope.forms.error.last_name || $scope.forms.error.phone || $scope.forms.error.dob || $scope.forms.error.address_1
+                  || $scope.forms.error.city || $scope.forms.error.toc || $scope.forms.error.state || $scope.forms.error.zip || $scope.forms.error.b_account || $scope.forms.error.b_routing);
 
 
   	function success(response){
