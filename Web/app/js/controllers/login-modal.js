@@ -14,7 +14,8 @@ module.controller('LoginModalController', function ($scope, $uibModalInstance, i
       display_name_error: false,
       bad_creds: false,
       no_password: false
-    }
+    },
+    showSpinner: false
   }
 
   $scope.loginOrRegister = function(){
@@ -46,7 +47,11 @@ module.controller('LoginModalController', function ($scope, $uibModalInstance, i
     delete $localStorage.jwtToken;
     delete $localStorage.userID;
 
+    $(".hourly-modal .spinner").height($(".modal-dialog").height());
+    $scope.forms.showSpinner = true;
+
     function success(response){
+      $scope.forms.showSpinner = false;
       // if logged in successfully
       if(response.data.success)
       {
@@ -63,6 +68,7 @@ module.controller('LoginModalController', function ($scope, $uibModalInstance, i
     }
 
     function error(response){
+      $scope.forms.showSpinner = false;
       $scope.forms.flags.bad_creds = true;
       $log.log(response)
       delete $localStorage.jwtToken;
@@ -84,7 +90,11 @@ module.controller('LoginModalController', function ($scope, $uibModalInstance, i
     delete $localStorage.jwtToken;
     delete $localStorage.userID;
 
+    $(".hourly-modal .spinner").height($(".modal-dialog").height());
+    $scope.forms.showSpinner = true;
+
     function success(response){
+      $scope.forms.showSpinner = false;
       // if registered in successfully
       if(response.data.success)
       {
@@ -101,6 +111,7 @@ module.controller('LoginModalController', function ($scope, $uibModalInstance, i
     }
 
     function error(response){
+      $scope.forms.showSpinner = false;
       alert("Something bad happened");
       $log.log(response)
       delete $localStorage.jwtToken;
@@ -125,6 +136,7 @@ module.controller('LoginModalController', function ($scope, $uibModalInstance, i
     delete $localStorage.username;
 
     function success(response){
+      $scope.forms.showSpinner = false;
       // if logged in successfully
       if(response.data.success)
       {
@@ -141,6 +153,7 @@ module.controller('LoginModalController', function ($scope, $uibModalInstance, i
     }
 
     function error(response){
+      $scope.forms.showSpinner = false;
       alert("Something bad happened");
       console.log(response)
       delete $localStorage.jwtToken;
@@ -150,6 +163,8 @@ module.controller('LoginModalController', function ($scope, $uibModalInstance, i
       if(firstResponse.status == "connected")
       {
         Facebook.api('/me?fields=email', function(secondResponse) {
+            $(".hourly-modal .spinner").height($(".modal-dialog").height());
+            $scope.forms.showSpinner = true;
             var email = secondResponse.email;
 
             dataParams = {                
