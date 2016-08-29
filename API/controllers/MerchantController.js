@@ -149,6 +149,7 @@ router.post('/add', function(req, res){
                     console.log('Error occurred while onboarding submerchant: ' + err);
                     res.json({ success: false, message: 'Error onboarding submerchant.'});
                 }
+                globals.user = token.id;
                 res.json({ success: true, message: 'Submerchant onboarded succesfully!', result: result});
             });
         })
