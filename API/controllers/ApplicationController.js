@@ -2,11 +2,13 @@ var Job = require('../models/Job');
 var Application = require('../models/Application');
 var Message = require('../models/Message');
 var Thread = require('../models/Thread');
+var User = require('../models/User');
+
 var db = require('../config/db');
 var express = require('express');
 var router  = express.Router();
-var request = require('request');
 var jwtUtils = require('../utils/jwtUtils');
+var emailService = require('../utils/emailService');
 
 // Get applications for user
 router.get('/', function(req, res){
@@ -59,6 +61,7 @@ router.post('/', function(req, res){
                                 User.forge({ id: employerId })
                                     .fetch()
                                     .then(function(user) {
+                                        console.log('User attributes: ' + JSON.stringify(user));
                                         // send email notification
                                         emailService.sendEmail(user.attributes.email,'Application received', 'Someone has applied to your job.')
                                             .then(function(success) {
@@ -74,6 +77,7 @@ router.post('/', function(req, res){
 
 
                     } else {
+                        console.log('Application results: ' + JSON.stringify(result));
                         res.status(200).json({ success: false, message: 'Application already exists.'});
                     }
                 })
