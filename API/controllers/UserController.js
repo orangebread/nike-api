@@ -24,7 +24,6 @@ router.get('/:id', function(req, res){
                     res.status(200).json({ success: false, message: 'User retrieve failed.'});
                 });
         })
-        })
         .catch(function(err) {
             console.log('User not verified.');
         });
