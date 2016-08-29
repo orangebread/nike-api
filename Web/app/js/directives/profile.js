@@ -87,8 +87,10 @@ module.directive('profile', function() {
 
 				function success(response){
 	        		console.log(response);
-	        		$scope.userInfo.email = response.data.result.email;
-	        		$scope.userInfo.display_name = response.data.result.display_name;
+	        		$scope.userInfo.email = response.data.result[0].email;
+	        		$scope.userInfo.display_name = response.data.result[0].display_name;
+	        		$scope.userInfo.merchant_name = response.data.result[0].merchant_name;
+	        		$scope.userInfo.merchant_status = response.data.result[0].merchant_status;
 				}
 
 				function error(response){
@@ -99,7 +101,7 @@ module.directive('profile', function() {
 
 				$http({
 			      method: 'GET',
-			      url: API_BASE_URL+"user/"+$localStorage.userID,
+			      url: API_BASE_URL+"user",
 			    }).then(success, error);
 			}
 
@@ -143,7 +145,9 @@ module.directive('profile', function() {
 				delete $localStorage.jwtToken;
     			delete $localStorage.userID;
     			delete $localStorage.currentEmployerId;
-    			delete localStorage.currentJobId;
+    			delete $localStorage.currentJobId;
+    			delete $localStorage.merchantStatus;
+    			delete $localStorage.merchantID;
 
     			alert("You have been logged out.")
     			$location.path("home");

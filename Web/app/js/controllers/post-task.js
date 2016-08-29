@@ -6,12 +6,16 @@ module.controller('PostTaskController', function ($scope, $uibModalInstance, ite
       title: "",
       description: "",
       budget: 0
-    }
+    },
+    showSpinner: false;
   }
 
   $scope.postTask = function () {
+    $(".hourly-modal .spinner").height($(".modal-dialog").height());
+    $scope.forms.showSpinner = true;
 
     function success(response){
+      $scope.forms.showSpinner = false;
       console.log(response);
       // if logged in successfully
       if(response.data.success)
@@ -25,6 +29,7 @@ module.controller('PostTaskController', function ($scope, $uibModalInstance, ite
     }
 
     function error(response){
+      $scope.forms.showSpinner = false;
       alert("Something went wrong.")
     }
 

@@ -12,7 +12,7 @@ module.directive('jobDetails', function() {
 			    },
 			    employerUsername: "",
 			    ableToApply: true, 
-			    isMerchant: false
+			    isMerchant: (typeof $localStorage.merchantStatus !== 'undefined' && $localStorage.merchantStatus == 'active')
 			}
 
 			$scope.job = {};
@@ -63,7 +63,7 @@ module.directive('jobDetails', function() {
 			$scope.apply = function(){
 				if($scope.user.logged_in)
 				{
-					if($scope.isMerchant)
+					if($scope.forms.isMerchant)
 					{
 						$scope.openApplyModal();
 					}
@@ -96,7 +96,7 @@ module.directive('jobDetails', function() {
 			    }).then(success, error);
 			}
 
-			$scope.getUserDetails = function(){
+			$scope.getEmployerDetails = function(){
 
 				if($localStorage.currentEmployerId == $localStorage.userID)
         		{
@@ -119,7 +119,35 @@ module.directive('jobDetails', function() {
 			    }).then(success, error);
 			}
 
+			$scope.getUserDetails = function(){
+
+				if($localStorage.currentEmployerId == $localStorage.userID)
+        		{
+        			$scope.forms.ableToApply = false;
+        		}
+
+				function success(response){
+	        		$localStorage.merchantStatus = response.data.result[0].merchant_status;
+	        		if($localStorage.merchantStatus == 'active')
+	        		{
+	        			$scope.forms.isMerchant = true;
+	        		}
+				}
+
+				function error(response){
+					console.log("error");
+					console.log(response);
+					alert("Something went wrong.")
+				}
+
+				$http({
+			      method: 'GET',
+			      url: API_BASE_URL+"user",
+			    }).then(success, error);
+			}
+
 			$scope.getJobDetails();
+			$scope.getEmployerDetails();
 			$scope.getUserDetails();
 		}]
 	};

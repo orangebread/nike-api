@@ -5,6 +5,7 @@ module.controller('ApplyAcceptController', function ($scope, $uibModalInstance, 
 		application_id: $localStorage.appId,
 		bid_amount: $localStorage.amountToPay,
 		job_id: $localStorage.acceptJobId,
+		applicant_user_id: 0,
 		inputs: {
 		  title: "",
 		  description: "",
@@ -120,6 +121,50 @@ module.controller('ApplyAcceptController', function ($scope, $uibModalInstance, 
 		$uibModalInstance.dismiss('cancel');
 	};
 
+	$scope.getMerchantDetails = function(){
+
+		function success(response){
+    		console.log(response);
+    		response.data.result.forEach(function(e){
+    			if(e.application_id == $localStorage.appId)
+    			{
+    				$scope.forms.applicant_user_id = e.user_id;
+    				$scope.getApplicantMerchantInfo($scope.forms.applicant_user_id);
+    			}
+    		})
+		}
+
+		function error(response){
+			console.log("error");
+			console.log(response);
+			alert("Something went wrong.")
+		}
+
+		$http({
+	      method: 'GET',
+	      url: API_BASE_URL+"job/"+$localStorage.acceptJobId+"/application",
+	    }).then(success, error);
+	}
+
+	$scope.getApplicantMerchantInfo = function(user_id){
+
+		function success(response){
+			console.log("response");
+    		console.log(response);
+		}
+
+		function error(response){
+			console.log("error");
+			console.log(response);
+			alert("Something went wrong.")
+		}
+
+		$http({
+	      method: 'GET',
+	      url: API_BASE_URL+"user/"+user_id,
+	    }).then(success, error);
+	}
+
 	$scope.submitPayment = function () {
 		var form = document.getElementById('checkout');
 		var e = document.createEvent('Event');
@@ -127,4 +172,6 @@ module.controller('ApplyAcceptController', function ($scope, $uibModalInstance, 
 		e.initEvent('submit', true, true);
 		form.dispatchEvent(e);
 	};
+
+	$scope.getMerchantDetails();
 });
