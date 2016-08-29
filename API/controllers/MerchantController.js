@@ -250,7 +250,7 @@ router.post('/process', function(req, res) {
     jwtUtils.decryptToken(req, res)
         .then(function(token){
             gateway.transaction.sale({
-                amount: total,
+                amount: amount,
                 paymentMethodNonce: nonce,
                 merchantAccountId: merchant_id,
                 serviceFeeAmount: service,
