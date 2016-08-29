@@ -226,7 +226,7 @@ router.post('/processtest', function(req, res) {
         })
         .catch(function(err) {
             console.log('User not verified: ' + err);
-            res.json({ success: false, message: 'User not verified.'});
+            res.json({ success: false, message: 'User not verified.', result: err });
         });
 
 
@@ -250,7 +250,7 @@ router.post('/process', function(req, res) {
     jwtUtils.decryptToken(req, res)
         .then(function(token){
             gateway.transaction.sale({
-                amount: total,
+                amount: amount,
                 paymentMethodNonce: nonce,
                 merchantAccountId: merchant_id,
                 serviceFeeAmount: service,
@@ -268,7 +268,7 @@ router.post('/process', function(req, res) {
         })
         .catch(function(err) {
             console.log('User not verified: ' + err);
-            res.json({ success: false, message: 'User not verified.'});
+            res.json({ success: false, message: 'User not verified.', result: err });
         });
 
 

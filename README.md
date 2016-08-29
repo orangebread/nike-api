@@ -112,6 +112,7 @@ params:
 * job_id: 1,
 * bid_amount: 1000
 * description: blah blah blah
+* employer_id: <employer user id>
 
 ### Get Applications for user
 
