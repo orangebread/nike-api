@@ -144,3 +144,18 @@ p.checkout-header{
     padding-right: 0;
   }
 }
+
+#checkout{
+  .card-container{
+    margin-bottom: 20px;
+  }
+
+  .buttons{
+    text-align: center;
+  }
+
+  .form-error-text{
+    text-align: center;
+    margin-bottom: 15px;
+  }
+}
