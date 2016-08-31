@@ -89,9 +89,10 @@ module.controller('ApplyAcceptController', function ($scope, $uibModalInstance, 
 
 		var cc_result = $("#cc_number").validateCreditCard();
 		credit_card_ready = (cc_result.valid && ($scope.forms.card.name.length > 0)
-		                    && ($scope.forms.card.cvc.length >= 3) && ($scope.forms.card.expire.length > 4));
+		                    && ($scope.forms.card.cvc.length >= 3) && ($scope.forms.card.expire.replace(/\s+/g, '').length > 4));
 
 		function success(tokenResponse){
+
 			var client = new braintree.api.Client({clientToken: tokenResponse.data.result});
 			client.tokenizeCard({
 			  number: $scope.forms.card.number,
@@ -115,8 +116,10 @@ module.controller('ApplyAcceptController', function ($scope, $uibModalInstance, 
 			        		$http({
 						      method: 'POST',
 						      data: {job_id: $scope.forms.job_id, workflow_id: 2},
-						      url: API_BASE_URL+"job/workflow",
+						      url: API_BASE_URL+"job/workflow"
 						    });
+
+						    $uibModalInstance.dismiss('cancel');
 						}
 
 						function acceptError(acceptResponse){
@@ -131,11 +134,11 @@ module.controller('ApplyAcceptController', function ($scope, $uibModalInstance, 
 							application_id: $scope.forms.application_id
 						}
 
-					  	// $http({
-					   //    method: 'PUT',
-					   //    data: dataParams,
-					   //    url: API_BASE_URL+"application/accept",
-					   //  }).then(acceptSuccess, acceptError);
+					  	$http({
+					      method: 'PUT',
+					      data: dataParams,
+					      url: API_BASE_URL+"application/accept",
+					    }).then(acceptSuccess, acceptError);
 			  		}
 			  		else
 			  		{
