@@ -1,4 +1,6 @@
 var Transaction = require('../models/Transaction');
+var Merchant = require('../models/Merchant');
+
 var braintree = require('braintree');
 var express = require('express');
 var router  = express.Router();
@@ -161,18 +163,26 @@ router.post('/add', function(req, res){
 });
 
 // Find submerchant
-router.post('/find', function(req, res){
+router.get('/', function(req, res){
     jwtUtils.decryptToken(req, res)
         .then(function(token){
-            var merchantId = req.body.merchant_id;
-
-            gateway.merchantAccount.find(merchantId, function (err, merchantAccount) {
-                if (err) {
-                    console.log('Error found: ' + err);
-                    res.json({ success: false, message: 'Submerchant not found.'});
-                }
-                res.json({ success: true, message: 'Submerchant found!', result: merchantAccount});
-            });
+            Merchant.forge({
+                id: token.id
+            })
+                .fetch()
+                .then(function(merchant) {
+                    console.log('Merchant found: ' + JSON.stringify(merchant));
+                    gateway.merchantAccount.find(merchant.attributes.merchant_name, function (err, merchantAccount) {
+                        if (err) {
+                            console.log('Error found: ' + err);
+                            res.json({ success: false, message: 'Submerchant not found.'});
+                        }
+                        res.json({ success: true, message: 'Submerchant found!', result: merchantAccount});
+                    });
+                })
+                .catch(function(err) {
+                    res.json({ success: false, message: 'Submerchant not founded.', result: err });
+                });
         })
         .catch(function(err) {
             console.log('User not verified: ' + err);
@@ -180,6 +190,7 @@ router.post('/find', function(req, res){
         });
 
 });
+
 
 // Get transaction by ID
 router.get('/transaction/:id', function(req, res){

@@ -228,10 +228,10 @@ params:
 
 ### Find Submerchant
 
-POST _http://**DEV API SERVER**/api/merchant/find_
+GET _http://**DEV API SERVER**/api/merchant_
 
 params:
- * merchant_id: <merchant id>
+ * No params
 
 ### Generate client token
 
