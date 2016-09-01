@@ -320,7 +320,19 @@ router.post('/process', function(req, res) {
                     console.log('Sale error: ' + err);
                     res.json({ success: true, message: 'Sale failed.'});
                 }
-                res.json({ success: true, message: 'Sale successful!', result: result});
+                Transaction.forge({
+                    user_id: token.id,
+                    transaction: result.transaction.id,
+                    transaction_status: result.transaction.status
+                })
+                    .save()
+                    .then(function(transaction) {
+                        res.json({ success: true, message: 'Sale proccessed!', result: transaction});
+                    })
+                    .catch(function(err) {
+                        console.log('Error occurred proccessing sale: ' + err );
+                        res.json({ success: false, message: 'Sale failed.', result: err});
+                    });
             });
         })
         .catch(function(err) {
