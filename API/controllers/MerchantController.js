@@ -1,3 +1,4 @@
+var Transaction = require('../models/Transaction');
 var braintree = require('braintree');
 var express = require('express');
 var router  = express.Router();
@@ -14,9 +15,9 @@ var gateway = braintree.connect({
 gateway.config.timeout = 10000;
 
 // Onboard submerchant TEST
-router.post('/addtest', function(req, res){
+router.post('/addtest', function(req, res) {
     jwtUtils.decryptToken(req, res)
-        .then(function(token){
+        .then(function(token) {
             merchantAccountParams = {
                 individual: {
                     firstName: "Jones",
@@ -180,6 +181,52 @@ router.post('/find', function(req, res){
 
 });
 
+// Get transaction by ID
+router.get('/transaction/:id', function(req, res){
+    jwtUtils.decryptToken(req, res)
+        .then(function(token){
+            var transactionId = req.params.id;
+
+            gateway.transaction.find(transactionId, function (err, transaction) {
+                if (err) {
+                    console.log('Error found: ' + err);
+                    res.json({ success: false, message: 'Transaction not found.'});
+                }
+                res.json({ success: true, message: 'Transaction found!', result: transaction});
+            });
+
+        })
+        .catch(function(err) {
+            console.log('Error occurred: ' + err);
+            res.json({ success: false, message: 'Error occurred', result: err });
+        });
+
+});
+
+// Get transaction collection
+router.get('/transaction', function(req, res){
+    jwtUtils.decryptToken(req, res)
+        .then(function(token){
+            var userId = token.id;
+
+            Transaction.forge()
+                .query({where: {user_id: token.id}})
+                .fetchAll()
+                .then(function(transactions) {
+                    res.json({ success: true, message: 'Transactions retrieved!', result: transactions});
+                })
+                .catch(function(err) {
+                    res.json({ success: false, message: 'Transactions not found!'});
+                });
+
+        })
+        .catch(function(err) {
+            console.log('User not verified: ' + err);
+            res.json({ success: false, message: 'User not verified', result: err });
+        });
+
+});
+
 // Create client token
 router.get("/client_token", function (req, res) {
     jwtUtils.decryptToken(req, res)
@@ -220,8 +267,19 @@ router.post('/processtest', function(req, res) {
                     console.log('Sale error: ' + err);
                     res.json({ success: true, message: 'Sale failed.'});
                 }
-                console.log('Sale success: ' + result);
-                res.json({ success: true, message: 'Sale successful!', result: result});
+                Transaction.forge({
+                    user_id: token.id,
+                    transaction: result.transaction.id,
+                    transaction_status: result.transaction.status
+                })
+                    .save()
+                    .then(function(transaction) {
+                        res.json({ success: true, message: 'Sale proccessed!', result: transaction});
+                    })
+                    .catch(function(err) {
+                        console.log('Error occurred proccessing sale: ' + err );
+                        res.json({ success: false, message: 'Sale failed.', result: err});
+                    });
             });
         })
         .catch(function(err) {
@@ -262,7 +320,6 @@ router.post('/process', function(req, res) {
                     console.log('Sale error: ' + err);
                     res.json({ success: true, message: 'Sale failed.'});
                 }
-                console.log('Sale success: ' + result);
                 res.json({ success: true, message: 'Sale successful!', result: result});
             });
         })

@@ -2,8 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="af4255a4-449f-4c14-8112-464024826330" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/API/models/Transaction.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/API/controllers/MerchantController.js" afterPath="$PROJECT_DIR$/API/controllers/MerchantController.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/README.md" afterPath="$PROJECT_DIR$/README.md" />
     </list>
     <ignored path="HourlyAdmin.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -26,8 +28,8 @@
       <file leaf-file-name="JobController.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/API/controllers/JobController.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-2046">
-              <caret line="19" column="7" selection-start-line="19" selection-start-column="7" selection-end-line="19" selection-end-column="7" />
+            <state relative-caret-position="1710">
+              <caret line="172" column="49" selection-start-line="172" selection-start-column="49" selection-end-line="172" selection-end-column="49" />
               <folding />
             </state>
           </provider>
@@ -36,28 +38,68 @@
       <file leaf-file-name="ApplicationController.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/API/controllers/ApplicationController.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="735">
-              <caret line="49" column="65" selection-start-line="49" selection-start-column="65" selection-end-line="49" selection-end-column="65" />
+            <state relative-caret-position="225">
+              <caret line="17" column="16" selection-start-line="17" selection-start-column="16" selection-end-line="18" selection-end-column="27" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="README.md" pinned="false" current-in-tab="false">
+      <file leaf-file-name="README.md" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/README.md">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="358">
-              <caret line="114" column="30" selection-start-line="114" selection-start-column="30" selection-end-line="114" selection-end-column="30" />
+            <state relative-caret-position="251">
+              <caret line="258" column="3" selection-start-line="258" selection-start-column="3" selection-end-line="258" selection-end-column="3" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="MerchantController.js" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/API/controllers/MerchantController.js">
+      <file leaf-file-name="SearchController.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/API/controllers/SearchController.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="566">
-              <caret line="252" column="30" selection-start-line="252" selection-start-column="30" selection-end-line="252" selection-end-column="30" />
+            <state relative-caret-position="375">
+              <caret line="25" column="57" selection-start-line="25" selection-start-column="57" selection-end-line="25" selection-end-column="57" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="20160825115001_merchantupdate.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/API/migrations/20160825115001_merchantupdate.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="210">
+              <caret line="14" column="27" selection-start-line="0" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="20160901214556_transaction.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/API/migrations/20160901214556_transaction.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="255">
+              <caret line="17" column="0" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Merchant.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/API/models/Merchant.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="165">
+              <caret line="11" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Transaction.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/API/models/Transaction.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="165">
+              <caret line="11" column="0" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -68,56 +110,6 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="353">
               <caret line="26" column="10" selection-start-line="26" selection-start-column="10" selection-end-line="26" selection-end-column="10" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="WebhookController.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/API/controllers/WebhookController.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="450">
-              <caret line="36" column="45" selection-start-line="36" selection-start-column="45" selection-end-line="36" selection-end-column="45" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="MessageController.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/API/controllers/MessageController.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="188">
-              <caret line="163" column="50" selection-start-line="163" selection-start-column="50" selection-end-line="163" selection-end-column="50" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="emailService.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/API/utils/emailService.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="17" column="50" selection-start-line="17" selection-start-column="50" selection-end-line="17" selection-end-column="50" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="LoginController.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/API/controllers/LoginController.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="390">
-              <caret line="69" column="119" selection-start-line="69" selection-start-column="119" selection-end-line="69" selection-end-column="119" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="jwtUtils.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/API/utils/jwtUtils.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="86" column="17" selection-start-line="86" selection-start-column="17" selection-end-line="86" selection-end-column="17" />
               <folding />
             </state>
           </provider>
@@ -138,8 +130,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/API/migrations/20160622102454_Fuck.js" />
-        <option value="$PROJECT_DIR$/API/migrations/20160704121134_JobUpdate.js" />
         <option value="$PROJECT_DIR$/API/migrations/20160705155344_jobfix.js" />
         <option value="$PROJECT_DIR$/API/migrations/20160711154200_messagefix.js" />
         <option value="$PROJECT_DIR$/API/migrations/20160711090832_messages.js" />
@@ -187,8 +177,10 @@
         <option value="$PROJECT_DIR$/API/controllers/WebhookController.js" />
         <option value="$PROJECT_DIR$/API/controllers/UserController.js" />
         <option value="$PROJECT_DIR$/API/controllers/ApplicationController.js" />
-        <option value="$PROJECT_DIR$/README.md" />
+        <option value="$PROJECT_DIR$/API/migrations/20160901214556_transaction.js" />
+        <option value="$PROJECT_DIR$/API/models/Transaction.js" />
         <option value="$PROJECT_DIR$/API/controllers/MerchantController.js" />
+        <option value="$PROJECT_DIR$/README.md" />
       </list>
     </option>
   </component>
@@ -450,12 +442,12 @@
       <workItem from="1469829067509" duration="70558000" />
       <workItem from="1471517569877" duration="277000" />
       <workItem from="1471518100604" duration="128000" />
-      <workItem from="1471518544501" duration="31616000" />
+      <workItem from="1471518544501" duration="38112000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="187550000" />
+    <option name="totallyTimeSpent" value="194046000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="10" y="31" width="1572" height="1104" extended-state="0" />
@@ -500,20 +492,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/API/migrations/20160719101355_threads.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="518">
-          <caret line="40" column="10" selection-start-line="40" selection-start-column="10" selection-end-line="40" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/API/migrations/20160725144704_messages.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="16" column="10" selection-start-line="0" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/API/migrations/20160725191937_recipient.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="210">
@@ -621,13 +599,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/API/controllers/EmailController.js" />
-    <entry file="file://$PROJECT_DIR$/API/controllers/SearchController.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="375">
-          <caret line="25" column="57" selection-start-line="25" selection-start-column="57" selection-end-line="25" selection-end-column="57" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/API/bin/www">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="495">
@@ -708,14 +679,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/API/models/Merchant.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="9" column="5" selection-start-line="9" selection-start-column="5" selection-end-line="9" selection-end-column="5" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/API/models/Job.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="180">
@@ -736,14 +699,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
           <caret line="17" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/API/migrations/20160825115001_merchantupdate.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="8" column="57" selection-start-line="8" selection-start-column="57" selection-end-line="8" selection-end-column="57" />
           <folding />
         </state>
       </provider>
@@ -844,34 +799,74 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/API/controllers/JobController.js">
+    <entry file="file://$PROJECT_DIR$/API/migrations/20160825115001_merchantupdate.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2046">
-          <caret line="19" column="7" selection-start-line="19" selection-start-column="7" selection-end-line="19" selection-end-column="7" />
+        <state relative-caret-position="210">
+          <caret line="14" column="27" selection-start-line="0" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/README.md">
+    <entry file="file://$PROJECT_DIR$/API/migrations/20160901214556_transaction.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="358">
-          <caret line="114" column="30" selection-start-line="114" selection-start-column="30" selection-end-line="114" selection-end-column="30" />
+        <state relative-caret-position="255">
+          <caret line="17" column="0" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/API/models/Merchant.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="11" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/API/controllers/SearchController.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="375">
+          <caret line="25" column="57" selection-start-line="25" selection-start-column="57" selection-end-line="25" selection-end-column="57" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/API/controllers/JobController.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1710">
+          <caret line="172" column="49" selection-start-line="172" selection-start-column="49" selection-end-line="172" selection-end-column="49" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/API/controllers/ApplicationController.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="735">
-          <caret line="49" column="65" selection-start-line="49" selection-start-column="65" selection-end-line="49" selection-end-column="65" />
+        <state relative-caret-position="225">
+          <caret line="17" column="16" selection-start-line="17" selection-start-column="16" selection-end-line="18" selection-end-column="27" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/API/models/Transaction.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="11" column="0" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/API/controllers/MerchantController.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="566">
-          <caret line="252" column="30" selection-start-line="252" selection-start-column="30" selection-end-line="252" selection-end-column="30" />
+        <state relative-caret-position="405">
+          <caret line="205" column="29" selection-start-line="205" selection-start-column="29" selection-end-line="205" selection-end-column="29" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="251">
+          <caret line="258" column="3" selection-start-line="258" selection-start-column="3" selection-end-line="258" selection-end-column="3" />
           <folding />
         </state>
       </provider>

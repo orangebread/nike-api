@@ -190,7 +190,7 @@ POST _http://**DEV API SERVER**/api/merchant/addtest_
 params:
  * None - already filled out server side
 
- ### Onboard Submerchant
+### Onboard Submerchant
 
  POST _http://**DEV API SERVER**/api/merchant/add_
 
@@ -258,6 +258,20 @@ params:
  * merchant_id: <merchant id>
  * amount: <dollar amount>
  * payment_method_nonce: <nonce token> (passed in from client)
+
+### Transaction by ID
+
+GET _http://**DEV API SERVER**/api/merchant/transaction/:id_
+
+params:
+* id: <transaction id>
+
+### Transaction collection by user
+
+GET _http://**DEV API SERVER**/api/merchant/transaction_
+
+params:
+* NO params
 
 
 ## EMAIL NOTIFICATIONS
