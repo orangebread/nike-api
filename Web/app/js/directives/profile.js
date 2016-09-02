@@ -5,12 +5,38 @@ module.directive('profile', function() {
 
 			$scope.applications = [];
 			$scope.jobsPosted = [];
+			$scope.transactions = [];
 			$scope.userInfo = {};
 
 			$scope.view = {
 				showApplications: false,
 				fetchedApplications: [],
 				jobTitle: ""
+			}
+
+			$scope.markAsComplete = function(job){
+
+				var confirm_result = confirmResult = confirm("Are you sure you want to mark this job as completed? This will notify your employer and you cannot undo it.");
+
+				function success(response){
+	        		console.log(response);
+	        		job.status_id = 3;
+				}
+
+				function error(response){
+					console.log("error");
+					console.log(response);
+					alert("Something went wrong.")
+				}
+
+				if(confirm_result)
+				{
+					$http({
+				      method: 'POST',
+				      data: {job_id: job.job_id, workflow_id: 3},
+				      url: API_BASE_URL+"job/workflow",
+				    }).then(success, error);
+				}
 			}
 
 			$scope.getApplications = function(){
@@ -23,6 +49,7 @@ module.directive('profile', function() {
 	        			  e.budget = appResponse.data.result.budget;
 	        			  e.expires_at = appResponse.data.result.expires_at;
 	        			  e.employer_id = appResponse.data.result.user_id;
+	        			  e.status_id = appResponse.data.result.status_id;
 					      $scope.applications.push(e)
 					    }
 
@@ -108,10 +135,11 @@ module.directive('profile', function() {
 			    }).then(success, error);
 			}
 
-			$scope.decide = function(decision, app_id, job_id, amount){
+			$scope.decide = function(decision, application){
 
 				function success(response){
 	        		console.log(response);
+	        		application.application_status = "Passed";
 				}
 
 				function error(response){
@@ -121,8 +149,8 @@ module.directive('profile', function() {
 				}
 
 				dataParams = {
-					job_id: job_id, 
-					application_id: app_id
+					job_id: application.job_id, 
+					application_id: application.application_id
 				}
 
 				var confirmResult = false;
@@ -140,7 +168,7 @@ module.directive('profile', function() {
 				}
 				else
 				{
-					$scope.openAcceptModal(app_id, job_id, amount);
+					$scope.openAcceptModal(application.application_id, application.job_id, application.bid_amount);
 				}
 			}
 
@@ -220,9 +248,30 @@ module.directive('profile', function() {
 			    });
 			}
 
+			$scope.getUserTransactions = function(){
+
+				function success(response){
+					console.log("transactions");
+	        		console.log(response);
+	        		$scope.transactions = response.data.result;
+				}
+
+				function error(response){
+					console.log("error");
+					console.log(response);
+					alert("Something went wrong.")
+				}
+
+				$http({
+			      method: 'GET',
+			      url: API_BASE_URL+"merchant/transaction",
+			    }).then(success, error);
+			}
+
 			$scope.getApplications();
 			$scope.getPostedJobs();
 			$scope.getUserDetails();
+			$scope.getUserTransactions();
 		}]
 	};
 });

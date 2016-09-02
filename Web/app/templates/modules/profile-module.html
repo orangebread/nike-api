@@ -31,6 +31,9 @@
 			      <div class="custom-cell">
 			        Applications
 			      </div>
+			      <div class="custom-cell">
+			        Status
+			      </div>
 			    </div>
 			    
 			    <div class="custom-row" ng-repeat="job in jobsPosted | orderBy: job.title">
@@ -43,9 +46,16 @@
 			      <div class="custom-cell">
 			        {{job.budget | currency}}
 			      </div>
-			      <div class="custom-cell link">
-			      	{{job.applicationCount}}
-			      	<a ng-click="getApplicationsForJob(job.id, job.title)">View</a>
+			      <div class="custom-cell">
+			      	<button class="btn" ng-click="getApplicationsForJob(job.id, job.title)">View: {{job.applicationCount}}</button>
+			      </div>
+			      <div class="custom-cell">
+			      	<span ng-if="job.status_id == 1">Pending</span>
+			        <span ng-if="job.status_id == 2">In Progress</span>
+			        <span ng-if="job.status_id == 3">Ready For Review</span>
+			        <span ng-if="job.status_id == 4">In Review</span>
+			        <span ng-if="job.status_id == 5">Payment Released</span>
+			        <span ng-if="job.status_id == 6">Completed</span>
 			      </div>
 			    </div>
 			    
@@ -71,8 +81,8 @@
 							<p> {{application.description}}</p>
 			    		</div>
 			    		<div class="buttons" ng-show="application.application_status == 'Applied'">
-			    			<button ng-click="decide(true, application.application_id, application.job_id, application.bid_amount)">Accept</button>
-			    			<button ng-click="decide(false, application.application_id, application.job_id, application.bid_amount)">Reject</button>
+			    			<button class="btn" ng-click="decide(true, application)">Accept</button>
+			    			<button class="btn reject" ng-click="decide(false, application)">Reject</button>
 			    		</div>
 			    	</div>
 		    	</div>
@@ -90,9 +100,6 @@
 			        Date
 			      </div>
 			      <div class="custom-cell">
-			        Employer ID
-			      </div>
-			      <div class="custom-cell">
 			        Bid Amount
 			      </div>
 			      <div class="custom-cell">
@@ -101,17 +108,17 @@
 			      <div class="custom-cell">
 			        Status
 			      </div>
+			      <div class="custom-cell">
+			        Workflow
+			      </div>
 			    </div>
 			    
 			    <div class="custom-row" ng-repeat="application in applications">
 			      <div class="custom-cell link">
-			        <a ng-click="goToJob(application.id, application.user_id)">{{application.jobTitle}}</a>
+			        <a ng-click="goToJob(application.job_id, application.employer_id)">{{application.jobTitle}}</a>
 			      </div>
 			      <div class="custom-cell">
 			        {{application.expires_at | date}}
-			      </div>
-			      <div class="custom-cell">
-			        {{application.employer_id}}
 			      </div>
 			      <div class="custom-cell">
 			        {{application.bid_amount | currency}}
@@ -120,12 +127,58 @@
 			        {{application.budget | currency}}
 			      </div>
 			      <div class="custom-cell">
-			        <span ng-if="application.appstatus_id == 1">Pending</span>
-			        <span ng-if="application.appstatus_id == 2">In Progress</span>
-			        <span ng-if="application.appstatus_id == 3">Ready For Review</span>
-			        <span ng-if="application.appstatus_id == 4">In Review</span>
-			        <span ng-if="application.appstatus_id == 5">Payment Released</span>
-			        <span ng-if="application.appstatus_id == 6">Completed</span>
+			        <span ng-if="application.status_id == 1">Pending</span>
+			        <span ng-if="application.status_id == 2">In Progress</span>
+			        <span ng-if="application.status_id == 3">Ready For Review</span>
+			        <span ng-if="application.status_id == 4">In Review</span>
+			        <span ng-if="application.status_id == 5">Payment Released</span>
+			        <span ng-if="application.status_id == 6">Completed</span>
+			      </div>
+			      <div class="custom-cell">
+			      	<button class="btn" ng-if="application.status_id == 2" ng-click="markAsComplete(application)">Mark as complete</button>
+			      	<!-- <button class="btn" ng-if="application.appstatus_id == 2" ng-click="markPaymentReceived(application.job_id)"></button> -->
+			      </div>
+			    </div>
+			    
+			  </div>
+
+			  <h2>Transactions</h2>
+
+			  <div class="custom-table">
+			    
+			    <div class="custom-row header green">
+			      <div class="custom-cell">
+			        Job Title
+			      </div>
+			      <div class="custom-cell">
+			        Date Sent
+			      </div>
+			      <div class="custom-cell">
+			        Sent To
+			      </div>
+			      <div class="custom-cell">
+			        Amount
+			      </div>
+			      <div class="custom-cell">
+			        Status
+			      </div>
+			    </div>
+			    
+			    <div class="custom-row" ng-repeat="transaction in transactions">
+			      <div class="custom-cell">
+			      	{{transaction.title}}
+			      </div>
+			      <div class="custom-cell">
+			        {{transaction.created_at | date}}
+			      </div>
+			      <div class="custom-cell">
+			        {{transaction.sent_to}}
+			      </div>
+			      <div class="custom-cell">
+			        {{transaction.amount | currency}}
+			      </div>
+			      <div class="custom-cell">
+			        {{transaction.transaction_status}}
 			      </div>
 			    </div>
 			    

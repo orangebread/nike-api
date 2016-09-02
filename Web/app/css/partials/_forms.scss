@@ -159,3 +159,34 @@ p.checkout-header{
     margin-bottom: 15px;
   }
 }
+
+.btn{
+  margin-top: 5px;
+  margin-bottom: 5px;
+  font-family: $font-exo2;
+  font-size: 14px;
+  font-weight: bold;
+  color: $color-black;
+  border: 1px solid $color-black;
+  text-align: center;
+  background-repeat: no-repeat;
+  background-position: 19px 10px;
+  background-color: $color-yellow;
+
+  &:hover{
+    background-color: lighten($color-yellow, 10%);    
+  }
+
+  &.accept{
+    background-color: $color-green;
+  }
+
+  &.reject{
+    background-color: $color-black;
+    color: $color-white;
+  }
+}
+
+.big-text{
+  min-height: 200px;
+}

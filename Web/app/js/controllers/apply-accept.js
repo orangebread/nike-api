@@ -2,6 +2,7 @@ module.controller('ApplyAcceptController', function ($scope, $uibModalInstance, 
 
 	$scope.forms = {
 		showPaymentForm: false,
+		showSpinner: false,
 		application_id: $localStorage.appId,
 		bid_amount: $localStorage.amountToPay,
 		job_id: $localStorage.acceptJobId,
@@ -85,6 +86,8 @@ module.controller('ApplyAcceptController', function ($scope, $uibModalInstance, 
 	}
 
 	$scope.submitPayment = function () {
+		$(".hourly-modal .spinner").height($(".modal-dialog").height());
+		$scope.forms.showSpinner = true;
 		var credit_card_ready = false;
 
 		var cc_result = $("#cc_number").validateCreditCard();
@@ -106,9 +109,10 @@ module.controller('ApplyAcceptController', function ($scope, $uibModalInstance, 
 					console.log(err)
 				  function sendPaymentSucess(paymentResponse){
 
-			  		if(paymentResponse.data.result.success)
+			  		if(paymentResponse.data.result.transaction_status == "authorized")
 			  		{
 			  			function acceptSuccess(acceptResponse){
+			  				$scope.forms.showSpinner = false;
 			        		console.log(acceptResponse);
 			        		alert("Application accepted and payment sent!")
 
@@ -125,8 +129,8 @@ module.controller('ApplyAcceptController', function ($scope, $uibModalInstance, 
 						function acceptError(acceptResponse){
 							console.log("error");
 							console.log(acceptResponse);
-							alert("Something went wrong.")
 							$scope.forms.paymentSubmitted = false;
+							$scope.forms.showSpinner = false;
 						}
 
 						dataParams = {
@@ -143,6 +147,8 @@ module.controller('ApplyAcceptController', function ($scope, $uibModalInstance, 
 			  		else
 			  		{
 			  			console.log(paymentResponse);
+			  			$scope.forms.showSpinner = false;
+			  			alert("We're sorry, something went wrong with the payment, please try again.")
 			  		}
 				}
 
@@ -151,6 +157,7 @@ module.controller('ApplyAcceptController', function ($scope, $uibModalInstance, 
 					console.log(paymentResponse);
 					alert("Something went wrong.")
 					$scope.forms.paymentSubmitted = false;
+					$scope.forms.showSpinner = false;
 				}
 
 				dataParams = {
@@ -166,6 +173,10 @@ module.controller('ApplyAcceptController', function ($scope, $uibModalInstance, 
 				      data: dataParams,
 				      url: API_BASE_URL+"merchant/process",
 				    }).then(sendPaymentSucess, sendPaymentError);
+				}
+				else
+				{
+					$scope.forms.showSpinner = false;
 				}
 			});
 		}
