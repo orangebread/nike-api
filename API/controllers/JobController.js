@@ -134,7 +134,12 @@ router.post('/workflow', function(req, res){
             var jobId = req.body.job_id;
             var workflow = req.body.workflow_id;
 
-            if (workflow === 1 || 2 || 5) {
+
+            console.log('workflow id: ' + workflow);
+            if (workflow === 1 ||
+                workflow === 2 ||
+                workflow === 5) {
+                console.log('Job owner');
                 Job.forge({
                     id: jobId,
                     user_id: token.id
@@ -157,42 +162,43 @@ router.post('/workflow', function(req, res){
                         res.json({ success: false, message: 'Job workflow update failed. You are not the employer.' });
                     });
             } else {
-                Job.forge({
-                    id: jobId
-                })
-                    .save({ status_id: workflow })
-                    .then(function(job) {
-                        console.log('Job workflow updated');
-                        res.json({ success: true, message: 'Job workflow updated!', result: final });
-                    })
-                    .catch(function(err) {
-                        console.log('Job workflow failed: ' + err);
-                        res.json({ success: true, message: 'Job workflow failed.' });
-                    });
-                // Application.forge({
-                //     job_id: jobId,
-                //     user_id: token.id,
-                //     appstatus_id: 2
+                console.log('Not job owner');
+                // Job.forge({
+                //     id: jobId
                 // })
-                //     .fetch()
-                //     .then(function(app) {
-                //         Job.forge({
-                //             id: jobId
-                //         })
-                //             .save({ status_id: workflow })
-                //             .then(function(job) {
-                //                 console.log('Job workflow updated');
-                //                 res.json({ success: true, message: 'Job workflow updated!', result: final });
-                //             })
-                //             .catch(function(err) {
-                //                 console.log('Job workflow failed: ' + err);
-                //                 res.json({ success: true, message: 'Job workflow failed.' });
-                //             });
+                //     .save({ status_id: workflow })
+                //     .then(function(job) {
+                //         console.log('Job workflow updated');
+                //         res.json({ success: true, message: 'Job workflow updated!', result: final });
                 //     })
                 //     .catch(function(err) {
-                //         console.log('Job workflow fcked up: ' + err);
-                //         res.json({ success: false, message: 'Job workflow update failed. You are not the employer.' });
+                //         console.log('Job workflow failed: ' + err);
+                //         res.json({ success: true, message: 'Job workflow failed.' });
                 //     });
+                Application.forge({
+                    job_id: jobId,
+                    user_id: token.id,
+                    appstatus_id: 2
+                })
+                    .fetch()
+                    .then(function(app) {
+                        Job.forge({
+                            id: jobId
+                        })
+                            .save({ status_id: workflow })
+                            .then(function(job) {
+                                console.log('Job workflow updated');
+                                res.json({ success: true, message: 'Job workflow updated!', result: job });
+                            })
+                            .catch(function(err) {
+                                console.log('Job workflow failed: ' + err);
+                                res.json({ success: true, message: 'Job workflow failed.' });
+                            });
+                    })
+                    .catch(function(err) {
+                        console.log('Job workflow fcked up: ' + err);
+                        res.json({ success: false, message: 'Job workflow update failed.' });
+                    });
             }
         })
         .catch(function(err) {
