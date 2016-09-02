@@ -5,8 +5,8 @@
 				<div class="stats">
 					<p class="name"><span>Username:</span> {{userInfo.display_name}}</p>
 					<p class="company-name"><span>Email:</span> {{userInfo.email}}</p>
-					<p class="company-name"><span>Merchant Name:</span> {{userInfo.merchant_name}}</p>
-					<p class="company-name"><span>Merchant Status:</span> {{userInfo.merchant_status}}</p>
+					<p class="company-name" ng-if="userInfo.merchant_name != null"><span>Merchant Name:</span> {{userInfo.merchant_name}}</p>
+					<p class="company-name" ng-if="userInfo.merchant_status != null"><span>Merchant Status:</span> {{userInfo.merchant_status}}</p>
 					<a href="#" ng-click="logout()">Logout</a>
 				</div>
 			</div>
@@ -14,9 +14,9 @@
 		<div class="column">
 			<div class="wrapper">
 
-				<h2 style="margin-top: 0px;">Posted Jobs</h2>
+				<h2 style="margin-top: 0px;" ng-show="jobsPosted.length > 0">Posted Jobs</h2>
   
-			  <div class="custom-table">
+			  <div class="custom-table" ng-show="jobsPosted.length > 0">
 			    
 			    <div class="custom-row header">
 			      <div class="custom-cell">
@@ -33,6 +33,9 @@
 			      </div>
 			      <div class="custom-cell">
 			        Status
+			      </div>
+			      <div class="custom-cell">
+			        Workflow
 			      </div>
 			    </div>
 			    
@@ -54,8 +57,12 @@
 			        <span ng-if="job.status_id == 2">In Progress</span>
 			        <span ng-if="job.status_id == 3">Ready For Review</span>
 			        <span ng-if="job.status_id == 4">In Review</span>
-			        <span ng-if="job.status_id == 5">Payment Released</span>
+			        <span ng-if="job.status_id == 5">Payment Released!</span>
 			        <span ng-if="job.status_id == 6">Completed</span>
+			      </div>
+			      <div class="custom-cell">
+			      	<button class="btn" ng-if="job.status_id == 3" ng-click="markAsInReview(job)">Put in Review</button>
+			      	<button class="btn" ng-if="job.status_id == 4" ng-click="markAsComplete(job)">Mark Complete</button>
 			      </div>
 			    </div>
 			    
@@ -88,9 +95,10 @@
 		    	</div>
 		    </div>
 
-			  <h2>Applications</h2>
+			  <h2 ng-show="(applications.length > 0 && jobsPosted.length > 0)">Applications</h2>
+			  <h2 style="margin-top: 0px;" ng-if="(applications.length > 0 && jobsPosted.length == 0)">Applications</h2>
 			  
-			  <div class="custom-table">
+			  <div class="custom-table" ng-show="applications.length > 0">
 			    
 			    <div class="custom-row header green">
 			      <div class="custom-cell">
@@ -113,7 +121,7 @@
 			      </div>
 			    </div>
 			    
-			    <div class="custom-row" ng-repeat="application in applications">
+			    <div class="custom-row" ng-repeat="application in applications | orderBy: application.jobTitle">
 			      <div class="custom-cell link">
 			        <a ng-click="goToJob(application.job_id, application.employer_id)">{{application.jobTitle}}</a>
 			      </div>
@@ -131,20 +139,20 @@
 			        <span ng-if="application.status_id == 2">In Progress</span>
 			        <span ng-if="application.status_id == 3">Ready For Review</span>
 			        <span ng-if="application.status_id == 4">In Review</span>
-			        <span ng-if="application.status_id == 5">Payment Released</span>
+			        <span ng-if="application.status_id == 5">Payment Received!</span>
 			        <span ng-if="application.status_id == 6">Completed</span>
 			      </div>
 			      <div class="custom-cell">
-			      	<button class="btn" ng-if="application.status_id == 2" ng-click="markAsComplete(application)">Mark as complete</button>
+			      	<button class="btn" ng-if="application.status_id == 2" ng-click="markAsDone(application)">Mark as complete</button>
 			      	<!-- <button class="btn" ng-if="application.appstatus_id == 2" ng-click="markPaymentReceived(application.job_id)"></button> -->
 			      </div>
 			    </div>
 			    
 			  </div>
 
-			  <h2>Transactions</h2>
+			  <h2 ng-show="transactions.length > 0">Transactions</h2>
 
-			  <div class="custom-table">
+			  <div class="custom-table" ng-show="transactions.length > 0">
 			    
 			    <div class="custom-row header green">
 			      <div class="custom-cell">

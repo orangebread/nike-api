@@ -14,7 +14,7 @@ module.directive('profile', function() {
 				jobTitle: ""
 			}
 
-			$scope.markAsComplete = function(job){
+			$scope.markAsDone = function(job){
 
 				var confirm_result = confirmResult = confirm("Are you sure you want to mark this job as completed? This will notify your employer and you cannot undo it.");
 
@@ -34,6 +34,56 @@ module.directive('profile', function() {
 					$http({
 				      method: 'POST',
 				      data: {job_id: job.job_id, workflow_id: 3},
+				      url: API_BASE_URL+"job/workflow",
+				    }).then(success, error);
+				}
+			}
+
+			$scope.markAsInReview = function(job){
+
+				var confirm_result = confirmResult = confirm("This will mark the job as \"in reivew\", once you have reviewed it you will then have a chance to mark it as complete, which will release the payment to the contractor.");
+
+				function success(response){
+	        		console.log(response);
+	        		job.status_id = 4;
+				}
+
+				function error(response){
+					console.log("error");
+					console.log(response);
+					alert("Something went wrong.")
+				}
+
+				if(confirm_result)
+				{
+					$http({
+				      method: 'POST',
+				      data: {job_id: job.id, workflow_id: 4},
+				      url: API_BASE_URL+"job/workflow",
+				    }).then(success, error);
+				}
+			}
+
+			$scope.markAsComplete = function(job){
+
+				var confirm_result = confirmResult = confirm("This will end the jobs life cycle, mark it as complete and release your payment which is in escrow to the contractor. You cannot undo this.");
+
+				function success(response){
+	        		console.log(response);
+	        		job.status_id = 5;
+				}
+
+				function error(response){
+					console.log("error");
+					console.log(response);
+					alert("Something went wrong.")
+				}
+
+				if(confirm_result)
+				{
+					$http({
+				      method: 'POST',
+				      data: {job_id: job.id, workflow_id: 5},
 				      url: API_BASE_URL+"job/workflow",
 				    }).then(success, error);
 				}
