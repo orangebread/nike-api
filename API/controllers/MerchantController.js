@@ -1,4 +1,5 @@
 var Transaction = require('../models/Transaction');
+var TransactionSent = require('../models/TransactionSent');
 var Merchant = require('../models/Merchant');
 
 var braintree = require('braintree');
@@ -262,13 +263,16 @@ router.post('/processtest', function(req, res) {
     var nonce = "fake-valid-nonce";
     var amount = req.body.amount;
     var service = amount * 0.1;
-    var merchant_id = req.body.merchant_id;
+    var merchantId = req.body.merchant_id;
+    var jobId = req.body.job_id;
+    var employeeId = req.body.employee_id;
+
     jwtUtils.decryptToken(req, res)
         .then(function(token){
             gateway.transaction.sale({
                 amount: amount,
                 paymentMethodNonce: nonce,
-                merchantAccountId: merchant_id,
+                merchantAccountId: merchantId,
                 serviceFeeAmount: service,
                 options: {
                     submitForSettlement: false
@@ -281,11 +285,21 @@ router.post('/processtest', function(req, res) {
                 Transaction.forge({
                     user_id: token.id,
                     transaction: result.transaction.id,
-                    transaction_status: result.transaction.status
+                    transaction_status: result.transaction.status,
+                    amount: amount,
+                    job_id: jobId
+
                 })
                     .save()
                     .then(function(transaction) {
-                        res.json({ success: true, message: 'Sale proccessed!', result: transaction});
+                        TransactionSent.forge({
+                            user_id: employeeId,
+                            transaction_id: transaction.id
+                        })
+                            .save()
+                            .then(function(transactionSent) {
+                                res.json({ success: true, message: 'Sale proccessed!', result: transaction});
+                            });
                     })
                     .catch(function(err) {
                         console.log('Error occurred proccessing sale: ' + err );
@@ -297,16 +311,6 @@ router.post('/processtest', function(req, res) {
             console.log('User not verified: ' + err);
             res.json({ success: false, message: 'User not verified.', result: err });
         });
-
-
-    // gateway.transaction.sale({
-    //     amount: total,
-    //     merchantAccountId: merchant_id,
-    //     paymentMethodNonce: nonce,
-    //     serviceFeeAmount: service
-    // }, function (err, result) {
-    //     res.json({ success: true, message: 'Sale processed.', result: result});
-    // });
 });
 
 
@@ -334,11 +338,21 @@ router.post('/process', function(req, res) {
                 Transaction.forge({
                     user_id: token.id,
                     transaction: result.transaction.id,
-                    transaction_status: result.transaction.status
+                    transaction_status: result.transaction.status,
+                    amount: amount,
+                    job_id: jobId
+
                 })
                     .save()
                     .then(function(transaction) {
-                        res.json({ success: true, message: 'Sale proccessed!', result: transaction});
+                        TransactionSent.forge({
+                            user_id: employeeId,
+                            transaction_id: transaction.id
+                        })
+                            .save()
+                            .then(function(transactionSent) {
+                                res.json({ success: true, message: 'Sale proccessed!', result: transaction});
+                            });
                     })
                     .catch(function(err) {
                         console.log('Error occurred proccessing sale: ' + err );

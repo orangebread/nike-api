@@ -245,7 +245,9 @@ params:
 GET _http://**DEV API SERVER**/api/merchant/processtest_
 
 params:
- * merchant_id: <merchant id>
+ * merchant_id: <merchant user id>
+ * employee_id: <employee user id>
+ * job_id: <job id>
  * amount: <dollar amount>
  * payment_method_nonce: IGNORE THIS FIELD, NONCE PROVIDED
 
@@ -255,7 +257,9 @@ params:
 GET _http://**DEV API SERVER**/api/merchant/process_
 
 params:
- * merchant_id: <merchant id>
+ * merchant_id: <merchant user id>
+ * employee_id: <employee user id>
+ * job_id: <job id>
  * amount: <dollar amount>
  * payment_method_nonce: <nonce token> (passed in from client)
 
