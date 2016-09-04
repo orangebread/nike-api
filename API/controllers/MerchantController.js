@@ -1,3 +1,4 @@
+var db = require('../config/db');
 var Transaction = require('../models/Transaction');
 var TransactionSent = require('../models/TransactionSent');
 var Merchant = require('../models/Merchant');
@@ -219,18 +220,19 @@ router.get('/transaction/:id', function(req, res){
 router.get('/transaction', function(req, res){
     jwtUtils.decryptToken(req, res)
         .then(function(token){
-            var userId = token.id;
-
-            Transaction.forge()
-                .query({where: {user_id: token.id}})
-                .fetchAll()
+            var sql = 'SELECT t.id, t.transaction, t.user_id, ts.user_id as "employee_id", t.transaction_status, t.escrow_status, t.job_id, t.amount, t.created_at, t.updated_at \
+                        FROM transaction t \
+                        JOIN transaction_sent ts \
+                        ON t.id = ts.transaction_id \
+                        WHERE t.user_id = ?';
+            db.knex.raw(sql, [token.id])
                 .then(function(transactions) {
-                    res.json({ success: true, message: 'Transactions retrieved!', result: transactions});
+                    res.json({ success: true, message: 'Transactions retrieved!', result: transactions.rows});
                 })
                 .catch(function(err) {
+                    console.log('Transactions not found: ' + err);
                     res.json({ success: false, message: 'Transactions not found!'});
                 });
-
         })
         .catch(function(err) {
             console.log('User not verified: ' + err);
@@ -275,17 +277,20 @@ router.post('/processtest', function(req, res) {
                 merchantAccountId: merchantId,
                 serviceFeeAmount: service,
                 options: {
-                    submitForSettlement: false
+                    submitForSettlement: false,
+                    holdInEscrow: true
                 }
             }, function (err, result) {
                 if (err) {
                     console.log('Sale error: ' + err);
                     res.json({ success: true, message: 'Sale failed.'});
                 }
+                console.log('Trans result: ' + JSON.stringify(result));
                 Transaction.forge({
                     user_id: token.id,
                     transaction: result.transaction.id,
                     transaction_status: result.transaction.status,
+                    escrow_status: result.transaction.escrowStatus,
                     amount: amount,
                     job_id: jobId
 
@@ -339,6 +344,7 @@ router.post('/process', function(req, res) {
                     user_id: token.id,
                     transaction: result.transaction.id,
                     transaction_status: result.transaction.status,
+                    escrow_status: result.transaction.escrowStatus,
                     amount: amount,
                     job_id: jobId
 
