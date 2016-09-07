@@ -277,7 +277,7 @@ router.post('/processtest', function(req, res) {
                 merchantAccountId: merchantId,
                 serviceFeeAmount: service,
                 options: {
-                    submitForSettlement: false,
+                    submitForSettlement: true   ,
                     holdInEscrow: true
                 }
             }, function (err, result) {
@@ -289,11 +289,8 @@ router.post('/processtest', function(req, res) {
                 Transaction.forge({
                     user_id: token.id,
                     transaction: result.transaction.id,
-                    transaction_status: result.transaction.status,
-                    escrow_status: result.transaction.escrowStatus,
                     amount: amount,
                     job_id: jobId
-
                 })
                     .save()
                     .then(function(transaction) {
@@ -343,8 +340,6 @@ router.post('/process', function(req, res) {
                 Transaction.forge({
                     user_id: token.id,
                     transaction: result.transaction.id,
-                    transaction_status: result.transaction.status,
-                    escrow_status: result.transaction.escrowStatus,
                     amount: amount,
                     job_id: jobId
 

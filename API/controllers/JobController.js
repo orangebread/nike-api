@@ -134,12 +134,9 @@ router.post('/workflow', function(req, res){
             var jobId = req.body.job_id;
             var workflow = req.body.workflow_id;
 
-
-            console.log('workflow id: ' + workflow);
             if (workflow === 1 ||
                 workflow === 2 ||
                 workflow === 5) {
-                console.log('Job owner');
                 Job.forge({
                     id: jobId,
                     user_id: token.id
@@ -163,18 +160,6 @@ router.post('/workflow', function(req, res){
                     });
             } else {
                 console.log('Not job owner');
-                // Job.forge({
-                //     id: jobId
-                // })
-                //     .save({ status_id: workflow })
-                //     .then(function(job) {
-                //         console.log('Job workflow updated');
-                //         res.json({ success: true, message: 'Job workflow updated!', result: final });
-                //     })
-                //     .catch(function(err) {
-                //         console.log('Job workflow failed: ' + err);
-                //         res.json({ success: true, message: 'Job workflow failed.' });
-                //     });
                 Application.forge({
                     job_id: jobId,
                     user_id: token.id,
