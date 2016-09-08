@@ -53,8 +53,8 @@ module.controller('MerchantSignUpController', function ($scope, $uibModalInstanc
     $scope.forms.error.toc = !($scope.forms.inputs.toc);
     $scope.forms.error.state = ($scope.forms.inputs.state == '');
     $scope.forms.error.zip = ($scope.forms.inputs.zip == '' || isNaN($scope.forms.inputs.zip) || $scope.forms.inputs.zip.length != 5);
-    $scope.forms.error.b_account = ($scope.forms.inputs.b_account == '' || isNaN($scope.forms.inputs.b_account));
-    $scope.forms.error.b_routing = ($scope.forms.inputs.b_routing == '' || isNaN($scope.forms.inputs.b_routing));
+    $scope.forms.error.b_account = ($scope.forms.inputs.b_account == '' || isNaN($scope.forms.inputs.b_account || $scope.forms.inputs.b_account.length < 8));
+    $scope.forms.error.b_routing = ($scope.forms.inputs.b_routing == '' || isNaN($scope.forms.inputs.b_routing || $scope.forms.inputs.b_routing.length < 8));
 
     has_errors = ($scope.forms.error.first_name || $scope.forms.error.last_name || $scope.forms.error.phone || $scope.forms.error.dob || $scope.forms.error.address_1
                   || $scope.forms.error.city || $scope.forms.error.toc || $scope.forms.error.state || $scope.forms.error.zip || $scope.forms.error.b_account || $scope.forms.error.b_routing);
@@ -119,13 +119,30 @@ module.controller('MerchantSignUpController', function ($scope, $uibModalInstanc
     }
   }
 
-  $scope.getUserDetails = function(){
+  $scope.getUserDetails = function(test){
+
+    $(".hourly-modal .spinner").height($(".modal-dialog").height());
+    $scope.forms.showSpinner = true;
 
     function success(response){
-      $scope.forms.inputs.email = response.data.result.email;
+      $scope.forms.showSpinner = false;
+
+      $scope.forms.inputs.email = response.data.result[0].email;
+      $localStorage.merchantStatus = response.data.result[0].merchant_status;
+
+      if(test && $localStorage.merchantStatus == "active")
+      {
+        alert("Your application has been approved!");
+        $uibModalInstance.dismiss('cancel');
+      }
+      else if(test)
+      {
+        alert("Your application is still pending approval, you will receive an email when it has been approved.");
+      }
     }
 
     function error(response){
+      $scope.forms.showSpinner = false;
       alert("Something went wrong.")
     }
 
@@ -139,5 +156,5 @@ module.controller('MerchantSignUpController', function ($scope, $uibModalInstanc
     $uibModalInstance.dismiss('cancel');
   };
 
-  $scope.getUserDetails();
+  $scope.getUserDetails(false);
 });

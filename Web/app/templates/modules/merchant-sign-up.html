@@ -134,12 +134,12 @@
                 <div class="form-group">
                     <label for="b_account">Bank Account Number:</label>
                     <input type="text" class="form-control" id="b_account" ng-model="forms.inputs.b_account">
-                    <p class="form-error-text" ng-show="forms.error.b_account">This field is required</p>
+                    <p class="form-error-text" ng-show="forms.error.b_account">This field is required, and must be at least 8 digits long</p>
                 </div>
                 <div class="form-group">
                     <label for="b_routing">Bank Routing Number:</label>
                     <input type="text" class="form-control" id="b_routing" ng-model="forms.inputs.b_routing">
-                    <p class="form-error-text" ng-show="forms.error.b_routing">This field is required</p>
+                    <p class="form-error-text" ng-show="forms.error.b_routing">This field is required, and must be at least 8 digits long</p>
                 </div>
             </div>
             <div class="form-group checkbox">
@@ -150,7 +150,11 @@
         </div>
     </div>
     <div class="modal-body" ng-show="forms.submitted">
-        <p>Your merchant application has been submitted, pleaes wait until it is verified in our system. Once this happens you will receive an email indicating so, and you can then apply to the jobs you are interested in. We apologize for any inconvenience</p>
+        <p>Your merchant application has been submitted, please wait until it is verified in our system. Once this happens you will receive an email indicating so, and you can then apply to the jobs you are interested in. We apologize for any inconvenience</p>
+        <br>
+        <p>Sometimes applications are approved instantly, you can check if yours has been approved by clicking the button below:</p>
+        <br>
+        <p style="text-align: center;"><button class="btn submit-btn" type="button" ng-click="getUserDetails(true)">Check Application</button></p>
     </div>
     <div class="modal-footer">
         <button ng-show="!forms.submitted" class="btn submit-btn" type="button" ng-click="signUp()">Sign Up</button>
