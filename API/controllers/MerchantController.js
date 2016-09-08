@@ -220,7 +220,7 @@ router.get('/transaction/:id', function(req, res){
 router.get('/transaction', function(req, res){
     jwtUtils.decryptToken(req, res)
         .then(function(token){
-            var sql = 'SELECT t.id, t.transaction, t.user_id, ts.user_id as "employee_id", t.transaction_status, t.escrow_status, t.job_id, t.amount, t.created_at, t.updated_at \
+            var sql = 'SELECT t.id, t.transaction, t.user_id, ts.user_id as "employee_id", t.job_id, t.amount, t.created_at, t.updated_at \
                         FROM transaction t \
                         JOIN transaction_sent ts \
                         ON t.id = ts.transaction_id \
@@ -365,16 +365,6 @@ router.post('/process', function(req, res) {
             console.log('User not verified: ' + err);
             res.json({ success: false, message: 'User not verified.', result: err });
         });
-
-
-    // gateway.transaction.sale({
-    //     amount: total,
-    //     merchantAccountId: merchant_id,
-    //     paymentMethodNonce: nonce,
-    //     serviceFeeAmount: service
-    // }, function (err, result) {
-    //     res.json({ success: true, message: 'Sale processed.', result: result});
-    // });
 });
 
 module.exports = router;
