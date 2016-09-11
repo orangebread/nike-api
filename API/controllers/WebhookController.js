@@ -2,6 +2,7 @@ var braintree = require('braintree');
 var express = require('express');
 var router  = express.Router();
 var globals = require('../config/globals');
+var emailService = require('../utils/emailService');
 
 var User = require('../models/User');
 var Merchant = require('../models/Merchant');
@@ -34,7 +35,11 @@ router.post('/submerchant', function(req, res){
                 })
                     .save()
                     .then(function(merchant){
-                        console.log('Merchant added: ' + JSON.stringify(merchant));
+                        emailService.sendEmail(email,'Hourly Admin - Submerchant Approved!', 'Your Hourly Admin account has been approved.')
+                            .then(function(success) {
+                                console.log('Email sent: ' + JSON.stringify(success));
+                                console.log('Merchant added: ' + JSON.stringify(merchant));
+                            });
                     })
                     .catch(function(err) {
                         console.log('Merchant adding error: ' + err);
