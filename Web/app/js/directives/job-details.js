@@ -63,7 +63,7 @@ module.directive('jobDetails', function() {
 			$scope.apply = function(){
 				if($scope.user.logged_in)
 				{
-					if($scope.forms.isMerchant)
+					if(typeof $localStorage.merchantStatus !== 'undefined' && $localStorage.merchantStatus == 'active')
 					{
 						$scope.openApplyModal();
 					}
