@@ -1,7 +1,7 @@
 module.directive('jobDetails', function() {
 	return {
 	templateUrl: '../../templates/modules/job-details.html',
-	controller: ['$scope', '$http', '$uibModal', '$localStorage', '$log', function($scope, $http, $uibModal, $localStorage, $log) {
+	controller: ['$scope', '$http', '$localStorage', '$log', 'modals', function($scope, $http, $localStorage, $log, modals) {
 
 			$scope.forms = {
 			    login: true,
@@ -11,8 +11,7 @@ module.directive('jobDetails', function() {
 			    	notes: ""
 			    },
 			    employerUsername: "",
-			    ableToApply: true, 
-			    isMerchant: (typeof $localStorage.merchantStatus !== 'undefined' && $localStorage.merchantStatus == 'active')
+			    ableToApply: true
 			}
 
 			$scope.job = {};
@@ -21,60 +20,21 @@ module.directive('jobDetails', function() {
 				logged_in: (typeof $localStorage.userID !== "undefined")
 			}
 
-			$scope.openMerchantSignUp = function(){
-				var modalInstance = $uibModal.open({
-			      animation: true,
-			      templateUrl: 'templates/modules/merchant-sign-up.html',
-			      controller: 'MerchantSignUpController',
-			      resolve: {
-			        items: function () {
-			          return [];
-			        }
-			      }
-			    });
-			}
-
-			$scope.openApplyModal = function(){
-				var modalInstance = $uibModal.open({
-			      animation: true,
-			      templateUrl: 'templates/modules/apply-modal.html',
-			      controller: 'ApplyModalController',
-			      resolve: {
-			        items: function () {
-			          return [];
-			        }
-			      }
-			    });
-			}
-
-			$scope.openLoginModal = function(){
-				var modalInstance = $uibModal.open({
-			      animation: true,
-			      templateUrl: 'templates/modules/login-modal.html',
-			      controller: 'LoginModalController',
-			      resolve: {
-			        items: function () {
-			          return $scope.items;
-			        }
-			      }
-			    });
-			}
-
 			$scope.apply = function(){
 				if($scope.user.logged_in)
 				{
 					if(typeof $localStorage.merchantStatus !== 'undefined' && $localStorage.merchantStatus == 'active')
 					{
-						$scope.openApplyModal();
+						modals.openApplyModal();
 					}
 					else
 					{
-						$scope.openMerchantSignUp();
+						modals.openMerchantSignUp();
 					}
 				}
 				else
 				{
-					$scope.openLoginModal();
+					modals.openLoginModal();
 				}
 			}
 
@@ -108,8 +68,6 @@ module.directive('jobDetails', function() {
 				}
 
 				function error(response){
-					console.log("error");
-					console.log(response);
 					alert("Something went wrong.")
 				}
 
@@ -128,15 +86,9 @@ module.directive('jobDetails', function() {
 
 				function success(response){
 	        		$localStorage.merchantStatus = response.data.result[0].merchant_status;
-	        		if($localStorage.merchantStatus == 'active')
-	        		{
-	        			$scope.forms.isMerchant = true;
-	        		}
 				}
 
 				function error(response){
-					console.log("error");
-					console.log(response);
 					alert("Something went wrong.")
 				}
 

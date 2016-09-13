@@ -16,7 +16,6 @@ module.controller('ApplyModalController', function ($scope, $uibModalInstance, i
 
     function success(response){
       $scope.forms.showSpinner = false;
-      console.log(response);
       // if logged in successfully
       if(response.data.success)
       {
@@ -62,11 +61,10 @@ module.controller('ApplyModalController', function ($scope, $uibModalInstance, i
   $scope.openNewThread = function(){
 
     function success(response){
-      console.log(response);
+      
     }
 
     function error(response){
-      console.log(response);
       alert("Something went wrong.")
     }
 

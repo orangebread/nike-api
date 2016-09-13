@@ -43,7 +43,6 @@ module.controller('ApplyAcceptController', function ($scope, $uibModalInstance, 
 	$scope.getMerchantDetails = function(){
 
 		function success(response){
-    		console.log(response);
     		response.data.result.forEach(function(e){
     			if(e.application_id == $localStorage.appId)
     			{
@@ -54,8 +53,6 @@ module.controller('ApplyAcceptController', function ($scope, $uibModalInstance, 
 		}
 
 		function error(response){
-			console.log("error");
-			console.log(response);
 			alert("Something went wrong.")
 		}
 
@@ -68,14 +65,10 @@ module.controller('ApplyAcceptController', function ($scope, $uibModalInstance, 
 	$scope.getApplicantMerchantInfo = function(user_id){
 
 		function success(response){
-			console.log("response");
-    		console.log(response);
     		$scope.forms.applicant_merchant_id = response.data.result[0].merchant_name;
 		}
 
 		function error(response){
-			console.log("error");
-			console.log(response);
 			alert("Something went wrong.")
 		}
 
@@ -106,14 +99,12 @@ module.controller('ApplyAcceptController', function ($scope, $uibModalInstance, 
 			    postalCode: '94107'
 			  }
 			}, function (err, nonce) {
-					console.log(err)
 				  function sendPaymentSucess(paymentResponse){
 
 			  		if(paymentResponse.data.success)
 			  		{
 			  			function acceptSuccess(acceptResponse){
 			  				$scope.forms.showSpinner = false;
-			        		console.log(acceptResponse);
 			        		alert("Application accepted and payment sent!")
 
 			        		// update job workflow
@@ -128,8 +119,6 @@ module.controller('ApplyAcceptController', function ($scope, $uibModalInstance, 
 						}
 
 						function acceptError(acceptResponse){
-							console.log("error");
-							console.log(acceptResponse);
 							$scope.forms.paymentSubmitted = false;
 							$scope.forms.showSpinner = false;
 						}
@@ -147,15 +136,12 @@ module.controller('ApplyAcceptController', function ($scope, $uibModalInstance, 
 			  		}
 			  		else
 			  		{
-			  			console.log(paymentResponse);
 			  			$scope.forms.showSpinner = false;
 			  			alert("We're sorry, something went wrong with the payment, please try again.")
 			  		}
 				}
 
 				function sendPaymentError(paymentResponse){
-					console.log("error");
-					console.log(paymentResponse);
 					alert("Something went wrong.")
 					$scope.forms.paymentSubmitted = false;
 					$scope.forms.showSpinner = false;
@@ -185,8 +171,6 @@ module.controller('ApplyAcceptController', function ($scope, $uibModalInstance, 
 		}
 
 		function error(tokenResponse){
-			console.log("error");
-			console.log(tokenResponse);
 			alert("Something went wrong.")
 		}
 

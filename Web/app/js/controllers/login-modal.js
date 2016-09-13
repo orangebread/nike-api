@@ -56,7 +56,6 @@ module.controller('LoginModalController', function ($scope, $uibModalInstance, i
       if(response.data.success)
       {
         $localStorage.jwtToken = response.data.token;
-        console.log(response);
         $localStorage.userID = jwtHelper.decodeToken(response.data.token).id;
         $rootScope.$broadcast('loggedIn');
         $uibModalInstance.dismiss('cancel');
@@ -70,7 +69,6 @@ module.controller('LoginModalController', function ($scope, $uibModalInstance, i
     function error(response){
       $scope.forms.showSpinner = false;
       $scope.forms.flags.bad_creds = true;
-      $log.log(response)
       delete $localStorage.jwtToken;
     }
 
@@ -98,7 +96,6 @@ module.controller('LoginModalController', function ($scope, $uibModalInstance, i
       // if registered in successfully
       if(response.data.success)
       {
-        console.log(response);
         $localStorage.jwtToken = response.data.token;
         $localStorage.userID = jwtHelper.decodeToken(response.data.token).id;
         $rootScope.$broadcast('loggedIn');
@@ -113,7 +110,6 @@ module.controller('LoginModalController', function ($scope, $uibModalInstance, i
     function error(response){
       $scope.forms.showSpinner = false;
       alert("Something bad happened");
-      $log.log(response)
       delete $localStorage.jwtToken;
     }
 
@@ -155,7 +151,6 @@ module.controller('LoginModalController', function ($scope, $uibModalInstance, i
     function error(response){
       $scope.forms.showSpinner = false;
       alert("Something bad happened");
-      console.log(response)
       delete $localStorage.jwtToken;
     }
 

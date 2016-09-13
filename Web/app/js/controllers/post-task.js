@@ -16,7 +16,6 @@ module.controller('PostTaskController', function ($scope, $uibModalInstance, ite
 
     function success(response){
       $scope.forms.showSpinner = false;
-      console.log(response);
       // if logged in successfully
       if(response.data.success)
       {

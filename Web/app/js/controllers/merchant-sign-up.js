@@ -62,7 +62,6 @@ module.controller('MerchantSignUpController', function ($scope, $uibModalInstanc
 
   	function success(response){
       $scope.forms.showSpinner = false;
-      console.log(response);
       if(response.data.result.success)
       {
         $localStorage.merchantID = response.data.result.merchantAccount.id;
@@ -77,8 +76,6 @@ module.controller('MerchantSignUpController', function ($scope, $uibModalInstanc
 
     function error(response){
       $scope.forms.showSpinner = false;
-      console.log("error");
-      console.log(response);
       alert("Something bad happened");
     }
 
