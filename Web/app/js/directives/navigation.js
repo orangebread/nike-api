@@ -19,6 +19,10 @@ module.directive('navigation', function() {
 				}
 			}
 
+			$scope.openLoginModal = function(){
+				modals.openLoginModal();
+			}
+
 			$scope.getUserInfo = function(){
 
 				function success(response){
