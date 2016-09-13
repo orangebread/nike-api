@@ -109,7 +109,7 @@ module.controller('ApplyAcceptController', function ($scope, $uibModalInstance, 
 					console.log(err)
 				  function sendPaymentSucess(paymentResponse){
 
-			  		if(paymentResponse.data.result.transaction_status == "authorized")
+			  		if(paymentResponse.data.success)
 			  		{
 			  			function acceptSuccess(acceptResponse){
 			  				$scope.forms.showSpinner = false;
@@ -124,6 +124,7 @@ module.controller('ApplyAcceptController', function ($scope, $uibModalInstance, 
 						    });
 
 						    $uibModalInstance.dismiss('cancel');
+						    location.reload();
 						}
 
 						function acceptError(acceptResponse){
@@ -163,7 +164,9 @@ module.controller('ApplyAcceptController', function ($scope, $uibModalInstance, 
 				dataParams = {
 					merchant_id: $scope.forms.applicant_merchant_id, 
 					amount: $scope.forms.bid_amount,
-					payment_method_nonce: nonce
+					payment_method_nonce: nonce,
+					job_id: $localStorage.acceptJobId,
+					employee_id: $localStorage.appAcceptUserId
 				}
 
 				if($scope.forms.applicant_merchant_id != '')

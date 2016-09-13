@@ -5,6 +5,11 @@
 		height: 100%;
 	}
 
+	.btn + .btn {
+	    margin-left: 5px;
+	    margin-bottom: 5px; // account for input[type="submit"] which gets the bottom margin like all other inputs
+	  }
+
 	form{
 
 		input[type=submit]

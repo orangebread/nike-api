@@ -218,7 +218,7 @@ module.directive('profile', function() {
 				}
 				else
 				{
-					$scope.openAcceptModal(application.application_id, application.job_id, application.bid_amount);
+					$scope.openAcceptModal(application);
 				}
 			}
 
@@ -281,10 +281,11 @@ module.directive('profile', function() {
 	        	$location.path("job");
 	        }
 
-			$scope.openAcceptModal = function(application_id, job_id, amount){
-				$localStorage.amountToPay = amount;
-				$localStorage.appId = application_id;
-				$localStorage.acceptJobId = job_id;
+			$scope.openAcceptModal = function(application){
+				$localStorage.appAcceptUserId = application.user_id;
+				$localStorage.amountToPay = application.bid_amount;
+				$localStorage.appId = application.application_id;
+				$localStorage.acceptJobId = application.job_id;
 
 				var modalInstance = $uibModal.open({
 			      animation: true,
@@ -301,9 +302,40 @@ module.directive('profile', function() {
 			$scope.getUserTransactions = function(){
 
 				function success(response){
-					console.log("transactions");
-	        		console.log(response);
-	        		$scope.transactions = response.data.result;
+					// console.log("transactions");
+	    //     		console.log(response);
+	        		//$scope.transactions = response.data.result;
+	        		response.data.result.forEach(function(e){
+
+	        			function jobSuccess(jobResponse){
+	        			  e.jobTitle = jobResponse.data.result.title;
+
+					      	function userSuccess(userResponse){
+		        			  e.userName = userResponse.data.result[0].display_name;
+						      $scope.transactions.push(e);
+						    }
+
+						    function userError(response){
+						      alert("Something bad happened");
+						      //$log.log(response)
+						    }
+
+						    $http({
+						      method: 'GET',
+						      url: API_BASE_URL+"user/"+e.user_id
+						    }).then(userSuccess, userError);
+					    }
+
+					    function jobError(response){
+					      alert("Something bad happened");
+					      //$log.log(response)
+					    }
+
+					    $http({
+					      method: 'GET',
+					      url: API_BASE_URL+"search/job/"+e.job_id
+					    }).then(jobSuccess, jobError);
+	        		})
 				}
 
 				function error(response){

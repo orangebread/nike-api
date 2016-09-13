@@ -98,6 +98,7 @@ p.checkout-header{
 
         &:hover{
           .text{
+            display: block;
             opacity: 1;
             right: -210px;
           }
@@ -113,6 +114,7 @@ p.checkout-header{
         }
 
         .text{  
+            display: none;
             font-size: 12px;
             position: absolute;
             background-color: $color-black;
