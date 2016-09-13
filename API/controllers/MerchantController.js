@@ -323,6 +323,8 @@ router.post('/process', function(req, res) {
     var jobId = req.body.job_id;
     var service = amount * 0.1;
     var merchant_id = req.body.merchant_id;
+    var employeeId = req.body.employee_id;
+    
     jwtUtils.decryptToken(req, res)
         .then(function(token){
             gateway.transaction.sale({
