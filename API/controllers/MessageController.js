@@ -2,7 +2,6 @@ var Message = require('../models/Message');
 var User = require('../models/User');
 var Thread = require('../models/Thread');
 var UserThread = require('../models/UserThread');
-var uuid = require('node-uuid');
 var express = require('express');
 var router  = express.Router();
 var jwtUtils = require('../utils/jwtUtils');

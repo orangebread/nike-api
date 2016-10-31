@@ -1,7 +1,6 @@
 var db = require('../config/db');
 var Promise = require('bluebird');
 var bcrypt = require('bcrypt-nodejs');
-var uuid = require('node-uuid');
 var jwtUtils = require('../utils/jwtUtils');
 
 module.exports = db.Model.extend({
