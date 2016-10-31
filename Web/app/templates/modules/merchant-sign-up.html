@@ -131,9 +131,15 @@
                 </div>
             </div>
             <div class="double-input">
-                <div class="form-group">
+                <div class="form-group with-tooltip">
                     <label for="b_account">Bank Account Number:</label>
                     <input type="text" class="form-control" id="b_account" ng-model="forms.inputs.b_account">
+                    <div class="custom-tooltip">
+                        <i class="fa fa-question-circle" aria-hidden="true"></i>
+                        <div class="text">
+                            We require your bank info in order for us to deposit your payments into your account!
+                        </div>
+                    </div>
                     <p class="form-error-text" ng-show="forms.error.b_account">This field is required, and must be at least 8 digits long</p>
                 </div>
                 <div class="form-group">
@@ -144,7 +150,7 @@
             </div>
             <div class="form-group checkbox">
                 <input type="checkbox" name="toc" id="toc" ng-model="forms.inputs.toc">
-                <label for="toc">I agree to the <a href="#">terms and conditions</a> of this site and our payment partner Braintree</label>
+                <label for="toc">I agree to the <a href="#/terms" target="_blank">terms and conditions</a> of this site and our payment partner Braintree</label>
                 <p class="form-error-text" ng-show="forms.error.toc">You must accept these terms and conditions</p>
             </div>
         </div>

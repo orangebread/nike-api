@@ -329,8 +329,11 @@ router.post('/processtest', function(req, res) {
 router.post('/process', function(req, res) {
     var nonce = req.body.payment_method_nonce;
     var amount = req.body.amount;
+    var jobId = req.body.job_id;
     var service = amount * 0.1;
     var merchant_id = req.body.merchant_id;
+    var employeeId = req.body.employee_id;
+    
     jwtUtils.decryptToken(req, res)
         .then(function(token){
             gateway.transaction.sale({

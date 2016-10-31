@@ -27,6 +27,9 @@ module.config(['jwtInterceptorProvider', '$routeProvider', '$httpProvider', 'Fac
 		when('/home', {
 			templateUrl: 'templates/home.html'
 		}).
+		when('/terms', {
+			templateUrl: 'templates/terms.html'
+		}).
 		when('/search', {
 			templateUrl: 'templates/search.html'
 		}).

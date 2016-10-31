@@ -14,9 +14,9 @@
 		<div class="column">
 			<div class="wrapper">
 
-				<h2 style="margin-top: 0px;" ng-show="jobsPosted.length > 0">Posted Jobs</h2>
+				<h2 style="margin-top: 0px;">Posted Jobs</h2>
   
-			  <div class="custom-table" ng-show="jobsPosted.length > 0">
+			  <div class="custom-table">
 			    
 			    <div class="custom-row header">
 			      <div class="custom-cell">
@@ -39,7 +39,7 @@
 			      </div>
 			    </div>
 			    
-			    <div class="custom-row" ng-repeat="job in jobsPosted | orderBy: job.title">
+			    <div class="custom-row" ng-repeat="job in jobsPosted | orderBy: 'title'">
 			      <div class="custom-cell link">
 			        <a ng-click="goToJob(job.id, job.user_id, job.title)">{{job.title}}</a>
 			      </div>
@@ -67,6 +67,9 @@
 			    </div>
 			    
 			  </div>
+			  <div class="no-row-table" ng-show="jobsPosted.length == 0">
+			  	<p>You have no posted jobs.</p>
+			  </div>
 
 				
 			  <div class="applications-for-selected-job" ng-if="view.showApplications">
@@ -74,7 +77,7 @@
 			  		<h3>Job: {{view.jobTitle}}</h3>
 			  	</div>
 			  	<div class="applications">
-			    	<div class="application-item" ng-repeat="application in view.fetchedApplications | orderBy: application.display_name">
+			    	<div class="application-item" ng-repeat="application in view.fetchedApplications | orderBy: 'display_name'">
 			    		<div class="username">
 			    			<p>{{application.display_name}}</p>
 			    		</div>
@@ -95,10 +98,9 @@
 		    	</div>
 		    </div>
 
-			  <h2 ng-show="(applications.length > 0 && jobsPosted.length > 0)">Applications</h2>
-			  <h2 style="margin-top: 0px;" ng-if="(applications.length > 0 && jobsPosted.length == 0)">Applications</h2>
+			  <h2 style="margin-top: 0px;">Applications</h2>
 			  
-			  <div class="custom-table" ng-show="applications.length > 0">
+			  <div class="custom-table">
 			    
 			    <div class="custom-row header green">
 			      <div class="custom-cell">
@@ -149,10 +151,13 @@
 			    </div>
 			    
 			  </div>
+			  <div class="no-row-table" ng-show="applications.length == 0">
+			  	<p>You have not applied to any jobs.</p>
+			  </div>
 
-			  <h2 ng-show="transactions.length > 0">Transactions</h2>
+			  <h2>Transactions</h2>
 
-			  <div class="custom-table" ng-show="transactions.length > 0">
+			  <div class="custom-table">
 			    
 			    <div class="custom-row header green">
 			      <div class="custom-cell">
@@ -174,13 +179,13 @@
 			    
 			    <div class="custom-row" ng-repeat="transaction in transactions">
 			      <div class="custom-cell">
-			      	{{transaction.title}}
+			      	{{transaction.jobTitle}}
 			      </div>
 			      <div class="custom-cell">
 			        {{transaction.created_at | date}}
 			      </div>
 			      <div class="custom-cell">
-			        {{transaction.sent_to}}
+			        {{transaction.userName}}
 			      </div>
 			      <div class="custom-cell">
 			        {{transaction.amount | currency}}
@@ -190,6 +195,9 @@
 			      </div>
 			    </div>
 			    
+			  </div>
+			  <div class="no-row-table" ng-show="transactions.length == 0">
+			  	<p>You have no transactions on record.</p>
 			  </div>
 			  	  
 			</div>
