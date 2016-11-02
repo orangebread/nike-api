@@ -61,24 +61,30 @@ router.post('/register', function(req, res){
             User.register(email, hash, displayName)
                 .then(function(user) {
                     console.log('Registering other stupid bullshit: ' + JSON.stringify(user));
-                    //create a new token
-                    var payload = {
-                        id: user.response.id
+
+                    if (user !== null) {
+                        res.json(user);
+                    } else {
+                        //create a new token
+                        var payload = {
+                            id: user.response.id
+                        }
+
+                        // send email notification
+                        emailService.sendEmail(email,'Registration Complete', 'Thank you for registering at Hourly Admin.')
+                            .then(function(success) {
+                                console.log('Email sent: ' + JSON.stringify(success));
+
+                                //create a new token
+                                var token = jwt.sign(payload, CONSTANTS.SECRET, { expiresIn: CONSTANTS.TOKEN_EXPIRE });
+                                res.json({ success: true, message: 'Successfully registered user.', displayName: user.response.display_name, token: token });
+                            });
                     }
 
-                    // send email notification
-                    emailService.sendEmail(email,'Registration Complete', 'Thank you for registering at Hourly Admin.')
-                        .then(function(success) {
-                            console.log('Email sent: ' + JSON.stringify(success));
-
-                            //create a new token
-                            var token = jwt.sign(payload, CONSTANTS.SECRET, { expiresIn: CONSTANTS.TOKEN_EXPIRE });
-                            res.json({ success: true, message: 'Successfully registered user.', displayName: user.response.display_name, token: token });
-                        });
                 })
                 .catch(function(err) {
                     console.log(err);
-                    res.status(500).json({ success: false, message: 'Error registering user'});
+                    res.status(500).json({ success: false, message: 'Error registering user', result: err});
                 });
         })
         .catch(function(err) {

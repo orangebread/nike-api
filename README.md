@@ -1,5 +1,13 @@
 # HourlyAdmin
 
+ATTENTION: 4433 is the secure port for testing HTTPS endpoints
+
+https://www.braintreegateway.com/merchants/49y9824s4ym6dw4w/home
+
+email: masantilliventures@gmail.com
+
+MogaDigitalHourly09
+
 API Dev Server:
 
 DEV API SERVER: ec2-107-20-13-172.compute-1.amazonaws.com:3000
