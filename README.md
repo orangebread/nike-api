@@ -270,6 +270,13 @@ params:
  * job_id: <job id>
  * amount: <dollar amount>
  * payment_method_nonce: <nonce token> (passed in from client)
+ 
+### Release Escrow Funds
+
+POST _http://**DEV API SERVER**/api/merchant/release_
+
+params:
+ * job_id: <job id>
 
 ### Transaction by ID
 

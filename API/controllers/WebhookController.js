@@ -7,11 +7,20 @@ var emailService = require('../utils/emailService');
 var User = require('../models/User');
 var Merchant = require('../models/Merchant');
 
+// Sandbox
+// var gateway = braintree.connect({
+//     environment:  braintree.Environment.Sandbox,
+//     merchantId:   '89h2d2rdg9v27kkx',
+//     publicKey:    'pjk2zt3dm7cb6t6d',
+//     privateKey:   '6ecc37981716e3b1b6699252806acbf6'
+// });
+
+// Live
 var gateway = braintree.connect({
-    environment:  braintree.Environment.Sandbox,
-    merchantId:   '89h2d2rdg9v27kkx',
-    publicKey:    'pjk2zt3dm7cb6t6d',
-    privateKey:   '6ecc37981716e3b1b6699252806acbf6'
+    environment:  braintree.Environment.Production,
+    merchantId:   '49y9824s4ym6dw4w',
+    publicKey:    'f8c32gq3hz5xd7kp',
+    privateKey:   'b867f37ebb39132ab8f8e51f4abfd9f7'
 });
 
 // Webhook response for submerchant

@@ -62,7 +62,7 @@ router.post('/register', function(req, res){
                 .then(function(user) {
                     console.log('Registering other stupid bullshit: ' + JSON.stringify(user));
 
-                    if (user !== null) {
+                    if (user === null) {
                         res.json(user);
                     } else {
                         //create a new token

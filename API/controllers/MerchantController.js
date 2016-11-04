@@ -386,18 +386,35 @@ router.post('/process', function(req, res) {
 
 // Release from escrow
 router.post('/release', function(req, res) {
-    var transactionId = req.body.transaction_id;
-
     jwtUtils.decryptToken(req, res)
         .then(function(token){
-            gateway.transaction.releaseFromEscrow(transactionId, function(err, result) {
-            }), function(err, result) {
-                if (err) {
-                    console.log('Error releasing funds from escrow: ' + err);
-                    res.json({ success: false, message: 'Error releasing funds from escrow.', result: err });
-                }
-                res.json({ success: true, message: 'Funds released from escrow.', result: result });
-            }
+            var jobId = req.body.job_id;
+            var userId = token.id;
+
+            Transaction.forge({
+                user_id: userId,
+                job_id: jobId
+            })
+                .fetch()
+                .then(function(transaction) {
+                    var transactionId = transaction.id;
+
+                    gateway.transaction.releaseFromEscrow(transactionId, function(err, result) {
+                    }), function(err, result) {
+                        if (err) {
+                            console.log('Error releasing funds from escrow: ' + err);
+                            res.json({ success: false, message: 'Error releasing funds from escrow.', result: err });
+                        }
+                        if (result.success ==='false') {
+                            res.json({ success: false, message: 'Error releasing funds from escrow.', result: result });
+                        }
+                        res.json({ success: true, message: 'Funds released from escrow.', result: result });
+                    }
+                })
+                .catch(function(err) {
+                    console.log('Transaction not found: ' + err);
+                    res.json({ success: false, message: 'Transaction not found.', result: err });
+                });
         })
         .catch(function(err) {
             console.log('User not verified: ' + err);
