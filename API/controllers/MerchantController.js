@@ -155,7 +155,7 @@ router.post('/add', function(req, res){
                     routingNumber: routingNumber
                 },
                 tosAccepted: tosAccepted,
-                masterMerchantAccountId: "mogadigitalllc"
+                masterMerchantAccountId: "TheHourlyAdmin_marketplace"
             };
 
             gateway.merchantAccount.create(merchantAccountParams, function (err, result) {
@@ -342,12 +342,14 @@ router.post('/process', function(req, res) {
                 merchantAccountId: merchant_id,
                 serviceFeeAmount: service,
                 options: {
-                    submitForSettlement: false
+                    submitForSettlement: false,
+                    holdInEscrow: true
+
                 }
             }, function (err, result) {
                 if (err) {
                     console.log('Sale error: ' + err);
-                    res.json({ success: true, message: 'Sale failed.'});
+                    res.json({ success: false, message: 'Sale failed.'});
                 }
                 Transaction.forge({
                     user_id: token.id,
@@ -372,6 +374,27 @@ router.post('/process', function(req, res) {
                         res.json({ success: false, message: 'Sale failed.', result: err});
                     });
             });
+        })
+        .catch(function(err) {
+            console.log('User not verified: ' + err);
+            res.json({ success: false, message: 'User not verified.', result: err });
+        });
+});
+
+// Release from escrow
+router.post('/release', function(req, res) {
+    var transactionId = req.body.transaction_id;
+
+    jwtUtils.decryptToken(req, res)
+        .then(function(token){
+            gateway.transaction.releaseFromEscrow(transactionId, function(err, result) {
+            }), function(err, result) {
+                if (err) {
+                    console.log('Error releasing funds from escrow: ' + err);
+                    res.json({ success: false, message: 'Error releasing funds from escrow.', result: err });
+                }
+                res.json({ success: true, message: 'Funds released from escrow.', result: result });
+            }
         })
         .catch(function(err) {
             console.log('User not verified: ' + err);

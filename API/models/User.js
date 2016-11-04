@@ -62,29 +62,19 @@ module.exports = db.Model.extend({
     },
 
     register: Promise.method(function(email, password, displayName) {
-        console.log('Registering user');
         if(!email || !password) {
-            console.log('Registration failed.');
             return ({ success: false, message: 'Please enter email and password.' });
         } else {
-            console.log('Registration executing...');
-            console.log('Display name is: ' + displayName);
-            var saveDisplayName = null;
-            if(displayName === null || displayName === undefined) {
-                saveDisplayName = this.generateDisplayName(email);
-            } else {
-                saveDisplayName = displayName;
+            if(!displayName) {
+                var autoDisplayName = this.generateDisplayName(email);
             }
-            console.log('Save display name is: ' + saveDisplayName);
             // Attempt to save the user
-            return new this({email: email.toLowerCase().trim(), password: password, display_name: saveDisplayName})
+            return new this({email: email.toLowerCase().trim(), password: password, display_name: autoDisplayName})
                 .save()
                 .then(function(res) {
-                    console.log('Registration succeeded.');
                     return ({ success: true, response: res.omit(['password'])});
                 }).catch(function(err) {
                     console.log(err);
-                    console.log('Registration failed. Email already exists');
                     return ({ success: false, message: 'That email address already exists.'});
                 });
 
