@@ -1,11 +1,19 @@
 var braintree = require('braintree');
 var express = require('express');
 var router  = express.Router();
-var globals = require('../config/globals');
 var emailService = require('../utils/emailService');
 
 var User = require('../models/User');
 var Merchant = require('../models/Merchant');
+
+var environment = {
+    development: {
+
+    },
+    production: {
+
+    }
+}
 
 // Sandbox
 // var gateway = braintree.connect({
@@ -25,7 +33,7 @@ var gateway = braintree.connect({
 
 // Webhook response for submerchant
 router.post('/submerchant', function(req, res){
-
+    console.log('ANYTHING HAPPENING HERE?');
     gateway.webhookNotification.parse(
         req.body.bt_signature,
         req.body.bt_payload,
@@ -33,25 +41,60 @@ router.post('/submerchant', function(req, res){
             console.log("[Webhook Received " + webhookNotification.timestamp + "] | Kind: " + webhookNotification.kind);
             console.log(JSON.stringify(webhookNotification));
 
+            var merchantAccountId = webhookNotification.subject.merchantAccount.id;
+            var merchantAccountStatus = webhookNotification.subject.merchantAccount.status;
+
             if (err) {
                 console.log('FUCKKKKK: ' + err);
             }
+            if (webhookNotification.kind === braintree.WebhookNotification.Kind.Check) {
+                console.log('Listening to Braintree Webhooks');
+            }
             if (webhookNotification.kind === braintree.WebhookNotification.Kind.SubMerchantAccountApproved) {
-                Merchant.forge({
-                    user_id: globals.user,
-                    merchant_name: webhookNotification.subject.merchantAccount.id,
-                    merchant_status: webhookNotification.subject.merchantAccount.status
-                })
-                    .save()
-                    .then(function(merchant){
-                        emailService.sendEmail(email,'Hourly Admin - Submerchant Approved!', 'Your Hourly Admin account has been approved.')
-                            .then(function(success) {
-                                console.log('Email sent: ' + JSON.stringify(success));
-                                console.log('Merchant added: ' + JSON.stringify(merchant));
-                            });
+                Merchant.forge({ merchant_name: merchantAccountId })
+                    .fetch()
+                    .then(function(merchant) {
+                        merchant.save({ merchant_status: merchantAccountStatus })
+                            .then(function(done) {
+                                User.forge({ id: merchant.attributes.user_id })
+                                    .fetch()
+                                    .then(function(user) {
+                                        var email = user.attributes.email;
+                                        console.log('Sucessfully added merchant info: ' + done);
+                                        emailService.sendEmail(email,'Hourly Admin - Submerchant Approved!', 'Your Hourly Admin account has been approved.')
+                                            .then(function(success) {
+                                                console.log('Email sent: ' + JSON.stringify(success));
+                                                console.log('Merchant added: ' + JSON.stringify(merchant));
+                                            });
+                                    });
+                            })
                     })
                     .catch(function(err) {
-                        console.log('Merchant adding error: ' + err);
+                        console.log('Error occurred saving Merchant info: ' + err);
+                    });
+
+            }
+            if (webhookNotification.kind === braintree.WebhookNotification.Kind.SubMerchantAccountDeclined) {
+                Merchant.forge({ merchant_name: merchantAccountId })
+                    .fetch()
+                    .then(function(merchant) {
+                        merchant.save({ merchant_status: merchantAccountStatus })
+                            .then(function(done) {
+                                User.forge({ id: merchant.attributes.user_id })
+                                    .fetch()
+                                    .then(function(user) {
+                                        var email = user.attributes.email;
+                                        console.log('Sucessfully added merchant info: ' + done);
+                                        emailService.sendEmail(email,'Hourly Admin - Submerchant Rejected', 'Your Hourly Admin account has been rejected.')
+                                            .then(function(success) {
+                                                console.log('Email sent: ' + JSON.stringify(success));
+                                                console.log('Merchant added: ' + JSON.stringify(merchant));
+                                            });
+                                    });
+                            })
+                    })
+                    .catch(function(err) {
+                        console.log('Error occurred saving Merchant info: ' + err);
                     });
             }
 

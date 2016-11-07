@@ -7,7 +7,6 @@ var braintree = require('braintree');
 var express = require('express');
 var router  = express.Router();
 var jwtUtils = require('../utils/jwtUtils');
-var globals = require('../config/globals');
 
 // Sandbox
 // var gateway = braintree.connect({
@@ -31,6 +30,8 @@ gateway.config.timeout = 10000;
 router.post('/addtest', function(req, res) {
     jwtUtils.decryptToken(req, res)
         .then(function(token) {
+            var userId = token.id;
+
             merchantAccountParams = {
                 individual: {
                     firstName: "Jones",
@@ -74,8 +75,23 @@ router.post('/addtest', function(req, res) {
                     console.log('Error occurred while onboarding submerchant: ' + err);
                     res.json({ success: false, message: 'Error onboarding submerchant.'});
                 }
-                globals.user = token.id;
-                res.json({ success: true, message: 'Submerchant processed succesfully!', result: result});
+                var merchantAccountId = result.merchantAccount.id;
+                var merchantAccountStatus = result.merchantAccount.status;
+
+                Merchant.forge({
+                    user_id: userId,
+                    merchant_name: merchantAccountId,
+                    merchant_status: merchantAccountStatus
+                })
+                    .save()
+                    .then(function(merchant) {
+                        console.log('Merchant added successfully')
+                        res.json({ success: true, message: 'Submerchant processed succesfully!', result: merchant});
+                    })
+                    .catch(function(err) {
+                        console.log('Error adding Merchant: ' + err);
+                        res.json({ success: false, message: 'Error occurred while adding merchant', result: err });
+                    });
             });
         })
         .catch(function(err) {
@@ -89,6 +105,8 @@ router.post('/addtest', function(req, res) {
 router.post('/add', function(req, res){
     jwtUtils.decryptToken(req, res)
         .then(function(token){
+            var userId = token.id;
+
             // Individual params
             var firstName = req.body.first_name,
                 lastName = req.body.last_name,
@@ -166,6 +184,7 @@ router.post('/add', function(req, res){
                 if (result.success === 'false') {
                     res.json({ success: false, message: 'Error onboarding submerchant.', result: result });
                 }
+
                 globals.user = token.id;
                 res.json({ success: true, message: 'Submerchant onboarded succesfully!', result: result});
             });
