@@ -185,8 +185,23 @@ router.post('/add', function(req, res){
                     res.json({ success: false, message: 'Error onboarding submerchant.', result: result });
                 }
 
-                globals.user = token.id;
-                res.json({ success: true, message: 'Submerchant onboarded succesfully!', result: result});
+                var merchantAccountId = result.merchantAccount.id;
+                var merchantAccountStatus = result.merchantAccount.status;
+
+                Merchant.forge({
+                    user_id: userId,
+                    merchant_name: merchantAccountId,
+                    merchant_status: merchantAccountStatus
+                })
+                    .save()
+                    .then(function(merchant) {
+                        console.log('Merchant added successfully');
+                        res.json({ success: true, message: 'Submerchant processed succesfully!', result: merchant});
+                    })
+                    .catch(function(err) {
+                        console.log('Error adding Merchant: ' + err);
+                        res.json({ success: false, message: 'Error occurred while adding merchant', result: err });
+                    });
             });
         })
         .catch(function(err) {
