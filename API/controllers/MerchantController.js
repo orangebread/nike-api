@@ -184,24 +184,27 @@ router.post('/add', function(req, res){
                 if (result.success === 'false') {
                     res.json({ success: false, message: 'Error onboarding submerchant.', result: result });
                 }
-                console.log('Merchant result: ' + JSON.stringify(result));
-                var merchantAccountId = result.merchantAccount.id;
-                var merchantAccountStatus = result.merchantAccount.status;
+                if (result.success === 'true') {
+                    console.log('Merchant result: ' + JSON.stringify(result));
+                    var merchantAccountId = result.merchantAccount.id;
+                    var merchantAccountStatus = result.merchantAccount.status;
 
-                Merchant.forge({
-                    user_id: userId,
-                    merchant_name: merchantAccountId,
-                    merchant_status: merchantAccountStatus
-                })
-                    .save()
-                    .then(function(merchant) {
-                        console.log('Merchant added successfully');
-                        res.json({ success: true, message: 'Submerchant processed succesfully!', result: merchant});
+                    Merchant.forge({
+                        user_id: userId,
+                        merchant_name: merchantAccountId,
+                        merchant_status: merchantAccountStatus
                     })
-                    .catch(function(err) {
-                        console.log('Error adding Merchant: ' + err);
-                        res.json({ success: false, message: 'Error occurred while adding merchant', result: err });
-                    });
+                        .save()
+                        .then(function(merchant) {
+                            console.log('Merchant added successfully');
+                            res.json({ success: true, message: 'Submerchant processed succesfully!', result: merchant});
+                        })
+                        .catch(function(err) {
+                            console.log('Error adding Merchant: ' + err);
+                            res.json({ success: false, message: 'Error occurred while adding merchant', result: err });
+                        });
+                }
+
             });
         })
         .catch(function(err) {
