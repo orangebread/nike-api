@@ -49,6 +49,7 @@ router.post('/submerchant', function(req, res){
             }
             if (webhookNotification.kind === braintree.WebhookNotification.Kind.Check) {
                 console.log('Listening to Braintree Webhooks');
+                res.json({ success: true });
             }
             if (webhookNotification.kind === braintree.WebhookNotification.Kind.SubMerchantAccountApproved) {
                 Merchant.forge({ merchant_name: merchantAccountId })
