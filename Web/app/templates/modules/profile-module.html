@@ -191,7 +191,7 @@
 			        {{transaction.amount | currency}}
 			      </div>
 			      <div class="custom-cell">
-			        {{transaction.transaction_status}}
+			        <button class="btn" ng-click="getTransactionStatus(transaction)">Get Status</button>
 			      </div>
 			    </div>
 			    

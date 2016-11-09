@@ -62,10 +62,10 @@ module.controller('MerchantSignUpController', function ($scope, $uibModalInstanc
 
 		function success(response){
 			$scope.forms.showSpinner = false;
-			if(response.data.result.success)
+			if(response.data.success)
 			{
-				$localStorage.merchantID = response.data.result.merchantAccount.id;
-				$localStorage.merchantStatus = response.data.result.merchantAccount.status;
+				$localStorage.merchantID = response.data.result.id;
+				$localStorage.merchantStatus = response.data.result.merchant_status;
 				$scope.forms.submitted = true;
 			}
 			else
@@ -94,10 +94,8 @@ module.controller('MerchantSignUpController', function ($scope, $uibModalInstanc
 			region: $scope.forms.inputs.state,
 			postal_code: $scope.forms.inputs.zip,
 			tos_accepted: $scope.forms.inputs.toc,
-			// account_number: $scope.forms.inputs.b_account,
-			// routing_number: $scope.forms.inputs.b_routing,
-			account_number: "000000000",
-			routing_number: "071101307",
+			account_number: $scope.forms.inputs.b_account,
+			routing_number: $scope.forms.inputs.b_routing,
 			business: $scope.forms.inputs.business,
 			b_account: $scope.forms.inputs.b_account,
 			b_routing: $scope.forms.inputs.b_routing
