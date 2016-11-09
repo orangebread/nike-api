@@ -381,7 +381,7 @@ router.post('/process', function(req, res) {
                 merchantAccountId: merchant_id,
                 serviceFeeAmount: service,
                 options: {
-                    submitForSettlement: false,
+                    submitForSettlement: true,
                     holdInEscrow: true
 
                 }
