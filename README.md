@@ -277,6 +277,13 @@ POST _http://**DEV API SERVER**/api/merchant/release_
 
 params:
  * job_id: <job id>
+ 
+### Submit for Settlement
+
+POST _http://**DEV API SERVER**/api/merchant/settle/:id_
+
+params:
+ * id: <transaction id>
 
 ### Transaction by ID
 

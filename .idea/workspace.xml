@@ -4,6 +4,7 @@
     <list default="true" id="af4255a4-449f-4c14-8112-464024826330" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/API/controllers/MerchantController.js" afterPath="$PROJECT_DIR$/API/controllers/MerchantController.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/README.md" afterPath="$PROJECT_DIR$/README.md" />
     </list>
     <ignored path="HourlyAdmin.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -33,11 +34,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="MerchantController.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="MerchantController.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/API/controllers/MerchantController.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="188">
-              <caret line="383" column="45" selection-start-line="383" selection-start-column="45" selection-end-line="383" selection-end-column="45" />
+            <state relative-caret-position="264">
+              <caret line="438" column="15" selection-start-line="438" selection-start-column="15" selection-end-line="438" selection-end-column="15" />
               <folding />
             </state>
           </provider>
@@ -103,15 +104,15 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="README.md" pinned="false" current-in-tab="false">
+      <file leaf-file-name="README.md" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/README.md">
           <provider editor-type-id="MarkdownFxPreviewEditor">
             <state />
           </provider>
           <provider selected="true" editor-type-id="split-provider[text-editor;MarkdownPreviewEditor]">
             <state split_layout="FIRST">
-              <first_editor relative-caret-position="139">
-                <caret line="280" column="5" selection-start-line="280" selection-start-column="4" selection-end-line="280" selection-end-column="5" />
+              <first_editor relative-caret-position="334">
+                <caret line="285" column="23" selection-start-line="285" selection-start-column="23" selection-end-line="285" selection-end-column="23" />
                 <folding />
               </first_editor>
               <second_editor />
@@ -190,11 +191,11 @@
         <option value="$PROJECT_DIR$/API/config/config.js" />
         <option value="$PROJECT_DIR$/API/knexfile.js" />
         <option value="$PROJECT_DIR$/API/models/User.js" />
-        <option value="$PROJECT_DIR$/README.md" />
         <option value="$PROJECT_DIR$/API/controllers/LoginController.js" />
         <option value="$PROJECT_DIR$/API/controllers/WebhookController.js" />
         <option value="$PROJECT_DIR$/API/controllers/MessageController.js" />
         <option value="$PROJECT_DIR$/API/controllers/MerchantController.js" />
+        <option value="$PROJECT_DIR$/README.md" />
       </list>
     </option>
   </component>
@@ -480,12 +481,12 @@
       <workItem from="1477884903070" duration="1031000" />
       <workItem from="1477959307419" duration="131000" />
       <workItem from="1477959627283" duration="11586000" />
-      <workItem from="1478300888008" duration="11066000" />
+      <workItem from="1478300888008" duration="11536000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="245659000" />
+    <option name="totallyTimeSpent" value="246129000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="27" y="113" width="1436" height="877" extended-state="0" />
@@ -875,26 +876,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/README.md">
-      <provider editor-type-id="MarkdownFxPreviewEditor">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="split-provider[text-editor;MarkdownPreviewEditor]">
-        <state split_layout="FIRST">
-          <first_editor relative-caret-position="139">
-            <caret line="280" column="5" selection-start-line="280" selection-start-column="4" selection-end-line="280" selection-end-column="5" />
-            <folding />
-          </first_editor>
-          <second_editor />
-        </state>
-      </provider>
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="69" column="0" selection-start-line="69" selection-start-column="0" selection-end-line="69" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/API/controllers/JobController.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-1725">
@@ -905,8 +886,28 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/API/controllers/MerchantController.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="188">
-          <caret line="383" column="45" selection-start-line="383" selection-start-column="45" selection-end-line="383" selection-end-column="45" />
+        <state relative-caret-position="264">
+          <caret line="438" column="15" selection-start-line="438" selection-start-column="15" selection-end-line="438" selection-end-column="15" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider editor-type-id="MarkdownFxPreviewEditor">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="split-provider[text-editor;MarkdownPreviewEditor]">
+        <state split_layout="FIRST">
+          <first_editor relative-caret-position="334">
+            <caret line="285" column="23" selection-start-line="285" selection-start-column="23" selection-end-line="285" selection-end-column="23" />
+            <folding />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="360">
+          <caret line="69" column="0" selection-start-line="69" selection-start-column="0" selection-end-line="69" selection-end-column="0" />
           <folding />
         </state>
       </provider>

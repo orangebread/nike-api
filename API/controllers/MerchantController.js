@@ -381,7 +381,7 @@ router.post('/process', function(req, res) {
                 merchantAccountId: merchant_id,
                 serviceFeeAmount: service,
                 options: {
-                    submitForSettlement: true,
+                    submitForSettlement: false,
                     holdInEscrow: true
 
                 }
@@ -412,6 +412,30 @@ router.post('/process', function(req, res) {
                         console.log('Error occurred proccessing sale: ' + err );
                         res.json({ success: false, message: 'Sale failed.', result: err});
                     });
+            });
+        })
+        .catch(function(err) {
+            console.log('User not verified: ' + err);
+            res.json({ success: false, message: 'User not verified.', result: err });
+        });
+});
+
+
+// Submit for settlement
+router.post('/settle/:id', function(req, res) {
+    jwtUtils.decryptToken(req, res)
+        .then(function(token){
+            var transactionId = req.params.id;
+
+            gateway.transaction.submitForSettlement(transactionId, function (err, result) {
+                console.log('Settlement object: ' + JSON.stringify(result));
+                if (result.success) {
+                    var settledTransaction = result.transaction;
+                    res.json({ success: true, message: 'Transaction settled successfully!', result: settledTransaction});
+                } else {
+                    console.log(result.errors);
+                    res.json({ success: false, message: 'Error settling transaction', result: result.errors});
+                }
             });
         })
         .catch(function(err) {
