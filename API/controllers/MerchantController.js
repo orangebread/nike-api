@@ -262,7 +262,6 @@ router.get('/transaction/:id', function(req, res){
             console.log('Error occurred: ' + err);
             res.json({ success: false, message: 'Error occurred', result: err });
         });
-
 });
 
 // Get transaction collection
@@ -382,7 +381,7 @@ router.post('/process', function(req, res) {
                 merchantAccountId: merchant_id,
                 serviceFeeAmount: service,
                 options: {
-                    submitForSettlement: false,
+                    submitForSettlement: true,
                     holdInEscrow: true
 
                 }
