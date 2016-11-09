@@ -181,10 +181,10 @@ router.post('/add', function(req, res){
                     console.log('Error occurred while onboarding submerchant: ' + err);
                     res.json({ success: false, message: 'Error onboarding submerchant.'});
                 }
-                if (result.attributes.success === 'false') {
+                if (result.success == false) {
                     res.json({ success: false, message: 'Error onboarding submerchant.', result: result });
                 }
-                if (result.attributes.success === 'true') {
+                if (result.success == true) {
                     console.log('Merchant result: ' + JSON.stringify(result));
                     var merchantAccountId = result.merchantAccount.id;
                     var merchantAccountStatus = result.merchantAccount.status;
