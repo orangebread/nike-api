@@ -438,14 +438,18 @@ router.post('/release', function(req, res) {
 
                     gateway.transaction.releaseFromEscrow(transactionId, function(err, result) {
                     }), function(err, result) {
+                        console.log('Escrow release results: ' + JSON.stringify(result));
                         if (err) {
                             console.log('Error releasing funds from escrow: ' + err);
                             res.json({ success: false, message: 'Error releasing funds from escrow.', result: err });
                         }
-                        if (result.success ==='false') {
+                        if (result.success == false) {
                             res.json({ success: false, message: 'Error releasing funds from escrow.', result: result });
                         }
-                        res.json({ success: true, message: 'Funds released from escrow.', result: result });
+                        if (result.success == true) {
+                            res.json({ success: true, message: 'Funds released from escrow.', result: result });
+                        }
+
                     }
                 })
                 .catch(function(err) {
