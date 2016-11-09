@@ -2,7 +2,9 @@ var Message = require('../models/Message');
 var User = require('../models/User');
 var Thread = require('../models/Thread');
 var UserThread = require('../models/UserThread');
+
 var express = require('express');
+var emailService = require('../utils/emailService');
 var router  = express.Router();
 var jwtUtils = require('../utils/jwtUtils');
 var Promise = require('bluebird');
