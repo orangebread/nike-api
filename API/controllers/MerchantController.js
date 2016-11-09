@@ -435,7 +435,7 @@ router.post('/release', function(req, res) {
                 .fetch()
                 .then(function(transaction) {
                     console.log('Transaction from release: ' + JSON.stringify(transaction));
-                    var transactionId = transaction.id;
+                    var transactionId = transaction.attributes.transaction;
 
                     gateway.transaction.releaseFromEscrow(transactionId, function(err, result) {
                     }), function(err, result) {
