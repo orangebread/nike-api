@@ -36,8 +36,8 @@
       <file leaf-file-name="MerchantController.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/API/controllers/MerchantController.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="203">
-              <caret line="437" column="51" selection-start-line="437" selection-start-column="51" selection-end-line="437" selection-end-column="51" />
+            <state relative-caret-position="-36">
+              <caret line="439" column="20" selection-start-line="439" selection-start-column="20" selection-end-line="439" selection-end-column="20" />
               <folding />
             </state>
           </provider>
@@ -480,12 +480,12 @@
       <workItem from="1477884903070" duration="1031000" />
       <workItem from="1477959307419" duration="131000" />
       <workItem from="1477959627283" duration="11586000" />
-      <workItem from="1478300888008" duration="10258000" />
+      <workItem from="1478300888008" duration="10378000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="244851000" />
+    <option name="totallyTimeSpent" value="244971000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="27" y="113" width="1436" height="877" extended-state="0" />
@@ -905,8 +905,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/API/controllers/MerchantController.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="203">
-          <caret line="437" column="51" selection-start-line="437" selection-start-column="51" selection-end-line="437" selection-end-column="51" />
+        <state relative-caret-position="-36">
+          <caret line="439" column="20" selection-start-line="439" selection-start-column="20" selection-end-line="439" selection-end-column="20" />
           <folding />
         </state>
       </provider>
