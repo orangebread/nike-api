@@ -474,7 +474,7 @@ router.post('/release', function(req, res) {
                         if (result.success == true) {
                             res.json({ success: true, message: 'Funds released from escrow.', result: result });
                         }
-                        res.json({ success: what, result: result});
+                        res.json({ success: true, result: result});
                     }
                 })
                 .catch(function(err) {
