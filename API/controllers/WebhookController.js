@@ -47,10 +47,13 @@ router.post('/submerchant', function(req, res){
             if (err) {
                 console.log('FUCKKKKK: ' + err);
             }
+            // Test Endpoint
             if (webhookNotification.kind === braintree.WebhookNotification.Kind.Check) {
                 console.log('Listening to Braintree Webhooks');
                 res.json({ success: true });
             }
+
+            // Submerchant Approved
             if (webhookNotification.kind === braintree.WebhookNotification.Kind.SubMerchantAccountApproved) {
                 Merchant.forge({ merchant_name: merchantAccountId })
                     .fetch()
@@ -75,6 +78,8 @@ router.post('/submerchant', function(req, res){
                     });
 
             }
+
+            // Submerchant Declined
             if (webhookNotification.kind === braintree.WebhookNotification.Kind.SubMerchantAccountDeclined) {
                 Merchant.forge({ merchant_name: merchantAccountId })
                     .fetch()
@@ -96,6 +101,30 @@ router.post('/submerchant', function(req, res){
                     })
                     .catch(function(err) {
                         console.log('Error occurred saving Merchant info: ' + err);
+                    });
+            }
+
+            // Disbursement Exception
+            if (webhookNotification.kind === braintree.WebhookNotification.Kind.DisbursementException) {
+                var disbursement = webhookNotification.subject.disbursement;
+                console.log('Disbursement hook: ' + JSON.stringify(disbursement));
+
+                Merchant.forge({ merchant_name: merchantAccountId })
+                    .fetch()
+                    .then(function(merchant) {
+                        var userId = merchant.attributes.user_id;
+                        User.forge({ id: userId })
+                            .fetch()
+                            .then(function(user) {
+                                var email = user.attributes.email;
+                                emailService.sendEmail(email, 'Hourly Admin - Disbursement Issue', 'There was a problem disbursing funds')
+                                    .then(function(success) {
+                                        console.log('Email sent: ' + JSON.stringify(success));
+                                    });
+                            })
+                    })
+                    .catch(function(err) {
+                        console.log('Error occurred proccessing disbursement: ' + err);
                     });
             }
 
