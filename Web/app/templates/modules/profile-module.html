@@ -7,7 +7,7 @@
 					<p class="company-name"><span>Email:</span> {{userInfo.email}}</p>
 					<p class="company-name" ng-if="userInfo.merchant_name != null"><span>Merchant Name:</span> {{userInfo.merchant_name}}</p>
 					<p class="company-name" ng-if="userInfo.merchant_status != null"><span>Merchant Status:</span> {{userInfo.merchant_status}}</p>
-					<a href="#" ng-click="logout()">Logout</a>
+					<button class="btn" ng-click="logout()">Logout</button>
 				</div>
 			</div>
 		</div>
@@ -177,7 +177,7 @@
 			      </div>
 			    </div>
 			    
-			    <div class="custom-row" ng-repeat="transaction in transactions">
+			    <div class="custom-row" ng-repeat="transaction in transactions | orderBy: 'jobTitle'">
 			      <div class="custom-cell">
 			      	{{transaction.jobTitle}}
 			      </div>
@@ -191,7 +191,9 @@
 			        {{transaction.amount | currency}}
 			      </div>
 			      <div class="custom-cell">
-			        <button class="btn" ng-click="getTransactionStatus(transaction)">Get Status</button>
+			        <span ng-if="transaction.escrowStatus == 'hold_pending'">Pending Escrow</span>
+			        <span ng-if="transaction.escrowStatus == 'held'">In Escrow</span>
+			        <span ng-if="transaction.escrowStatus == 'release_pending'">Pending Release</span>
 			      </div>
 			    </div>
 			    
