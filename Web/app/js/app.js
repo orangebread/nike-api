@@ -42,12 +42,7 @@ module.config(['jwtInterceptorProvider', '$routeProvider', '$httpProvider', 'Fac
 		when('/messages', {
 			templateUrl: 'templates/messages.html'
 		}).
-		when('/login', {
-			templateUrl: 'templates/login.html'
-		}).
 		otherwise({
 			redirectTo: '/home'
 		});
 }]);
-
-

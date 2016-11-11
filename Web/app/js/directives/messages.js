@@ -16,12 +16,10 @@ module.directive('messages', function() {
 			$scope.getMessages = function(){
 
 				function messageSuccess(response){
-	        		console.log(response);
 	        		response.data.result[0].thread.forEach(function(e){
 
 	        			function success(response){
-			        		console.log(response);
-			        		e.threadTitle = response.data.result.display_name;
+			        		e.threadTitle = response.data.result[0].display_name;
 			        		$scope.discussions.push(e);
 
 			        		if($scope.discussions.length > 0)

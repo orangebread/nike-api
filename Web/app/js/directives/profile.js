@@ -271,23 +271,24 @@ module.directive('profile', function() {
 
 				function success(response){
 	        		response.data.result.forEach(function(e){
+	        			//console.log(e);
 
 	        			function jobSuccess(jobResponse){
 	        			  e.jobTitle = jobResponse.data.result.title;
 
 					      	function userSuccess(userResponse){
 		        			  e.userName = userResponse.data.result[0].display_name;
-						      $scope.transactions.push(e);
+
+						      $scope.getTransactionStatus(e);
 						    }
 
 						    function userError(response){
 						      alert("Something bad happened");
-						      //$log.log(response)
 						    }
 
 						    $http({
 						      method: 'GET',
-						      url: API_BASE_URL+"user/"+e.user_id
+						      url: API_BASE_URL+"user/"+e.employee_id
 						    }).then(userSuccess, userError);
 					    }
 
@@ -315,7 +316,8 @@ module.directive('profile', function() {
 
 			$scope.getTransactionStatus = function(transaction){
 				function success(response){
-	        		console.log(response);
+	        		transaction.escrowStatus = response.data.result.escrowStatus;
+	        		$scope.transactions.push(transaction);
 				}
 
 				function error(response){
