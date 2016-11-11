@@ -64,6 +64,20 @@ module.directive('profile', function() {
 
 				function success(response){
 	        		job.status_id = 5;
+
+	        		function releaseSuccess(response){
+	        			console.log(response);
+	        		}
+
+	        		function releaseFailure(response){
+	        			console.log(response);
+	        		}
+
+	        		$http({
+				      method: 'POST',
+				      data: {job_id: job.id},
+				      url: API_BASE_URL+"merchant/release",
+				    }).then(releaseSuccess, releaseFailure);
 				}
 
 				function error(response){
@@ -296,6 +310,21 @@ module.directive('profile', function() {
 				$http({
 			      method: 'GET',
 			      url: API_BASE_URL+"merchant/transaction",
+			    }).then(success, error);
+			}
+
+			$scope.getTransactionStatus = function(transaction){
+				function success(response){
+	        		console.log(response);
+				}
+
+				function error(response){
+					alert("Something went wrong.")
+				}
+
+				$http({
+			      method: 'GET',
+			      url: API_BASE_URL+"merchant/transaction/"+transaction.transaction,
 			    }).then(success, error);
 			}
 

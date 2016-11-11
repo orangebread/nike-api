@@ -103,7 +103,7 @@ module.controller('LoginModalController', function ($scope, $uibModalInstance, i
 			}
 			else
 			{
-				alert("Wrong username or password");
+				alert("An account with that email already exists.");
 			}
 		}
 

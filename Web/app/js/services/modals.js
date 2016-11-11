@@ -1,4 +1,4 @@
-module.factory("modals", function($uibModal){
+module.factory("modals", function($uibModal, $localStorage){
 
 	var service = {};
 
