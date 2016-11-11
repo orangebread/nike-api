@@ -5,6 +5,9 @@
 	position: fixed !important;
 	bottom: 0px;
 	float: none !important;
+	@include breakpoint($mobileOnly) {
+		position: static !important;
+	}
 
 	h2{
 		padding: 14px 0px;

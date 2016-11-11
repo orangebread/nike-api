@@ -65,6 +65,9 @@
 			background-position: 19px 10px;
 			background-color: $color-social-facebook;
 			background-image: url("../images/icon-facebook.png");
+			@include breakpoint($mobileOnly) {
+				font-size: 20px;
+			}
 		}
 	}
 
