@@ -462,7 +462,6 @@ router.post('/release', function(req, res) {
                     console.log('Transaction ID: ' + transactionId);
 
                     gateway.transaction.releaseFromEscrow(transactionId, function(err, result) {
-                    }), function(err, result) {
                         console.log('Escrow release results: ' + JSON.stringify(result));
                         if (err) {
                             console.log('Error releasing funds from escrow: ' + err);
@@ -475,7 +474,7 @@ router.post('/release', function(req, res) {
                             res.json({ success: true, message: 'Funds released from escrow.', result: result });
                         }
                         res.json({ success: true, result: result});
-                    }
+                    });
                 })
                 .catch(function(err) {
                     console.log('Transaction not found: ' + err);
