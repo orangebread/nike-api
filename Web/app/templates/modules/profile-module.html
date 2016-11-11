@@ -5,8 +5,11 @@
 				<div class="stats">
 					<p class="name"><span>Username:</span> {{userInfo.display_name}}</p>
 					<p class="company-name"><span>Email:</span> {{userInfo.email}}</p>
-					<p class="company-name" ng-if="userInfo.merchant_name != null"><span>Merchant Name:</span> {{userInfo.merchant_name}}</p>
 					<p class="company-name" ng-if="userInfo.merchant_status != null"><span>Merchant Status:</span> {{userInfo.merchant_status}}</p>
+					<button class="btn" ng-if="userInfo.merchant_status != null" ng-click="getMerchantDetails()">Financial Details</button>
+					<br />
+					<br />
+					<br />
 					<button class="btn" ng-click="logout()">Logout</button>
 				</div>
 			</div>
@@ -194,6 +197,7 @@
 			        <span ng-if="transaction.escrowStatus == 'hold_pending'">Pending Escrow</span>
 			        <span ng-if="transaction.escrowStatus == 'held'">In Escrow</span>
 			        <span ng-if="transaction.escrowStatus == 'release_pending'">Pending Release</span>
+			        <span ng-if="transaction.escrowStatus == 'released'">Released</span>
 			      </div>
 			    </div>
 			    
