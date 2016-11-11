@@ -1,6 +1,6 @@
 {
-  "name": "broasis",
-  "version": "0.0.0",
+  "name": "Hourly",
+  "version": "1.0.0",
   "dependencies": {
     "angular-animate": "~1.4.2",
     "angular-cookies": "~1.4.2",
@@ -25,7 +25,8 @@
     "ng-scrollbar": "~0.0.8",
     "angular-socket-io": "~0.7.0",
     "angular-web-notification": "~0.0.68",
-    "breakpoint-sass": "^2.7.0"
+    "breakpoint-sass": "^2.7.0",
+    "sidr": "^2.2.1"
   },
   "devDependencies": {
     "angular-mocks": "~1.4.2"
