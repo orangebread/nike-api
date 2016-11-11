@@ -218,7 +218,7 @@ router.get('/', function(req, res){
     jwtUtils.decryptToken(req, res)
         .then(function(token){
             Merchant.forge({
-                id: token.id
+                user_id: token.id
             })
                 .fetch()
                 .then(function(merchant) {
