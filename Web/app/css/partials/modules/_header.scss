@@ -2,9 +2,11 @@
 	border-top: 7px solid $color-yellow;
 	background-color: $color-black;
 	@include make-sm-column(12);
+	padding: 0;
 
 	.logo-area{
-		@include make-xs-column(5);
+		@include make-sm-column(5);
+		@include make-xs-column(12);
 
 		a{
 			text-decoration: none;
@@ -13,35 +15,45 @@
 				margin: 0;
 				color: $color-white;
 				@include breakpoint($mobileOnly) {
-					font-size: 30px;
+					font-size: 20px;
+					text-align: center;
 				}
 			}
 		}
 	}
 
 	.main-nav{
-		@include make-xs-column(7);
+		@include make-sm-column(7);
+		@include make-xs-column(12);
 
 		ul{
 			margin: 0;
 			float: right;
 			height: 100%;
 			margin-right: 20px;
+			@include breakpoint($mobileOnly) {
+				float: none;
+				height: 100%;
+				margin-right: 0px;
+				text-align: center;
+			}
 
 			li{
 				display: inline-block;
 
 				a{
 					display: block;
-					padding-top: 20px;
-					padding-bottom: 21px;
-					padding-left: 20px;
-					padding-right: 20px;
+					padding: 20px;
 					color: white;
 					font-weight: bold;
 					font-size: 18px;
 					text-decoration: none;
 					cursor: pointer;
+					@include breakpoint($mobileOnly) {
+						font-size: 12px;
+						padding: 5px;
+						padding-bottom: 15px;
+					}
 
 					&:hover{
 						background-color: $color-yellow;

@@ -4,7 +4,6 @@
 
 	h2{
 		margin-top: 30px;
-		float: left;
 	}
 
 	.wrapper{
@@ -122,6 +121,9 @@
 			font-weight: 900;
 			color: #000000;
 			background: $color-yellow;
+			@include breakpoint($mobileOnly) {
+				display: none;
+			}
 		}
 	  	@media screen and (max-width: 580px){
 			padding: 8px 0;

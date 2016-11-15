@@ -21,6 +21,9 @@
 .friend-list li {
   border-bottom: 1px solid #eee;
   padding-right: 15px;
+  @include breakpoint($mobileOnly) {
+      padding-right: 0;
+  }
 }
 
 .friend-list li a img {
@@ -218,6 +221,10 @@ a:hover, a:active, a:focus {
   height: 600px;
   overflow-y: scroll;
   border: 1px solid $color-yellow;
+  @include breakpoint($mobileOnly) {
+    height: auto;
+    max-height: 300px;
+  }
 }
 
 .friend-list-wrapper{
@@ -237,6 +244,9 @@ a:hover, a:active, a:focus {
 }
 
 .chat-box{
+  @include breakpoint($mobileOnly) {
+      width: 100%;
+  }
 
   .btn{
     margin-top: 0px;

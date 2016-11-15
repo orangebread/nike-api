@@ -13,7 +13,6 @@ module.directive('search', function() {
 
 	        $scope.search = function(){
 	        	function success(response){
-	        		console.log(response);
 	        		$scope.results = response.data.result.filter(function(el){
 	        			return ((el.title.toLowerCase().indexOf($scope.searchTerm.toLowerCase()) !== -1) || typeof $scope.searchTerm === "undefined")
 	        		});

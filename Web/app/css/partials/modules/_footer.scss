@@ -1,9 +1,13 @@
 .footer{
 	@include make-xs-column(12);
+	padding: 0;
 	background-color: $color-black;
 	position: fixed !important;
 	bottom: 0px;
 	float: none !important;
+	@include breakpoint($mobileOnly) {
+		position: static !important;
+	}
 
 	h2{
 		padding: 14px 0px;
@@ -11,6 +15,9 @@
 		margin-left: 20px;
 		color: $color-white;
 		display: inline-block;
+		@include breakpoint($mobileOnly) {
+			display: none;
+		}
 	}
 
 	.footer-links{

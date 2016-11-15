@@ -54,6 +54,19 @@ module.factory("modals", function($uibModal, $localStorage){
 	    });
 	}
 
+	service.openMerchantDetailsModal = function(){
+		var modalInstance = $uibModal.open({
+	      animation: true,
+	      templateUrl: 'templates/modules/merchant-details-modal.html',
+	      controller: 'MerchantDetailsController',
+	      resolve: {
+	        items: function () {
+	          return [];
+	        }
+	      }
+	    });
+	}
+
 	service.openAcceptModal = function(application){
 		$localStorage.appAcceptUserId = application.user_id;
 		$localStorage.amountToPay = application.bid_amount;

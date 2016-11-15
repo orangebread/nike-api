@@ -60,37 +60,45 @@ module.directive('profile', function() {
 
 			$scope.markAsComplete = function(job){
 
-				var confirm_result = confirmResult = confirm("This will end the jobs life cycle, mark it as complete and release your payment which is in escrow to the contractor. You cannot undo this.");
+				var transaction = $scope.transactions.where(function(e){ return e.job_id == job.id })[0];
 
-				function success(response){
-	        		job.status_id = 5;
-
-	        		function releaseSuccess(response){
-	        			console.log(response);
-	        		}
-
-	        		function releaseFailure(response){
-	        			console.log(response);
-	        		}
-
-	        		$http({
-				      method: 'POST',
-				      data: {job_id: job.id},
-				      url: API_BASE_URL+"merchant/release",
-				    }).then(releaseSuccess, releaseFailure);
-				}
-
-				function error(response){
-					alert("Something went wrong.")
-				}
-
-				if(confirm_result)
+				if(transaction.escrowStatus != "held")
 				{
-					$http({
-				      method: 'POST',
-				      data: {job_id: job.id, workflow_id: 5},
-				      url: API_BASE_URL+"job/workflow",
-				    }).then(success, error);
+					alert("This transaction either has not made it to escrow yet, in which case you must wait a day or two until it reaches escrow (you can check your transaction list below for its status), or it has already been released.");
+				}
+				else
+				{
+					var confirm_result = confirmResult = confirm("This will end the jobs life cycle, mark it as complete and release your payment which is in escrow to the contractor. You cannot undo this.");
+
+					function success(response){
+
+		        		function workflowSuccess(response){
+		        			job.status_id = 5;
+		        		}
+
+		        		function workflowError(response){
+		        			
+		        		}
+
+		        		$http({
+					      method: 'POST',
+					      data: {job_id: job.id, workflow_id: 5},
+					      url: API_BASE_URL+"job/workflow",
+					    }).then(workflowSuccess, workflowError);
+					}
+
+					function error(response){
+						
+					}
+
+					if(confirm_result)
+					{
+						$http({
+					      method: 'POST',
+					      data: {job_id: job.id},
+					      url: API_BASE_URL+"merchant/release",
+					    }).then(success, error);
+					}
 				}
 			}
 
@@ -330,10 +338,31 @@ module.directive('profile', function() {
 			    }).then(success, error);
 			}
 
-			$scope.getApplications();
-			$scope.getPostedJobs();
-			$scope.getUserDetails();
-			$scope.getUserTransactions();
+			$scope.getMerchantDetails = function(){
+				modals.openMerchantDetailsModal();
+			}
+
+			$scope.loadPage = function(callback){
+				function success(response){
+	        		callback();
+				}
+
+				function error(response){
+					alert("Connection to the data server could not be established, please try again later. We apologize for the inconvenience.")
+				}
+
+				$http({
+			      method: 'GET',
+			      url: API_BASE_URL+"user",
+			    }).then(success, error);
+			}
+
+			$scope.loadPage(function(){
+				$scope.getApplications();
+				$scope.getPostedJobs();
+				$scope.getUserDetails();
+				$scope.getUserTransactions();
+			})
 		}]
 	};
 });

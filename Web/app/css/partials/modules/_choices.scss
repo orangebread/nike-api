@@ -21,14 +21,14 @@
 		text-decoration: none;
 		@include breakpoint($mobileOnly) {
 			display: block;
-			border: none !important;
-			height: 150px;
+			border-right: none !important;
+			height: 120px;
 
 			h2{
 				float: none !important;
 				margin: 0px !important;
 				text-align: center;
-				padding-top: 50px !important;
+				padding-top: 35px !important;
 			}
 		}
 
@@ -43,6 +43,10 @@
 	
 		&.contractor{
 			border-right: 1px solid black;
+
+			@include breakpoint($mobileOnly) {
+				border-bottom: 1px solid black;
+			}
 
 			h2{
 				float: right;
