@@ -38,7 +38,7 @@ module.directive('profile', function() {
 
 			$scope.markAsInReview = function(job){
 
-				var confirm_result = confirmResult = confirm("This will mark the job as \"in reivew\", once you have reviewed it you will then have a chance to mark it as complete, which will release the payment to the contractor.");
+				var confirm_result = confirmResult = confirm("This will mark the job as \"in review\", once you have reviewed it you will then have a chance to mark it as complete, which will release the payment to the contractor.");
 
 				function success(response){
 	        		job.status_id = 4;
