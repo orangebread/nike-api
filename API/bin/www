@@ -12,8 +12,8 @@ var https = require('https');
 var fs = require('fs');
 
 var https_options = {
-  key: fs.readFileSync('./config/hourlyadmin-key.pem'),
-  cert: fs.readFileSync('./config/hourlyadmin-cert.pem'),
+  key: fs.readFileSync('./config/server.key'),
+  cert: fs.readFileSync('./config/server.crt'),
   requestCert: true
 };
 
