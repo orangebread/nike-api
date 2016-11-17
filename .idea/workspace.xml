@@ -2,6 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="af4255a4-449f-4c14-8112-464024826330" name="Default" comment="">
+      <change type="DELETED" beforePath="$PROJECT_DIR$/API/config/certrequest.csr" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/API/config/hourlyadmin-cert.pem" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/API/config/hourlyadmin-key.pem" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/API/bin/www" afterPath="$PROJECT_DIR$/API/bin/www" />
     </list>
@@ -37,7 +40,7 @@
         <entry file="file://$PROJECT_DIR$/API/bin/www">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="180">
-              <caret line="15" column="44" selection-start-line="15" selection-start-column="44" selection-end-line="15" selection-end-column="44" />
+              <caret line="15" column="42" selection-start-line="15" selection-start-column="42" selection-end-line="15" selection-end-column="42" />
               <folding />
             </state>
           </provider>
@@ -479,12 +482,12 @@
       <workItem from="1478822923098" duration="2385000" />
       <workItem from="1478876112101" duration="2437000" />
       <workItem from="1479092589655" duration="314000" />
-      <workItem from="1479252741862" duration="7448000" />
+      <workItem from="1479252741862" duration="7722000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="260230000" />
+    <option name="totallyTimeSpent" value="260504000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="149" y="102" width="1436" height="877" extended-state="0" />
@@ -930,7 +933,7 @@
     <entry file="file://$PROJECT_DIR$/API/bin/www">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="180">
-          <caret line="15" column="44" selection-start-line="15" selection-start-column="44" selection-end-line="15" selection-end-column="44" />
+          <caret line="15" column="42" selection-start-line="15" selection-start-column="42" selection-end-line="15" selection-end-column="42" />
           <folding />
         </state>
       </provider>
