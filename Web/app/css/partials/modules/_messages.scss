@@ -244,11 +244,25 @@ a:hover, a:active, a:focus {
 }
 
 .chat-box{
-  @include breakpoint($mobileOnly) {
-      width: 100%;
-  }
+  width: 100%;
+  position: static;
+  margin-top: 20px;
+  margin-bottom: 100px;
 
   .btn{
     margin-top: 0px;
+  }
+
+  .input-group, .input-group-btn:last-child{
+    position: static;
+  
+    input, .btn{
+      position: static;
+      z-index: 1;
+    }
+  }
+
+  .input-group-btn{
+    position: static;
   }
 }
