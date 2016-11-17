@@ -81,14 +81,15 @@ router.post('/', function(req, res){
                 .save()
                 .then(function(result) {
                     console.log('Job post success: ' + result);
+                    var jobTitle = result.attributes.title;
 
                     User.forge({ id: token.id })
                         .fetch()
                         .then(function(user) {
                             // send email notification
-                            emailService.sendEmail(user.attributes.email,'Job Posted', 'Your job is now posted.')
+                            emailService.sendEmail(email,'Job Posted', 'Your job with title <b>' + jobTitle + '</b> has been succesfully posted, we will notify you if someone applies to work on it. <br /> Thanks, <br /><br /> The Hourly Admin Team')
                                 .then(function(success) {
-                                    console.log('Email sent: ' + JSON.stringify(success));
+                                    console.log('Email sent for job creation: ' + JSON.stringify(success));
 
                                     res.status(200).json({ success: true, message: 'Job posting successful.'});
                                 });
@@ -147,7 +148,11 @@ router.post('/workflow', function(req, res){
                             .save({ status_id: workflow })
                             .then(function(final) {
                                 console.log('Job workflow updated');
-                                res.json({ success: true, message: 'Job workflow updated!', result: final });
+                                // send email notification
+                                emailService.sendEmail(user.attributes.email,'Hourly Admin - Workflow Updated', 'Your job has been updated, check your <a href="https://hourly.mogadigitalstaging.com/#/home">account</a> page for more details!')
+                                    .then(function(success) {
+                                        res.json({ success: true, message: 'Job workflow updated!', result: final });
+                                    });
                             })
                             .catch(function(err) {
                                 console.log('Job workflow failed: ' + err);
