@@ -6,16 +6,6 @@
 
 var app = require('../app');
 var express = require('express');
-var secureApp = require('../app');
-var http = require('http');
-var https = require('https');
-var fs = require('fs');
-
-var https_options = {
-  key: fs.readFileSync('./scripts/server.key'),
-  cert: fs.readFileSync('./scripts/server.crt'),
-  requestCert: true
-};
 
 /**
  * Get port from environment and store in Express.
@@ -24,18 +14,29 @@ var https_options = {
 var port = normalizePort(process.env.PORT || '3000');
 var securePort = normalizePort(process.env.SECURE_PORT || '4433');
 
-// app.set('port', port);
-// app.get("*", function (req, res, next) {
-//   res.redirect("https://" + req.headers.host + "/" + req.path);
-// });
-secureApp.set('port', securePort);
 
 /**
  * Create HTTP server.
  */
 
-// var server = http.createServer(app);
-var https_server = https.createServer(https_options, app);
+'use strict';
+
+require('letsencrypt-express').create({
+
+  server: 'staging'
+
+  , email: 'john.doe@example.com'
+
+  , agreeTos: true
+
+  , approveDomains: [ 'example.com' ]
+
+  , app: require('express')().use('/', function (req, res) {
+    res.end('Hello, World!');
+  })
+
+}).listen(80, 443);
+
 
 /**
  * Listen on provided port, on all network interfaces.
@@ -46,10 +47,6 @@ var https_server = https.createServer(https_options, app);
 // server.on('error', onError);
 // server.on('listening', onListening);
 
-// https server
-https_server.listen(securePort);
-https_server.on('error', onError);
-https_server.on('listening', onListeningHttps);
 
 /**
  * Normalize a port into a number, string, or false.
