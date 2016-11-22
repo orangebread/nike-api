@@ -136,11 +136,7 @@ router.post('/facebook', function(req, res) {
                             fb_id: payload.fb_id,
                             fb_token: payload.fb_token
                         }, { patch: true })
-                        .then(function(savedUser) {
-                            var tokenInfo = {
-                                id: user.attributes.id,
-                                email: payload.email
-                            }
+                        .then(function(user) {
                             // send email notification
                             emailService.sendEmail(email,'Registration Complete', 'Welcome to Hourly Admin, thank you for signing up. You can access your account <a href="https://www.thehourlyadmin.com">here</a>. <br /> Thanks, <br /><br /> The Hourly Admin Team')
                                 .then(function(success) {
@@ -157,7 +153,7 @@ router.post('/facebook', function(req, res) {
                         });
                 } else {
                     var tokenInfo = {
-                        id: user.attributes.id,
+                        id: user.id,
                         email: payload.email
                     }
                     var token  = jwt.sign(tokenInfo, CONSTANTS.SECRET, { expiresIn : CONSTANTS.TOKEN_EXPIRE });
@@ -183,9 +179,9 @@ router.post('/facebook', function(req, res) {
                                     fb_token: payload.fb_token
                                 })
                                     .save()
-                                    .then(function (res) {
+                                    .then(function (user) {
                                         var payload = {
-                                            id: res.attributes.id,
+                                            id: user.id,
                                             email: email
                                         }
                                         var token = jwt.sign(payload, CONSTANTS.SECRET, { expiresIn : CONSTANTS.TOKEN_EXPIRE });
