@@ -36,7 +36,7 @@ module.controller('MerchantSignUpController', function ($scope, $uibModalInstanc
 			toc: false,
 			email: false
 		},
-		submitted: (typeof $localStorage.merchantID !== 'undefined' && $localStorage.merchantID != ''),
+		submitted: (typeof $localStorage.merchantID !== 'undefined' && $localStorage.merchantID != '' && $localStorage.merchantID != null),
 		showSpinner: false
 	}
 

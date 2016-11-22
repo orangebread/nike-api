@@ -146,6 +146,7 @@
 			        <span ng-if="application.status_id == 4">In Review</span>
 			        <span ng-if="application.status_id == 5">Payment Received!</span>
 			        <span ng-if="application.status_id == 6">Completed</span>
+			        <span ng-if="application.status_id == 7">Offer Rejected</span>
 			      </div>
 			      <div class="custom-cell">
 			      	<button class="btn" ng-if="application.status_id == 2" ng-click="markAsDone(application)">Mark as complete</button>

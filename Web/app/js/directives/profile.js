@@ -111,7 +111,8 @@ module.directive('profile', function() {
 	        			  e.budget = appResponse.data.result.budget;
 	        			  e.expires_at = appResponse.data.result.expires_at;
 	        			  e.employer_id = appResponse.data.result.user_id;
-	        			  e.status_id = appResponse.data.result.status_id;
+	        			  e.status_id = (e.appstatus_id == 3) ? 7 : appResponse.data.result.status_id;
+	        			  console.log(e);
 					      $scope.applications.push(e)
 					    }
 
