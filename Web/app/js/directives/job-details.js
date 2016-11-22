@@ -46,7 +46,7 @@ module.directive('jobDetails', function() {
 			    }
 
 			    function error(response){
-			      alert("Something bad happened");
+			      alert("An error occured, please try again later.");
 			      $log.log(response)
 			    }
 

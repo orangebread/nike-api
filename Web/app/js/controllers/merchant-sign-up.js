@@ -76,7 +76,7 @@ module.controller('MerchantSignUpController', function ($scope, $uibModalInstanc
 
 		function error(response){
 			$scope.forms.showSpinner = false;
-			alert("Something bad happened");
+			alert("An error occured, please try again later.");
 		}
 
 		dataParams = {

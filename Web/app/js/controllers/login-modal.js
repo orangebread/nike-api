@@ -109,7 +109,7 @@ module.controller('LoginModalController', function ($scope, $uibModalInstance, i
 
 		function error(response){
 			$scope.forms.showSpinner = false;
-			alert("Something bad happened");
+			alert("An error occured, please try again later.");
 			delete $localStorage.jwtToken;
 		}
 
@@ -150,7 +150,7 @@ module.controller('LoginModalController', function ($scope, $uibModalInstance, i
 
 		function error(response){
 			$scope.forms.showSpinner = false;
-			alert("Something bad happened");
+			alert("An error occured, please try again later.");
 			delete $localStorage.jwtToken;
 		}
 

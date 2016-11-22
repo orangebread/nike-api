@@ -34,7 +34,7 @@ module.directive('navigation', function() {
 			    }
 
 			    function error(response){
-			      alert("Something bad happened");
+			      alert("An error occured, please try again later.");
 			    }
 
 			    $http({

@@ -116,7 +116,7 @@ module.directive('profile', function() {
 					    }
 
 					    function applicationError(response){
-					      alert("Something bad happened");
+					      alert("An error occured, please try again later.");
 					    }
 
 					    $http({
@@ -291,7 +291,7 @@ module.directive('profile', function() {
 						    }
 
 						    function userError(response){
-						      alert("Something bad happened");
+						      alert("An error occured, please try again later.");
 						    }
 
 						    $http({
@@ -301,7 +301,7 @@ module.directive('profile', function() {
 					    }
 
 					    function jobError(response){
-					      alert("Something bad happened");
+					      alert("An error occured, please try again later.");
 					      //$log.log(response)
 					    }
 
