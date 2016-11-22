@@ -116,14 +116,17 @@ router.get('/forgotusername', function(req, res) {
 
 // SSO Strategies
 router.post('/facebook', function(req, res) {
+    var email = req.body.email;
+
     var payload = {
         email: req.body.email,
         fb_id: req.body.fb_id,
         fb_token: req.body.fb_token
     }
-    User.forge({email: payload.email})
+    User.forge({email: email})
         .fetch()
         .then(function (user) {
+            console.log('User exists, creating facebook token...');
             // User found, see if they have facebook creds
             if (user) {
                 if (!user.attributes.fb_id || !user.attributes.fb_token) {
@@ -157,6 +160,7 @@ router.post('/facebook', function(req, res) {
             } else {
                 jwtUtils.hashPassword(password)
                     .then(function(hashpw) {
+                        console.log('Password is: ' + hashpw);
                         User.forge({
                             email: email,
                             password: hashpw,
