@@ -478,7 +478,7 @@ router.post('/release', function(req, res) {
                                     var employeeEmail = transactionSent.attributes.user.email;
 
                                     // send email notification
-                                    emailService.sendEmail(employeeEmail,'Hourly Admin - Payment Released', 'The job you worked on titled has been marked as complete, and your payment is on its way! It should arrive in your bank account within 3-5 days. Check your <a href="https://hourly.mogadigitalstaging.com/#/home">account</a> page for more details.')
+                                    emailService.sendEmail(employeeEmail,'Hourly Admin - Payment Released', 'The job you worked on titled has been marked as complete, and your payment is on its way! It should arrive in your bank account within 3-5 days. Check your <a href="https://www.thehourlyadmin.com">account</a> page for more details.')
                                         .then(function(success) {
                                             res.json({ success: true, message: 'Funds released from escrow.', result: result });
                                         });

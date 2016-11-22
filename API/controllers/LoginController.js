@@ -71,7 +71,7 @@ router.post('/register', function(req, res){
                         }
 
                         // send email notification
-                        emailService.sendEmail(email,'Registration Complete', 'Welcome to Hourly Admin, thank you for signing up. You can access your account <a href="https://hourly.mogadigitalstaging.com/#/home">here</a>. <br /> Thanks, <br /><br /> The Hourly Admin Team')
+                        emailService.sendEmail(email,'Registration Complete', 'Welcome to Hourly Admin, thank you for signing up. You can access your account <a href="https://www.thehourlyadmin.com">here</a>. <br /> Thanks, <br /><br /> The Hourly Admin Team')
                             .then(function(success) {
                                 console.log('Email sent: ' + JSON.stringify(success));
 

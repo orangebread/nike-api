@@ -35,7 +35,7 @@ router.post('/new', function(req, res){
                                         .fetch()
                                         .then(function(user) {
                                             // send email notification
-                                            emailService.sendEmail(user.attributes.email,'Hourly Admin - New Message!', '  You have a new message in your inbox at The Hourly Admin, head to your <a href="https://hourly.mogadigitalstaging.com/#/home">messages</a> page to see it.')
+                                            emailService.sendEmail(user.attributes.email,'Hourly Admin - New Message!', '  You have a new message in your inbox at The Hourly Admin, head to your <a href="https://www.thehourlyadmin.com">messages</a> page to see it.')
                                                 .then(function(success) {
                                                     res.json({ success: true, message: 'Message created successfully', result: final });
                                                 });

@@ -63,7 +63,7 @@ router.post('/', function(req, res){
                                     .then(function(user) {
                                         console.log('User attributes: ' + JSON.stringify(user));
                                         // send email notification
-                                        emailService.sendEmail(user.attributes.email,'Application received', 'Someone has applied to your job, head to your <a href="https://hourly.mogadigitalstaging.com/#/home">account</a> to review it!')
+                                        emailService.sendEmail(user.attributes.email,'Application received', 'Someone has applied to your job, head to your <a href="https://www.thehourlyadmin.com">account</a> to review it!')
                                             .then(function(success) {
                                                 res.json({ success: true, message: 'Application saved!', result: final});
                                             });

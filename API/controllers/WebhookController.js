@@ -65,7 +65,7 @@ router.post('/submerchant', function(req, res){
                                     .then(function(user) {
                                         var email = user.attributes.email;
                                         console.log('Sucessfully added merchant info: ' + done);
-                                        emailService.sendEmail(email,'Hourly Admin - Submerchant Approved!', 'Your payment account has been approved! You can now apply to jobs on the Hourly Admin. Head over to our <a href="https://hourly.mogadigitalstaging.com/#/home">search page</a> to begin your search!')
+                                        emailService.sendEmail(email,'Hourly Admin - Submerchant Approved!', 'Your payment account has been approved! You can now apply to jobs on the Hourly Admin. Head over to our <a href="https://www.thehourlyadmin.com">search page</a> to begin your search!')
                                             .then(function(success) {
                                                 console.log('Email sent: ' + JSON.stringify(success));
                                                 console.log('Merchant added: ' + JSON.stringify(merchant));
@@ -117,7 +117,7 @@ router.post('/submerchant', function(req, res){
                             .fetch()
                             .then(function(user) {
                                 var email = user.attributes.email;
-                                emailService.sendEmail(email, 'Hourly Admin - Disbursement Issue', 'There was a problem disbursing funds')
+                                emailService.sendEmail(email, 'Hourly Admin - Disbursement Issue', 'There was a problem disbursing funds.')
                                     .then(function(success) {
                                         console.log('Email sent: ' + JSON.stringify(success));
                                     });

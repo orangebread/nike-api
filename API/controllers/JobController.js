@@ -149,7 +149,7 @@ router.post('/workflow', function(req, res){
                             .then(function(final) {
                                 console.log('Job workflow updated');
                                 // send email notification
-                                emailService.sendEmail(user.attributes.email,'Hourly Admin - Workflow Updated', 'Your job has been updated, check your <a href="https://hourly.mogadigitalstaging.com/#/home">account</a> page for more details!')
+                                emailService.sendEmail(user.attributes.email,'Hourly Admin - Workflow Updated', 'Your job has been updated, check your <a href="https://www.thehourlyadmin.com">account</a> page for more details!')
                                     .then(function(success) {
                                         res.json({ success: true, message: 'Job workflow updated!', result: final });
                                     });
