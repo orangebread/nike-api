@@ -114,7 +114,7 @@ module.controller('MerchantSignUpController', function ($scope, $uibModalInstanc
 		}
 	}
 
-	$scope.getUserDetails = function(test){
+	$scope.getUserDetails = function(){
 
 		$(".hourly-modal .spinner").height($(".modal-dialog").height());
 		$scope.forms.showSpinner = true;
@@ -123,7 +123,26 @@ module.controller('MerchantSignUpController', function ($scope, $uibModalInstanc
 			$scope.forms.showSpinner = false;
 
 			$scope.forms.inputs.email = response.data.result[0].email;
-			$localStorage.merchantStatus = response.data.result[0].merchant_status;
+		}
+
+		function error(response){
+			$scope.forms.showSpinner = false;
+			alert("Something went wrong.")
+		}
+
+		$http({
+			method: 'GET',
+			url: API_BASE_URL+"user/"+$localStorage.userID,
+		}).then(success, error);
+	}
+
+	$scope.checkMerchantStatus = function(test){
+		$(".hourly-modal .spinner").height($(".modal-dialog").height());
+		$scope.forms.showSpinner = true;
+
+		function success(response){
+			$scope.forms.showSpinner = false;
+			$localStorage.merchantStatus = (response.data.success == true) ? response.data.result.status : "";
 
 			if(test && $localStorage.merchantStatus == "active")
 			{
@@ -138,18 +157,19 @@ module.controller('MerchantSignUpController', function ($scope, $uibModalInstanc
 
 		function error(response){
 			$scope.forms.showSpinner = false;
-			alert("Something went wrong.")
+			alert("An error occured, please try again later.")
 		}
 
 		$http({
-			method: 'GET',
-			url: API_BASE_URL+"user/"+$localStorage.userID,
-		}).then(success, error);
+	      method: 'GET',
+	      url: API_BASE_URL+"merchant",
+	    }).then(success, error);
 	}
 
 	$scope.cancel = function () {
 		$uibModalInstance.dismiss('cancel');
 	};
 
-	$scope.getUserDetails(false);
+	$scope.getUserDetails();
+	$scope.checkMerchantStatus(false);
 });

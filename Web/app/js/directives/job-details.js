@@ -77,7 +77,7 @@ module.directive('jobDetails', function() {
 			    }).then(success, error);
 			}
 
-			$scope.getUserDetails = function(){
+			$scope.getMerchantDetails = function(){
 
 				if($localStorage.currentEmployerId == $localStorage.userID)
         		{
@@ -85,7 +85,7 @@ module.directive('jobDetails', function() {
         		}
 
 				function success(response){
-	        		$localStorage.merchantStatus = response.data.result[0].merchant_status;
+	        		$localStorage.merchantStatus = response.data.result.status;
 				}
 
 				function error(response){
@@ -94,7 +94,7 @@ module.directive('jobDetails', function() {
 
 				$http({
 			      method: 'GET',
-			      url: API_BASE_URL+"user",
+			      url: API_BASE_URL+"merchant",
 			    }).then(success, error);
 			}
 
@@ -102,7 +102,7 @@ module.directive('jobDetails', function() {
 			if($scope.user.logged_in)
 			{
 				$scope.getEmployerDetails();
-				$scope.getUserDetails();
+				$scope.getMerchantDetails();
 			}
 		}]
 	};

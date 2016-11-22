@@ -172,7 +172,7 @@ module.directive('profile', function() {
 	        		$scope.userInfo.email = response.data.result[0].email;
 	        		$scope.userInfo.display_name = response.data.result[0].display_name;
 	        		$scope.userInfo.merchant_name = response.data.result[0].merchant_name;
-	        		$scope.userInfo.merchant_status = response.data.result[0].merchant_status;
+	        		$localStorage.merchantID = response.data.result[0].merchant_name;
 				}
 
 				function error(response){
@@ -342,6 +342,26 @@ module.directive('profile', function() {
 				modals.openMerchantDetailsModal();
 			}
 
+			$scope.checkUserMerchantStatus = function(){
+
+				function success(response){
+					if(response.data.success)
+					{
+						$scope.userInfo.merchant_status = response.data.result.status;
+						$localStorage.merchantStatus = response.data.result.status;
+					}
+				}
+
+				function error(response){
+					alert("Something went wrong.")
+				}
+
+				$http({
+			      method: 'GET',
+			      url: API_BASE_URL+"merchant",
+			    }).then(success, error);
+			}
+
 			$scope.loadPage = function(callback){
 				function success(response){
 	        		callback();
@@ -362,6 +382,7 @@ module.directive('profile', function() {
 				$scope.getPostedJobs();
 				$scope.getUserDetails();
 				$scope.getUserTransactions();
+				$scope.checkUserMerchantStatus();
 			})
 		}]
 	};
