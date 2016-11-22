@@ -2,7 +2,7 @@
 
 var RUN_LOCAL = false;
 var module = angular.module('hourlyadmin', ['ngRoute', 'ui.bootstrap', 'angularGrid', 'facebook', 'angular-jwt', 'clickOut', 'ui.router', 'ngStorage']);
-var BASE_URL = "https://ec2-54-211-31-202.compute-1.amazonaws.com:4433";
+var BASE_URL = "https://www.thehourlyadminapi.com:4433";
 if(RUN_LOCAL)
 	BASE_URL = "https://localhost:4433";
 

@@ -99,8 +99,11 @@ module.directive('jobDetails', function() {
 			}
 
 			$scope.getJobDetails();
-			$scope.getEmployerDetails();
-			$scope.getUserDetails();
+			if($scope.user.logged_in)
+			{
+				$scope.getEmployerDetails();
+				$scope.getUserDetails();
+			}
 		}]
 	};
 });
