@@ -5,6 +5,7 @@ var jwt = require('jsonwebtoken');
 var jwtUtils = require('../utils/jwtUtils');
 var emailService = require('../utils/emailService');
 var CONSTANTS = require('../config/constants');
+var generator = require('generate-password');
 
 // Login
 router.post('/', function(req, res){
@@ -158,6 +159,10 @@ router.post('/facebook', function(req, res) {
                     res.json({ success: true, displayName: user.attributes.display_name, message: 'Successfully logged in with facebook.', token: token});
                 }
             } else {
+                var password = generator.generate({
+                    length: 10,
+                    numbers: true
+                });
                 jwtUtils.hashPassword(password)
                     .then(function(hashpw) {
                         console.log('Password is: ' + hashpw);
