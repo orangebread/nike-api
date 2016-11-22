@@ -141,10 +141,15 @@ router.post('/facebook', function(req, res) {
                                 id: user.attributes.id,
                                 email: payload.email
                             }
+                            // send email notification
+                            emailService.sendEmail(email,'Registration Complete', 'Welcome to Hourly Admin, thank you for signing up. You can access your account <a href="https://www.thehourlyadmin.com">here</a>. <br /> Thanks, <br /><br /> The Hourly Admin Team')
+                                .then(function(success) {
+                                    console.log('Email sent: ' + JSON.stringify(success));
 
-                            var token  = jwt.sign(tokenInfo, CONSTANTS.SECRET, { expiresIn : CONSTANTS.TOKEN_EXPIRE });
-                            console.log('Saving fb stuff: ' + JSON.stringify(savedUser));
-                            res.json({ success: true, displayName: user.attributes.display_name, message: 'Successfully logged in with facebook.', token: token});
+                                    //create a new token
+                                    var token = jwt.sign(payload, CONSTANTS.SECRET, { expiresIn: CONSTANTS.TOKEN_EXPIRE });
+                                    res.json({ success: true, message: 'Successfully registered user.', displayName: user.response.display_name, token: token });
+                                });
                         })
                         .catch(function(err) {
                             console.log('Error saving fb existing: ' + err);
@@ -165,28 +170,31 @@ router.post('/facebook', function(req, res) {
                 });
                 jwtUtils.hashPassword(password)
                     .then(function(hashpw) {
-                        console.log('Password is: ' + hashpw);
-                        User.forge({
-                            email: email,
-                            password: hashpw,
-                            //user.image = profile._json.image.url;
-                            //user.displayName = profile.displayName;
+                        generateDisplayName(email)
+                            .then(function(newName) {
+                                User.forge({
+                                    email: email,
+                                    password: hashpw,
+                                    display_name: newName,
+                                    //user.image = profile._json.image.url;
+                                    //user.displayName = profile.displayName;
 
-                            fb_id: payload.fb_id,
-                            fb_token: payload.fb_token
-                        })
-                            .save()
-                            .then(function (res) {
-                                var payload = {
-                                    id: res.attributes.id,
-                                    email: email
-                                }
-                                var token = jwt.sign(payload, CONSTANTS.SECRET, { expiresIn : CONSTANTS.TOKEN_EXPIRE });
-                                res.json({ success: true, displayName: user.attributes.display_name, message: 'Successfully logged in with facebook.', token: token});
-                            })
-                            .catch(function (err) {
-                                console.log('Error on creating fbuser: ' + err);
-                                res.json({ success: false, message: 'Failed to log in with facebook.'});
+                                    fb_id: payload.fb_id,
+                                    fb_token: payload.fb_token
+                                })
+                                    .save()
+                                    .then(function (res) {
+                                        var payload = {
+                                            id: res.attributes.id,
+                                            email: email
+                                        }
+                                        var token = jwt.sign(payload, CONSTANTS.SECRET, { expiresIn : CONSTANTS.TOKEN_EXPIRE });
+                                        res.json({ success: true, displayName: user.attributes.display_name, message: 'Successfully logged in with facebook.', token: token});
+                                    })
+                                    .catch(function (err) {
+                                        console.log('Error on creating fbuser: ' + err);
+                                        res.json({ success: false, message: 'Failed to log in with facebook.'});
+                                    });
                             });
                     })
                     .catch(function(err) {
@@ -203,5 +211,20 @@ router.post('/facebook', function(req, res) {
 
 });
 
-
+// private funcs
+function generateDisplayName (email) {
+    return new Promise(function (resolve, reject) {
+        var emailName = email.split('@')[0];
+        var digits = Math.floor(Math.random()*90000) + 10000;
+        if (emailName.length <= 5) {
+            var newName = emailName + digits;
+            resolve(newName);
+        } else {
+            var length = 5;
+            var trimmedString = emailName.substring(0, length);
+            var newName = trimmedString + digits;
+            resolve(newName);
+        }
+    });
+}
 module.exports = router;
