@@ -369,7 +369,7 @@ router.post('/process', function(req, res) {
     var nonce = req.body.payment_method_nonce;
     var amount = req.body.amount;
     var jobId = req.body.job_id;
-    var service = amount * 0.1;
+    var service = amount * 0.05;
     var merchant_id = req.body.merchant_id;
     var employeeId = req.body.employee_id;
     
