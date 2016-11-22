@@ -6,7 +6,7 @@
             <ul class="friend-list">
                 <li class="active bounceInDown {{ discussion.selected ? 'selected' : '' }}" ng-repeat="discussion in discussions">
                 	<a class="clearfix" ng-click="changeDiscussion($index)">
-                		<img src="http://bootdey.com/img/Content/user_1.jpg" alt="" class="img-circle">
+                		<img src="images/user_1.jpg" alt="" class="img-circle">
                 		<div class="friend-name">	
                 			<strong>{{discussion.threadTitle}}</strong>
                 		</div>
@@ -14,29 +14,7 @@
                 		<small class="time text-muted">{{discussion.last_message_date}}</small>
                 		<small class="chat-alert label label-danger">{{discussion.amount_unread}}</small>
                 	</a>
-                </li>
-                <!-- <li>
-                	<a href="#" class="clearfix">
-                		<img src="http://bootdey.com/img/Content/user_2.jpg" alt="" class="img-circle">
-                		<div class="friend-name">	
-                			<strong>Jane Doe</strong>
-                		</div>
-                		<div class="last-message text-muted">Lorem ipsum dolor sit amet.</div>
-                		<small class="time text-muted">5 mins ago</small>
-                	<small class="chat-alert text-muted"><i class="fa fa-check"></i></small>
-                	</a>
-                </li> 
-                <li>
-                	<a href="#" class="clearfix">
-                		<img src="http://bootdey.com/img/Content/user_3.jpg" alt="" class="img-circle">
-                		<div class="friend-name">	
-                			<strong>Kate</strong>
-                		</div>
-                		<div class="last-message text-muted">Lorem ipsum dolor sit amet.</div>
-                		<small class="time text-muted">Yesterday</small>
-                		<small class="chat-alert text-muted"><i class="fa fa-reply"></i></small>
-                	</a>
-                </li> -->                 
+                </li>               
             </ul>
     	</div>
         
@@ -47,8 +25,8 @@
                 <ul class="chat">
                     <li class="left clearfix" ng-repeat="message in viewDetails.currentDiscussion.message">
                     	<span class="chat-img pull-left">
-                    		<img ng-if="viewDetails.userId != message.user_id" src="http://bootdey.com/img/Content/user_1.jpg" alt="User Avatar">
-                            <img ng-if="viewDetails.userId == message.user_id" src="http://bootdey.com/img/Content/user_3.jpg" alt="User Avatar">
+                    		<img ng-if="viewDetails.userId != message.user_id" src="images/user_1.jpg" alt="User Avatar">
+                            <img ng-if="viewDetails.userId == message.user_id" src="images/user_3.jpg" alt="User Avatar">
                     	</span>
                     	<div class="chat-body clearfix">
                     		<div class="header">

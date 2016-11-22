@@ -13,7 +13,7 @@
 	        </div>
 	    </li>
 	</ul>
-	<div class="no-results" ng-if="!search.hasResults">
+	<div class="no-results" ng-if="!search.hasResults && searchTerm != ''">
 		<p>No results were found for "{{search.searchTerm}}"</p>
 	</div>
 </div>
