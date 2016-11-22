@@ -2,7 +2,7 @@
 
 # set values for certificate DNs
 # note: CN is set to different values in the sections below
-ORG="000_Test_Certificates"
+ORG="www.thehourlyadminapi.com"
 
 # set values that the commands will share
 VALID_DAYS=360
@@ -26,7 +26,7 @@ echo "Done."
 
 echo
 echo "Creating Server certificate..."
-CN="localhost"
+CN="www.thehourlyadminapi.com"
 openssl genpkey -algorithm RSA -pkeyopt rsa_keygen_bits:$KEY_BITS -out $SERVER_KEY
 openssl req -new -key $SERVER_KEY -subj "/CN=$CN/O=$ORG" -out $SERVER_CSR
 openssl x509 -days $VALID_DAYS -req -in $SERVER_CSR -CAcreateserial -CA $CA_CERT -CAkey $CA_KEY -out $SERVER_CERT
