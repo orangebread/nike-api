@@ -131,24 +131,13 @@ router.post('/facebook', function(req, res) {
             // User found, see if they have facebook creds
             if (user) {
                 if (!user.attributes.fb_id || !user.attributes.fb_token) {
-                    new User({ id: user.id })
+                    User.forge({ id: user.id })
                         .save({
                             fb_id: payload.fb_id,
                             fb_token: payload.fb_token
                         }, { patch: true })
                         .then(function(user) {
-
-                            // send email notification
-                            var htmlBody = 'Welcome to Hourly Admin, thank you for signing up. You can access your account <a href=/"https://www.thehourlyadmin.com/">here</a>. <br /> Thanks, <br /><br /> The Hourly Admin Team';
-
-                            emailService.sendEmail(email,'Registration Complete', htmlBody)
-                                .then(function(success) {
-                                    console.log('Email sent: ' + JSON.stringify(success));
-
-                                    //create a new token
-                                    var token = jwt.sign(payload, CONSTANTS.SECRET, { expiresIn: CONSTANTS.TOKEN_EXPIRE });
-                                    res.json({ success: true, message: 'Successfully registered user.', displayName: user.response.display_name, token: token });
-                                });
+                            res.json({ success: true, message: 'Successfully registered user.', displayName: user.response.display_name, token: token });
                         })
                         .catch(function(err) {
                             console.log('Error saving fb existing: ' + err);
@@ -187,8 +176,16 @@ router.post('/facebook', function(req, res) {
                                             id: user.id,
                                             email: email
                                         }
-                                        var token = jwt.sign(payload, CONSTANTS.SECRET, { expiresIn : CONSTANTS.TOKEN_EXPIRE });
-                                        res.json({ success: true, displayName: user.attributes.display_name, message: 'Successfully logged in with facebook.', token: token});
+                                        // send email notification
+                                        emailService.sendEmail(email,'Registration Complete', 'Welcome to Hourly Admin, thank you for signing up. You can access your account <a href="https://www.thehourlyadmin.com">here</a>. <br /> Thanks, <br /><br /> The Hourly Admin Team')
+                                            .then(function(success) {
+                                                console.log('Email sent: ' + JSON.stringify(success));
+
+                                                //create a new token
+                                                var token = jwt.sign(payload, CONSTANTS.SECRET, { expiresIn : CONSTANTS.TOKEN_EXPIRE });
+                                                res.json({ success: true, displayName: user.attributes.display_name, message: 'Successfully logged in with facebook.', token: token});
+                                            });
+
                                     })
                                     .catch(function (err) {
                                         console.log('Error on creating fbuser: ' + err);
