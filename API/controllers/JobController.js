@@ -86,8 +86,10 @@ router.post('/', function(req, res){
                     User.forge({ id: token.id })
                         .fetch()
                         .then(function(user) {
+                            var userEmail = user.attributes.email;
+
                             // send email notification
-                            emailService.sendEmail(email,'Job Posted', 'Your job with title <b>' + jobTitle + '</b> has been succesfully posted, we will notify you if someone applies to work on it. <br /> Thanks, <br /><br /> The Hourly Admin Team')
+                            emailService.sendEmail(userEmail, 'Job Posted', 'Your job with title <b>' + jobTitle + '</b> has been succesfully posted, we will notify you if someone applies to work on it. <br /> Thanks, <br /><br /> The Hourly Admin Team')
                                 .then(function(success) {
                                     console.log('Email sent for job creation: ' + JSON.stringify(success));
 
