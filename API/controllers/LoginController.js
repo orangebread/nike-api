@@ -139,7 +139,7 @@ router.post('/facebook', function(req, res) {
                         .then(function(user) {
 
                             // send email notification
-                            var htmlBody = 'Welcome to Hourly Admin, thank you for signing up. You can access your account <a href="https://www.thehourlyadmin.com">here</a>. <br /> Thanks, <br /><br /> The Hourly Admin Team';
+                            var htmlBody = 'Welcome to Hourly Admin, thank you for signing up. You can access your account <a href=/"https://www.thehourlyadmin.com/">here</a>. <br /> Thanks, <br /><br /> The Hourly Admin Team';
 
                             emailService.sendEmail(email,'Registration Complete', htmlBody)
                                 .then(function(success) {
