@@ -6,7 +6,7 @@ module.exports = db.Model.extend({
     // relationships
     user: function() {
         var User = require('./User');
-        return this.belongsToMany(User);
+        return this.belongsTo(User);
     },
     application: function() {
         var Application = require('./Application');

@@ -150,11 +150,15 @@ router.post('/workflow', function(req, res){
                             .save({ status_id: workflow })
                             .then(function(final) {
                                 console.log('Job workflow updated');
-                                // send email notification
-                                emailService.sendEmail(user.attributes.email,'Hourly Admin - Workflow Updated', 'Your job has been updated, check your <a href="https://www.thehourlyadmin.com">account</a> page for more details!')
-                                    .then(function(success) {
-                                        res.json({ success: true, message: 'Job workflow updated!', result: final });
+                                User.forge({ id: token.id })
+                                    .then(function(user) {
+                                        // send email notification
+                                        emailService.sendEmail(user.attributes.email,'Hourly Admin - Workflow Updated', 'Your job has been updated, check your <a href="https://www.thehourlyadmin.com">account</a> page for more details!')
+                                            .then(function(success) {
+                                                res.json({ success: true, message: 'Job workflow updated!', result: final });
+                                            });
                                     });
+
                             })
                             .catch(function(err) {
                                 console.log('Job workflow failed: ' + err);
