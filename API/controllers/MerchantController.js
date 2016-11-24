@@ -471,7 +471,7 @@ router.post('/release', function(req, res) {
                             res.json({ success: false, message: 'Error releasing funds from escrow.', result: result });
                         }
                         if (result.success == true) {
-                            TransactionSent.forge({ transaction_id: transactionId })
+                            TransactionSent.forge({ transaction_id: transaction.id })
                                 .fetch({withRelated: ['user']})
                                 .then(function(transactionSent) {
                                     console.log('Merchant release escrow employee result: ' + JSON.stringify(transactionSent));
