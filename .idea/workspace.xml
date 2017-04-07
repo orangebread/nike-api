@@ -2,9 +2,227 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="af4255a4-449f-4c14-8112-464024826330" name="Default" comment="">
+      <change type="DELETED" beforePath="$PROJECT_DIR$/API/bin/certs/ca/intermediate.crt.pem" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/API/bin/certs/ca/root.crt.pem" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/API/bin/certs/server/my-server.crt.pem" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/API/bin/certs/server/my-server.key.pem" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/API/bin/certs/tmp/my-server.csr.pem" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/API/config/cert.pem" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/API/config/config.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/API/config/errorHandler.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/API/config/key.pem" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/API/config/tokenAuth.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/API/controllers/ApplicationController.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/API/controllers/JobController.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/API/controllers/LoginController.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/API/controllers/MerchantController.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/API/controllers/MessageController.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/API/controllers/SearchController.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/API/controllers/UserController.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/API/controllers/WebhookController.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/API/knexfile.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/API/migrations/20160606193519_Test.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/API/migrations/20160620160604_Init.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/API/migrations/20160622102454_Fuck.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/API/migrations/20160704121134_JobUpdate.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/API/migrations/20160705155344_jobfix.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/API/migrations/20160711090832_messages.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/API/migrations/20160711154200_messagefix.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/API/migrations/20160711173908_messageupdate.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/API/migrations/20160715115206_messageupdate.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/API/migrations/20160719101355_threads.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/API/migrations/20160725144704_messages.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/API/migrations/20160725191937_recipient.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/API/migrations/20160729174027_recipientupdate.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/API/migrations/20160731235540_threads.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/API/migrations/20160801095621_threadupdate.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/API/migrations/20160801101123_morethread.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/API/migrations/20160802133542_threadd.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/API/migrations/20160802134144_threaddd.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/API/migrations/20160802135838_threadddd.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/API/migrations/20160802140126_threaddddd.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/API/migrations/20160802173011_threadddddd.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/API/migrations/20160802173119_threaddddddd.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/API/migrations/20160803074255_threadfix.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/API/migrations/20160803081117_threadfixagain.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/API/migrations/20160805085519_appupdate.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/API/migrations/20160824233239_merchant.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/API/migrations/20160825115001_merchantupdate.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/API/migrations/20160901214556_transaction.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/API/migrations/20160902113035_transupdate.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/API/migrations/20160904225605_transactionupdate.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/API/migrations/20160908071402_transupdate.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/API/models/Application.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/API/models/Job.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/API/models/Merchant.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/API/models/Message.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/API/models/Thread.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/API/models/Transaction.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/API/models/TransactionSent.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/API/models/User.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/API/models/UserThread.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/API/scripts/certs.sh" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/API/utils/emailService.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/API/utils/generatePassword.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Web/.bowerrc" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Web/.editorconfig" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Web/.eslintrc" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Web/.yo-rc.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Web/app/.bowerrc" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Web/app/css/app.scss" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Web/app/css/partials/_forms.scss" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Web/app/css/partials/_globals.scss" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Web/app/css/partials/_variables.scss" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Web/app/css/partials/modules/_callouts.scss" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Web/app/css/partials/modules/_choices.scss" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Web/app/css/partials/modules/_footer.scss" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Web/app/css/partials/modules/_header.scss" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Web/app/css/partials/modules/_hourly-modal.scss" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Web/app/css/partials/modules/_job.scss" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Web/app/css/partials/modules/_messages.scss" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Web/app/css/partials/modules/_profile.scss" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Web/app/css/partials/modules/_search.scss" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Web/app/favicon.ico" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Web/app/images/favicon.ico" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Web/app/images/icon-facebook.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Web/app/images/image1.jpeg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Web/app/images/image2.jpeg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Web/app/images/image3.jpeg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Web/app/images/user_1.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Web/app/images/user_3.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Web/app/index.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Web/app/js/app.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Web/app/js/controllers/apply-accept.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Web/app/js/controllers/apply.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Web/app/js/controllers/login-modal.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Web/app/js/controllers/merchant-details.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Web/app/js/controllers/merchant-sign-up.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Web/app/js/controllers/post-task.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Web/app/js/directives/footer.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Web/app/js/directives/home-callouts.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Web/app/js/directives/job-details.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Web/app/js/directives/messages.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Web/app/js/directives/navigation.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Web/app/js/directives/profile.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Web/app/js/directives/search.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Web/app/js/directives/vendor/angular-jwt.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Web/app/js/directives/vendor/angular-youtube.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Web/app/js/directives/vendor/angulargrid.min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Web/app/js/directives/vendor/focus-me.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Web/app/js/directives/vendor/init.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Web/app/js/directives/vendor/on-enter.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Web/app/js/directives/vendor/scroll-to-bottom.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Web/app/js/directives/vendor/stop-propogation.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Web/app/js/directives/vendor/ui-bootstrap-csp.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Web/app/js/directives/vendor/ui-bootstrap-tpls.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Web/app/js/services/modals.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Web/app/js/utilities/helpers.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Web/app/js/utilities/jquery.card.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Web/app/js/utilities/jquery.creditCardValidator.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Web/app/js/utilities/moment.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Web/app/templates/home.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Web/app/templates/job-description.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Web/app/templates/messages.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Web/app/templates/modules/apply-accept-modal.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Web/app/templates/modules/apply-modal.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Web/app/templates/modules/footer.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Web/app/templates/modules/home-callouts.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Web/app/templates/modules/job-details.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Web/app/templates/modules/login-modal.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Web/app/templates/modules/merchant-details-modal.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Web/app/templates/modules/merchant-sign-up.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Web/app/templates/modules/messages-module.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Web/app/templates/modules/navigation.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Web/app/templates/modules/post-task-modal.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Web/app/templates/modules/profile-module.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Web/app/templates/modules/search-list.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Web/app/templates/profile.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Web/app/templates/search.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Web/app/templates/terms.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Web/bower.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Web/dist/favicon.ico" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Web/dist/fonts/glyphicons-halflings-regular.eot" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Web/dist/fonts/glyphicons-halflings-regular.svg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Web/dist/fonts/glyphicons-halflings-regular.ttf" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Web/dist/fonts/glyphicons-halflings-regular.woff" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Web/dist/fonts/glyphicons-halflings-regular.woff2" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Web/dist/images/favicon.ico" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Web/dist/images/image1.jpeg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Web/dist/images/image2.jpeg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Web/dist/images/image3.jpeg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Web/dist/images/user_1.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Web/dist/images/user_3.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Web/dist/index.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Web/dist/json/dummy-discussions" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Web/dist/json/dummy-search" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Web/dist/maps/scripts/vendor-a051c18934.js.map" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Web/dist/maps/scripts/vendor-cb35d4e1c7.js.map" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Web/dist/maps/styles/app-3904a94835.css.map" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Web/dist/maps/styles/app-3b6aa21365.css.map" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Web/dist/maps/styles/app-3eca332693.css.map" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Web/dist/maps/styles/app-4f4840c4aa.css.map" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Web/dist/maps/styles/app-5fe9713e59.css.map" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Web/dist/maps/styles/app-66b67240cf.css.map" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Web/dist/maps/styles/app-7d5995190e.css.map" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Web/dist/maps/styles/app-82ed6e5795.css.map" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Web/dist/maps/styles/app-9be57efd11.css.map" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Web/dist/maps/styles/app-a2b12f6f5e.css.map" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Web/dist/maps/styles/app-b17e58bee2.css.map" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Web/dist/maps/styles/app-c4e262431b.css.map" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Web/dist/maps/styles/app-c59974644d.css.map" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Web/dist/maps/styles/app-d167b1bc10.css.map" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Web/dist/maps/styles/app-d54f73a585.css.map" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Web/dist/maps/styles/app-db75d27e6d.css.map" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Web/dist/maps/styles/app-e25eca9ce3.css.map" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Web/dist/maps/styles/vendor-87b1dc9827.css.map" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Web/dist/scripts/vendor-a051c18934.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Web/dist/scripts/vendor-cb35d4e1c7.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Web/dist/styles/app-3904a94835.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Web/dist/styles/app-3b6aa21365.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Web/dist/styles/app-3eca332693.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Web/dist/styles/app-4f4840c4aa.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Web/dist/styles/app-5fe9713e59.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Web/dist/styles/app-66b67240cf.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Web/dist/styles/app-7d5995190e.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Web/dist/styles/app-82ed6e5795.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Web/dist/styles/app-9be57efd11.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Web/dist/styles/app-a2b12f6f5e.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Web/dist/styles/app-b17e58bee2.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Web/dist/styles/app-c4e262431b.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Web/dist/styles/app-c59974644d.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Web/dist/styles/app-d167b1bc10.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Web/dist/styles/app-d54f73a585.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Web/dist/styles/app-db75d27e6d.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Web/dist/styles/app-e25eca9ce3.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Web/dist/styles/vendor-87b1dc9827.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Web/e2e/.eslintrc" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Web/e2e/main.po.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Web/e2e/main.spec.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Web/gulp/.eslintrc" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Web/gulp/build.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Web/gulp/conf.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Web/gulp/e2e-tests.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Web/gulp/inject.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Web/gulp/scripts.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Web/gulp/server.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Web/gulp/styles.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Web/gulp/unit-tests.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Web/gulp/watch.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Web/gulpfile.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Web/karma.conf.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Web/package.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Web/protractor.conf.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/sh.exe.stackdump" afterPath="" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/API/.gitignore" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/API/controllers/JobController.js" afterPath="$PROJECT_DIR$/API/controllers/JobController.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/API/models/Job.js" afterPath="$PROJECT_DIR$/API/models/Job.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/API/app.js" afterPath="$PROJECT_DIR$/API/app.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/API/bin/www" afterPath="$PROJECT_DIR$/API/bin/www" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/API/config/constants.js" afterPath="$PROJECT_DIR$/API/config/constants.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/API/config/db.js" afterPath="$PROJECT_DIR$/API/config/db.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/API/config/express.js" afterPath="$PROJECT_DIR$/API/config/express.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/API/config/routes.js" afterPath="$PROJECT_DIR$/API/config/routes.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/API/package.json" afterPath="$PROJECT_DIR$/API/package.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/README.md" afterPath="$PROJECT_DIR$/README.md" />
     </list>
     <ignored path="HourlyAdmin.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -24,101 +242,104 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="www" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/API/bin/www">
+      <file leaf-file-name="app.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/API/app.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="900">
-              <caret line="60" column="15" lean-forward="false" selection-start-line="60" selection-start-column="15" selection-end-line="60" selection-end-column="15" />
+            <state relative-caret-position="75">
+              <caret line="5" column="0" lean-forward="true" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="MessageController.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/API/controllers/MessageController.js">
+      <file leaf-file-name="express.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/API/config/express.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="90">
-              <caret line="6" column="16" lean-forward="false" selection-start-line="6" selection-start-column="4" selection-end-line="6" selection-end-column="16" />
+            <state relative-caret-position="180">
+              <caret line="12" column="4" lean-forward="false" selection-start-line="12" selection-start-column="4" selection-end-line="12" selection-end-column="4" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="LoginController.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/API/controllers/LoginController.js">
+      <file leaf-file-name="Contacts.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/API/models/Contacts.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="515">
+              <caret line="140" column="11" lean-forward="true" selection-start-line="140" selection-start-column="11" selection-end-line="140" selection-end-column="11" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="routes.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/API/config/routes.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="195">
+              <caret line="13" column="23" lean-forward="true" selection-start-line="13" selection-start-column="23" selection-end-line="13" selection-end-column="23" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name=".gitignore" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/API/.gitignore">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="15">
-              <caret line="171" column="34" lean-forward="false" selection-start-line="171" selection-start-column="34" selection-end-line="171" selection-end-column="34" />
+              <caret line="1" column="0" lean-forward="true" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="MerchantController.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/API/controllers/MerchantController.js">
+      <file leaf-file-name="contacts.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/API/routes/contacts.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="273">
-              <caret line="474" column="63" lean-forward="true" selection-start-line="474" selection-start-column="63" selection-end-line="474" selection-end-column="63" />
+            <state relative-caret-position="450">
+              <caret line="52" column="30" lean-forward="false" selection-start-line="52" selection-start-column="30" selection-end-line="52" selection-end-column="30" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="JobController.js" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/API/controllers/JobController.js">
+      <file leaf-file-name="auth.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/API/config/auth.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="393">
-              <caret line="158" column="47" lean-forward="false" selection-start-line="158" selection-start-column="47" selection-end-line="158" selection-end-column="47" />
+            <state relative-caret-position="165">
+              <caret line="11" column="0" lean-forward="false" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Job.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/API/models/Job.js">
+      <file leaf-file-name="package.json" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/API/package.json">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="90">
-              <caret line="6" column="22" lean-forward="true" selection-start-line="6" selection-start-column="22" selection-end-line="6" selection-end-column="22" />
+            <state relative-caret-position="375">
+              <caret line="25" column="0" lean-forward="true" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="User.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/API/models/User.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="990">
-              <caret line="66" column="24" lean-forward="false" selection-start-line="66" selection-start-column="24" selection-end-line="66" selection-end-column="24" />
-              <folding />
+      <file leaf-file-name="README.md" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/README.md">
+          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+            <state split_layout="SPLIT">
+              <first_editor relative-caret-position="210">
+                <caret line="14" column="13" lean-forward="true" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
+                <folding />
+              </first_editor>
+              <second_editor />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="jwtUtils.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/API/utils/jwtUtils.js">
+      <file leaf-file-name="contacts-auth.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/API/routes/contacts-auth.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="915">
-              <caret line="61" column="51" lean-forward="false" selection-start-line="61" selection-start-column="4" selection-end-line="61" selection-end-column="51" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="SearchController.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/API/controllers/SearchController.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="285">
-              <caret line="19" column="16" lean-forward="false" selection-start-line="19" selection-start-column="16" selection-end-line="19" selection-end-column="16" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="UserController.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/API/controllers/UserController.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="315">
-              <caret line="21" column="38" lean-forward="false" selection-start-line="21" selection-start-column="38" selection-end-line="21" selection-end-column="38" />
+            <state relative-caret-position="390">
+              <caret line="26" column="30" lean-forward="true" selection-start-line="26" selection-start-column="30" selection-end-line="26" selection-end-column="30" />
               <folding />
             </state>
           </provider>
@@ -146,19 +367,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/API/migrations/20160731235540_threads.js" />
-        <option value="$PROJECT_DIR$/API/migrations/20160801095621_threadupdate.js" />
-        <option value="$PROJECT_DIR$/API/migrations/20160801101123_morethread.js" />
-        <option value="$PROJECT_DIR$/API/models/Recipient.js" />
-        <option value="$PROJECT_DIR$/API/migrations/20160802133542_threadd.js" />
-        <option value="$PROJECT_DIR$/API/migrations/20160802134144_threaddd.js" />
-        <option value="$PROJECT_DIR$/API/migrations/20160802135838_threadddd.js" />
-        <option value="$PROJECT_DIR$/API/migrations/20160802140126_threaddddd.js" />
-        <option value="$PROJECT_DIR$/API/migrations/20160802173011_threadddddd.js" />
-        <option value="$PROJECT_DIR$/API/migrations/20160802173119_threaddddddd.js" />
-        <option value="$PROJECT_DIR$/API/models/Message.js" />
-        <option value="$PROJECT_DIR$/API/migrations/20160803074255_threadfix.js" />
-        <option value="$PROJECT_DIR$/API/migrations/20160803081117_threadfixagain.js" />
         <option value="$PROJECT_DIR$/API/models/UserThread.js" />
         <option value="$PROJECT_DIR$/API/models/Thread.js" />
         <option value="$PROJECT_DIR$/API/controllers/SearchController.js" />
@@ -166,7 +374,6 @@
         <option value="$PROJECT_DIR$/API/controllers/EmailController.js" />
         <option value="$PROJECT_DIR$/API/config/tokenAuth.js" />
         <option value="$PROJECT_DIR$/API/migrations/20160824233239_merchant.js" />
-        <option value="$PROJECT_DIR$/API/config/routes.js" />
         <option value="$PROJECT_DIR$/API/models/Merchant.js" />
         <option value="$PROJECT_DIR$/API/config/globals.js" />
         <option value="$PROJECT_DIR$/API/migrations/20160825115001_merchantupdate.js" />
@@ -178,11 +385,8 @@
         <option value="$PROJECT_DIR$/API/migrations/20160904225605_transactionupdate.js" />
         <option value="$PROJECT_DIR$/API/migrations/20160908071402_transupdate.js" />
         <option value="$PROJECT_DIR$/API/csr.pem" />
-        <option value="$PROJECT_DIR$/API/package.json" />
-        <option value="$PROJECT_DIR$/API/config/config.js" />
         <option value="$PROJECT_DIR$/API/knexfile.js" />
         <option value="$PROJECT_DIR$/API/models/User.js" />
-        <option value="$PROJECT_DIR$/README.md" />
         <option value="$PROJECT_DIR$/API/utils/emailService.js" />
         <option value="$PROJECT_DIR$/API/bin/www2" />
         <option value="$PROJECT_DIR$/API/scripts/certs.sh" />
@@ -192,35 +396,44 @@
         <option value="$PROJECT_DIR$/API/controllers/ApplicationController.js" />
         <option value="$PROJECT_DIR$/API/controllers/MessageController.js" />
         <option value="$PROJECT_DIR$/API/controllers/WebhookController.js" />
-        <option value="$PROJECT_DIR$/API/controllers/LoginController.js" />
-        <option value="$PROJECT_DIR$/API/bin/www" />
         <option value="$PROJECT_DIR$/API/controllers/MerchantController.js" />
         <option value="$PROJECT_DIR$/API/models/Job.js" />
         <option value="$PROJECT_DIR$/API/controllers/JobController.js" />
+        <option value="$PROJECT_DIR$/API/config/express.js" />
+        <option value="$PROJECT_DIR$/API/config/config.js" />
+        <option value="$PROJECT_DIR$/API/config/constants.js" />
+        <option value="$PROJECT_DIR$/API/controllers/LoginController.js" />
+        <option value="$PROJECT_DIR$/API/migrations/contacts.sql" />
+        <option value="$PROJECT_DIR$/API/bin/www" />
+        <option value="$PROJECT_DIR$/API/migrations/001-initial-schema.sql" />
+        <option value="$PROJECT_DIR$/API/config/db.js" />
+        <option value="$PROJECT_DIR$/API/app.js" />
+        <option value="$PROJECT_DIR$/API/config/errorHandler.js" />
+        <option value="$PROJECT_DIR$/API/routes/contacts-search.js" />
+        <option value="$PROJECT_DIR$/API/routes/contacts-auth.js" />
+        <option value="$PROJECT_DIR$/API/config/auth.js" />
+        <option value="$PROJECT_DIR$/API/package.json" />
+        <option value="$PROJECT_DIR$/API/routes/contacts.js" />
+        <option value="$PROJECT_DIR$/API/models/Contacts.js" />
+        <option value="$PROJECT_DIR$/README.md" />
+        <option value="$PROJECT_DIR$/API/config/routes.js" />
+        <option value="$PROJECT_DIR$/API/.gitignore" />
       </list>
     </option>
   </component>
   <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
-  <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER">
-    <package-json value="$PROJECT_DIR$/Web/package.json" />
-  </component>
+  <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
   <component name="JsGulpfileManager">
     <detection-done>true</detection-done>
-    <gulpfiles>
-      <GulpfileState>
-        <gulpfile-path>$PROJECT_DIR$/Web/gulpfile.js</gulpfile-path>
-      </GulpfileState>
-    </gulpfiles>
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="NodeModulesDirectoryManager">
     <handled-path value="$PROJECT_DIR$/API/node_modules" />
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="199" />
-    <option name="y" value="323" />
-    <option name="width" value="1436" />
-    <option name="height" value="877" />
+    <option name="y" value="64" />
+    <option name="width" value="1714" />
+    <option name="height" value="1072" />
   </component>
   <component name="ProjectView">
     <navigator currentView="ProjectPane" proportions="" version="1">
@@ -237,26 +450,26 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
             <PATH_ELEMENT>
-              <option name="myItemId" value="HourlyAdmin" />
+              <option name="myItemId" value="nike-api" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="HourlyAdmin" />
+              <option name="myItemId" value="nike-api" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
-              <option name="myItemId" value="HourlyAdmin" />
+              <option name="myItemId" value="nike-api" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="HourlyAdmin" />
+              <option name="myItemId" value="nike-api" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -266,11 +479,11 @@
           </PATH>
           <PATH>
             <PATH_ELEMENT>
-              <option name="myItemId" value="HourlyAdmin" />
+              <option name="myItemId" value="nike-api" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="HourlyAdmin" />
+              <option name="myItemId" value="nike-api" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -278,17 +491,17 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="utils" />
+              <option name="myItemId" value="routes" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
-              <option name="myItemId" value="HourlyAdmin" />
+              <option name="myItemId" value="nike-api" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="HourlyAdmin" />
+              <option name="myItemId" value="nike-api" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -302,29 +515,11 @@
           </PATH>
           <PATH>
             <PATH_ELEMENT>
-              <option name="myItemId" value="HourlyAdmin" />
+              <option name="myItemId" value="nike-api" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="HourlyAdmin" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="API" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="controllers" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="HourlyAdmin" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="HourlyAdmin" />
+              <option name="myItemId" value="nike-api" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -336,50 +531,48 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="HourlyAdmin" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="HourlyAdmin" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="API" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="bin" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../CoC" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="HbShouldOpenHtmlAsHb" value="" />
     <property name="js-jscs-nodeInterpreter" value="/usr/local/bin/node" />
     <property name="nodejs_interpreter_path" value="/usr/local/bin/node" />
     <property name="js.eslint.eslintPackage" value="" />
+    <property name="ignore_missing_gitignore" value="true" />
+    <property name="com.intellij.ide.scratch.LRUPopupBuilder$2/Languages" value="JavaScript" />
+    <property name="add_unversioned_files" value="true" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/API" />
+      <recent name="$PROJECT_DIR$/API/config" />
+      <recent name="$PROJECT_DIR$/API/certs/ca" />
+      <recent name="$PROJECT_DIR$/API/certs/server" />
+      <recent name="$PROJECT_DIR$/API/bin" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/API/bin" />
       <recent name="$PROJECT_DIR$/API/config" />
       <recent name="$PROJECT_DIR$/Web" />
     </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/API/certs/ca" />
-      <recent name="$PROJECT_DIR$/API/certs/server" />
-      <recent name="$PROJECT_DIR$/API/bin" />
-    </key>
   </component>
   <component name="RunManager">
+    <configuration default="true" type="BashConfigurationType" factoryName="Bash">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="INTERPRETER_PATH" value="/bin/bash" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SCRIPT_NAME" value="" />
+      <option name="PARAMETERS" value="" />
+      <module name="" />
+      <envs />
+      <method />
+    </configuration>
     <configuration default="true" type="DartCommandLineRunConfigurationType" factoryName="Dart Command Line Application">
       <method />
     </configuration>
@@ -420,7 +613,7 @@
       <method />
     </configuration>
     <configuration default="true" type="js.build_tools.npm" factoryName="npm">
-      <command value="run-script" />
+      <command value="run" />
       <scripts />
       <node-interpreter value="project" />
       <envs />
@@ -490,26 +683,39 @@
       <workItem from="1479831444689" duration="4337000" />
       <workItem from="1479913986662" duration="1747000" />
       <workItem from="1479952950318" duration="623000" />
-      <workItem from="1480028772639" duration="588000" />
+      <workItem from="1480028772639" duration="768000" />
+      <workItem from="1480038480852" duration="533000" />
+      <workItem from="1487198620559" duration="4674000" />
+      <workItem from="1491492139883" duration="29865000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="276851000" />
+    <option name="totallyTimeSpent" value="312103000" />
+  </component>
+  <component name="TodoView">
+    <todo-panel id="selected-file">
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="199" y="323" width="1436" height="877" extended-state="0" />
-    <editor active="true" />
+    <frame x="0" y="64" width="1714" height="1072" extended-state="0" />
+    <editor active="false" />
     <layout>
       <window_info id="Gulp" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24664311" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24512699" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32959184" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32905138" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32938856" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32857144" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="npm" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.29299363" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.29285714" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -517,7 +723,6 @@
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32938856" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
@@ -526,6 +731,7 @@
   </component>
   <component name="UnknownFeatures">
     <option featureType="com.intellij.fileTypeFactory" implementationName="*.md" />
+    <option featureType="com.intellij.fileTypeFactory" implementationName="*.sql" />
   </component>
   <component name="Vcs.Log.UiProperties">
     <option name="RECENTLY_FILTERED_USER_GROUPS">
@@ -545,135 +751,7 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/API/migrations/20160705155344_jobfix.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/API/migrations/20160711090832_messages.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/API/migrations/20160711154200_messagefix.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/API/migrations/20160711173908_messageupdate.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/API/migrations/20160715115206_messageupdate.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/API/migrations/20160719101355_threads.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="390">
-          <caret line="48" column="2" lean-forward="false" selection-start-line="48" selection-start-column="2" selection-end-line="48" selection-end-column="2" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/API/models/UserThread.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/API/models/Transaction.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="11" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/API/config/globals.js" />
-    <entry file="file://$PROJECT_DIR$/API/app.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="16" column="0" lean-forward="false" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/README.md">
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="69" column="0" lean-forward="false" selection-start-line="69" selection-start-column="0" selection-end-line="69" selection-end-column="0" />
-        </state>
-      </provider>
-      <provider editor-type-id="MarkdownFxPreviewEditor">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="split-provider[text-editor;MarkdownPreviewEditor]">
-        <state split_layout="FIRST">
-          <first_editor relative-caret-position="4245">
-            <caret line="283" column="0" lean-forward="false" selection-start-line="283" selection-start-column="0" selection-end-line="283" selection-end-column="0" />
-          </first_editor>
-          <second_editor />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/API/node_modules/braintree/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/API/node_modules/braintree/README.md">
-      <provider editor-type-id="MarkdownFxPreviewEditor">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="split-provider[text-editor;MarkdownPreviewEditor]">
-        <state split_layout="FIRST">
-          <first_editor relative-caret-position="300">
-            <caret line="20" column="0" lean-forward="false" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
-          </first_editor>
-          <second_editor />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/API/node_modules/braintree/vendor/querystring.node.js.511d6a2/querystring.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/API/node_modules/braintree/vendor/querystring.node.js.511d6a2/querystring-parse.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1239">
-          <caret line="22" column="2" lean-forward="false" selection-start-line="22" selection-start-column="2" selection-end-line="22" selection-end-column="2" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/API/node_modules/braintree/vendor/querystring.node.js.511d6a2/README.md">
-      <provider editor-type-id="MarkdownFxPreviewEditor">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="split-provider[text-editor;MarkdownPreviewEditor]">
-        <state split_layout="FIRST">
-          <first_editor relative-caret-position="0">
-            <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          </first_editor>
-          <second_editor />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/API/node_modules/braintree/vendor/querystring.node.js.511d6a2/README.md" />
     <entry file="file://$PROJECT_DIR$/API/node_modules/braintree/lib/braintree/test/credit_card_defaults.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -744,27 +822,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/API/config/config.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
-          <caret line="21" column="9" lean-forward="false" selection-start-line="21" selection-start-column="9" selection-end-line="21" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/API/utils/generatePassword.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/API/utils/emailService.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="15" column="31" lean-forward="false" selection-start-line="15" selection-start-column="31" selection-end-line="15" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/API/models/TransactionSent.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -816,50 +873,39 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/API/controllers/ApplicationController.js">
+    <entry file="file://$PROJECT_DIR$/API/routes/ApplicationController.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="975">
           <caret line="65" column="84" lean-forward="false" selection-start-line="65" selection-start-column="79" selection-end-line="65" selection-end-column="84" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/API/controllers/WebhookController.js">
+    <entry file="file://$PROJECT_DIR$/API/routes/WebhookController.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="555">
           <caret line="37" column="30" lean-forward="false" selection-start-line="37" selection-start-column="30" selection-end-line="37" selection-end-column="30" />
-          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/API/config/routes.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="14" column="37" lean-forward="false" selection-start-line="14" selection-start-column="37" selection-end-line="14" selection-end-column="37" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/API/config/tokenAuth.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="5" column="7" lean-forward="false" selection-start-line="5" selection-start-column="4" selection-end-line="5" selection-end-column="7" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/API/bin/www">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="900">
-          <caret line="60" column="15" lean-forward="false" selection-start-line="60" selection-start-column="15" selection-end-line="60" selection-end-column="15" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/API/controllers/MessageController.js">
+    <entry file="file://$PROJECT_DIR$/API/routes/MessageController.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="90">
           <caret line="6" column="16" lean-forward="false" selection-start-line="6" selection-start-column="4" selection-end-line="6" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/API/routes/MerchantController.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="7110">
+          <caret line="474" column="63" lean-forward="false" selection-start-line="474" selection-start-column="63" selection-end-line="474" selection-end-column="63" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/API/models/Job.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="6" column="22" lean-forward="false" selection-start-line="6" selection-start-column="22" selection-end-line="6" selection-end-column="22" />
         </state>
       </provider>
     </entry>
@@ -871,15 +917,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/API/utils/jwtUtils.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="915">
-          <caret line="61" column="51" lean-forward="false" selection-start-line="61" selection-start-column="4" selection-end-line="61" selection-end-column="51" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/API/controllers/SearchController.js">
+    <entry file="file://$PROJECT_DIR$/API/routes/SearchController.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="285">
           <caret line="19" column="16" lean-forward="false" selection-start-line="19" selection-start-column="16" selection-end-line="19" selection-end-column="16" />
@@ -887,7 +925,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/API/controllers/UserController.js">
+    <entry file="file://$PROJECT_DIR$/API/routes/UserController.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="315">
           <caret line="21" column="38" lean-forward="false" selection-start-line="21" selection-start-column="38" selection-end-line="21" selection-end-column="38" />
@@ -895,34 +933,199 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/API/controllers/LoginController.js">
+    <entry file="file://$PROJECT_DIR$/API/utils/emailService.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="15" column="31" lean-forward="false" selection-start-line="15" selection-start-column="31" selection-end-line="15" selection-end-column="31" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/API/config/constants.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="7" column="0" lean-forward="false" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
+          <folding>
+            <marker date="1491497433000" expanded="true" signature="32:81" ph="{&quot;SECRET&quot;: 'thedudeabides'...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/API/config/tokenAuth.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="5" column="7" lean-forward="false" selection-start-line="5" selection-start-column="4" selection-end-line="5" selection-end-column="7" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/API/utils/generatePassword.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="12" column="0" lean-forward="true" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/API/routes/LoginController.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="330">
+          <caret line="22" column="15" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="224" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/API/utils/jwtUtils.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="905">
+          <caret line="130" column="15" lean-forward="false" selection-start-line="130" selection-start-column="15" selection-end-line="130" selection-end-column="15" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/API/bin/www">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="420">
+          <caret line="28" column="0" lean-forward="false" selection-start-line="28" selection-start-column="0" selection-end-line="28" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/API/database.sqlite">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/API/migrations/001-initial-schema.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="8" column="19" lean-forward="true" selection-start-line="8" selection-start-column="19" selection-end-line="8" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/API/routes/JobController.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="183">
+          <caret line="178" column="28" lean-forward="true" selection-start-line="178" selection-start-column="28" selection-end-line="178" selection-end-column="28" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$APPLICATION_CONFIG_DIR$/scratches/scratch.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/API/config/db.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="11" column="27" lean-forward="false" selection-start-line="11" selection-start-column="27" selection-end-line="11" selection-end-column="27" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/API/config/errorHandler.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="11" column="85" lean-forward="false" selection-start-line="11" selection-start-column="85" selection-end-line="11" selection-end-column="85" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/API/package.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="375">
+          <caret line="25" column="0" lean-forward="true" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/API/routes/contacts-auth.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="390">
+          <caret line="26" column="30" lean-forward="true" selection-start-line="26" selection-start-column="30" selection-end-line="26" selection-end-column="30" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/API/routes/contacts.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="450">
+          <caret line="52" column="30" lean-forward="false" selection-start-line="52" selection-start-column="30" selection-end-line="52" selection-end-column="30" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/API/models/Contacts.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="515">
+          <caret line="140" column="11" lean-forward="true" selection-start-line="140" selection-start-column="11" selection-end-line="140" selection-end-column="11" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="210">
+            <caret line="14" column="13" lean-forward="true" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
+            <folding />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/API/config/auth.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="11" column="0" lean-forward="false" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/API/config/config.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="5" column="20" lean-forward="false" selection-start-line="5" selection-start-column="20" selection-end-line="5" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/API/app.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="5" column="0" lean-forward="true" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/API/config/express.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="12" column="4" lean-forward="false" selection-start-line="12" selection-start-column="4" selection-end-line="12" selection-end-column="4" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/API/config/routes.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="13" column="23" lean-forward="true" selection-start-line="13" selection-start-column="23" selection-end-line="13" selection-end-column="23" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/API/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="15">
-          <caret line="171" column="34" lean-forward="false" selection-start-line="171" selection-start-column="34" selection-end-line="171" selection-end-column="34" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/API/models/Job.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="6" column="22" lean-forward="true" selection-start-line="6" selection-start-column="22" selection-end-line="6" selection-end-column="22" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/API/controllers/MerchantController.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="273">
-          <caret line="474" column="63" lean-forward="true" selection-start-line="474" selection-start-column="63" selection-end-line="474" selection-end-column="63" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/API/controllers/JobController.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="393">
-          <caret line="158" column="47" lean-forward="false" selection-start-line="158" selection-start-column="47" selection-end-line="158" selection-end-column="47" />
+          <caret line="1" column="0" lean-forward="true" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
           <folding />
         </state>
       </provider>

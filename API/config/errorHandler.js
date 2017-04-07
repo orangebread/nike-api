@@ -9,6 +9,6 @@ module.exports = function(app) {
 
     // no stacktraces leaked to user unless in development environment
     app.use(function(err, req, res, next) {
-        res.status(err.status || 500);
+        res.json({ success: false, errorCode: err.status || 500, message: err.message});
     });
 }   

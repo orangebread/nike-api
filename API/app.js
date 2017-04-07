@@ -10,7 +10,7 @@ require('./config/db');
 // routing/endpoints
 require('./config/routes')(app);
 
-// errors go here.
+// error handling
 require('./config/errorHandler')(app);
 
 module.exports = app;
